@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>부부한의원 메인 시안</title>
+    <meta
+      name="description"
+      content="베이지와 딥그린 톤의 프리미엄 한의원 메인 페이지 시안"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Pretendard:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="주요 메뉴">
+      <a class="brand" href="#">
+        <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
+        <span>
+          <strong>부부한의원</strong>
+          <small>Booboo Korean Medicine Clinic</small>
+        </span>
+      </a>
+      <nav>
+        <a href="#care">진료분야</a>
+        <a href="#doctors">의료진 소개</a>
+        <a href="#symptoms">증상별 안내</a>
+        <a href="#visit">첫 방문</a>
+        <a href="#contact">예약</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">몸의 흐름을 살피는 진료</p>
+          <h1 id="hero-title">차분하게 듣고, 정확하게 살피는 한의원</h1>
+          <p class="hero-text">
+            반복되는 증상 뒤에 있는 생활의 리듬과 몸의 균형을 함께 봅니다.
+            처음 오시는 분도 편안하게 상담받을 수 있도록 진료 과정을
+            단정하게 안내합니다.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#contact">예약 문의</a>
+            <a class="button ghost" href="#symptoms">증상별 보기</a>
+          </div>
+        </div>
+        <div class="hero-panels" aria-label="진료시간 안내">
+          <div class="hero-panel">
+            <p>평일 진료</p>
+            <strong>08:00 - 20:00</strong>
+            <span>점심시간 12:20 - 14:00</span>
+          </div>
+          <div class="hero-panel">
+            <p>토·일·공휴일 진료</p>
+            <strong>08:30 - 14:00</strong>
+            <span>점심시간 없이 진료</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro section-grid">
+        <div>
+          <p class="eyebrow">Clinic Approach</p>
+          <h2>불편한 증상을 빠르게 넘기지 않고, 원인을 차분히 확인합니다.</h2>
+        </div>
+        <p>
+          부부한의원은 환자의 현재 증상, 생활습관, 체질적 경향을 함께
+          살피며 치료 계획을 세웁니다. 필요한 정보는 짧고 명확하게,
+          자세한 내용은 각 안내 페이지에서 확인할 수 있도록 구성했습니다.
+        </p>
+      </section>
+
+      <section class="section" id="care">
+        <div class="section-heading">
+          <p class="eyebrow">Main Care</p>
+          <h2>주요 진료 분야</h2>
+          <a href="#">전체 진료 보기</a>
+        </div>
+        <div class="care-list">
+          <a class="care-card" href="#">
+            <span>01</span>
+            <h3>소화·담적</h3>
+            <p>더부룩함, 속쓰림, 만성 소화불량의 반복 원인을 살핍니다.</p>
+          </a>
+          <a class="care-card" href="#">
+            <span>02</span>
+            <h3>비염·호흡기</h3>
+            <p>계절성 비염, 코막힘, 잦은 감기와 면역 흐름을 함께 봅니다.</p>
+          </a>
+          <a class="care-card" href="#">
+            <span>03</span>
+            <h3>통증·교통사고</h3>
+            <p>목, 허리, 어깨 통증과 사고 후유증을 단계적으로 관리합니다.</p>
+          </a>
+          <a class="care-card" href="#">
+            <span>04</span>
+            <h3>여성·순환</h3>
+            <p>월경 불편, 냉증, 피로감처럼 반복되는 몸의 신호를 다룹니다.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="doctors section" id="doctors">
+        <div class="section-heading">
+          <p class="eyebrow">Medical Team</p>
+          <h2>의료진 소개</h2>
+          <a href="#">의료진 자세히 보기</a>
+        </div>
+        <div class="doctor-board" aria-label="의료진 6명 소개">
+          <a
+            class="doctor-card"
+            href="#doctor-modal"
+            data-name="최보빈 원장"
+            data-role="대표원장"
+            data-image="assets/choi-bb.png"
+          >
+            <div class="doctor-photo">
+              <img src="assets/choi-bb.png" alt="최보빈 대표원장 프로필 사진" />
+            </div>
+            <div class="doctor-info">
+              <p>대표원장</p>
+              <h3>최보빈 원장</h3>
+            </div>
+          </a>
+          <a
+            class="doctor-card"
+            href="#doctor-modal"
+            data-name="김준현 원장"
+            data-role="총괄진료원장"
+            data-image="assets/kim-jh.png"
+          >
+            <div class="doctor-photo">
+              <img src="assets/kim-jh.png" alt="김준현 총괄진료원장 프로필 사진" />
+            </div>
+            <div class="doctor-info">
+              <p>총괄진료원장</p>
+              <h3>김준현 원장</h3>
+            </div>
+          </a>
+          <a
+            class="doctor-card"
+            href="#doctor-modal"
+            data-name="김영윤 원장"
+            data-role="진료원장"
+            data-image="assets/kim-yy.png"
+          >
+            <div class="doctor-photo">
+              <img src="assets/kim-yy.png" alt="김영윤 진료원장 프로필 사진" />
+            </div>
+            <div class="doctor-info">
+              <p>진료원장</p>
+              <h3>김영윤 원장</h3>
+            </div>
+          </a>
+          <a
+            class="doctor-card"
+            href="#doctor-modal"
+            data-name="박지현 원장"
+            data-role="진료원장"
+            data-image="assets/park-jh.png"
+          >
+            <div class="doctor-photo">
+              <img src="assets/park-jh.png" alt="박지현 진료원장 프로필 사진" />
+            </div>
+            <div class="doctor-info">
+              <p>진료원장</p>
+              <h3>박지현 원장</h3>
+            </div>
+          </a>
+          <a
+            class="doctor-card"
+            href="#doctor-modal"
+            data-name="안태윤 원장"
+            data-role="진료원장"
+            data-image="assets/ahn-ty.png"
+          >
+            <div class="doctor-photo">
+              <img src="assets/ahn-ty.png" alt="안태윤 진료원장 프로필 사진" />
+            </div>
+            <div class="doctor-info">
+              <p>진료원장</p>
+              <h3>안태윤 원장</h3>
+            </div>
+          </a>
+          <a
+            class="doctor-card"
+            href="#doctor-modal"
+            data-name="황두호 원장"
+            data-role="진료원장"
+            data-image="assets/hwang-dh.png"
+          >
+            <div class="doctor-photo">
+              <img src="assets/hwang-dh.png" alt="황두호 진료원장 프로필 사진" />
+            </div>
+            <div class="doctor-info">
+              <p>진료원장</p>
+              <h3>황두호 원장</h3>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="symptoms section" id="symptoms">
+        <div class="section-heading">
+          <p class="eyebrow">Symptom Guide</p>
+          <h2>증상별로 바로 찾기</h2>
+          <a href="#">증상 안내 전체보기</a>
+        </div>
+        <div class="symptom-links">
+          <a href="#">만성 소화불량</a>
+          <a href="#">역류성 식도염</a>
+          <a href="#">두통·어지럼</a>
+          <a href="#">목·허리 통증</a>
+          <a href="#">비염·축농증</a>
+          <a href="#">불면·피로</a>
+          <a href="#">산후 회복</a>
+          <a href="#">소아 성장</a>
+        </div>
+      </section>
+
+      <section class="philosophy">
+        <div class="philosophy-copy">
+          <p class="eyebrow">Our Standard</p>
+          <h2>한 번의 치료보다, 몸이 회복되는 방향을 봅니다.</h2>
+          <p>
+            진료실에서는 증상의 이름만 확인하지 않습니다. 언제 심해지는지,
+            어떤 생활 패턴과 연결되는지, 몸이 회복하기 어려운 이유는 무엇인지
+            함께 살핍니다.
+          </p>
+        </div>
+        <div class="philosophy-points">
+          <div>
+            <strong>01</strong>
+            <span>충분한 문진과 상태 확인</span>
+          </div>
+          <div>
+            <strong>02</strong>
+            <span>개인별 치료 계획 안내</span>
+          </div>
+          <div>
+            <strong>03</strong>
+            <span>생활 관리까지 이어지는 설명</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="visit section" id="visit">
+        <div class="section-heading">
+          <p class="eyebrow">First Visit</p>
+          <h2>처음 오시는 분께</h2>
+          <a href="#">방문 안내 자세히</a>
+        </div>
+        <ol class="visit-steps">
+          <li>
+            <span>예약</span>
+            전화 또는 온라인으로 편한 시간을 확인합니다.
+          </li>
+          <li>
+            <span>상담</span>
+            현재 증상과 생활 패턴을 차분히 나눕니다.
+          </li>
+          <li>
+            <span>진료</span>
+            필요한 검사와 진찰 후 치료 방향을 설명합니다.
+          </li>
+          <li>
+            <span>관리</span>
+            내원 간격과 생활 관리법을 함께 안내합니다.
+          </li>
+        </ol>
+      </section>
+
+      <section class="contact" id="contact">
+        <div>
+          <p class="eyebrow">Reservation</p>
+          <h2>편안한 진료를 위해 예약 후 방문을 권합니다.</h2>
+          <p>서울시 ○○구 ○○로 00, 2층 · 평일 09:30 - 19:00</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button primary" href="tel:02-000-0000">전화하기</a>
+          <a class="button light" href="#">네이버 예약</a>
+          <a class="button light" href="#">오시는 길</a>
+        </div>
+      </section>
+    </main>
+
+    <div
+      class="doctor-modal"
+      id="doctor-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-doctor-name"
+      hidden
+    >
+      <button class="modal-backdrop" type="button" data-modal-close aria-label="팝업 닫기"></button>
+      <div class="modal-content">
+        <button class="modal-close" type="button" data-modal-close aria-label="팝업 닫기">
+          ×
+        </button>
+        <div class="modal-photo">
+          <img src="" alt="" id="modal-doctor-image" />
+        </div>
+        <div class="modal-detail">
+          <p class="eyebrow" id="modal-doctor-role">진료원장</p>
+          <h2 id="modal-doctor-name">원장명</h2>
+          <div class="modal-section">
+            <ul id="modal-doctor-bio"></ul>
+          </div>
+        </div>
+        <div class="modal-schedule" aria-live="polite">
+          <div class="modal-schedule-head">
+            <h3>이번주 진료 스케쥴</h3>
+            <span id="modal-schedule-range"></span>
+          </div>
+          <div class="weekly-schedule" id="modal-weekly-schedule">
+            <span>스케쥴을 불러오는 중입니다.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <strong>목포 부부한의원</strong>
+      <span>대표자명 · 사업자등록번호 · 주소 · 전화번호 정보 영역</span>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
