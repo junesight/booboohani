@@ -326,10 +326,14 @@ h3 {
   display: inline-grid;
   gap: 8px;
   margin: 0;
+  width: min(720px, 100%);
+  padding: clamp(22px, 3vw, 34px) clamp(36px, 7vw, 96px);
   color: rgba(22, 61, 50, 0.78);
   font-family: "Noto Serif KR", serif;
   font-size: clamp(22px, 2.7vw, 36px);
   line-height: 1.45;
+  border: 1px solid rgba(22, 61, 50, 0.22);
+  background: transparent;
 }
 
 .patient-record span {
@@ -414,7 +418,7 @@ h3 {
 }
 
 .intro-title {
-  font-size: clamp(29px, 3.1vw, 42px);
+  font-size: clamp(27px, 2.8vw, 38px);
   line-height: 1.52;
 }
 
@@ -431,6 +435,10 @@ h3 {
   margin-bottom: 34px;
   border-bottom: 1px solid var(--line);
   padding-bottom: 24px;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 4px;
 }
 
 .section-heading a {
@@ -1160,7 +1168,15 @@ body.modal-open {
 }
 
 .contact .contact-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 150px));
+  gap: 12px;
   margin-top: 26px;
+}
+
+.contact .contact-actions .button {
+  width: 100%;
+  min-width: 0;
 }
 
 .map-embed {
@@ -1324,13 +1340,43 @@ footer p {
 
   .hero {
     min-height: auto;
-    padding-top: 90px;
-    padding-bottom: 90px;
+    padding-top: 62px;
+    padding-bottom: 42px;
+    background:
+      linear-gradient(180deg, rgba(248, 243, 234, 0.36), rgba(239, 231, 216, 0.9)),
+      url("assets/mobile-hero-bg.png") center top / cover no-repeat;
   }
 
   .hero-panels {
-    grid-template-columns: 1fr;
-    width: min(420px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(520px, 100%);
+    gap: 8px;
+    margin-top: 30px;
+  }
+
+  .hero-panel {
+    padding: 16px 12px;
+  }
+
+  .hero-panel p {
+    font-size: 14px;
+  }
+
+  .hero-panel strong {
+    font-size: 22px;
+  }
+
+  .hero-panel span {
+    font-size: 12px;
+  }
+
+  .patient-record {
+    padding-top: 22px;
+  }
+
+  .patient-record p {
+    width: min(360px, 100%);
+    padding: 22px 18px;
   }
 
   .section-grid,
@@ -1341,6 +1387,13 @@ footer p {
 
   .section-grid {
     gap: 28px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .intro-text {
+    padding-left: 0;
+    transform: none;
   }
 
   .intro-text span {
@@ -1432,6 +1485,9 @@ footer p {
 
   .hero {
     padding-inline: 18px;
+    background:
+      linear-gradient(180deg, rgba(248, 243, 234, 0.3), rgba(239, 231, 216, 0.88)),
+      url("assets/mobile-hero-bg.png") center top / cover no-repeat;
   }
 
   h1 {
@@ -1464,11 +1520,13 @@ footer p {
   }
 
   .section-heading {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
   }
 
   .section-heading a {
-    display: inline-block;
+    justify-self: end;
     margin-top: 14px;
   }
 
@@ -1477,6 +1535,22 @@ footer p {
   .symptom-links,
   .visit-steps {
     grid-template-columns: 1fr;
+  }
+
+  .doctor-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .care-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .doctor-card {
+    min-height: 320px;
+  }
+
+  .doctor-photo {
+    min-height: 230px;
   }
 
   .gallery-tabs button {
@@ -1525,6 +1599,10 @@ footer p {
 
   .contact-actions {
     width: 100%;
+  }
+
+  .contact .contact-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .doctor-modal {
