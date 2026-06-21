@@ -43,9 +43,19 @@ const RECORD_STORAGE_KEY = "boobooPatientRecord";
 
 const galleryFloors = {
   1: [
-    { src: GALLERY_PLACEHOLDER, caption: "1층 접수 및 대기 공간" },
-    { src: GALLERY_PLACEHOLDER, caption: "1층 로비" },
-    { src: GALLERY_PLACEHOLDER, caption: "1층 상담 공간" },
+    { src: "assets/gallery-1f-01.jpg", caption: "외부" },
+    { src: "assets/gallery-1f-02.jpg", caption: "로비" },
+    { src: "assets/gallery-1f-03.jpg", caption: "로비" },
+    { src: "assets/gallery-1f-04.jpg", caption: "로비" },
+    { src: "assets/gallery-1f-05.jpg", caption: "데스크" },
+    { src: "assets/gallery-1f-06.jpg", caption: "진료실 복도" },
+    { src: "assets/gallery-1f-07.jpg", caption: "진료실" },
+    { src: "assets/gallery-1f-08.jpg", caption: "치료실 입구" },
+    { src: "assets/gallery-1f-09.jpg", caption: "치료실" },
+    { src: "assets/gallery-1f-10.jpg", caption: "치료실" },
+    { src: "assets/gallery-1f-11.jpg", caption: "치료실" },
+    { src: "assets/gallery-1f-12.jpg", caption: "검진실" },
+    { src: "assets/gallery-1f-13.jpg", caption: "검진실" },
   ],
   2: [
     { src: GALLERY_PLACEHOLDER, caption: "2층 치료 공간" },
@@ -156,6 +166,7 @@ let lastFocusedCard = null;
 let weeklyScheduleCache = null;
 let activeGalleryFloor = "1";
 let activeGalleryIndex = 0;
+let galleryAutoplayTimer = null;
 
 function formatDate(date) {
   const year = date.getFullYear();
@@ -433,6 +444,20 @@ function closeDoctorModal() {
   }
 }
 
+function scrollActiveGalleryThumb(activeThumb) {
+  if (!activeThumb || !galleryThumbs) return;
+
+  const targetLeft =
+    activeThumb.offsetLeft -
+    galleryThumbs.clientWidth / 2 +
+    activeThumb.clientWidth / 2;
+
+  galleryThumbs.scrollTo({
+    left: Math.max(0, targetLeft),
+    behavior: "smooth",
+  });
+}
+
 function renderGallery() {
   if (!galleryImage || !galleryCaption || !galleryThumbs) return;
 
@@ -449,32 +474,47 @@ function renderGallery() {
     tab.setAttribute("aria-selected", String(isActive));
   });
 
-  galleryThumbs.replaceChildren(
-    ...photos.map((photo, index) => {
-      const button = document.createElement("button");
-      const image = document.createElement("img");
+  const thumbButtons = photos.map((photo, index) => {
+    const button = document.createElement("button");
+    const image = document.createElement("img");
 
-      button.className = `gallery-thumb${index === activeGalleryIndex ? " is-active" : ""}`;
-      button.type = "button";
-      button.setAttribute("aria-label", `${photo.caption} 보기`);
-      image.src = photo.src;
-      image.alt = "";
+    button.className = `gallery-thumb${index === activeGalleryIndex ? " is-active" : ""}`;
+    button.type = "button";
+    button.setAttribute("aria-label", `${photo.caption} 보기`);
+    image.src = photo.src;
+    image.alt = "";
 
-      button.append(image);
-      button.addEventListener("click", () => {
-        activeGalleryIndex = index;
-        renderGallery();
-      });
+    button.append(image);
+    button.addEventListener("click", () => {
+      activeGalleryIndex = index;
+      renderGallery();
+      restartGalleryAutoplay();
+    });
 
-      return button;
-    }),
-  );
+    return button;
+  });
+
+  galleryThumbs.replaceChildren(...thumbButtons);
+  scrollActiveGalleryThumb(thumbButtons[activeGalleryIndex]);
 }
 
 function moveGallery(step) {
   const photos = galleryFloors[activeGalleryFloor];
   activeGalleryIndex = (activeGalleryIndex + step + photos.length) % photos.length;
   renderGallery();
+}
+
+function startGalleryAutoplay() {
+  if (!galleryImage) return;
+
+  window.clearInterval(galleryAutoplayTimer);
+  galleryAutoplayTimer = window.setInterval(() => {
+    moveGallery(1);
+  }, 5000);
+}
+
+function restartGalleryAutoplay() {
+  startGalleryAutoplay();
 }
 
 function normalizePatientCount(value) {
@@ -591,13 +631,21 @@ galleryTabs.forEach((tab) => {
     activeGalleryFloor = tab.dataset.floor;
     activeGalleryIndex = 0;
     renderGallery();
+    restartGalleryAutoplay();
   });
 });
 
-galleryPrev?.addEventListener("click", () => moveGallery(-1));
-galleryNext?.addEventListener("click", () => moveGallery(1));
+galleryPrev?.addEventListener("click", () => {
+  moveGallery(-1);
+  restartGalleryAutoplay();
+});
+galleryNext?.addEventListener("click", () => {
+  moveGallery(1);
+  restartGalleryAutoplay();
+});
 
 renderGallery();
+startGalleryAutoplay();
 loadPatientRecord();
 
 adminTrigger?.addEventListener("click", openAdminModal);

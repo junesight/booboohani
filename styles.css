@@ -708,18 +708,23 @@ h3 {
 }
 
 .gallery-thumbs {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
+  display: flex;
+  gap: 10px;
   margin-top: 14px;
+  padding-bottom: 6px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
 }
 
 .gallery-thumb {
+  flex: 0 0 142px;
   padding: 0;
   overflow: hidden;
   border: 3px solid transparent;
   background: transparent;
   cursor: pointer;
+  scroll-snap-align: start;
 }
 
 .gallery-thumb.is-active {
