@@ -7,10 +7,57 @@ const modalScheduleRange = document.querySelector("#modal-schedule-range");
 const modalWeeklySchedule = document.querySelector("#modal-weekly-schedule");
 const doctorCards = document.querySelectorAll(".doctor-card");
 const closeButtons = document.querySelectorAll("[data-modal-close]");
+const popupLinks = document.querySelectorAll(".js-popup-link");
+const galleryTabs = document.querySelectorAll(".gallery-tabs button");
+const galleryImage = document.querySelector("#gallery-main-image");
+const galleryCaption = document.querySelector("#gallery-caption");
+const galleryThumbs = document.querySelector("#gallery-thumbs");
+const galleryPrev = document.querySelector(".gallery-prev");
+const galleryNext = document.querySelector(".gallery-next");
+const adminTrigger = document.querySelector(".admin-trigger");
+const adminModal = document.querySelector("#admin-modal");
+const adminCloseButtons = document.querySelectorAll("[data-admin-close]");
+const adminLogin = document.querySelector("#admin-login");
+const adminDashboard = document.querySelector("#admin-dashboard");
+const adminPassword = document.querySelector("#admin-password");
+const adminLoginButton = document.querySelector("#admin-login-button");
+const adminError = document.querySelector("#admin-error");
+const adminRecordDate = document.querySelector("#admin-record-date");
+const adminRecordCount = document.querySelector("#admin-record-count");
+const adminSaveRecord = document.querySelector("#admin-save-record");
+const adminSuccess = document.querySelector("#admin-success");
+const recordEndDate = document.querySelector("#record-end-date");
+const recordPatientCount = document.querySelector("#record-patient-count");
 
 const SUPABASE_URL = "https://wfyuxxskwlczoyisdcmy.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_yUeE6ynEpbR3Eq-k3Gv1Ew_1DiaJHjz";
 const DAY_LABELS = ["월", "화", "수", "목", "금", "토", "일"];
+const GALLERY_PLACEHOLDER = "assets/hero-treatment-room.png";
+const ADMIN_PASSWORD = "272107";
+const RECORD_STORAGE_KEY = "boobooPatientRecord";
+
+const galleryFloors = {
+  1: [
+    { src: GALLERY_PLACEHOLDER, caption: "1층 접수 및 대기 공간" },
+    { src: GALLERY_PLACEHOLDER, caption: "1층 로비" },
+    { src: GALLERY_PLACEHOLDER, caption: "1층 상담 공간" },
+  ],
+  2: [
+    { src: GALLERY_PLACEHOLDER, caption: "2층 치료 공간" },
+    { src: GALLERY_PLACEHOLDER, caption: "2층 물리치료실" },
+    { src: GALLERY_PLACEHOLDER, caption: "2층 대기 공간" },
+  ],
+  3: [
+    { src: GALLERY_PLACEHOLDER, caption: "3층 입원 치료 공간" },
+    { src: GALLERY_PLACEHOLDER, caption: "3층 휴게 공간" },
+    { src: GALLERY_PLACEHOLDER, caption: "3층 치료실" },
+  ],
+  4: [
+    { src: GALLERY_PLACEHOLDER, caption: "4층 진료 공간" },
+    { src: GALLERY_PLACEHOLDER, caption: "4층 회복 공간" },
+    { src: GALLERY_PLACEHOLDER, caption: "4층 휴식 공간" },
+  ],
+};
 
 const doctorIdsByName = {
   "최보빈 원장": "choi",
@@ -93,6 +140,8 @@ const doctorProfiles = {
 
 let lastFocusedCard = null;
 let weeklyScheduleCache = null;
+let activeGalleryFloor = "1";
+let activeGalleryIndex = 0;
 
 function formatDate(date) {
   const year = date.getFullYear();
@@ -250,6 +299,132 @@ function closeDoctorModal() {
   }
 }
 
+function renderGallery() {
+  if (!galleryImage || !galleryCaption || !galleryThumbs) return;
+
+  const photos = galleryFloors[activeGalleryFloor];
+  const activePhoto = photos[activeGalleryIndex];
+
+  galleryImage.src = activePhoto.src;
+  galleryImage.alt = `부부한의원 ${activeGalleryFloor}층 ${activePhoto.caption}`;
+  galleryCaption.textContent = activePhoto.caption;
+
+  galleryTabs.forEach((tab) => {
+    const isActive = tab.dataset.floor === activeGalleryFloor;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+  });
+
+  galleryThumbs.replaceChildren(
+    ...photos.map((photo, index) => {
+      const button = document.createElement("button");
+      const image = document.createElement("img");
+
+      button.className = `gallery-thumb${index === activeGalleryIndex ? " is-active" : ""}`;
+      button.type = "button";
+      button.setAttribute("aria-label", `${photo.caption} 보기`);
+      image.src = photo.src;
+      image.alt = "";
+
+      button.append(image);
+      button.addEventListener("click", () => {
+        activeGalleryIndex = index;
+        renderGallery();
+      });
+
+      return button;
+    }),
+  );
+}
+
+function moveGallery(step) {
+  const photos = galleryFloors[activeGalleryFloor];
+  activeGalleryIndex = (activeGalleryIndex + step + photos.length) % photos.length;
+  renderGallery();
+}
+
+function normalizePatientCount(value) {
+  const trimmed = String(value || "").trim();
+  if (!trimmed) return "";
+
+  return trimmed.endsWith("명") ? trimmed : `${trimmed}명`;
+}
+
+function updatePatientRecord(date, count) {
+  if (recordEndDate && date) {
+    recordEndDate.textContent = date;
+  }
+
+  if (recordPatientCount && count) {
+    recordPatientCount.textContent = normalizePatientCount(count);
+  }
+}
+
+function loadPatientRecord() {
+  const savedRecord = localStorage.getItem(RECORD_STORAGE_KEY);
+  if (!savedRecord) return;
+
+  try {
+    const record = JSON.parse(savedRecord);
+    updatePatientRecord(record.date, record.count);
+  } catch (error) {
+    localStorage.removeItem(RECORD_STORAGE_KEY);
+  }
+}
+
+function openAdminModal() {
+  if (!adminModal) return;
+
+  adminModal.hidden = false;
+  document.body.classList.add("modal-open");
+  adminLogin.hidden = false;
+  adminDashboard.hidden = true;
+  adminPassword.value = "";
+  adminError.textContent = "";
+  adminSuccess.textContent = "";
+  adminPassword.focus();
+}
+
+function closeAdminModal() {
+  if (!adminModal) return;
+
+  adminModal.hidden = true;
+  document.body.classList.remove("modal-open");
+}
+
+function unlockAdminMenu() {
+  if (adminPassword.value !== ADMIN_PASSWORD) {
+    adminError.textContent = "비밀번호가 맞지 않습니다.";
+    adminPassword.select();
+    return;
+  }
+
+  adminLogin.hidden = true;
+  adminDashboard.hidden = false;
+  adminError.textContent = "";
+  adminSuccess.textContent = "";
+  adminRecordDate.value = recordEndDate?.textContent || "";
+  adminRecordCount.value = recordPatientCount?.textContent || "";
+  adminRecordDate.focus();
+}
+
+function savePatientRecord() {
+  const date = adminRecordDate.value.trim();
+  const count = normalizePatientCount(adminRecordCount.value);
+
+  if (!date || !count) {
+    adminSuccess.classList.add("is-error");
+    adminSuccess.textContent = "날짜와 내원 환자수를 모두 입력해주세요.";
+    return;
+  }
+
+  updatePatientRecord(date, count);
+  localStorage.setItem(RECORD_STORAGE_KEY, JSON.stringify({ date, count }));
+  adminRecordCount.value = count;
+  adminSuccess.classList.remove("is-error");
+  adminSuccess.textContent = "내원 환자수가 업데이트되었습니다.";
+}
+
 doctorCards.forEach((card) => {
   card.addEventListener("click", (event) => {
     event.preventDefault();
@@ -261,8 +436,64 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", closeDoctorModal);
 });
 
+popupLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const popup = window.open(
+      link.href,
+      "_blank",
+      "noopener,noreferrer,width=520,height=760",
+    );
+
+    if (!popup) {
+      window.location.href = link.href;
+    }
+  });
+});
+
+galleryTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    activeGalleryFloor = tab.dataset.floor;
+    activeGalleryIndex = 0;
+    renderGallery();
+  });
+});
+
+galleryPrev?.addEventListener("click", () => moveGallery(-1));
+galleryNext?.addEventListener("click", () => moveGallery(1));
+
+renderGallery();
+loadPatientRecord();
+
+adminTrigger?.addEventListener("click", openAdminModal);
+adminLoginButton?.addEventListener("click", unlockAdminMenu);
+adminSaveRecord?.addEventListener("click", savePatientRecord);
+
+adminPassword?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    unlockAdminMenu();
+  }
+});
+
+[adminRecordDate, adminRecordCount].forEach((input) => {
+  input?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      savePatientRecord();
+    }
+  });
+});
+
+adminCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeAdminModal);
+});
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !modal.hidden) {
     closeDoctorModal();
+  }
+
+  if (event.key === "Escape" && adminModal && !adminModal.hidden) {
+    closeAdminModal();
   }
 });

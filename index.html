@@ -18,20 +18,38 @@
   </head>
   <body>
     <header class="site-header" aria-label="주요 메뉴">
-      <a class="brand" href="#">
-        <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
-        <span>
-          <strong>부부한의원</strong>
-          <small>Booboo Korean Medicine Clinic</small>
-        </span>
-      </a>
+      <div class="brand-group">
+        <a class="brand" href="#">
+          <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
+          <span>
+            <strong>부부한의원</strong>
+            <small>Booboo Korean Medicine Clinic</small>
+          </span>
+        </a>
+        <div class="social-links" aria-label="부부한의원 소셜 채널">
+          <a href="https://blog.naver.com/booboo1075" target="_blank" rel="noreferrer" aria-label="네이버 블로그">
+            <img src="assets/icon-blog.png" alt="" />
+          </a>
+          <a href="https://www.instagram.com/boo.boo0513" target="_blank" rel="noreferrer" aria-label="인스타그램">
+            <img src="assets/icon-instagram.png" alt="" />
+          </a>
+          <a href="https://www.youtube.com/@booboohani" target="_blank" rel="noreferrer" aria-label="유튜브">
+            <img src="assets/icon-youtube.png" alt="" />
+          </a>
+          <a href="http://pf.kakao.com/_VlVkG" target="_blank" rel="noreferrer" aria-label="채널톡">
+            <img src="assets/icon-channel-talk.png" alt="" />
+          </a>
+        </div>
+      </div>
       <nav>
         <a href="#care">진료분야</a>
         <a href="#doctors">의료진 소개</a>
+        <a href="#gallery">한의원 둘러보기</a>
         <a href="#symptoms">증상별 안내</a>
         <a href="#visit">첫 방문</a>
         <a href="#contact">예약</a>
       </nav>
+      <button class="admin-trigger" type="button" aria-label="관리자 메뉴 열기">Edit</button>
     </header>
 
     <main>
@@ -64,6 +82,15 @@
         </div>
       </section>
 
+      <section class="patient-record" aria-label="누적 내원 환자 수">
+        <p>
+          <span class="record-date"><strong>2013년 05월 13일</strong><small>부터</small></span>
+          <span class="record-date"><strong id="record-end-date">2026년 06월 03일</strong><small>까지</small></span>
+          <span class="record-count"><strong id="record-patient-count">640,164명</strong><small>의 환자분이</small></span>
+          <span class="record-note">부부한의원에 다녀가셨습니다.</span>
+        </p>
+      </section>
+
       <section class="intro section-grid">
         <div>
           <p class="eyebrow">Clinic Approach</p>
@@ -93,23 +120,39 @@
         <div class="care-list">
           <a class="care-card" href="#">
             <span>01</span>
-            <h3>소화·담적</h3>
-            <p>더부룩함, 속쓰림, 만성 소화불량의 반복 원인을 살핍니다.</p>
+            <h3>통증·교통사고</h3>
+            <ul>
+              <li><strong>척추</strong>와 <strong>관절</strong>의 통증 질환 및 교통사고 후유증을 함께 진료합니다.</li>
+              <li>통증이 나타난 부위만 보지 않고, 자세, 움직임, 밸런스 등을 함께 살펴 <strong>근본적인 원인</strong>을 치료합니다.</li>
+              <li><strong>비수술적 관리</strong>가 가능한 범위에서 단계적으로 통증 상태를 개선합니다.</li>
+            </ul>
           </a>
           <a class="care-card" href="#">
             <span>02</span>
-            <h3>비염·호흡기</h3>
-            <p>계절성 비염, 코막힘, 잦은 감기와 면역 흐름을 함께 봅니다.</p>
+            <h3>다이어트</h3>
+            <ul>
+              <li>몸 상태와 생활 습관, 체질적 경향에 따라 <strong>개인별 맞춤 다이어트</strong>를 진행합니다.</li>
+              <li><strong>근손실은 최소화</strong>하고 <strong>체지방 위주의 감량</strong>으로 무리 없이 <strong>지속 가능한 다이어트</strong>를 지향합니다.</li>
+              <li>원장님들의 <strong>밀착관리</strong>로 식습관, 생활 습관까지 함께 교정합니다.</li>
+            </ul>
           </a>
           <a class="care-card" href="#">
             <span>03</span>
-            <h3>통증·교통사고</h3>
-            <p>목, 허리, 어깨 통증과 사고 후유증을 단계적으로 관리합니다.</p>
+            <h3>맞춤한약</h3>
+            <ul>
+              <li>피로/스트레스/기력저하를 위한 <strong>보약</strong>부터, 소화기/순환기/호흡기/비뇨생식기/여성/소아/피부 질환에 대한 <strong>치료 한약</strong>까지 폭넓게 처방합니다.</li>
+              <li>기본 검사와 문진, 맥진 등을 통해 몸 상태를 세심하게 살피고, 개인에게 맞는 <strong>맞춤 한약 처방</strong>을 추구합니다.</li>
+              <li><strong>청정 한약재</strong>를 사용해 원내에서 직접 달여 제공합니다.</li>
+            </ul>
           </a>
           <a class="care-card" href="#">
             <span>04</span>
-            <h3>여성·순환</h3>
-            <p>월경 불편, 냉증, 피로감처럼 반복되는 몸의 신호를 다룹니다.</p>
+            <h3>경옥고·공진단</h3>
+            <ul>
+              <li><strong>피로 관리</strong>는 건강한 일상을 위한 기본 관리이며, 곧 <strong>수명 관리</strong>입니다.</li>
+              <li>경옥고와 공진단은 바쁜 일상 속 떨어진 기력과 활력을 보충하고, 활기찬 생활을 돕는 <strong>대표적인 보약</strong>입니다.</li>
+              <li>남녀노소 모두 복용 가능하고, 휴대와 복용이 간편해 일상 속에서 꾸준히 관리하기 좋은 <strong>생활밀착형 한약</strong>입니다.</li>
+            </ul>
           </a>
         </div>
       </section>
@@ -214,6 +257,29 @@
         </div>
       </section>
 
+      <section class="clinic-gallery section" id="gallery">
+        <div class="section-heading">
+          <p class="eyebrow">Clinic Tour</p>
+          <h2>한의원 둘러보기</h2>
+          <a href="#">원내 사진 전체보기</a>
+        </div>
+        <div class="gallery-tabs" role="tablist" aria-label="층별 원내 사진">
+          <button class="is-active" type="button" role="tab" aria-selected="true" data-floor="1">1F</button>
+          <button type="button" role="tab" aria-selected="false" data-floor="2">2F</button>
+          <button type="button" role="tab" aria-selected="false" data-floor="3">3F</button>
+          <button type="button" role="tab" aria-selected="false" data-floor="4">4F</button>
+        </div>
+        <div class="gallery-stage" aria-live="polite">
+          <button class="gallery-arrow gallery-prev" type="button" aria-label="이전 사진">‹</button>
+          <figure>
+            <img id="gallery-main-image" src="assets/hero-treatment-room.png" alt="부부한의원 1층 원내 사진" />
+            <figcaption id="gallery-caption">1층 접수 및 대기 공간</figcaption>
+          </figure>
+          <button class="gallery-arrow gallery-next" type="button" aria-label="다음 사진">›</button>
+        </div>
+        <div class="gallery-thumbs" id="gallery-thumbs" aria-label="현재 층 사진 목록"></div>
+      </section>
+
       <section class="symptoms section" id="symptoms">
         <div class="section-heading">
           <p class="eyebrow">Symptom Guide</p>
@@ -296,10 +362,10 @@
             <p>061-272-1075</p>
           </div>
           <div class="contact-actions">
-            <a class="button primary" href="tel:061-272-1075">전화하기</a>
-            <a class="button light" href="https://naver.me/G9r5Gz2l">네이버예약</a>
-            <a class="button light" href="http://pf.kakao.com/_VlVkG/chat">카톡문의</a>
-            <a class="button light" href="https://nmap.place.naver.com/launchApp/route?path=route&type=place&dlat=34.815094&dlng=126.4211309&did=32446999&dname=%EB%B6%80%EB%B6%80%ED%95%9C%EC%9D%98%EC%9B%90&appname=https%3A%2F%2Fm.place.naver.com%2Fhospital%2F32446999%2Fhome">오시는 길</a>
+            <a class="button primary js-popup-link" href="tel:061-272-1075" target="_blank" rel="noreferrer">전화하기</a>
+            <a class="button light js-popup-link" href="https://naver.me/G9r5Gz2l" target="_blank" rel="noreferrer">네이버예약</a>
+            <a class="button light js-popup-link" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer">카톡문의</a>
+            <a class="button light js-popup-link" href="https://nmap.place.naver.com/launchApp/route?path=route&type=place&dlat=34.815094&dlng=126.4211309&did=32446999&dname=%EB%B6%80%EB%B6%80%ED%95%9C%EC%9D%98%EC%9B%90&appname=https%3A%2F%2Fm.place.naver.com%2Fhospital%2F32446999%2Fhome" target="_blank" rel="noreferrer">오시는 길</a>
           </div>
         </div>
         <a class="map-embed" href="https://naver.me/G9r5Gz2l" target="_blank" rel="noreferrer" aria-label="네이버 예약으로 이동">
@@ -343,6 +409,49 @@
       </div>
     </div>
 
+    <div
+      class="admin-modal"
+      id="admin-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="admin-title"
+      hidden
+    >
+      <button class="modal-backdrop" type="button" data-admin-close aria-label="관리자 메뉴 닫기"></button>
+      <div class="admin-panel">
+        <button class="modal-close" type="button" data-admin-close aria-label="관리자 메뉴 닫기">
+          ×
+        </button>
+        <div class="admin-login" id="admin-login">
+          <p class="eyebrow">Admin</p>
+          <h2 id="admin-title">관리자 메뉴</h2>
+          <label for="admin-password">비밀번호</label>
+          <input id="admin-password" type="password" inputmode="numeric" autocomplete="current-password" />
+          <p class="admin-error" id="admin-error" role="alert"></p>
+          <button class="button primary" type="button" id="admin-login-button">입장하기</button>
+        </div>
+        <div class="admin-dashboard" id="admin-dashboard" hidden>
+          <p class="eyebrow">Admin</p>
+          <h2>관리자 메뉴</h2>
+          <div class="admin-menu">
+            <section class="admin-card">
+              <h3>내원 환자수 수정</h3>
+              <label for="admin-record-date">업데이트 날짜</label>
+              <input id="admin-record-date" type="text" placeholder="예: 2026년 06월 03일" />
+              <label for="admin-record-count">내원 환자수</label>
+              <input id="admin-record-count" type="text" placeholder="예: 640,164명" />
+              <button class="button primary" type="button" id="admin-save-record">저장하기</button>
+              <p class="admin-success" id="admin-success" role="status"></p>
+            </section>
+            <section class="admin-card is-disabled">
+              <h3>의료진 수정</h3>
+              <p>의료진 교체 기능은 추후 상세 설정 예정입니다.</p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer>
       <div class="footer-brand">
         <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
@@ -357,9 +466,9 @@
       </div>
     </footer>
     <div class="floating-actions" aria-label="빠른 문의">
-      <a class="floating-button phone" href="tel:061-272-1075"><span>📞</span> 전화 문의</a>
-      <a class="floating-button naver" href="https://naver.me/G9r5Gz2l"><span>N</span> 네이버 예약</a>
-      <a class="floating-button kakao" href="http://pf.kakao.com/_VlVkG/chat"><span class="kakao-icon">TALK</span> 카톡 문의</a>
+      <a class="floating-button phone js-popup-link" href="tel:061-272-1075" target="_blank" rel="noreferrer"><span>📞</span> 전화 문의</a>
+      <a class="floating-button naver js-popup-link" href="https://naver.me/G9r5Gz2l" target="_blank" rel="noreferrer"><span>N</span> 네이버 예약</a>
+      <a class="floating-button kakao js-popup-link" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer"><span class="kakao-icon">TALK</span> 카톡 문의</a>
     </div>
     <script src="script.js"></script>
   </body>
