@@ -42,12 +42,11 @@
         </div>
       </div>
       <nav>
-        <a href="#care">진료분야</a>
+        <a href="#care">진료 분야</a>
         <a href="#doctors">의료진 소개</a>
         <a href="#gallery">한의원 둘러보기</a>
         <a href="#symptoms">증상별 안내</a>
-        <a href="#visit">첫 방문</a>
-        <a href="#contact">예약</a>
+        <a href="#contact">예약 안내</a>
       </nav>
     </header>
 
@@ -64,7 +63,9 @@
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#contact">예약 문의</a>
-            <a class="button ghost" href="#symptoms">증상별 보기</a>
+            <a class="button ghost" href="#care">진료 분야</a>
+            <a class="button ghost" href="#doctors">의료진 소개</a>
+            <button class="button ghost schedule-trigger" type="button">진료 스케쥴</button>
           </div>
         </div>
         <div class="hero-panels" aria-label="진료시간 안내">
@@ -175,7 +176,7 @@
             </div>
             <div class="doctor-info">
               <p>대표원장</p>
-              <h3>최보빈 원장</h3>
+              <h3>최보빈 <span>원장</span></h3>
             </div>
           </a>
           <a
@@ -190,7 +191,7 @@
             </div>
             <div class="doctor-info">
               <p>총괄진료원장</p>
-              <h3>김준현 원장</h3>
+              <h3>김준현 <span>원장</span></h3>
             </div>
           </a>
           <a
@@ -205,7 +206,7 @@
             </div>
             <div class="doctor-info">
               <p>진료원장</p>
-              <h3>김영윤 원장</h3>
+              <h3>김영윤 <span>원장</span></h3>
             </div>
           </a>
           <a
@@ -220,7 +221,7 @@
             </div>
             <div class="doctor-info">
               <p>진료원장</p>
-              <h3>박지현 원장</h3>
+              <h3>박지현 <span>원장</span></h3>
             </div>
           </a>
           <a
@@ -235,7 +236,7 @@
             </div>
             <div class="doctor-info">
               <p>진료원장</p>
-              <h3>안태윤 원장</h3>
+              <h3>안태윤 <span>원장</span></h3>
             </div>
           </a>
           <a
@@ -250,7 +251,7 @@
             </div>
             <div class="doctor-info">
               <p>진료원장</p>
-              <h3>황두호 원장</h3>
+              <h3>황두호 <span>원장</span></h3>
             </div>
           </a>
         </div>
@@ -323,32 +324,6 @@
         </div>
       </section>
 
-      <section class="visit section" id="visit">
-        <div class="section-heading">
-          <p class="eyebrow">First Visit</p>
-          <h2>처음 오시는 분께</h2>
-          <a href="#">방문 안내 자세히</a>
-        </div>
-        <ol class="visit-steps">
-          <li>
-            <span>예약</span>
-            전화 또는 온라인으로 편한 시간을 확인합니다.
-          </li>
-          <li>
-            <span>상담</span>
-            현재 증상과 생활 패턴을 차분히 나눕니다.
-          </li>
-          <li>
-            <span>진료</span>
-            필요한 검사와 진찰 후 치료 방향을 설명합니다.
-          </li>
-          <li>
-            <span>관리</span>
-            내원 간격과 생활 관리법을 함께 안내합니다.
-          </li>
-        </ol>
-      </section>
-
       <section class="contact" id="contact">
         <div>
           <p class="eyebrow">Reservation</p>
@@ -362,12 +337,12 @@
           </div>
           <div class="contact-actions">
             <a class="button primary js-popup-link" href="tel:061-272-1075" target="_blank" rel="noreferrer">전화 문의</a>
-            <a class="button light js-popup-link" href="https://naver.me/G9r5Gz2l" target="_blank" rel="noreferrer">네이버 예약</a>
+            <a class="button light js-popup-link" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer">네이버 예약</a>
             <a class="button light js-popup-link" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer">카톡 문의</a>
             <a class="button light js-popup-link" href="https://nmap.place.naver.com/launchApp/route?path=route&type=place&dlat=34.815094&dlng=126.4211309&did=32446999&dname=%EB%B6%80%EB%B6%80%ED%95%9C%EC%9D%98%EC%9B%90&appname=https%3A%2F%2Fm.place.naver.com%2Fhospital%2F32446999%2Fhome" target="_blank" rel="noreferrer">오시는 길</a>
           </div>
         </div>
-        <a class="map-embed" href="https://naver.me/G9r5Gz2l" target="_blank" rel="noreferrer" aria-label="네이버 예약으로 이동">
+        <a class="map-embed" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer" aria-label="네이버 예약으로 이동">
           <img src="assets/naver-map-preview.png" alt="부부한의원 위치 지도" />
         </a>
       </section>
@@ -404,6 +379,30 @@
           <div class="weekly-schedule" id="modal-weekly-schedule">
             <span>스케쥴을 불러오는 중입니다.</span>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="schedule-modal"
+      id="schedule-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="schedule-modal-title"
+      hidden
+    >
+      <button class="modal-backdrop" type="button" data-schedule-close aria-label="진료 스케쥴 닫기"></button>
+      <div class="schedule-modal-panel">
+        <button class="modal-close" type="button" data-schedule-close aria-label="진료 스케쥴 닫기">
+          ×
+        </button>
+        <div class="schedule-modal-head">
+          <p class="eyebrow">Weekly Schedule</p>
+          <h2 id="schedule-modal-title">주간 진료 스케쥴</h2>
+          <span id="schedule-modal-range"></span>
+        </div>
+        <div class="schedule-overview" id="schedule-overview" aria-live="polite">
+          <span>스케쥴을 불러오는 중입니다.</span>
         </div>
       </div>
     </div>
@@ -456,7 +455,11 @@
         <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
         <strong>부부한의원 (목포)</strong>
       </div>
-      <div class="footer-info">
+      <div class="footer-info footer-info-desktop">
+        <p>대표 : 최보빈 <span>|</span> 주소 : 목포시 옥암로 193, 1~4층 <span>|</span> Tel : 061-272-1075 <span>|</span> Fax : 061-282-1076</p>
+        <p>사업자등록번호 : 411-91-59413 <span>|</span> Email : booboo2721075@gmail.com</p>
+      </div>
+      <div class="footer-info footer-info-mobile">
         <p>대표 : 최보빈 <span>|</span> 주소 : 목포시 옥암로 193, 1~4층</p>
         <p>Tel : 061-272-1075 <span>|</span> Fax : 061-282-1076</p>
         <p>사업자등록번호 : 411-91-59413</p>
@@ -467,9 +470,9 @@
       </div>
     </footer>
     <div class="floating-actions" aria-label="빠른 문의">
-      <a class="floating-button phone js-popup-link" href="tel:061-272-1075" target="_blank" rel="noreferrer"><span>📞</span> 전화 문의</a>
-      <a class="floating-button naver js-popup-link" href="https://naver.me/G9r5Gz2l" target="_blank" rel="noreferrer"><span>N</span> 네이버 예약</a>
-      <a class="floating-button kakao js-popup-link" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer"><span class="kakao-icon">TALK</span> 카톡 문의</a>
+      <a class="floating-button phone js-popup-link" href="tel:061-272-1075" target="_blank" rel="noreferrer"><img class="floating-icon" src="assets/floating-phone.png" alt="" /> 전화 문의</a>
+      <a class="floating-button naver js-popup-link" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer"><img class="floating-icon" src="assets/floating-naver.png" alt="" /> 네이버 예약</a>
+      <a class="floating-button kakao js-popup-link" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer"><img class="floating-icon" src="assets/floating-kakao.png" alt="" /> 카톡 문의</a>
     </div>
     <script src="script.js"></script>
   </body>

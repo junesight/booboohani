@@ -256,7 +256,9 @@ h3 {
   padding: 0 24px;
   border: 1px solid var(--green);
   border-radius: 999px;
+  font: inherit;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .button.primary {
@@ -594,6 +596,13 @@ h3 {
   text-align: center;
 }
 
+.doctor-info h3 span,
+.doctor-title-small {
+  color: inherit;
+  font-size: 0.72em;
+  font-weight: 700;
+}
+
 .clinic-gallery {
   padding-top: 0;
   scroll-margin-top: 92px;
@@ -733,8 +742,13 @@ h3 {
   display: none;
 }
 
+.schedule-modal[hidden] {
+  display: none;
+}
+
 .doctor-modal,
-.admin-modal {
+.admin-modal,
+.schedule-modal {
   position: fixed;
   inset: 0;
   z-index: 100;
@@ -854,6 +868,163 @@ h3 {
   color: var(--muted);
 }
 
+.schedule-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  max-height: calc(100svh - 56px);
+  overflow-y: auto;
+  padding: clamp(28px, 4vw, 46px);
+  background: var(--paper);
+  border: 1px solid rgba(255, 250, 240, 0.7);
+  box-shadow: 0 34px 100px rgba(20, 27, 23, 0.34);
+}
+
+.schedule-modal-head {
+  margin-bottom: 24px;
+  padding-right: 0;
+  text-align: center;
+}
+
+.schedule-modal-head .eyebrow {
+  text-align: left;
+}
+
+.schedule-modal-head h2 {
+  margin-bottom: 8px;
+  font-size: clamp(34px, 4vw, 50px);
+}
+
+.schedule-modal-head span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.schedule-overview {
+  display: grid;
+  gap: 6px;
+}
+
+.schedule-overview > span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.schedule-row {
+  display: grid;
+  grid-template-columns: 68px minmax(136px, 168px) minmax(0, 1fr);
+  gap: 10px;
+  align-items: stretch;
+  padding: 8px 10px;
+  background: rgba(255, 250, 240, 0.78);
+  border: 1px solid var(--line);
+}
+
+.schedule-doctor-photo {
+  min-height: 82px;
+  overflow: hidden;
+  background: #d8d5ce;
+}
+
+.schedule-doctor-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.schedule-doctor-meta {
+  display: grid;
+  align-content: center;
+  gap: 4px;
+}
+
+.schedule-doctor-meta span {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.schedule-doctor-meta strong {
+  color: var(--green);
+  font-family: "Noto Serif KR", serif;
+  font-size: 22px;
+}
+
+.schedule-doctor-meta strong .doctor-title-small {
+  color: inherit;
+}
+
+.schedule-row .weekly-schedule {
+  gap: 4px;
+  align-self: center;
+}
+
+.schedule-date-row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: transparent;
+  border-color: rgba(22, 61, 50, 0.12);
+}
+
+.schedule-date-spacer {
+  min-height: 1px;
+}
+
+.schedule-date-grid {
+  align-self: stretch;
+}
+
+.schedule-date-cell {
+  min-height: 54px;
+  display: grid;
+  place-items: center;
+  gap: 2px;
+  color: var(--green);
+  text-align: center;
+  border: 1px solid rgba(22, 61, 50, 0.14);
+  background: rgba(255, 250, 240, 0.56);
+}
+
+.schedule-date-cell strong,
+.schedule-date-cell span {
+  display: block;
+}
+
+.schedule-date-cell strong {
+  font-family: "Noto Serif KR", serif;
+  font-size: 18px;
+}
+
+.schedule-date-cell span {
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.schedule-row .schedule-pill {
+  min-height: 70px;
+  gap: 1px;
+  padding: 8px 4px;
+}
+
+.schedule-row .schedule-pill strong {
+  font-size: 15px;
+}
+
+.schedule-row .schedule-pill em {
+  font-size: 13px;
+}
+
+.schedule-row .schedule-pill span {
+  min-height: 18px;
+  font-size: 16px;
+}
+
+.schedule-row .schedule-pill.is-off em {
+  font-size: 16px;
+}
+
 .modal-close {
   position: absolute;
   top: 16px;
@@ -960,9 +1131,9 @@ h3 {
 
 .modal-schedule-head {
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 18px;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 10px;
   margin-bottom: 18px;
 }
 
@@ -1109,32 +1280,6 @@ body.modal-open {
   font-weight: 700;
 }
 
-.visit-steps {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.visit-steps li {
-  min-height: 180px;
-  padding: 26px;
-  background: rgba(255, 250, 240, 0.74);
-  border: 1px solid var(--line);
-  color: var(--muted);
-}
-
-.visit-steps span {
-  display: block;
-  margin-bottom: 34px;
-  color: var(--green);
-  font-family: "Noto Serif KR", serif;
-  font-size: 24px;
-  font-weight: 700;
-}
-
 .contact {
   display: grid;
   grid-template-columns: minmax(0, 0.86fr) minmax(360px, 0.72fr);
@@ -1251,6 +1396,10 @@ footer p {
   gap: 2px;
 }
 
+.footer-info-mobile {
+  display: none;
+}
+
 .footer-info span {
   margin: 0 10px;
   color: rgba(255, 250, 240, 0.42);
@@ -1285,38 +1434,12 @@ footer p {
   font-weight: 800;
 }
 
-.floating-button span {
-  font-weight: 900;
-}
-
-.floating-button .kakao-icon {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 23px;
-  height: 15px;
-  border-radius: 50%;
-  background: #111;
-  color: white;
-  font-family: Arial, sans-serif;
-  font-size: 6px;
-  font-weight: 900;
-  letter-spacing: -0.4px;
-  line-height: 1;
-  box-shadow: 0 0 0 8px #ffe500;
+.floating-icon {
+  width: 24px;
+  height: 24px;
   flex: 0 0 auto;
-}
-
-.floating-button .kakao-icon::before {
-  content: "";
-  position: absolute;
-  left: 3px;
-  bottom: -4px;
-  width: 7px;
-  height: 7px;
-  background: #111;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
+  display: block;
+  object-fit: contain;
 }
 
 .floating-button.naver {
@@ -1409,8 +1532,7 @@ footer p {
 
   .care-list,
   .doctor-board,
-  .symptom-links,
-  .visit-steps {
+  .symptom-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1462,6 +1584,23 @@ footer p {
   .weekly-schedule {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+
+  .schedule-row {
+    grid-template-columns: 64px minmax(124px, 1fr);
+  }
+
+  .schedule-row .weekly-schedule {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .schedule-date-row {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-date-spacer {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1501,6 +1640,14 @@ footer p {
     background:
       linear-gradient(180deg, rgba(248, 243, 234, 0.3), rgba(239, 231, 216, 0.88)),
       url("assets/mobile-hero-bg.png") center top / cover no-repeat;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    max-width: 340px;
+    margin-inline: auto;
   }
 
   h1 {
@@ -1545,8 +1692,7 @@ footer p {
 
   .care-list,
   .doctor-board,
-  .symptom-links,
-  .visit-steps {
+  .symptom-links {
     grid-template-columns: 1fr;
   }
 
@@ -1665,6 +1811,75 @@ footer p {
     max-height: calc(100svh - 28px);
   }
 
+  .schedule-modal {
+    padding: 14px;
+  }
+
+  .schedule-modal-panel {
+    max-height: calc(100svh - 28px);
+    padding: 28px 14px 18px;
+  }
+
+  .schedule-modal-head {
+    padding-right: 0;
+  }
+
+  .schedule-modal-head h2 {
+    font-size: 32px;
+  }
+
+  .schedule-row {
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 8px;
+    padding: 7px 8px;
+  }
+
+  .schedule-doctor-photo {
+    min-height: 70px;
+  }
+
+  .schedule-doctor-meta strong {
+    font-size: 19px;
+  }
+
+  .schedule-row .weekly-schedule {
+    gap: 3px;
+  }
+
+  .schedule-date-cell {
+    min-height: 44px;
+  }
+
+  .schedule-date-cell strong {
+    font-size: 12px;
+  }
+
+  .schedule-date-cell span {
+    font-size: 10px;
+  }
+
+  .schedule-row .schedule-pill {
+    min-height: 50px;
+    padding: 7px 2px;
+  }
+
+  .schedule-row .schedule-pill strong {
+    font-size: 12px;
+  }
+
+  .schedule-row .schedule-pill em {
+    font-size: 9px;
+  }
+
+  .schedule-row .schedule-pill span {
+    min-height: 16px;
+    font-size: 11px;
+  }
+
+  .schedule-row .schedule-pill.is-off em {
+    font-size: 11px;
+  }
+
   .modal-photo {
     min-height: 360px;
   }
@@ -1706,11 +1921,9 @@ footer p {
     padding: 0 8px;
   }
 
-  .floating-button .kakao-icon {
-    width: 19px;
-    height: 13px;
-    font-size: 5px;
-    box-shadow: 0 0 0 6px #ffe500;
+  .floating-icon {
+    width: 22px;
+    height: 22px;
   }
 
   .modal-schedule {
@@ -1722,12 +1935,11 @@ footer p {
   }
 
   .modal-schedule-head {
-    display: block;
+    display: flex;
   }
 
   .modal-schedule-head span {
-    display: block;
-    margin-top: 4px;
+    margin-top: 0;
   }
 
   .weekly-schedule {
@@ -1765,6 +1977,18 @@ footer p {
 
   footer {
     display: grid;
+  }
+
+  .footer-info-desktop {
+    display: none;
+  }
+
+  .footer-info-mobile {
+    display: grid;
+  }
+
+  .footer-info-mobile span {
+    margin: 0 4px;
   }
 
   .footer-copy {

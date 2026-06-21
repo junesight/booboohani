@@ -28,6 +28,11 @@ const adminSaveRecord = document.querySelector("#admin-save-record");
 const adminSuccess = document.querySelector("#admin-success");
 const recordEndDate = document.querySelector("#record-end-date");
 const recordPatientCount = document.querySelector("#record-patient-count");
+const scheduleTrigger = document.querySelector(".schedule-trigger");
+const scheduleModal = document.querySelector("#schedule-modal");
+const scheduleCloseButtons = document.querySelectorAll("[data-schedule-close]");
+const scheduleModalRange = document.querySelector("#schedule-modal-range");
+const scheduleOverview = document.querySelector("#schedule-overview");
 
 const SUPABASE_URL = "https://wfyuxxskwlczoyisdcmy.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_yUeE6ynEpbR3Eq-k3Gv1Ew_1DiaJHjz";
@@ -66,6 +71,15 @@ const doctorIdsByName = {
   "박지현 원장": "park",
   "안태윤 원장": "ahn",
   "황두호 원장": "hwang",
+};
+
+const scheduleImagesByName = {
+  "최보빈 원장": "assets/schedule-choi-bb.png",
+  "김준현 원장": "assets/schedule-kim-jh.png",
+  "김영윤 원장": "assets/schedule-kim-yy.png",
+  "박지현 원장": "assets/schedule-park-jh.png",
+  "안태윤 원장": "assets/schedule-ahn-ty.png",
+  "황두호 원장": "assets/schedule-hwang-dh.png",
 };
 
 const doctorProfiles = {
@@ -158,6 +172,16 @@ function addDays(dateString, days) {
   return formatDate(date);
 }
 
+function formatMonthDay(dateString) {
+  const [, , month, day] = dateString.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+  return `${Number(month)}/${Number(day)}`;
+}
+
+function formatDoctorDisplayName(name) {
+  return name.replace(/\s원장$/, " <span class=\"doctor-title-small\">원장</span>");
+}
+
 function getCurrentWeekDates() {
   const today = new Date();
   const day = today.getDay();
@@ -219,7 +243,7 @@ function renderWeeklySchedule(doctorId, rows = []) {
       .map((row) => [row.date, row]),
   );
 
-  modalScheduleRange.textContent = `${weekDates[0].slice(5).replace("-", ".")} - ${weekDates[6].slice(5).replace("-", ".")}`;
+  modalScheduleRange.textContent = `(${formatMonthDay(weekDates[0])}-${formatMonthDay(weekDates[6])})`;
   modalWeeklySchedule.replaceChildren(
     ...weekDates.map((date, index) => {
       const item = document.createElement("div");
@@ -243,6 +267,26 @@ function renderWeeklySchedule(doctorId, rows = []) {
   );
 }
 
+function createSchedulePill(date, index, rowsByDate) {
+  const item = document.createElement("div");
+  const status = formatScheduleStatus(rowsByDate.get(date)?.status);
+  const isOff = status === "휴진";
+  const isNight = status === "~8시";
+
+  item.className = [
+    "schedule-pill",
+    isOff ? "is-off" : "",
+    isNight ? "is-night" : "",
+  ].filter(Boolean).join(" ");
+  item.innerHTML = `
+    <strong>${DAY_LABELS[index]}</strong>
+    <em>${isOff ? "휴진" : isNight ? "야간진료" : "진료"}</em>
+    <span>${isOff ? "" : status}</span>
+  `;
+
+  return item;
+}
+
 async function loadDoctorWeeklySchedule(name) {
   const doctorId = doctorIdsByName[name];
 
@@ -257,6 +301,96 @@ async function loadDoctorWeeklySchedule(name) {
   }
 }
 
+function renderScheduleOverview(rows = []) {
+  const weekDates = getCurrentWeekDates();
+  const headerRow = document.createElement("div");
+  const headerSpacerPhoto = document.createElement("div");
+  const headerSpacerMeta = document.createElement("div");
+  const headerSchedule = document.createElement("div");
+
+  headerRow.className = "schedule-row schedule-date-row";
+  headerSpacerPhoto.className = "schedule-date-spacer";
+  headerSpacerMeta.className = "schedule-date-spacer";
+  headerSchedule.className = "weekly-schedule schedule-date-grid";
+  headerSchedule.replaceChildren(
+    ...weekDates.map((date, index) => {
+      const cell = document.createElement("div");
+
+      cell.className = "schedule-date-cell";
+      cell.innerHTML = `
+        <strong>${formatMonthDay(date)}</strong>
+        <span>${DAY_LABELS[index]}</span>
+      `;
+
+      return cell;
+    }),
+  );
+  headerRow.append(headerSpacerPhoto, headerSpacerMeta, headerSchedule);
+
+  scheduleModalRange.textContent = `${formatMonthDay(weekDates[0])} - ${formatMonthDay(weekDates[6])}`;
+  scheduleOverview.replaceChildren(
+    headerRow,
+    ...Array.from(doctorCards).map((card) => {
+      const name = card.dataset.name;
+      const role = card.dataset.role;
+      const image = scheduleImagesByName[name] || card.dataset.image;
+      const doctorId = doctorIdsByName[name];
+      const rowsByDate = new Map(
+        rows
+          .filter((row) => row.doctor_id === doctorId)
+          .map((row) => [row.date, row]),
+      );
+      const row = document.createElement("div");
+      const photo = document.createElement("div");
+      const img = document.createElement("img");
+      const meta = document.createElement("div");
+      const schedule = document.createElement("div");
+
+      row.className = "schedule-row";
+      photo.className = "schedule-doctor-photo";
+      img.src = image;
+      img.alt = `${name} 프로필 사진`;
+      meta.className = "schedule-doctor-meta";
+      meta.innerHTML = `
+        <span>${role}</span>
+        <strong>${formatDoctorDisplayName(name)}</strong>
+      `;
+      schedule.className = "weekly-schedule";
+      schedule.replaceChildren(
+        ...weekDates.map((date, index) => createSchedulePill(date, index, rowsByDate)),
+      );
+
+      photo.append(img);
+      row.append(photo, meta, schedule);
+      return row;
+    }),
+  );
+}
+
+async function openScheduleModal() {
+  if (!scheduleModal) return;
+
+  scheduleModal.hidden = false;
+  document.body.classList.add("modal-open");
+  scheduleOverview.innerHTML = "<span>스케쥴을 불러오는 중입니다.</span>";
+  scheduleModal.querySelector(".modal-close").focus();
+
+  try {
+    const rows = await fetchWeeklySchedules();
+    renderScheduleOverview(rows);
+  } catch (error) {
+    scheduleOverview.innerHTML = "<span>스케쥴을 불러오지 못했습니다.</span>";
+  }
+}
+
+function closeScheduleModal() {
+  if (!scheduleModal) return;
+
+  scheduleModal.hidden = true;
+  document.body.classList.remove("modal-open");
+  scheduleTrigger?.focus();
+}
+
 function openDoctorModal(card) {
   lastFocusedCard = card;
 
@@ -264,7 +398,7 @@ function openDoctorModal(card) {
   const role = card.dataset.role;
   const image = card.dataset.image;
 
-  modalName.textContent = name;
+  modalName.innerHTML = formatDoctorDisplayName(name);
   modalRole.textContent = role;
   modalImage.src = image;
   modalImage.alt = `${name} 프로필 사진`;
@@ -469,6 +603,7 @@ loadPatientRecord();
 adminTrigger?.addEventListener("click", openAdminModal);
 adminLoginButton?.addEventListener("click", unlockAdminMenu);
 adminSaveRecord?.addEventListener("click", savePatientRecord);
+scheduleTrigger?.addEventListener("click", openScheduleModal);
 
 adminPassword?.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
@@ -488,6 +623,10 @@ adminCloseButtons.forEach((button) => {
   button.addEventListener("click", closeAdminModal);
 });
 
+scheduleCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeScheduleModal);
+});
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !modal.hidden) {
     closeDoctorModal();
@@ -495,5 +634,9 @@ document.addEventListener("keydown", (event) => {
 
   if (event.key === "Escape" && adminModal && !adminModal.hidden) {
     closeAdminModal();
+  }
+
+  if (event.key === "Escape" && scheduleModal && !scheduleModal.hidden) {
+    closeScheduleModal();
   }
 });
