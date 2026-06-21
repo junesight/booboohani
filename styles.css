@@ -918,7 +918,7 @@ h3 {
 
 .modal-section ul {
   display: grid;
-  gap: 13px;
+  gap: 9px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -927,7 +927,7 @@ h3 {
 .modal-section li {
   color: #4d524a;
   font-size: 18px;
-  line-height: 1.58;
+  line-height: 1.42;
 }
 
 .modal-section li::before {
@@ -942,7 +942,7 @@ h3 {
 }
 
 .modal-section .bio-spacer {
-  height: 10px;
+  height: 6px;
 }
 
 .modal-section .bio-spacer::before {
@@ -1556,6 +1556,28 @@ footer p {
 
   .care-list {
     grid-template-columns: 1fr;
+  }
+
+  .care-card {
+    min-height: 0;
+    padding: 20px 20px 22px;
+  }
+
+  .care-card span {
+    margin-bottom: 6px;
+    text-align: left;
+  }
+
+  .care-card h3 {
+    margin-top: -10px;
+    margin-bottom: 18px;
+    font-size: 22px;
+  }
+
+  .care-card ul {
+    gap: 8px;
+    font-size: 15px;
+    line-height: 1.62;
   }
 
   .doctor-card {
