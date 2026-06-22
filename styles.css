@@ -1406,8 +1406,24 @@ body.modal-open {
   font-style: normal;
 }
 
+.contact-parking {
+  margin-top: 28px;
+  color: var(--green);
+  font-size: clamp(17px, 1.8vw, 21px);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.contact-parking p {
+  margin: 0;
+}
+
+.contact-parking p + p {
+  margin-top: 4px;
+}
+
 .contact-address {
-  margin-top: 52px;
+  margin-top: 28px;
   color: #596053;
   line-height: 1.55;
 }
