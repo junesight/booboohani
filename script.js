@@ -7,6 +7,14 @@ const modalScheduleRange = document.querySelector("#modal-schedule-range");
 const modalWeeklySchedule = document.querySelector("#modal-weekly-schedule");
 const doctorCards = document.querySelectorAll(".doctor-card");
 const closeButtons = document.querySelectorAll("[data-modal-close]");
+
+const careModal = document.querySelector("#care-modal");
+const careModalNumber = document.querySelector("#modal-care-number");
+const careModalTitle = document.querySelector("#modal-care-title");
+const careModalDetails = document.querySelector("#modal-care-details");
+const careCards = document.querySelectorAll(".care-card");
+const careCloseButtons = document.querySelectorAll("[data-care-close]");
+
 const galleryTabs = document.querySelectorAll(".gallery-tabs button");
 const galleryStage = document.querySelector(".gallery-stage");
 const galleryImage = document.querySelector("#gallery-main-image");
@@ -422,6 +430,30 @@ function closeScheduleModal() {
   scheduleTrigger?.focus();
 }
 
+function openCareModal(card) {
+  if (window.innerWidth > 768) return;
+
+  const number = card.querySelector("span").textContent;
+  const title = card.querySelector("h3").textContent;
+  const detailsHtml = card.querySelector("ul").innerHTML;
+
+  if (careModalNumber) careModalNumber.textContent = number;
+  if (careModalTitle) careModalTitle.textContent = title;
+  if (careModalDetails) careModalDetails.innerHTML = detailsHtml;
+
+  if (careModal) {
+    careModal.hidden = false;
+    document.body.classList.add("modal-open");
+    careModal.querySelector(".modal-close")?.focus();
+  }
+}
+
+function closeCareModal() {
+  if (!careModal) return;
+  careModal.hidden = true;
+  document.body.classList.remove("modal-open");
+}
+
 function openDoctorModal(card) {
   lastFocusedCard = card;
 
@@ -544,13 +576,17 @@ function normalizePatientCount(value) {
   return trimmed.endsWith("명") ? trimmed : `${trimmed}명`;
 }
 
+function formatUnitText(text) {
+  return text.replace(/(년|월|일|명)/g, '<span class="unit">$1</span>');
+}
+
 function updatePatientRecord(date, count) {
   if (recordEndDate && date) {
-    recordEndDate.textContent = date;
+    recordEndDate.innerHTML = formatUnitText(date);
   }
 
   if (recordPatientCount && count) {
-    recordPatientCount.textContent = normalizePatientCount(count);
+    recordPatientCount.innerHTML = formatUnitText(normalizePatientCount(count));
   }
 }
 
@@ -628,6 +664,16 @@ doctorCards.forEach((card) => {
 
 closeButtons.forEach((button) => {
   button.addEventListener("click", closeDoctorModal);
+});
+
+careCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    openCareModal(card);
+  });
+});
+
+careCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeCareModal);
 });
 
 galleryTabs.forEach((tab) => {

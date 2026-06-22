@@ -300,10 +300,18 @@ h3 {
 }
 
 .hero-panel p {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   color: #d9c69a;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 700;
+}
+
+.hero-panel p small {
+  display: inline-block;
+  font-size: 0.78em;
+  font-weight: 500;
+  margin-left: 6px;
+  color: rgba(217, 198, 154, 0.88);
 }
 
 .hero-panel strong {
@@ -315,7 +323,7 @@ h3 {
 .hero-panel span {
   margin-top: 6px;
   color: rgba(255, 250, 240, 0.78);
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
 }
 
@@ -371,6 +379,10 @@ h3 {
   font-weight: 800;
 }
 
+.patient-record strong .unit {
+  font-size: 0.72em;
+}
+
 .patient-record small,
 .record-note {
   color: rgba(22, 61, 50, 0.66);
@@ -382,7 +394,7 @@ h3 {
   display: inline-flex;
   align-items: baseline;
   justify-content: center;
-  gap: 8px;
+  gap: 0;
 }
 
 .record-date strong,
@@ -479,11 +491,11 @@ h3 {
 }
 
 .care-card {
-  min-height: 420px;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 28px 22px;
+  padding: 22px 18px;
   background: var(--paper);
   border: 1px solid var(--line);
   box-shadow: 0 12px 36px rgba(60, 50, 34, 0.06);
@@ -498,7 +510,7 @@ h3 {
 }
 
 .care-card span {
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   text-align: center;
   color: var(--gold);
   font-family: "Noto Serif KR", serif;
@@ -506,18 +518,18 @@ h3 {
 }
 
 .care-card h3 {
-  margin-bottom: 26px;
+  margin-bottom: 16px;
   text-align: center;
 }
 
 .care-card ul {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   margin: 0;
   padding-left: 16px;
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .care-card li::marker {
@@ -761,27 +773,79 @@ h3 {
   filter: saturate(0.95);
 }
 
-.doctor-modal[hidden] {
-  display: none;
-}
-
-.admin-modal[hidden] {
-  display: none;
-}
-
-.schedule-modal[hidden] {
+.doctor-modal[hidden],
+.admin-modal[hidden],
+.schedule-modal[hidden],
+.care-modal[hidden] {
   display: none;
 }
 
 .doctor-modal,
 .admin-modal,
-.schedule-modal {
+.schedule-modal,
+.care-modal {
   position: fixed;
   inset: 0;
   z-index: 100;
   display: grid;
   place-items: center;
   padding: 28px;
+}
+
+.modal-content-small {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  max-height: calc(100svh - 56px);
+  overflow-y: auto;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 50px rgba(22, 61, 50, 0.18);
+  padding: 42px 28px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-care-number {
+  display: block;
+  color: var(--gold);
+  font-family: "Noto Serif KR", serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.modal-care-title {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.modal-care-body {
+  width: 100%;
+}
+
+.modal-care-body ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.modal-care-body li::marker {
+  color: var(--gold);
+}
+
+.modal-care-body strong {
+  color: var(--green);
+  font-weight: 800;
 }
 
 .modal-backdrop {
@@ -1526,7 +1590,14 @@ footer p {
   }
 
   .hero-panel p {
-    font-size: 14px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .hero-panel p small {
+    display: block;
+    margin-left: 0;
+    margin-top: 1px;
   }
 
   .hero-panel strong {
@@ -1534,7 +1605,8 @@ footer p {
   }
 
   .hero-panel span {
-    font-size: 12px;
+    font-size: 14px;
+    margin-top: 2px;
   }
 
   .patient-record {
@@ -1551,15 +1623,29 @@ footer p {
   .patient-record .record-copy {
     gap: 6px;
     font-size: clamp(17.5px, 4.9vw, 22px);
+    letter-spacing: -0.03em;
   }
 
   .patient-record .record-line {
-    display: grid;
-    gap: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: 8px;
+    row-gap: 4px;
   }
 
   .patient-record .record-line-count {
-    gap: 6px;
+    column-gap: 6px;
+    row-gap: 2px;
+  }
+
+  .record-date strong {
+    font-size: 0.95em;
+  }
+
+  .record-count strong {
+    font-size: 1.1em;
   }
 
   .section-grid,
@@ -1751,29 +1837,49 @@ footer p {
   }
 
   .care-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .care-card {
-    min-height: 0;
-    padding: 20px 20px 22px;
+    min-height: 80px;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .care-card::after {
+    content: "☛ Click";
+    position: absolute;
+    bottom: 5px;
+    right: 8px;
+    font-size: 9px;
+    color: var(--gold);
+    opacity: 0.75;
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
   .care-card span {
-    margin-bottom: 6px;
-    text-align: left;
+    margin-bottom: 3px;
+    text-align: center;
+    font-size: 15px;
   }
 
   .care-card h3 {
-    margin-top: -10px;
-    margin-bottom: 18px;
-    font-size: 22px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.3;
+    word-break: keep-all;
   }
 
   .care-card ul {
-    gap: 8px;
-    font-size: 15px;
-    line-height: 1.62;
+    display: none;
   }
 
   .doctor-card {
@@ -1816,9 +1922,7 @@ footer p {
     scroll-snap-align: start;
   }
 
-  .care-card {
-    min-height: 210px;
-  }
+
 
   .philosophy {
     margin-top: -24px;
