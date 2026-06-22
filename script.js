@@ -481,6 +481,38 @@ function navigateCareModal(direction) {
   renderCareModalContent();
 }
 
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+function handleCareModalTouchStart(event) {
+  touchStartX = event.changedTouches[0].screenX;
+  touchStartY = event.changedTouches[0].screenY;
+}
+
+function handleCareModalTouchEnd(event) {
+  touchEndX = event.changedTouches[0].screenX;
+  touchEndY = event.changedTouches[0].screenY;
+  handleCareModalSwipe();
+}
+
+function handleCareModalSwipe() {
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+  const minThreshold = 50;
+
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+    if (Math.abs(diffX) > minThreshold) {
+      if (diffX > 0) {
+        navigateCareModal(-1);
+      } else {
+        navigateCareModal(1);
+      }
+    }
+  }
+}
+
 function openDoctorModal(card) {
   lastFocusedCard = card;
 
@@ -710,6 +742,10 @@ carePrevButton?.addEventListener("click", () => {
 careNextButton?.addEventListener("click", () => {
   navigateCareModal(1);
 });
+
+const careModalContent = careModal?.querySelector(".modal-content-small");
+careModalContent?.addEventListener("touchstart", handleCareModalTouchStart, { passive: true });
+careModalContent?.addEventListener("touchend", handleCareModalTouchEnd, { passive: true });
 
 galleryTabs.forEach((tab) => {
   tab.addEventListener("click", () => {
