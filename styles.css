@@ -1419,18 +1419,7 @@ body.modal-open {
   padding-top: 0;
 }
 
-#methods .section-heading {
-  display: grid;
-  grid-template-columns: 1fr;
-  position: relative;
-  text-align: center;
-}
 
-#methods .section-heading a {
-  position: absolute;
-  right: 0;
-  bottom: 24px;
-}
 
 .philosophy {
   position: relative;
