@@ -1490,6 +1490,7 @@ body.modal-open {
   grid-template-columns: minmax(0, 0.86fr) minmax(360px, 0.72fr);
   gap: 28px;
   align-items: center;
+  margin-top: clamp(72px, 10vw, 120px);
   margin-bottom: 70px;
   padding: clamp(34px, 6vw, 58px);
   background: #d8c8a9;
