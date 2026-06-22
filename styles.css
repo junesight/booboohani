@@ -322,7 +322,7 @@ h3 {
 .patient-record {
   width: min(720px, calc(100% - 40px));
   margin: 14px auto 0;
-  padding: clamp(26px, 3vw, 34px);
+  padding: clamp(20px, 2.4vw, 27px);
   background: #d8c8a9;
   border: 1px solid rgba(22, 61, 50, 0.16);
   text-align: center;
@@ -331,19 +331,19 @@ h3 {
 }
 
 .patient-record .eyebrow {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   text-align: left;
 }
 
 .patient-record .record-copy {
   display: grid;
-  gap: 10px;
+  gap: 7px;
   margin: 0;
   width: 100%;
   padding: 0;
   color: rgba(22, 61, 50, 0.78);
   font-family: "Noto Serif KR", serif;
-  font-size: clamp(22px, 2vw, 31px);
+  font-size: clamp(20px, 1.85vw, 29px);
   line-height: 1.45;
 }
 
@@ -1538,27 +1538,28 @@ footer p {
   }
 
   .patient-record {
+    width: min(520px, 100%);
     margin-top: 22px;
-    padding: 30px 18px;
+    padding: 22px 18px;
   }
 
   .patient-record .eyebrow {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     text-align: center;
   }
 
   .patient-record .record-copy {
-    gap: 8px;
-    font-size: clamp(19px, 5.3vw, 24px);
+    gap: 6px;
+    font-size: clamp(17.5px, 4.9vw, 22px);
   }
 
   .patient-record .record-line {
     display: grid;
-    gap: 8px;
+    gap: 6px;
   }
 
   .patient-record .record-line-count {
-    gap: 8px;
+    gap: 6px;
   }
 
   .section-grid,
