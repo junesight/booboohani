@@ -810,7 +810,8 @@ h3 {
   align-items: center;
 }
 
-.care-arrow {
+.care-arrow,
+.doctor-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -833,16 +834,19 @@ h3 {
   user-select: none;
 }
 
-.care-arrow:hover {
+.care-arrow:hover,
+.doctor-arrow:hover {
   background: var(--paper);
   border-color: rgba(22, 61, 50, 0.3);
 }
 
-.care-prev {
+.care-prev,
+.doctor-prev {
   left: 8px;
 }
 
-.care-next {
+.care-next,
+.doctor-next {
   right: 8px;
 }
 

@@ -18,6 +18,10 @@ const carePrevButton = document.querySelector(".care-prev");
 const careNextButton = document.querySelector(".care-next");
 let activeCareCard = null;
 
+const doctorPrevButton = document.querySelector(".doctor-prev");
+const doctorNextButton = document.querySelector(".doctor-next");
+let activeDoctorCard = null;
+
 const galleryTabs = document.querySelectorAll(".gallery-tabs button");
 const galleryStage = document.querySelector(".gallery-stage");
 const galleryImage = document.querySelector("#gallery-main-image");
@@ -545,6 +549,7 @@ function handleCareModalSwipe() {
 
 function openDoctorModal(card) {
   lastFocusedCard = card;
+  activeDoctorCard = card;
 
   const name = card.dataset.name;
   const role = card.dataset.role;
@@ -577,6 +582,7 @@ function openDoctorModal(card) {
 
 function closeDoctorModal() {
   modal.hidden = true;
+  activeDoctorCard = null;
   const isAnyModalOpen = (scheduleModal && !scheduleModal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
@@ -588,6 +594,60 @@ function closeDoctorModal() {
   } else {
     if (lastFocusedCard) {
       lastFocusedCard.focus();
+    }
+  }
+}
+
+function navigateDoctorModal(direction) {
+  if (!activeDoctorCard || doctorCards.length === 0) return;
+
+  const activeName = activeDoctorCard.dataset.name;
+  let currentIndex = Array.from(doctorCards).findIndex(card => card.dataset.name === activeName);
+  
+  if (currentIndex === -1) {
+    currentIndex = 0;
+  }
+  
+  let nextIndex = currentIndex + direction;
+
+  if (nextIndex < 0) {
+    nextIndex = doctorCards.length - 1;
+  } else if (nextIndex >= doctorCards.length) {
+    nextIndex = 0;
+  }
+
+  activeDoctorCard = doctorCards[nextIndex];
+  openDoctorModal(activeDoctorCard);
+}
+
+let doctorTouchStartX = 0;
+let doctorTouchStartY = 0;
+let doctorTouchEndX = 0;
+let doctorTouchEndY = 0;
+
+function handleDoctorModalTouchStart(event) {
+  doctorTouchStartX = event.changedTouches[0].screenX;
+  doctorTouchStartY = event.changedTouches[0].screenY;
+}
+
+function handleDoctorModalTouchEnd(event) {
+  doctorTouchEndX = event.changedTouches[0].screenX;
+  doctorTouchEndY = event.changedTouches[0].screenY;
+  handleDoctorModalSwipe();
+}
+
+function handleDoctorModalSwipe() {
+  const diffX = doctorTouchEndX - doctorTouchStartX;
+  const diffY = doctorTouchEndY - doctorTouchStartY;
+  const minThreshold = 50;
+
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+    if (Math.abs(diffX) > minThreshold) {
+      if (diffX > 0) {
+        navigateDoctorModal(-1);
+      } else {
+        navigateDoctorModal(1);
+      }
     }
   }
 }
@@ -790,6 +850,18 @@ careNextButton?.addEventListener("click", () => {
 const careModalContent = careModal?.querySelector(".modal-content-small");
 careModalContent?.addEventListener("touchstart", handleCareModalTouchStart, { passive: true });
 careModalContent?.addEventListener("touchend", handleCareModalTouchEnd, { passive: true });
+
+doctorPrevButton?.addEventListener("click", () => {
+  navigateDoctorModal(-1);
+});
+
+doctorNextButton?.addEventListener("click", () => {
+  navigateDoctorModal(1);
+});
+
+const doctorModalContent = modal?.querySelector(".modal-content");
+doctorModalContent?.addEventListener("touchstart", handleDoctorModalTouchStart, { passive: true });
+doctorModalContent?.addEventListener("touchend", handleDoctorModalTouchEnd, { passive: true });
 
 galleryTabs.forEach((tab) => {
   tab.addEventListener("click", () => {
