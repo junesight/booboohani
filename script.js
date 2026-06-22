@@ -8,6 +8,7 @@ const modalWeeklySchedule = document.querySelector("#modal-weekly-schedule");
 const doctorCards = document.querySelectorAll(".doctor-card");
 const closeButtons = document.querySelectorAll("[data-modal-close]");
 const galleryTabs = document.querySelectorAll(".gallery-tabs button");
+const galleryStage = document.querySelector(".gallery-stage");
 const galleryImage = document.querySelector("#gallery-main-image");
 const galleryCaption = document.querySelector("#gallery-caption");
 const galleryThumbs = document.querySelector("#gallery-thumbs");
@@ -166,6 +167,8 @@ let weeklyScheduleCache = null;
 let activeGalleryFloor = "1";
 let activeGalleryIndex = 0;
 let galleryAutoplayTimer = null;
+let galleryTouchStartX = 0;
+let galleryTouchStartY = 0;
 
 function formatDate(date) {
   const year = date.getFullYear();
@@ -644,6 +647,31 @@ galleryNext?.addEventListener("click", () => {
   moveGallery(1);
   restartGalleryAutoplay();
 });
+
+galleryStage?.addEventListener(
+  "touchstart",
+  (event) => {
+    const touch = event.touches[0];
+    galleryTouchStartX = touch.clientX;
+    galleryTouchStartY = touch.clientY;
+  },
+  { passive: true },
+);
+
+galleryStage?.addEventListener(
+  "touchend",
+  (event) => {
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - galleryTouchStartX;
+    const deltaY = touch.clientY - galleryTouchStartY;
+
+    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) < Math.abs(deltaY) * 1.2) return;
+
+    moveGallery(deltaX > 0 ? -1 : 1);
+    restartGalleryAutoplay();
+  },
+  { passive: true },
+);
 
 renderGallery();
 startGalleryAutoplay();

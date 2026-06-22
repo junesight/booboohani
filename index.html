@@ -45,7 +45,6 @@
         <a href="#care">진료 분야</a>
         <a href="#doctors">의료진 소개</a>
         <a href="#gallery">한의원 둘러보기</a>
-        <a href="#symptoms">증상별 안내</a>
         <a href="#contact">예약 안내</a>
       </nav>
     </header>
@@ -83,11 +82,15 @@
       </section>
 
       <section class="patient-record" aria-label="누적 내원 환자 수">
-        <p>
-          <span class="record-date"><strong>2013년 05월 13일</strong><small>부터</small></span>
-          <span class="record-date"><strong id="record-end-date">2026년 06월 03일</strong><small>까지</small></span>
-          <span class="record-count"><strong id="record-patient-count">640,164명</strong><small>의 환자분이</small></span>
-          <span class="record-note">부부한의원에 다녀가셨습니다.</span>
+        <p class="eyebrow">Clinic Record</p>
+        <p class="record-copy">
+          <span class="record-line record-line-date">
+            <span class="record-date"><strong>2013년 05월 13일</strong><small>부터</small></span>
+            <span class="record-date"><strong id="record-end-date">2026년 06월 03일</strong><small>까지</small></span>
+          </span>
+          <span class="record-line record-line-count">
+            <span class="record-count"><strong id="record-patient-count">640,164명</strong><small>의 환자분이 부부한의원에 다녀가셨습니다.</small></span>
+          </span>
         </p>
       </section>
 
@@ -115,10 +118,10 @@
         <div class="section-heading">
           <p class="eyebrow">Main Care</p>
           <h2>주요 진료 분야</h2>
-          <a href="#">전체 진료 보기</a>
+          <a href="#care">전체 진료 보기</a>
         </div>
         <div class="care-list">
-          <a class="care-card" href="#">
+          <article class="care-card">
             <span>01</span>
             <h3>통증·교통사고</h3>
             <ul>
@@ -126,8 +129,8 @@
               <li>통증이 나타난 부위만 보지 않고, 자세, 움직임, 밸런스 등을 함께 살펴 <strong>근본적인 원인</strong>을 치료합니다.</li>
               <li><strong>비수술적 관리</strong>가 가능한 범위에서 단계적으로 통증 상태를 개선합니다.</li>
             </ul>
-          </a>
-          <a class="care-card" href="#">
+          </article>
+          <article class="care-card">
             <span>02</span>
             <h3>다이어트</h3>
             <ul>
@@ -135,8 +138,8 @@
               <li><strong>근손실은 최소화</strong>하고 <strong>체지방 위주의 감량</strong>으로 무리 없이 <strong>지속 가능한 다이어트</strong>를 지향합니다.</li>
               <li>원장님들의 <strong>밀착관리</strong>로 식습관, 생활 습관까지 함께 교정합니다.</li>
             </ul>
-          </a>
-          <a class="care-card" href="#">
+          </article>
+          <article class="care-card">
             <span>03</span>
             <h3>맞춤한약</h3>
             <ul>
@@ -144,8 +147,8 @@
               <li>기본 검사와 문진, 맥진 등을 통해 몸 상태를 세심하게 살피고, 환자 상태에 맞는 <strong>맞춤 한약</strong>을 추천합니다.</li>
               <li><strong>청정 한약재</strong>를 사용해 원내에서 직접 달여 제공합니다.</li>
             </ul>
-          </a>
-          <a class="care-card" href="#">
+          </article>
+          <article class="care-card">
             <span>04</span>
             <h3>경옥고·공진단</h3>
             <ul>
@@ -153,7 +156,7 @@
               <li>경옥고와 공진단은 바쁜 일상 속 떨어진 기력과 활력을 보충하고, 활기찬 생활을 돕는 <strong>대표적인 보약</strong>입니다.</li>
               <li>남녀노소 모두 복용 가능하고, 휴대와 복용이 간편해 일상 속에서 꾸준히 관리하기 좋은 <strong>생활밀착형 한약</strong>입니다.</li>
             </ul>
-          </a>
+          </article>
         </div>
       </section>
 
@@ -182,7 +185,7 @@
         <div class="section-heading">
           <p class="eyebrow">Medical Team</p>
           <h2>의료진 소개</h2>
-          <a href="#">의료진 자세히 보기</a>
+          <a href="#doctors">의료진 자세히 보기</a>
         </div>
         <div class="doctor-board" aria-label="의료진 6명 소개">
           <a
@@ -282,7 +285,7 @@
         <div class="section-heading">
           <p class="eyebrow">Clinic Tour</p>
           <h2>한의원 둘러보기</h2>
-          <a href="#">원내 사진 전체보기</a>
+          <a href="#gallery">원내 사진 전체보기</a>
         </div>
         <div class="gallery-tabs" role="tablist" aria-label="층별 원내 사진">
           <button class="is-active" type="button" role="tab" aria-selected="true" data-floor="1">1F</button>
@@ -299,24 +302,6 @@
           <button class="gallery-arrow gallery-next" type="button" aria-label="다음 사진">›</button>
         </div>
         <div class="gallery-thumbs" id="gallery-thumbs" aria-label="현재 층 사진 목록"></div>
-      </section>
-
-      <section class="symptoms section" id="symptoms">
-        <div class="section-heading">
-          <p class="eyebrow">Symptom Guide</p>
-          <h2>증상별로 바로 찾기</h2>
-          <a href="#">증상 안내 전체보기</a>
-        </div>
-        <div class="symptom-links">
-          <a href="#">만성 소화불량</a>
-          <a href="#">역류성 식도염</a>
-          <a href="#">두통·어지럼</a>
-          <a href="#">목·허리 통증</a>
-          <a href="#">비염·축농증</a>
-          <a href="#">불면·피로</a>
-          <a href="#">산후 회복</a>
-          <a href="#">소아 성장</a>
-        </div>
       </section>
 
       <section class="contact" id="contact">
