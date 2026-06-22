@@ -1079,6 +1079,7 @@ h3 {
   color: var(--green);
   font-family: "Noto Serif KR", serif;
   font-size: 22px;
+  text-align: center;
 }
 
 .schedule-doctor-meta strong .doctor-title-small {
@@ -2201,8 +2202,13 @@ footer p {
     min-height: 70px;
   }
 
+  .schedule-doctor-meta span {
+    font-size: 11px;
+  }
+
   .schedule-doctor-meta strong {
-    font-size: 19px;
+    font-size: 16px;
+    text-align: left;
   }
 
   .schedule-row .weekly-schedule {
