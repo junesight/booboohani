@@ -1421,6 +1421,14 @@ body.modal-open {
 
 
 
+#methods {
+  padding-bottom: 0;
+}
+
+#methods + .philosophy {
+  margin-top: 0;
+}
+
 .philosophy {
   position: relative;
   display: grid;
@@ -1435,6 +1443,7 @@ body.modal-open {
 
 .philosophy h2 {
   color: var(--paper);
+  font-size: clamp(24px, 2.8vw, 36px);
 }
 
 .philosophy h2 span {
@@ -2056,6 +2065,10 @@ footer p {
   .philosophy {
     margin-top: -24px;
     padding: 38px 14px;
+  }
+
+  #methods + .philosophy {
+    margin-top: 0;
   }
 
   .philosophy h2 {
