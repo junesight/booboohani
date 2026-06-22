@@ -7,7 +7,6 @@ const modalScheduleRange = document.querySelector("#modal-schedule-range");
 const modalWeeklySchedule = document.querySelector("#modal-weekly-schedule");
 const doctorCards = document.querySelectorAll(".doctor-card");
 const closeButtons = document.querySelectorAll("[data-modal-close]");
-const popupLinks = document.querySelectorAll(".js-popup-link");
 const galleryTabs = document.querySelectorAll(".gallery-tabs button");
 const galleryImage = document.querySelector("#gallery-main-image");
 const galleryCaption = document.querySelector("#gallery-caption");
@@ -254,8 +253,27 @@ function renderWeeklySchedule(doctorId, rows = []) {
       .map((row) => [row.date, row]),
   );
 
-  modalScheduleRange.textContent = `(${formatMonthDay(weekDates[0])}-${formatMonthDay(weekDates[6])})`;
+  modalScheduleRange.textContent = "";
   modalWeeklySchedule.replaceChildren(
+    ...weekDates.map((date, index) => {
+      const item = document.createElement("div");
+      const status = formatScheduleStatus(rowsByDate.get(date)?.status);
+      const isOff = status === "휴진";
+      const isNight = status === "~8시";
+
+      item.className = [
+        "schedule-date-cell",
+        "modal-date-cell",
+        isOff ? "is-off" : "",
+        isNight ? "is-night" : "",
+      ].filter(Boolean).join(" ");
+      item.innerHTML = `
+        <strong>${formatMonthDay(date)}</strong>
+        <span>${DAY_LABELS[index]}</span>
+      `;
+
+      return item;
+    }),
     ...weekDates.map((date, index) => {
       const item = document.createElement("div");
       const status = formatScheduleStatus(rowsByDate.get(date)?.status);
@@ -268,7 +286,6 @@ function renderWeeklySchedule(doctorId, rows = []) {
         isNight ? "is-night" : "",
       ].filter(Boolean).join(" ");
       item.innerHTML = `
-        <strong>${DAY_LABELS[index]}</strong>
         <em>${isOff ? "휴진" : isNight ? "야간진료" : "진료"}</em>
         <span>${isOff ? "" : status}</span>
       `;
@@ -608,22 +625,6 @@ doctorCards.forEach((card) => {
 
 closeButtons.forEach((button) => {
   button.addEventListener("click", closeDoctorModal);
-});
-
-popupLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    const popup = window.open(
-      link.href,
-      "_blank",
-      "noopener,noreferrer,width=520,height=760",
-    );
-
-    if (!popup) {
-      window.location.href = link.href;
-    }
-  });
 });
 
 galleryTabs.forEach((tab) => {

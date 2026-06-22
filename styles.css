@@ -1166,8 +1166,36 @@ h3 {
   font-weight: 700;
 }
 
+.modal-date-cell {
+  min-height: 48px;
+  margin-bottom: -6px;
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--paper);
+}
+
+.modal-date-cell strong {
+  font-size: 16px;
+}
+
+.modal-date-cell span {
+  color: inherit;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.modal-date-cell.is-off {
+  background: #eee8dc;
+  border-color: rgba(111, 114, 104, 0.28);
+  color: #77766c;
+}
+
+.modal-date-cell.is-night span {
+  color: #ffd43b;
+}
+
 .schedule-pill {
-  min-height: 98px;
+  min-height: 74px;
   display: grid;
   place-items: center;
   gap: 3px;
@@ -1952,14 +1980,23 @@ footer p {
     gap: 4px;
   }
 
-  .schedule-pill {
-    min-height: 58px;
-    gap: 1px;
-    padding: 8px 2px;
+  .modal-date-cell {
+    min-height: 42px;
+    margin-bottom: -3px;
   }
 
-  .schedule-pill strong {
+  .modal-date-cell strong {
+    font-size: 10px;
+  }
+
+  .modal-date-cell span {
     font-size: 13px;
+  }
+
+  .schedule-pill {
+    min-height: 48px;
+    gap: 1px;
+    padding: 8px 2px;
   }
 
   .schedule-pill em {
