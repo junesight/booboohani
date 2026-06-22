@@ -791,6 +791,10 @@ h3 {
   padding: 28px;
 }
 
+.doctor-modal {
+  z-index: 110;
+}
+
 .modal-content-small {
   position: relative;
   z-index: 1;

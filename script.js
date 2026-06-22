@@ -402,6 +402,15 @@ function renderScheduleOverview(rows = []) {
         ...weekDates.map((date, index) => createSchedulePill(date, index, rowsByDate)),
       );
 
+      const handleProfileClick = (event) => {
+        event.preventDefault();
+        openDoctorModal(card);
+      };
+      photo.style.cursor = "pointer";
+      meta.style.cursor = "pointer";
+      photo.addEventListener("click", handleProfileClick);
+      meta.addEventListener("click", handleProfileClick);
+
       photo.append(img);
       row.append(photo, meta, schedule);
       return row;
@@ -429,7 +438,10 @@ function closeScheduleModal() {
   if (!scheduleModal) return;
 
   scheduleModal.hidden = true;
-  document.body.classList.remove("modal-open");
+  const isAnyModalOpen = (modal && !modal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden);
+  if (!isAnyModalOpen) {
+    document.body.classList.remove("modal-open");
+  }
   scheduleTrigger?.focus();
 }
 
@@ -472,7 +484,10 @@ function closeCareModal() {
   if (!careModal) return;
   activeCareCard = null;
   careModal.hidden = true;
-  document.body.classList.remove("modal-open");
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden);
+  if (!isAnyModalOpen) {
+    document.body.classList.remove("modal-open");
+  }
 }
 
 function navigateCareModal(direction) {
@@ -562,7 +577,10 @@ function openDoctorModal(card) {
 
 function closeDoctorModal() {
   modal.hidden = true;
-  document.body.classList.remove("modal-open");
+  const isAnyModalOpen = (scheduleModal && !scheduleModal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden);
+  if (!isAnyModalOpen) {
+    document.body.classList.remove("modal-open");
+  }
   modalImage.src = "";
 
   if (lastFocusedCard) {
