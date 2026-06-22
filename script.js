@@ -14,6 +14,9 @@ const careModalTitle = document.querySelector("#modal-care-title");
 const careModalDetails = document.querySelector("#modal-care-details");
 const careCards = document.querySelectorAll(".care-card");
 const careCloseButtons = document.querySelectorAll("[data-care-close]");
+const carePrevButton = document.querySelector(".care-prev");
+const careNextButton = document.querySelector(".care-next");
+let activeCareCard = null;
 
 const galleryTabs = document.querySelectorAll(".gallery-tabs button");
 const galleryStage = document.querySelector(".gallery-stage");
@@ -430,16 +433,23 @@ function closeScheduleModal() {
   scheduleTrigger?.focus();
 }
 
-function openCareModal(card) {
-  if (window.innerWidth > 768) return;
+function renderCareModalContent() {
+  if (!activeCareCard) return;
 
-  const number = card.querySelector("span").textContent;
-  const title = card.querySelector("h3").textContent;
-  const detailsHtml = card.querySelector("ul").innerHTML;
+  const number = activeCareCard.querySelector("span").textContent;
+  const title = activeCareCard.querySelector("h3").textContent;
+  const detailsHtml = activeCareCard.querySelector("ul").innerHTML;
 
   if (careModalNumber) careModalNumber.textContent = number;
   if (careModalTitle) careModalTitle.textContent = title;
   if (careModalDetails) careModalDetails.innerHTML = detailsHtml;
+}
+
+function openCareModal(card) {
+  if (window.innerWidth > 768) return;
+
+  activeCareCard = card;
+  renderCareModalContent();
 
   if (careModal) {
     careModal.hidden = false;
@@ -450,8 +460,25 @@ function openCareModal(card) {
 
 function closeCareModal() {
   if (!careModal) return;
+  activeCareCard = null;
   careModal.hidden = true;
   document.body.classList.remove("modal-open");
+}
+
+function navigateCareModal(direction) {
+  if (!activeCareCard || careCards.length === 0) return;
+
+  let currentIndex = Array.from(careCards).indexOf(activeCareCard);
+  let nextIndex = currentIndex + direction;
+
+  if (nextIndex < 0) {
+    nextIndex = careCards.length - 1;
+  } else if (nextIndex >= careCards.length) {
+    nextIndex = 0;
+  }
+
+  activeCareCard = careCards[nextIndex];
+  renderCareModalContent();
 }
 
 function openDoctorModal(card) {
@@ -674,6 +701,14 @@ careCards.forEach((card) => {
 
 careCloseButtons.forEach((button) => {
   button.addEventListener("click", closeCareModal);
+});
+
+carePrevButton?.addEventListener("click", () => {
+  navigateCareModal(-1);
+});
+
+careNextButton?.addEventListener("click", () => {
+  navigateCareModal(1);
 });
 
 galleryTabs.forEach((tab) => {
