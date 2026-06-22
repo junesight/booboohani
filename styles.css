@@ -1422,6 +1422,13 @@ body.modal-open {
   margin-top: 4px;
 }
 
+.contact-parking u {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--gold);
+}
+
 .contact-address {
   margin-top: 28px;
   color: #596053;
