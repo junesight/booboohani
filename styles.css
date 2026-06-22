@@ -335,6 +335,8 @@ h3 {
   color: rgba(22, 61, 50, 0.78);
   font-family: "Noto Serif KR", serif;
   font-size: clamp(22px, 2.7vw, 36px);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
   line-height: 1.45;
   border: 1px solid rgba(22, 61, 50, 0.22);
   background: transparent;
@@ -365,9 +367,10 @@ h3 {
 
 .record-date strong,
 .record-count strong {
+  display: inline-block;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
   letter-spacing: 0;
 }
 
@@ -516,7 +519,7 @@ h3 {
 }
 
 .doctors {
-  padding-top: 0;
+  padding-top: clamp(72px, 10vw, 120px);
   scroll-margin-top: 92px;
 }
 
@@ -1268,48 +1271,57 @@ body.modal-open {
 }
 
 .philosophy {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
-  gap: clamp(28px, 6vw, 72px);
-  align-items: center;
+  gap: clamp(28px, 5vw, 52px);
+  margin-top: clamp(-72px, -6vw, -36px);
+  margin-bottom: 0;
   padding: clamp(60px, 8vw, 92px);
   background: var(--green);
   color: rgba(255, 250, 240, 0.82);
+  text-align: center;
 }
 
 .philosophy h2 {
   color: var(--paper);
 }
 
-.philosophy-copy p:last-child {
-  max-width: 620px;
-  margin: 24px 0 0;
+.philosophy h2 span {
+  display: inline;
+}
+
+.philosophy .eyebrow {
+  position: absolute;
+  top: clamp(28px, 4vw, 48px);
+  left: clamp(28px, 5vw, 64px);
+}
+
+.philosophy-copy {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.philosophy-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 5vw, 58px);
+  text-align: left;
+}
+
+.philosophy-columns p {
+  margin: 0;
+  color: #fff;
   font-size: 18px;
+  font-weight: 400;
+  line-height: 1.9;
 }
 
-.philosophy-points {
-  display: grid;
-  gap: 1px;
-  background: rgba(255, 250, 240, 0.16);
+.philosophy-columns span {
+  display: block;
 }
 
-.philosophy-points div {
-  display: grid;
-  grid-template-columns: 62px 1fr;
-  gap: 16px;
-  align-items: center;
-  padding: 22px 0;
-  background: var(--green);
-}
-
-.philosophy-points strong {
+.philosophy-columns strong {
   color: var(--gold);
-  font-family: "Noto Serif KR", serif;
-  font-size: 24px;
-}
-
-.philosophy-points span {
-  color: var(--paper);
   font-weight: 700;
 }
 
@@ -1689,7 +1701,7 @@ footer p {
 
   .hero-text,
   .section-grid p:last-child,
-  .philosophy-copy p:last-child {
+  .philosophy-columns p {
     font-size: 16px;
   }
 
@@ -1804,11 +1816,38 @@ footer p {
   }
 
   .philosophy {
-    padding: 38px 24px;
+    margin-top: -24px;
+    padding: 38px 14px;
   }
 
-  .philosophy-points div {
-    grid-template-columns: 48px 1fr;
+  .philosophy h2 {
+    font-size: clamp(24px, 7.1vw, 30px);
+    line-height: 1.42;
+  }
+
+  .philosophy h2 span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .philosophy .eyebrow {
+    position: static;
+    margin-bottom: 16px;
+  }
+
+  .philosophy-columns {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .philosophy-columns p {
+    font-size: clamp(10px, 2.85vw, 12px);
+    line-height: 1.8;
+  }
+
+  .philosophy-columns span {
+    white-space: nowrap;
   }
 
   .contact-actions {
