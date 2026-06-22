@@ -436,9 +436,19 @@ function closeScheduleModal() {
 function renderCareModalContent() {
   if (!activeCareCard) return;
 
-  const number = activeCareCard.querySelector("span").textContent;
+  const numberSpan = activeCareCard.querySelector("span");
+  const number = numberSpan ? numberSpan.textContent : "";
   const title = activeCareCard.querySelector("h3").textContent;
-  const detailsHtml = activeCareCard.querySelector("ul").innerHTML;
+  
+  let detailsHtml = "";
+  const ulEl = activeCareCard.querySelector("ul");
+  const pEl = activeCareCard.querySelector("p");
+  
+  if (ulEl) {
+    detailsHtml = ulEl.innerHTML;
+  } else if (pEl) {
+    detailsHtml = `<li>${pEl.textContent}</li>`;
+  }
 
   if (careModalNumber) careModalNumber.textContent = number;
   if (careModalTitle) careModalTitle.textContent = title;
@@ -466,18 +476,23 @@ function closeCareModal() {
 }
 
 function navigateCareModal(direction) {
-  if (!activeCareCard || careCards.length === 0) return;
+  if (!activeCareCard) return;
 
-  let currentIndex = Array.from(careCards).indexOf(activeCareCard);
+  const isMethod = activeCareCard.classList.contains("method-card");
+  const cards = isMethod ? document.querySelectorAll(".method-card") : document.querySelectorAll(".care-card");
+
+  if (cards.length === 0) return;
+
+  let currentIndex = Array.from(cards).indexOf(activeCareCard);
   let nextIndex = currentIndex + direction;
 
   if (nextIndex < 0) {
-    nextIndex = careCards.length - 1;
-  } else if (nextIndex >= careCards.length) {
+    nextIndex = cards.length - 1;
+  } else if (nextIndex >= cards.length) {
     nextIndex = 0;
   }
 
-  activeCareCard = careCards[nextIndex];
+  activeCareCard = cards[nextIndex];
   renderCareModalContent();
 }
 
@@ -726,6 +741,13 @@ closeButtons.forEach((button) => {
 });
 
 careCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    openCareModal(card);
+  });
+});
+
+const methodCards = document.querySelectorAll(".method-card");
+methodCards.forEach((card) => {
   card.addEventListener("click", () => {
     openCareModal(card);
   });
