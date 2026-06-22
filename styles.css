@@ -1362,6 +1362,59 @@ body.modal-open {
   overflow: hidden;
 }
 
+.method-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 56px;
+}
+
+.method-card {
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 32px 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 36px rgba(60, 50, 34, 0.04);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+  text-align: center;
+}
+
+.method-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(22, 61, 50, 0.42);
+}
+
+.method-num {
+  display: block;
+  font-family: "Noto Serif KR", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.method-card h3 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  color: var(--green);
+  font-weight: 700;
+}
+
+.method-card p {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
 .philosophy {
   position: relative;
   display: grid;
@@ -1797,6 +1850,17 @@ footer p {
 
   .schedule-date-spacer {
     display: none;
+  }
+
+  .method-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 42px;
+  }
+
+  .method-card {
+    min-height: 180px;
+    padding: 24px 16px;
   }
 }
 
@@ -2271,5 +2335,15 @@ footer p {
 
   .footer-copy {
     display: grid;
+  }
+
+  .method-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .method-card {
+    min-height: 0;
+    padding: 20px 20px 22px;
   }
 }
