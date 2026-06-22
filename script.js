@@ -583,8 +583,12 @@ function closeDoctorModal() {
   }
   modalImage.src = "";
 
-  if (lastFocusedCard) {
-    lastFocusedCard.focus();
+  if (scheduleModal && !scheduleModal.hidden) {
+    scheduleModal.querySelector(".modal-close")?.focus();
+  } else {
+    if (lastFocusedCard) {
+      lastFocusedCard.focus();
+    }
   }
 }
 
