@@ -1415,6 +1415,10 @@ body.modal-open {
   word-break: keep-all;
 }
 
+.method-section {
+  padding-top: 0;
+}
+
 .philosophy {
   position: relative;
   display: grid;
