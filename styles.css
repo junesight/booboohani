@@ -2592,13 +2592,15 @@ footer p {
 
   .method-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 92px;
     gap: 10px;
     margin-bottom: 42px;
   }
 
   .method-card {
-    min-height: 80px;
-    padding: 12px 8px;
+    min-height: 0;
+    height: 100%;
+    padding: 12px 8px 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2606,6 +2608,10 @@ footer p {
     text-align: center;
     cursor: pointer;
     position: relative;
+  }
+
+  .method-card.has-detail {
+    padding: 12px 8px 18px;
   }
 
   .method-detail-btn {
@@ -2625,13 +2631,22 @@ footer p {
   }
 
   .method-num {
-    margin-bottom: 3px;
+    margin: 0;
+    width: 100%;
+    flex: 0 0 18px;
+    line-height: 18px;
     text-align: center;
     font-size: 15px;
   }
 
   .method-card h3 {
     margin: 0;
+    width: 100%;
+    flex: 0 0 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     font-size: 16px;
     line-height: 1.3;
     word-break: keep-all;
@@ -2644,6 +2659,23 @@ footer p {
   .yakchim-grid {
     grid-template-columns: 1fr;
     gap: 14px;
+    zoom: 0.85;
+  }
+
+  .yakchim-grid .yakchim-item:nth-child(1) {
+    order: 1;
+  }
+
+  .yakchim-grid .yakchim-item:nth-child(2) {
+    order: 4;
+  }
+
+  .yakchim-grid .yakchim-item:nth-child(3) {
+    order: 2;
+  }
+
+  .yakchim-grid .yakchim-item:nth-child(4) {
+    order: 3;
   }
 
   .yakchim-modal-panel {
@@ -2654,11 +2686,15 @@ footer p {
   .hanyak-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+    justify-items: center;
+    zoom: 0.85;
   }
 
   .hanyak-process {
     grid-template-columns: 1fr;
     gap: 16px;
+    justify-items: center;
+    zoom: 0.85;
   }
 
 
@@ -2666,6 +2702,25 @@ footer p {
   .hanyak-modal-panel {
     padding: 36px 20px;
     width: min(500px, 100%);
+    overflow-x: auto;
+  }
+
+  .hanyak-grid > .hanyak-item:not(.span-all) {
+    width: 388px;
+    max-width: none;
+  }
+
+  .hanyak-grid > .hanyak-item:not(.span-all) li {
+    white-space: nowrap;
+  }
+
+  .process-item {
+    width: 388px;
+    max-width: none;
+  }
+
+  .process-item p {
+    white-space: nowrap;
   }
 
   /* Contact / Reservation 모바일 스타일 리셋 */
