@@ -1633,14 +1633,14 @@ body.modal-open {
 }
 
 .transit-table th {
-  background: var(--bg-soft);
+  background: var(--bg);
   color: var(--green);
   font-weight: 700;
   font-family: "Noto Serif KR", serif;
 }
 
 .transit-table td {
-  background: var(--paper);
+  background: transparent;
 }
 
 .transit-table td.bus-numbers {
