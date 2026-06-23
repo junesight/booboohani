@@ -2711,7 +2711,7 @@ footer p {
     overflow-x: auto;
   }
 
-  .hanyak-grid > .hanyak-item:not(.span-all) {
+  .hanyak-grid > .hanyak-item {
     width: 388px;
     max-width: none;
   }
