@@ -1650,6 +1650,11 @@ body.modal-open {
   white-space: normal; /* allow wrap if very long */
 }
 
+.transit-table td.stop-name {
+  font-weight: 700;
+  color: var(--ink);
+}
+
 .location-actions {
   margin-top: 8px;
 }
