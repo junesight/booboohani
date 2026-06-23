@@ -1033,6 +1033,20 @@ h3 {
   grid-column: 1 / -1;
 }
 
+.hanyak-sub-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+
+.hanyak-sub-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
 
 
 .modal-content-small {
@@ -2617,6 +2631,11 @@ footer p {
   .hanyak-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .hanyak-sub-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
 
