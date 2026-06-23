@@ -531,7 +531,7 @@ h3 {
   gap: 8px;
   margin: 0;
   padding-left: 16px;
-  color: var(--muted);
+  color: #5d635f;
   font-size: 15px;
   line-height: 1.6;
 }
@@ -541,7 +541,7 @@ h3 {
 }
 
 .care-card strong {
-  color: var(--green);
+  color: #0a251e;
   font-weight: 800;
 }
 
@@ -1427,7 +1427,7 @@ body.modal-open {
   gap: 8px;
   margin: 0;
   padding-left: 18px;
-  color: #1a221f;
+  color: #5d635f;
   font-size: 14.5px;
   font-weight: 500;
   line-height: 1.55;
@@ -1440,7 +1440,7 @@ body.modal-open {
 }
 
 .method-card strong {
-  color: #0b1f19;
+  color: #0a251e;
   font-weight: 800;
 }
 
