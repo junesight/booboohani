@@ -472,8 +472,14 @@ function renderCareModalContent() {
 }
 
 function openCareModal(card) {
-  if (window.innerWidth > 768) return;
+  if (window.innerWidth > 768) {
+    const isDetailCard = card.classList.contains("has-detail") || card.closest(".has-detail");
+    if (!isDetailCard) {
+      return;
+    }
+  }
 
+  lastFocusedCard = card;
   activeCareCard = card;
   renderCareModalContent();
 
@@ -492,17 +498,36 @@ function closeCareModal() {
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
+
+  if (lastFocusedCard) {
+    lastFocusedCard.focus();
+    lastFocusedCard = null;
+  }
 }
 
 function navigateCareModal(direction) {
   if (!activeCareCard) return;
 
   const isMethod = activeCareCard.classList.contains("method-card");
-  const cards = isMethod ? document.querySelectorAll(".method-card") : document.querySelectorAll(".care-card");
+  let cards;
+
+  if (isMethod) {
+    if (window.innerWidth > 768) {
+      cards = document.querySelectorAll(".method-card.has-detail");
+    } else {
+      cards = document.querySelectorAll(".method-card");
+    }
+  } else {
+    cards = document.querySelectorAll(".care-card");
+  }
 
   if (cards.length === 0) return;
 
   let currentIndex = Array.from(cards).indexOf(activeCareCard);
+  if (currentIndex === -1) {
+    currentIndex = 0;
+  }
+  
   let nextIndex = currentIndex + direction;
 
   if (nextIndex < 0) {
