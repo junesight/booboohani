@@ -1609,20 +1609,45 @@ body.modal-open {
   margin-top: 2px;
 }
 
-.bus-list li strong {
-  display: block;
-  color: var(--ink);
-  font-weight: 600;
-  font-size: 15px;
-  margin-bottom: 2px;
+.transit-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 4px;
 }
 
-.bus-desc {
-  display: block;
-  color: var(--green-2);
-  font-weight: 600;
-  font-size: 13.5px;
-  margin-bottom: 8px;
+.transit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.transit-table th,
+.transit-table td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.transit-table th {
+  background: var(--bg-soft);
+  color: var(--green);
+  font-weight: 700;
+  font-family: "Noto Serif KR", serif;
+}
+
+.transit-table td {
+  background: var(--paper);
+}
+
+.transit-table td.bus-numbers {
+  text-align: left;
+  color: var(--ink);
+  font-weight: 500;
+  white-space: normal; /* allow wrap if very long */
 }
 
 .location-actions {

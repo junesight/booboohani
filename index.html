@@ -411,20 +411,54 @@
                   <img src="assets/icon-bus.png" alt="" class="location-icon" />
                   <h3>대중교통</h3>
                 </div>
-                <ul class="location-list bus-list">
-                  <li>
-                    <strong>3, 3-1</strong>
-                    <span class="bus-desc">▶ 청호시장 입구 (하차 후 도보 1분)</span>
-                  </li>
-                  <li>
-                    <strong>10, 101, 102, 800, 132, 332, 333</strong>
-                    <span class="bus-desc">▶ 청호시장 (하차 후 도보 1분)</span>
-                  </li>
-                  <li>
-                    <strong>11, 11-1, 20, 20-1, 66, 66-1, 77, 77-1, 108, 210, 245-1, 245-3, 280-1, 100A, 200, 900, 900A</strong>
-                    <span class="bus-desc">▶ 호반리젠시빌 (하차 후 도보 3분)</span>
-                  </li>
-                </ul>
+                <div class="transit-table-wrapper">
+                  <table class="transit-table">
+                    <thead>
+                      <tr>
+                        <th>정류장 이름</th>
+                        <th>구분</th>
+                        <th>버스번호</th>
+                        <th>기타</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>청호시장 입구</td>
+                        <td>간선</td>
+                        <td class="bus-numbers">3, 3-1</td>
+                        <td>하차 후 도보 1분</td>
+                      </tr>
+                      <tr>
+                        <td>청호시장</td>
+                        <td>지선</td>
+                        <td class="bus-numbers">10</td>
+                        <td>하차 후 도보 5분</td>
+                      </tr>
+                      <tr>
+                        <td rowspan="5">호반리젠시빌</td>
+                        <td>간선</td>
+                        <td class="bus-numbers">1</td>
+                        <td rowspan="5">하차 후 도보 3분</td>
+                      </tr>
+                      <tr>
+                        <td>지선</td>
+                        <td class="bus-numbers">20, 20-1</td>
+                      </tr>
+                      <tr>
+                        <td>순환</td>
+                        <td class="bus-numbers">66, 66-1, 77, 77-1</td>
+                      </tr>
+                      <tr>
+                        <td>시계외</td>
+                        <td class="bus-numbers">108, 200, 210, 800, 900, 900A</td>
+                      </tr>
+                      <tr>
+                        <td>무안군버스</td>
+                        <td class="bus-numbers">100, 100A</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
             <div class="location-actions">
