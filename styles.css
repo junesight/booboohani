@@ -883,17 +883,19 @@ h3 {
 }
 
 .yakchim-tags {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  gap: 8px 24px;
   margin-top: 16px;
   padding-left: 20px;
+  justify-content: start;
 }
 
-.yakchim-tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 24px;
+.yakchim-tags.grid-2 {
+  grid-template-columns: repeat(2, auto);
+}
+
+.yakchim-tags.grid-3 {
+  grid-template-columns: repeat(3, auto);
 }
 
 .yakchim-tags span {
@@ -901,6 +903,10 @@ h3 {
   color: var(--gold);
   font-weight: 700;
   white-space: nowrap;
+}
+
+.yakchim-tags span.span-all {
+  grid-column: 1 / -1;
 }
 
 .modal-content-small {
