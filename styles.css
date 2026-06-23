@@ -1543,11 +1543,21 @@ body.modal-open {
 
 /* Location Section Styling */
 #location .section-heading {
-  flex-direction: column;
-  align-items: center;
+  position: relative;
   justify-content: center;
+  align-items: flex-end;
+}
+
+#location .section-heading .eyebrow {
+  position: absolute;
+  left: 0;
+  bottom: 24px;
+  margin: 0;
+}
+
+#location .section-heading h2 {
+  margin: 0;
   text-align: center;
-  padding-bottom: 18px;
 }
 .location-content {
   display: grid;
