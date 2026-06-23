@@ -1029,12 +1029,18 @@ h3 {
   font-weight: 700;
 }
 
-.hanyak-process {
+.hanyak-item.span-all {
+  grid-column: 1 / -1;
+}
+
+.hanyak-process-inside {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  width: 100%;
   border-top: 1px solid var(--line);
-  padding-top: 24px;
+  padding-top: 20px;
+  margin-top: 4px;
 }
 
 .process-item {
@@ -2649,7 +2655,7 @@ footer p {
     gap: 16px;
   }
 
-  .hanyak-process {
+  .hanyak-process-inside {
     grid-template-columns: 1fr;
     gap: 16px;
   }
