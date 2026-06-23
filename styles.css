@@ -1596,26 +1596,24 @@ body.modal-open {
 
 .map-embed {
   display: block;
-  min-height: 270px;
+  height: 380px;
   overflow: hidden;
   background: rgba(255, 250, 240, 0.72);
   border: 1px solid rgba(22, 61, 50, 0.16);
-  transition:
-    transform 180ms ease,
-    box-shadow 180ms ease;
+  transition: box-shadow 180ms ease;
 }
 
 .map-embed:hover {
-  transform: translateY(-2px);
   box-shadow: 0 18px 42px rgba(38, 31, 20, 0.14);
 }
 
-.map-embed img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  object-position: center;
+.map-embed .root_daum_roughmap {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.map-embed .root_daum_roughmap .wrap_map {
+  height: 100% !important;
 }
 
 footer {
@@ -2193,12 +2191,7 @@ footer p {
 
   .map-embed {
     min-height: 0;
-  }
-
-  .map-embed img {
-    width: 100%;
-    height: auto;
-    display: block;
+    height: 280px;
   }
 
   .doctor-modal {
