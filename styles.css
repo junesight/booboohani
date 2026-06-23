@@ -902,7 +902,12 @@ h3 {
   grid-template-columns: repeat(4, auto);
 }
 
-.yakchim-tags.tags-jahager {
+.yakchim-tags.tags-precision {
+  grid-template-columns: auto minmax(80px, auto) auto auto;
+}
+
+.yakchim-tags.tags-jahager,
+.yakchim-tags.tags-pdrn {
   column-gap: 40px;
 }
 
