@@ -1498,15 +1498,15 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: clamp(72px, 10vw, 120px);
+  margin-top: 24px;
   margin-bottom: 70px;
-  padding: clamp(60px, 8vw, 92px);
+  padding: clamp(60px, 8vw, 92px) clamp(30px, 4vw, 48px);
   background: #d8c8a9;
   border: 1px solid rgba(22, 61, 50, 0.16);
 }
 
 .contact-container {
-  max-width: 920px;
+  max-width: 1040px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1522,28 +1522,30 @@ body.modal-open {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 2.7fr 1fr;
+  grid-template-columns: 1fr 200px;
   gap: 48px;
   width: 100%;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 0;
 }
 
 .contact-text-area {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  position: relative;
-  left: -72px;
 }
 
 .contact-title {
   width: 100%;
   font-size: clamp(22px, 2.5vw, 30px);
   line-height: 1.42;
-  margin: 0 auto 36px;
+  margin: 0 auto 12px;
   text-align: center;
   word-break: keep-all;
+}
+
+.contact-title .mobile-br {
+  display: none;
 }
 
 /* 예약 가능 시간 및 진료 시간 상세 다단화 스타일 */
@@ -1615,11 +1617,12 @@ body.modal-open {
 /* 예약 가능 시간 표 스타일 */
 .reservation-table {
   width: 100%;
+  max-width: 380px;
   border-collapse: collapse;
   font-size: 15px;
   line-height: 1.4;
   color: var(--ink);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   background: rgba(255, 255, 255, 0.45);
   border-radius: 8px;
   border-style: hidden;
@@ -1640,12 +1643,14 @@ body.modal-open {
   font-weight: 700;
   font-family: "Noto Serif KR", serif;
   text-align: center;
-  width: 110px !important;
-  white-space: nowrap !important;
 }
 
-.reservation-table .col-division {
+.reservation-table th:first-child,
+.reservation-table td:first-child {
   width: 105px !important;
+  max-width: 105px !important;
+  min-width: 105px !important;
+  white-space: nowrap !important;
 }
 
 .reservation-table td {
@@ -1672,7 +1677,9 @@ body.modal-open {
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(22, 61, 50, 0.12);
   border-radius: 12px;
-  padding: 8px 16px;
+  padding: 16px 20px;
+  width: 100%;
+  max-width: 250px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
   text-align: center;
   line-height: 1.25;
@@ -1701,7 +1708,7 @@ body.modal-open {
   flex-direction: column;
   gap: 12px;
   width: 100%;
-  max-width: 220px;
+  max-width: 200px;
   margin-left: auto;
 }
 
@@ -1710,6 +1717,46 @@ body.modal-open {
   min-width: 0;
   min-height: 50px;
   font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.contact .contact-actions .button-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.contact .contact-actions .button.phone {
+  background: var(--green);
+  color: #ffffff !important;
+  border: none;
+}
+
+.contact .contact-actions .button.phone:hover {
+  background: #113027;
+}
+
+.contact .contact-actions .button.naver {
+  background: #03c75a;
+  color: #ffffff !important;
+  border: none;
+}
+
+.contact .contact-actions .button.naver:hover {
+  background: #02b34e;
+}
+
+.contact .contact-actions .button.kakao {
+  background: #f6d54a;
+  color: #392d00;
+  border: none;
+}
+
+.contact .contact-actions .button.kakao:hover {
+  background: #e5c43b;
 }
 
 
@@ -2325,14 +2372,19 @@ footer p {
   }
 
     .clinic-time-cards {
+      display: flex;
+      flex-direction: row;
       gap: 10px;
+      width: 100%;
     }
 
     .clinic-time-card {
-      padding: 6px 12px;
+      flex: 1;
+      padding: 10px 8px;
       border-radius: 10px;
       gap: 1px;
       line-height: 1.25;
+      max-width: none;
     }
 
     .clinic-time-card .highlight-title {
@@ -2348,9 +2400,10 @@ footer p {
     }
 
     .reservation-table {
-      font-size: 13.5px;
-      margin-bottom: 12px;
+      font-size: 14.5px;
+      margin-bottom: 8px;
       table-layout: fixed;
+      max-width: none;
     }
 
     .reservation-table th,
@@ -2358,29 +2411,45 @@ footer p {
       padding: 6px 10px;
     }
 
-    .reservation-table th {
-      white-space: nowrap !important;
-    }
-
-    .reservation-table .col-division {
+    .reservation-table th:first-child,
+    .reservation-table td:first-child {
       width: 90px !important;
+      max-width: 90px !important;
+      min-width: 90px !important;
+      white-space: nowrap !important;
     }
 
   .contact-title {
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
+  }
+
+  .contact-title .mobile-br {
+    display: inline;
   }
 
   .contact .contact-actions {
+    display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     max-width: 100%;
     margin-left: 0;
+    gap: 8px;
   }
 
   .contact .contact-actions .button {
-    width: auto;
+    flex: 1;
+    min-width: 0;
+    min-height: 46px;
+    padding: 6px 4px;
+    font-size: 14px;
+    letter-spacing: -0.03em;
+    gap: 4px;
+  }
+
+  .contact .contact-actions .button-icon {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -2611,16 +2680,24 @@ footer p {
   }
 
   .contact .contact-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
   }
 
   .contact .contact-actions .button {
     width: 100%;
+    flex: 1;
+    padding: 6px 2px;
+    font-size: 13px;
+    letter-spacing: -0.04em;
+    gap: 2px;
+    min-height: 42px;
   }
 
-  .contact .contact-actions .button:last-child {
-    grid-column: span 2;
+  .contact .contact-actions .button-icon {
+    width: 14px;
+    height: 14px;
   }
 
   .contact h2 .mobile-break em,

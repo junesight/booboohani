@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Pretendard:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=1.2.4" />
   </head>
   <body>
     <header class="site-header" aria-label="주요 메뉴">
@@ -515,7 +515,7 @@
       <section class="contact" id="contact">
         <div class="contact-container">
           <p class="eyebrow">Reservation</p>
-          <h2 class="contact-title">예약 후 내원하시면 보다 빠르고 편안하게 진료 받으실 수 있습니다.</h2>
+          <h2 class="contact-title">예약 후 내원하시면<br />보다 빠르고 편안하게<br class="mobile-br" /> 진료 받으실 수 있습니다.</h2>
           <div class="contact-grid">
             <div class="contact-text-area">
               <div class="reservation-details-grid">
@@ -572,16 +572,25 @@
                     </tbody>
                   </table>
                   <ul class="time-list">
-                    <li>기본 치료에 40~50분 정도 소요되므로, 1시간 단위로 예약을 받고 있습니다.</li>
-                    <li>평일 18:00 이후 야간 진료 시간에는 예약 없이 내원하시는 순서대로 진료합니다.</li>
+                    <li>기본 치료에 40~50분 정도 소요되므로,<br />1시간 단위로 예약을 받고 있습니다.</li>
+                    <li>평일 18:00 이후 야간 진료 시간에는<br />예약 없이 내원하시는 순서대로 진료합니다.</li>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="contact-actions">
-              <a class="button primary" href="tel:061-272-1075" target="_blank" rel="noreferrer">전화 문의</a>
-              <a class="button light" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer">네이버 예약</a>
-              <a class="button light" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer">카톡 문의</a>
+              <a class="button phone" href="tel:061-272-1075" target="_blank" rel="noreferrer">
+                <img class="button-icon" src="assets/floating-phone.png" alt="" />
+                <span>전화 문의</span>
+              </a>
+              <a class="button naver" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer">
+                <img class="button-icon" src="assets/floating-naver.png" alt="" />
+                <span>네이버 예약</span>
+              </a>
+              <a class="button kakao" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer">
+                <img class="button-icon" src="assets/floating-kakao.png" alt="" />
+                <span>카톡 문의</span>
+              </a>
             </div>
           </div>
         </div>
