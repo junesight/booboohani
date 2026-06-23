@@ -1576,13 +1576,13 @@ body.modal-open {
 .location-details {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 24px;
 }
 
 .location-group {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .group-header {
@@ -1607,12 +1607,12 @@ body.modal-open {
 
 .location-list {
   display: grid;
-  gap: 8px;
+  gap: 6px;
   margin: 0;
   padding-left: 18px;
   color: var(--muted);
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.45;
 }
 
 .location-list li::marker {
@@ -1636,14 +1636,14 @@ body.modal-open {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.35;
   color: var(--muted);
 }
 
 .transit-table th,
 .transit-table td {
   border: 1px solid var(--line);
-  padding: 8px 10px;
+  padding: 6px 8px;
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
