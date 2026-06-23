@@ -1693,8 +1693,21 @@ body.modal-open {
   min-height: 48px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
+}
+.map-actions .button .btn-content {
+  display: inline-flex;
+  align-items: center;
+  width: 175px;
+  justify-content: flex-start;
+}
+.map-actions .button .button-icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  object-fit: contain;
+  display: block;
 }
 
 .map-actions .button.naver {
