@@ -465,24 +465,33 @@
                 </div>
               </div>
             </div>
-            <div class="location-actions">
-              <a class="button light" href="https://naver.me/G9r5Gz2l" target="_blank" rel="noreferrer">네이버 지도 길찾기</a>
-            </div>
           </div>
           <!-- 기존 네이버 정적 지도 (필요 시 주석 해제하여 사용)
           <a class="map-embed" href="https://naver.me/G9r5Gz2l" target="_blank" rel="noreferrer" aria-label="네이버 지도로 이동">
             <img src="assets/naver-map-preview.png" alt="부부한의원 위치 지도" />
           </a>
           -->
-          <div class="map-embed">
-            <div id="daumRoughmapContainer1557364853173" class="root_daum_roughmap root_daum_roughmap_landing" style="width: 100%; height: 100%;"></div>
-            <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-            <script charset="UTF-8">
-              new daum.roughmap.Lander({
-                "timestamp" : "1557364853173",
-                "key" : "tf27"
-              }).render();
-            </script>
+          <div class="map-area">
+            <div class="map-embed">
+              <div id="daumRoughmapContainer1557364853173" class="root_daum_roughmap root_daum_roughmap_landing" style="width: 100%; height: 100%;"></div>
+              <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+              <script charset="UTF-8">
+                new daum.roughmap.Lander({
+                  "timestamp" : "1557364853173",
+                  "key" : "tf27"
+                }).render();
+              </script>
+            </div>
+            <div class="map-actions">
+              <div class="naver-actions">
+                <a class="button light" href="https://map.naver.com/p/entry/place/32188173" target="_blank" rel="noreferrer">네이버 지도 보기</a>
+                <a class="button light" href="https://naver.me/G9r5Gz2l" target="_blank" rel="noreferrer">네이버 지도 길찾기</a>
+              </div>
+              <div class="kakao-actions">
+                <a class="button light" href="https://map.kakao.com/link/map/해나무부부한의원,34.805214,126.438515" target="_blank" rel="noreferrer">카카오 지도 보기</a>
+                <a class="button light" href="https://map.kakao.com/link/to/해나무부부한의원,34.805214,126.438515" target="_blank" rel="noreferrer">카카오 지도 길찾기</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
