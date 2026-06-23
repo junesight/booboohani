@@ -501,12 +501,16 @@ h3 {
   box-shadow: 0 12px 36px rgba(60, 50, 34, 0.06);
   transition:
     transform 180ms ease,
-    border-color 180ms ease;
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .care-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(22, 61, 50, 0.42);
+  transform: translateY(-6px);
+  background: #ffffff;
+  border-color: rgba(22, 61, 50, 0.32);
+  box-shadow: 0 16px 40px rgba(22, 61, 50, 0.08);
 }
 
 .care-card span {
@@ -1385,18 +1389,21 @@ body.modal-open {
   align-items: center;
   justify-content: start;
   padding: 32px 24px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  box-shadow: 0 12px 36px rgba(60, 50, 34, 0.04);
+  background: rgba(22, 61, 50, 0.06);
+  border: 1px solid rgba(22, 61, 50, 0.1);
+  box-shadow: 0 8px 24px rgba(60, 50, 34, 0.04);
   transition:
     transform 180ms ease,
+    background-color 180ms ease,
     border-color 180ms ease;
   text-align: center;
 }
 
 .method-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(22, 61, 50, 0.42);
+  transform: translateY(-6px);
+  background: #ffffff;
+  border-color: rgba(22, 61, 50, 0.32);
+  box-shadow: 0 16px 40px rgba(22, 61, 50, 0.08);
 }
 
 .method-num {
@@ -1410,17 +1417,31 @@ body.modal-open {
 
 .method-card h3 {
   margin: 0 0 14px;
-  font-size: 20px;
+  font-size: 25px;
   color: var(--green);
-  font-weight: 700;
+  font-weight: 800;
 }
 
-.method-card p {
+.method-card ul {
+  display: grid;
+  gap: 8px;
   margin: 0;
+  padding-left: 18px;
+  color: #1a221f;
   font-size: 14.5px;
-  color: var(--muted);
-  line-height: 1.6;
-  word-break: keep-all;
+  font-weight: 500;
+  line-height: 1.55;
+  text-align: left;
+  width: 100%;
+}
+
+.method-card li::marker {
+  color: #cda83e;
+}
+
+.method-card strong {
+  color: #0b1f19;
+  font-weight: 800;
 }
 
 .method-section {
@@ -1590,7 +1611,7 @@ body.modal-open {
   display: grid;
   gap: 6px;
   margin: 0;
-  padding-left: 18px;
+  padding-left: 32px;
   color: var(--ink);
   font-size: 16px;
   line-height: 1.5;
@@ -2308,7 +2329,7 @@ footer p {
     word-break: keep-all;
   }
 
-  .method-card p {
+  .method-card ul {
     display: none;
   }
 
@@ -2404,6 +2425,10 @@ footer p {
       margin-bottom: 8px;
       table-layout: fixed;
       max-width: none;
+    }
+
+    .reservation-table td {
+      font-size: 13.5px;
     }
 
     .reservation-table th,
@@ -2539,6 +2564,15 @@ footer p {
     display: none;
   }
 
+  #location .section-heading {
+    position: static;
+  }
+
+  #location .section-heading .eyebrow {
+    position: static;
+    margin-bottom: 4px;
+  }
+
   .care-list,
   .doctor-board {
     grid-template-columns: 1fr;
@@ -2608,7 +2642,7 @@ footer p {
   }
 
   .gallery-stage img {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2;
   }
 
   .gallery-stage figcaption {
