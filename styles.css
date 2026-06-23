@@ -2659,7 +2659,13 @@ footer p {
   .yakchim-grid {
     grid-template-columns: 1fr;
     gap: 14px;
+    justify-items: center;
     zoom: 0.85;
+  }
+
+  .yakchim-grid .yakchim-item {
+    width: 388px;
+    max-width: none;
   }
 
   .yakchim-grid .yakchim-item:nth-child(1) {
