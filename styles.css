@@ -1540,19 +1540,6 @@ body.modal-open {
   min-width: 0;
 }
 
-/* Centered Section Heading */
-.section-heading.centered {
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  border-bottom: 0;
-  padding-bottom: 0;
-  margin-bottom: 48px;
-}
-
-.section-heading.centered h2 {
-  margin-top: 4px;
-}
 
 /* Location Section Styling */
 .location-content {
