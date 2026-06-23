@@ -1494,50 +1494,222 @@ body.modal-open {
 }
 
 .contact {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   margin-top: clamp(72px, 10vw, 120px);
   margin-bottom: 70px;
-  padding: clamp(48px, 6vw, 68px) clamp(24px, 5vw, 64px);
+  padding: clamp(60px, 8vw, 92px);
   background: #d8c8a9;
   border: 1px solid rgba(22, 61, 50, 0.16);
 }
 
 .contact-container {
-  max-width: 800px;
+  max-width: 920px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.contact h2 {
-  max-width: 740px;
+.contact .eyebrow {
+  position: absolute;
+  top: clamp(28px, 4vw, 48px);
+  left: clamp(28px, 5vw, 64px);
+  margin: 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 2.7fr 1fr;
+  gap: 48px;
+  width: 100%;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.contact-text-area {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  left: -72px;
+}
+
+.contact-title {
+  width: 100%;
   font-size: clamp(22px, 2.5vw, 30px);
   line-height: 1.42;
-  margin-bottom: 32px;
+  margin: 0 auto 36px;
+  text-align: center;
+  word-break: keep-all;
 }
 
-.contact h2 span {
-  display: block;
+/* 예약 가능 시간 및 진료 시간 상세 다단화 스타일 */
+.reservation-details-grid {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 40px;
+  width: 100%;
+  margin-top: 28px;
+  margin-left: 24px;
 }
 
-.contact h2 em {
-  font-style: normal;
+.clinic-time-info,
+.reservation-time-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.time-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.time-icon {
+  width: 1.35em;
+  height: 1.35em;
+  object-fit: contain;
+}
+
+.time-header h3 {
+  font-size: 19px;
+  color: var(--green);
+  margin: 0;
+  font-family: "Noto Serif KR", serif;
+  font-weight: 700;
+}
+
+.time-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.time-list li::marker {
+  color: var(--gold);
+}
+
+.time-list li small {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.time-list li .sub-text {
+  font-size: 13.5px;
+  color: var(--muted);
+  display: inline-block;
+  margin-top: 2px;
+}
+
+/* 예약 가능 시간 표 스타일 */
+.reservation-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px rgba(22, 61, 50, 0.12);
+  table-layout: fixed;
+}
+
+.reservation-table th,
+.reservation-table td {
+  border: 1px solid rgba(22, 61, 50, 0.12);
+  padding: 8px 12px;
+  vertical-align: middle;
+}
+
+.reservation-table th {
+  background: rgba(22, 61, 50, 0.06);
+  color: var(--green);
+  font-weight: 700;
+  font-family: "Noto Serif KR", serif;
+  text-align: center;
+  width: 110px !important;
+  white-space: nowrap !important;
+}
+
+.reservation-table .col-division {
+  width: 105px !important;
+}
+
+.reservation-table td {
+  text-align: left;
+  padding-left: 14px;
+  font-weight: 500;
+}
+
+/* 진료 시간 카드 스타일 */
+.clinic-time-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.clinic-time-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(22, 61, 50, 0.12);
+  border-radius: 12px;
+  padding: 8px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  text-align: center;
+  line-height: 1.25;
+}
+
+.clinic-time-card .highlight-title {
+  font-size: 17.5px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.clinic-time-card .highlight-time {
+  font-size: 19.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.clinic-time-card .sub-text {
+  font-size: 13.5px;
+  color: var(--muted);
 }
 
 .contact .contact-actions {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   gap: 12px;
+  width: 100%;
+  max-width: 220px;
+  margin-left: auto;
 }
 
 .contact .contact-actions .button {
-  width: auto;
+  width: 100%;
   min-width: 0;
+  min-height: 50px;
+  font-size: 16px;
 }
 
 
@@ -1741,7 +1913,7 @@ body.modal-open {
 
 .map-embed {
   display: block;
-  height: 450px;
+  height: 500px;
   overflow: hidden;
   background: rgba(255, 250, 240, 0.72);
   border: 1px solid rgba(22, 61, 50, 0.16);
@@ -2092,6 +2264,124 @@ footer p {
   .method-card p {
     display: none;
   }
+
+  /* Contact / Reservation 모바일 스타일 리셋 */
+  .contact {
+    padding: clamp(48px, 6vw, 68px) clamp(24px, 5vw, 64px);
+  }
+
+  .contact-container {
+    align-items: center;
+  }
+
+  .contact .eyebrow {
+    position: static;
+    margin-bottom: 16px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .contact-text-area {
+    left: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .reservation-details-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-left: 0;
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .clinic-time-info,
+  .reservation-time-info {
+    text-align: left;
+    align-self: center;
+    width: auto;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .time-header h3 {
+    font-size: 16px;
+  }
+
+  .time-list {
+    font-size: 14px;
+  }
+
+  .time-list li small {
+    font-size: 12.5px;
+  }
+
+  .time-list li .sub-text {
+    font-size: 12px;
+  }
+
+    .clinic-time-cards {
+      gap: 10px;
+    }
+
+    .clinic-time-card {
+      padding: 6px 12px;
+      border-radius: 10px;
+      gap: 1px;
+      line-height: 1.25;
+    }
+
+    .clinic-time-card .highlight-title {
+      font-size: 15px;
+    }
+
+    .clinic-time-card .highlight-time {
+      font-size: 16.5px;
+    }
+
+    .clinic-time-card .sub-text {
+      font-size: 12.5px;
+    }
+
+    .reservation-table {
+      font-size: 13.5px;
+      margin-bottom: 12px;
+      table-layout: fixed;
+    }
+
+    .reservation-table th,
+    .reservation-table td {
+      padding: 6px 10px;
+    }
+
+    .reservation-table th {
+      white-space: nowrap !important;
+    }
+
+    .reservation-table .col-division {
+      width: 90px !important;
+    }
+
+  .contact-title {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .contact .contact-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .contact .contact-actions .button {
+    width: auto;
+  }
 }
 
 @media (max-width: 640px) {
@@ -2323,6 +2613,10 @@ footer p {
   .contact .contact-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact .contact-actions .button {
+    width: 100%;
   }
 
   .contact .contact-actions .button:last-child {

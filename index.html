@@ -515,14 +515,74 @@
       <section class="contact" id="contact">
         <div class="contact-container">
           <p class="eyebrow">Reservation</p>
-          <h2>
-            <span>예약 후 내원하시면</span>
-            <span class="mobile-break">보다 편안하게 <em>진료 받으실 수 있습니다.</em></span>
-          </h2>
-          <div class="contact-actions">
-            <a class="button primary" href="tel:061-272-1075" target="_blank" rel="noreferrer">전화 문의</a>
-            <a class="button light" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer">네이버 예약</a>
-            <a class="button light" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer">카톡 문의</a>
+          <h2 class="contact-title">예약 후 내원하시면 보다 빠르고 편안하게 진료 받으실 수 있습니다.</h2>
+          <div class="contact-grid">
+            <div class="contact-text-area">
+              <div class="reservation-details-grid">
+                <!-- 좌측 단: 진료 시간 -->
+                <div class="clinic-time-info">
+                  <div class="time-header">
+                    <img src="assets/icon-clock.png" alt="" class="time-icon" />
+                    <h3>진료 시간</h3>
+                  </div>
+                  <div class="clinic-time-cards">
+                    <div class="clinic-time-card">
+                      <strong class="highlight-title">평일 매일 야간진료</strong>
+                      <strong class="highlight-time">09:00 - 20:00</strong>
+                      <span class="sub-text">(점심시간 12:20 - 14:00)</span>
+                    </div>
+                    <div class="clinic-time-card">
+                      <strong class="highlight-title">토·일·공휴일 진료</strong>
+                      <strong class="highlight-time">08:30 - 14:00</strong>
+                      <span class="sub-text">(점심시간 없이 진료)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 우측 단: 예약 가능 시간 -->
+                <div class="reservation-time-info">
+                  <div class="time-header">
+                    <img src="assets/icon-calendar.png" alt="" class="time-icon" />
+                    <h3>예약 가능 시간</h3>
+                  </div>
+                  <table class="reservation-table">
+                    <colgroup>
+                      <col class="col-division" style="width: 105px;" />
+                      <col class="col-time" />
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th>구분</th>
+                        <th>예약 가능 시간</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>평일 오전</td>
+                        <td>9:00 / 10:00 / 11:00</td>
+                      </tr>
+                      <tr>
+                        <td>평일 오후</td>
+                        <td>14:00 / 15:00 / 16:00 / 17:00</td>
+                      </tr>
+                      <tr>
+                        <td>토·일·공휴일</td>
+                        <td>8:30 / 9:30 / 10:30 / 11:30 / 12:30</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <ul class="time-list">
+                    <li>기본 치료에 40~50분 정도 소요되므로, 1시간 단위로 예약을 받고 있습니다.</li>
+                    <li>평일 18:00 이후 야간 진료 시간에는 예약 없이 내원하시는 순서대로 진료합니다.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="contact-actions">
+              <a class="button primary" href="tel:061-272-1075" target="_blank" rel="noreferrer">전화 문의</a>
+              <a class="button light" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer">네이버 예약</a>
+              <a class="button light" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer">카톡 문의</a>
+            </div>
           </div>
         </div>
       </section>
