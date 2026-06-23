@@ -1661,7 +1661,7 @@ body.modal-open {
 
 .map-embed {
   display: block;
-  height: 380px;
+  height: 540px;
   overflow: hidden;
   background: rgba(255, 250, 240, 0.72);
   border: 1px solid rgba(22, 61, 50, 0.16);
