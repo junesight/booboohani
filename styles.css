@@ -1542,6 +1542,13 @@ body.modal-open {
 
 
 /* Location Section Styling */
+#location .section-heading {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 18px;
+}
 .location-content {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
