@@ -1718,6 +1718,14 @@ body.modal-open {
   border-color: #e2c13a;
 }
 
+.map-actions .button .button-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  object-fit: contain;
+  display: block;
+}
+
 .map-embed {
   display: block;
   height: 540px;
