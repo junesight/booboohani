@@ -867,12 +867,19 @@ h3 {
   background: var(--gold);
 }
 
-.yakchim-item p {
-  margin: 0;
-  font-size: 14px;
+.yakchim-item ul {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0 0;
+  padding-left: 20px;
   color: var(--muted);
-  line-height: 1.62;
-  word-break: keep-all;
+  font-size: 15px;
+  line-height: 1.72;
+  text-align: left;
+}
+
+.yakchim-item li::marker {
+  color: #cda83e;
 }
 
 .yakchim-tags {
@@ -983,7 +990,7 @@ h3 {
 }
 
 .modal-care-body li::marker {
-  color: var(--gold);
+  color: #cda83e;
 }
 
 .modal-care-body strong {
