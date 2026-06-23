@@ -808,7 +808,7 @@ h3 {
 .yakchim-modal-panel {
   position: relative;
   z-index: 1;
-  width: min(840px, 100%);
+  width: min(920px, 100%);
   max-height: calc(100svh - 56px);
   overflow-y: auto;
   background: var(--paper);
@@ -2497,7 +2497,7 @@ footer p {
 
   .yakchim-modal-panel {
     padding: 36px 20px;
-    width: min(480px, 100%);
+    width: min(520px, 100%);
   }
 
   /* Contact / Reservation 모바일 스타일 리셋 */
