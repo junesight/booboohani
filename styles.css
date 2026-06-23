@@ -898,11 +898,23 @@ h3 {
   grid-template-columns: repeat(3, auto);
 }
 
+.yakchim-tags.grid-4 {
+  grid-template-columns: repeat(4, auto);
+}
+
+.yakchim-tags.tags-jahager {
+  column-gap: 40px;
+}
+
 .yakchim-tags span {
   font-size: 13px;
   color: var(--gold);
   font-weight: 700;
   white-space: nowrap;
+}
+
+.yakchim-tags span.span-3 {
+  grid-column: span 3;
 }
 
 .yakchim-tags span.span-all {
