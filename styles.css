@@ -1033,18 +1033,41 @@ h3 {
   grid-column: 1 / -1;
 }
 
-.hanyak-sub-grid {
+.hanyak-process {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  width: 100%;
+  gap: 24px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  margin-top: 8px;
 }
 
-.hanyak-sub-item {
+.process-item {
   display: flex;
-  flex-direction: column;
+  gap: 16px;
   align-items: flex-start;
   text-align: left;
+}
+
+.process-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.process-item strong {
+  display: block;
+  font-size: 15px;
+  color: var(--green);
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.process-item p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.5;
+  word-break: keep-all;
 }
 
 
@@ -2633,9 +2656,9 @@ footer p {
     gap: 16px;
   }
 
-  .hanyak-sub-grid {
+  .hanyak-process {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 16px;
   }
 
 
