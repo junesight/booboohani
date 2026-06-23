@@ -1693,10 +1693,14 @@ body.modal-open {
   min-height: 48px;
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
   gap: 8px;
   width: 100%;
   box-sizing: border-box;
+}
+
+/* 위쪽 "지도 보기" 버튼만 아이콘을 아래쪽 "길찾기"와 수직 정렬 */
+.map-actions .button:nth-child(-n+2) .btn-content {
+  transform: translateX(-0.5em);
 }
 
 .map-actions .button .btn-content {
