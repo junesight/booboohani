@@ -25,6 +25,9 @@ let activeDoctorCard = null;
 const yakchimModal = document.querySelector("#yakchim-modal");
 const yakchimCloseButtons = document.querySelectorAll("[data-yakchim-close]");
 
+const hanyakModal = document.querySelector("#hanyak-modal");
+const hanyakCloseButtons = document.querySelectorAll("[data-hanyak-close]");
+
 const galleryTabs = document.querySelectorAll(".gallery-tabs button");
 const galleryStage = document.querySelector(".gallery-stage");
 const galleryImage = document.querySelector("#gallery-main-image");
@@ -445,7 +448,7 @@ function closeScheduleModal() {
   if (!scheduleModal) return;
 
   scheduleModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -497,7 +500,7 @@ function closeCareModal() {
   if (!careModal) return;
   activeCareCard = null;
   careModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -520,7 +523,30 @@ function openYakchimModal(card) {
 function closeYakchimModal() {
   if (!yakchimModal) return;
   yakchimModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (hanyakModal && !hanyakModal.hidden);
+  if (!isAnyModalOpen) {
+    document.body.classList.remove("modal-open");
+  }
+
+  if (lastFocusedCard) {
+    lastFocusedCard.focus();
+    lastFocusedCard = null;
+  }
+}
+
+function openHanyakModal(card) {
+  lastFocusedCard = card;
+  if (hanyakModal) {
+    hanyakModal.hidden = false;
+    document.body.classList.add("modal-open");
+    hanyakModal.querySelector(".modal-close")?.focus();
+  }
+}
+
+function closeHanyakModal() {
+  if (!hanyakModal) return;
+  hanyakModal.hidden = true;
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -634,7 +660,7 @@ function openDoctorModal(card) {
 function closeDoctorModal() {
   modal.hidden = true;
   activeDoctorCard = null;
-  const isAnyModalOpen = (scheduleModal && !scheduleModal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden);
+  const isAnyModalOpen = (scheduleModal && !scheduleModal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -884,6 +910,8 @@ methodCards.forEach((card) => {
   card.addEventListener("click", () => {
     if (card.id === "yakchim-card") {
       openYakchimModal(card);
+    } else if (card.id === "hanyak-card") {
+      openHanyakModal(card);
     } else {
       openCareModal(card);
     }
@@ -896,6 +924,10 @@ careCloseButtons.forEach((button) => {
 
 yakchimCloseButtons.forEach((button) => {
   button.addEventListener("click", closeYakchimModal);
+});
+
+hanyakCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeHanyakModal);
 });
 
 carePrevButton?.addEventListener("click", () => {
@@ -1011,5 +1043,13 @@ document.addEventListener("keydown", (event) => {
 
   if (event.key === "Escape" && yakchimModal && !yakchimModal.hidden) {
     closeYakchimModal();
+  }
+
+  if (event.key === "Escape" && hanyakModal && !hanyakModal.hidden) {
+    closeHanyakModal();
+  }
+
+  if (event.key === "Escape" && careModal && !careModal.hidden) {
+    closeCareModal();
   }
 });
