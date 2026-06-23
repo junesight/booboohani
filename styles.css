@@ -2405,7 +2405,15 @@ footer p {
   color: #392d00;
 }
 
+.mobile-only {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .mobile-only {
+    display: inline;
+  }
+
   nav {
     display: none;
   }
