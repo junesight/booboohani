@@ -1693,6 +1693,7 @@ body.modal-open {
   min-height: 48px;
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 8px;
   width: 100%;
   box-sizing: border-box;
