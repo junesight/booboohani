@@ -1696,6 +1696,28 @@ body.modal-open {
   width: 100%;
 }
 
+.map-actions .button.naver {
+  background: #03c75a;
+  color: #ffffff;
+  border: 1px solid #03c75a;
+}
+
+.map-actions .button.naver:hover {
+  background: #02b34f;
+  border-color: #02b34f;
+}
+
+.map-actions .button.kakao {
+  background: #f6d54a;
+  color: #392d00;
+  border: 1px solid #f6d54a;
+}
+
+.map-actions .button.kakao:hover {
+  background: #e2c13a;
+  border-color: #e2c13a;
+}
+
 .map-embed {
   display: block;
   height: 540px;
