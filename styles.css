@@ -877,15 +877,22 @@ h3 {
 
 .yakchim-tags {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 12px;
+  flex-direction: column;
+  gap: 8px;
   margin-top: 16px;
+}
+
+.yakchim-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
 }
 
 .yakchim-tags span {
   font-size: 13px;
   color: var(--gold);
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .modal-content-small {
