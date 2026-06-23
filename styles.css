@@ -1033,43 +1033,7 @@ h3 {
   grid-column: 1 / -1;
 }
 
-.hanyak-process-inside {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  width: 100%;
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
-  margin-top: 4px;
-}
 
-.process-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.process-icon {
-  font-size: 24px;
-  line-height: 1;
-}
-
-.process-item strong {
-  display: block;
-  font-size: 15px;
-  color: var(--green);
-  margin-bottom: 4px;
-  font-weight: 700;
-}
-
-.process-item p {
-  margin: 0;
-  font-size: 13.5px;
-  color: var(--muted);
-  line-height: 1.5;
-  word-break: keep-all;
-}
 
 .modal-content-small {
   position: relative;
@@ -2655,10 +2619,7 @@ footer p {
     gap: 16px;
   }
 
-  .hanyak-process-inside {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+
 
   .hanyak-modal-panel {
     padding: 36px 20px;
