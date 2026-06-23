@@ -1719,8 +1719,8 @@ body.modal-open {
 }
 
 .map-actions .button .button-icon {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   margin-right: 8px;
   object-fit: contain;
   display: block;
