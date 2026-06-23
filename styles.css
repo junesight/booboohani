@@ -1559,35 +1559,70 @@ body.modal-open {
 .location-details {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 36px;
 }
 
-.info-group h3 {
-  font-size: 19px;
+.location-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.location-icon {
+  width: 1.1em;
+  height: 1.1em;
+  object-fit: contain;
+}
+
+.group-header h3 {
+  font-size: 18px;
   color: var(--green);
-  margin: 0 0 8px;
+  margin: 0;
   font-family: "Noto Serif KR", serif;
   font-weight: 700;
 }
 
-.info-group p {
+.location-list {
+  display: grid;
+  gap: 8px;
   margin: 0;
-  color: #4d524a;
-  font-size: 16.5px;
-  line-height: 1.5;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-.info-group p span {
+.location-list li::marker {
+  color: var(--gold);
+}
+
+.location-list li .sub-text {
   color: var(--muted);
-  font-size: 14px;
-  display: inline-block;
+  font-size: 13.5px;
+  display: block;
   margin-top: 2px;
 }
 
-.info-group p .sub-text {
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: 4px;
+.bus-list li strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.bus-desc {
+  display: block;
+  color: var(--green-2);
+  font-weight: 600;
+  font-size: 13.5px;
+  margin-bottom: 8px;
 }
 
 .location-actions {
