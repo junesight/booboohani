@@ -231,12 +231,13 @@
               <li>굳어진 <strong>근육의 긴장을 완화</strong>하고, <strong>통증 부위의 회복</strong>을 돕는 치료입니다.</li>
             </ul>
           </article>
-          <article class="method-card has-detail">
+          <article class="method-card has-detail" id="yakchim-card">
             <span class="method-num">02</span>
             <h3>약침 치료</h3>
             <ul>
               <li><strong>한약재에서 추출·정제한 약침액</strong>을 <strong>경혈이나 통증 부위에 주입</strong>하는 치료입니다.</li>
-              <li>염증과 통증이 반복되는 부위를 직접적으로 살펴, <strong>통증 완화</strong>와 <strong>기능 회복</strong>을 돕습니다.</li>
+              <li>염증과 통증이 반복되는 부위를 직접 치료하여 <strong>통증 완화</strong>와 <strong>기능 회복</strong>을 돕습니다.</li>
+              <li>통증 양상, 치료 부위, 환자 상태에 따라 <strong>목적에 맞는 약침</strong>을 선택하여 치료합니다.</li>
             </ul>
             <button class="method-detail-btn" type="button">☛ 자세히보기</button>
           </article>
@@ -706,6 +707,44 @@
         </div>
         <div class="schedule-overview" id="schedule-overview" aria-live="polite">
           <span>스케쥴을 불러오는 중입니다.</span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="yakchim-modal"
+      id="yakchim-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="yakchim-modal-title"
+      hidden
+    >
+      <button class="modal-backdrop" type="button" data-yakchim-close aria-label="팝업 닫기"></button>
+      <div class="yakchim-modal-panel">
+        <button class="modal-close" type="button" data-yakchim-close aria-label="팝업 닫기">
+          ×
+        </button>
+        <div class="yakchim-modal-head">
+          <p class="eyebrow">Acupuncture Therapy</p>
+          <h2 id="yakchim-modal-title">약침 치료 종류</h2>
+        </div>
+        <div class="yakchim-grid">
+          <div class="yakchim-item">
+            <h3>봉약침</h3>
+            <p>정제된 벌독을 추출하여 통증 및 염증 부위에 자극을 주는 치료로, 강력한 소염 작용을 통해 관절염, 디스크, 인대 손상의 자가 면역 요법에 쓰입니다.</p>
+          </div>
+          <div class="yakchim-item">
+            <h3>어혈약침</h3>
+            <p>신선한 한약재에서 어혈(뭉친 피) 제거에 특화된 성분을 추출하여, 교통사고 후유증, 급성 염증 및 혈액 순환성 근육 통증을 빠르게 진정시킵니다.</p>
+          </div>
+          <div class="yakchim-item">
+            <h3>황련해독 약침</h3>
+            <p>황련, 황금, 황백 등의 차가운 성질의 약재를 정제하여 열독을 식히고 강력하게 소염 작용을 하여 급성 통증, 대상포진, 두통 및 피부 발적을 개선합니다.</p>
+          </div>
+          <div class="yakchim-item">
+            <h3>자하거 약침</h3>
+            <p>청정 자하거(인태반) 성분을 건조·추출하여 조직의 재생을 돕고, 기력을 충전시키며, 만성 인대 약화나 갱년기 장애 개선에 탁월한 효과를 보입니다.</p>
+          </div>
         </div>
       </div>
     </div>

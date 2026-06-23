@@ -22,6 +22,9 @@ const doctorPrevButton = document.querySelector(".doctor-prev");
 const doctorNextButton = document.querySelector(".doctor-next");
 let activeDoctorCard = null;
 
+const yakchimModal = document.querySelector("#yakchim-modal");
+const yakchimCloseButtons = document.querySelectorAll("[data-yakchim-close]");
+
 const galleryTabs = document.querySelectorAll(".gallery-tabs button");
 const galleryStage = document.querySelector(".gallery-stage");
 const galleryImage = document.querySelector("#gallery-main-image");
@@ -442,7 +445,7 @@ function closeScheduleModal() {
   if (!scheduleModal) return;
 
   scheduleModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -494,7 +497,30 @@ function closeCareModal() {
   if (!careModal) return;
   activeCareCard = null;
   careModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden);
+  if (!isAnyModalOpen) {
+    document.body.classList.remove("modal-open");
+  }
+
+  if (lastFocusedCard) {
+    lastFocusedCard.focus();
+    lastFocusedCard = null;
+  }
+}
+
+function openYakchimModal(card) {
+  lastFocusedCard = card;
+  if (yakchimModal) {
+    yakchimModal.hidden = false;
+    document.body.classList.add("modal-open");
+    yakchimModal.querySelector(".modal-close")?.focus();
+  }
+}
+
+function closeYakchimModal() {
+  if (!yakchimModal) return;
+  yakchimModal.hidden = true;
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -608,7 +634,7 @@ function openDoctorModal(card) {
 function closeDoctorModal() {
   modal.hidden = true;
   activeDoctorCard = null;
-  const isAnyModalOpen = (scheduleModal && !scheduleModal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden);
+  const isAnyModalOpen = (scheduleModal && !scheduleModal.hidden) || (careModal && !careModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -856,12 +882,20 @@ careCards.forEach((card) => {
 const methodCards = document.querySelectorAll(".method-card");
 methodCards.forEach((card) => {
   card.addEventListener("click", () => {
-    openCareModal(card);
+    if (card.id === "yakchim-card") {
+      openYakchimModal(card);
+    } else {
+      openCareModal(card);
+    }
   });
 });
 
 careCloseButtons.forEach((button) => {
   button.addEventListener("click", closeCareModal);
+});
+
+yakchimCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeYakchimModal);
 });
 
 carePrevButton?.addEventListener("click", () => {
@@ -973,5 +1007,9 @@ document.addEventListener("keydown", (event) => {
 
   if (event.key === "Escape" && scheduleModal && !scheduleModal.hidden) {
     closeScheduleModal();
+  }
+
+  if (event.key === "Escape" && yakchimModal && !yakchimModal.hidden) {
+    closeYakchimModal();
   }
 });
