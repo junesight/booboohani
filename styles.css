@@ -2405,13 +2405,20 @@ footer p {
   color: #392d00;
 }
 
-.mobile-only {
+.mobile-only,
+.mobile-break {
   display: none;
 }
 
 @media (max-width: 768px) {
   .mobile-only {
     display: inline;
+  }
+
+  .mobile-break {
+    display: block;
+    width: 100%;
+    height: 0;
   }
 
   nav {
