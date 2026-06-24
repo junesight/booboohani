@@ -3673,7 +3673,7 @@ footer p {
 
   /* 주요진료분야 모바일 팝업 크기 일치 */
   #care-modal .modal-content-small {
-    height: 380px;
+    height: 300px;
     padding: 36px 32px 30px;
     justify-content: flex-start;
   }
