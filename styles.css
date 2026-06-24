@@ -3883,7 +3883,7 @@ footer p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px; /* 14px에서 13px로 세부 조율 */
+  font-size: 14px; /* 13px에서 14px로 가독성 강화 미세조정 */
   font-weight: 800;
 }
 
