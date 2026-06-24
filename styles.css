@@ -3865,9 +3865,9 @@ footer p {
 .contact-info-buttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  max-width: 440px; /* 520px에서 440px로 더욱 콤팩트하게 줄임 */
-  width: min(440px, calc(100% - 40px));
+  gap: 12px;
+  max-width: 520px; /* PC 버전은 520px 상태로 롤백 */
+  width: min(520px, calc(100% - 40px));
   margin: 28px auto 70px; /* reservation 갈색 박스 아래에 단독 정렬 여백 제공 */
 }
 
