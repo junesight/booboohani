@@ -3873,23 +3873,23 @@ footer p {
 
 .contact-info-buttons .button.info-btn {
   background: transparent;
-  border: 1.5px solid var(--gold);
-  color: var(--gold);
+  border: 1px solid var(--green); /* 보더 두께 1px로 슬림하게, 주 색상은 그린으로 */
+  color: var(--green); /* 글자색을 짙은 녹색으로 변경 */
   box-shadow: none;
   transition: all 0.25s ease;
   cursor: pointer;
   border-radius: 999px;
-  min-height: 46px; /* 52px에서 46px로 아기자기하게 조정 */
+  min-height: 40px; /* 46px에서 40px로 콤팩트하게 더 축소 */
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px; /* 16px에서 14px로 비율 축소 */
+  font-size: 13px; /* 14px에서 13px로 세부 조율 */
   font-weight: 800;
 }
 
 .contact-info-buttons .button.info-btn:hover {
-  background: var(--gold);
-  color: var(--paper); /* 호버 시 색상 반전 */
+  background: var(--green); /* 호버 시 그린 배경 반전 */
+  color: var(--paper);
 }
 
 @media (max-width: 768px) {
