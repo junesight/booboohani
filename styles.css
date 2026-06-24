@@ -55,7 +55,7 @@ a {
 #gallery,
 #location,
 #contact {
-  scroll-margin-top: 80px;
+  scroll-margin-top: -10px;
 }
 
 .admin-trigger {
@@ -434,8 +434,7 @@ h3 {
 }
 
 .section {
-  padding-top: clamp(20px, 3vw, 36px);
-  padding-bottom: clamp(72px, 10vw, 120px);
+  padding: clamp(72px, 10vw, 120px) 0;
 }
 
 .section-grid {
