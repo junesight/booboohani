@@ -2607,8 +2607,8 @@ footer p {
 .footer-copy {
   border-top: 1px solid rgba(255, 250, 240, 0.14);
   padding-top: 18px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 0.8fr; /* 좌측 저작권, 중앙 버튼, 우측 플로팅 버튼 회피용 빈 열 */
   align-items: center;
 }
 
