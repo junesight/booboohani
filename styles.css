@@ -3865,9 +3865,9 @@ footer p {
 .contact-info-buttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  max-width: 640px; /* 1040px에서 640px로 좁혀 버튼 좌우폭을 슬림하게 변경 */
-  width: min(640px, calc(100% - 40px));
+  gap: 12px;
+  max-width: 520px; /* 640px에서 520px로 줄여 버튼 좌우폭을 더욱 콤팩트하게 변경 */
+  width: min(520px, calc(100% - 40px));
   margin: 28px auto 70px; /* reservation 갈색 박스 아래에 단독 정렬 여백 제공 */
 }
 
@@ -3897,7 +3897,7 @@ footer p {
     grid-template-columns: repeat(3, 1fr);
     gap: 6px;
     margin: 20px auto 48px;
-    width: calc(100% - 20px);
+    width: calc(100% - 40px); /* 여백을 넓혀서 모바일에서도 버튼 좌우폭을 조금 더 감소 */
   }
   .contact-info-buttons .button.info-btn {
     font-size: 12px;
