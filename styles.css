@@ -2607,9 +2607,10 @@ footer p {
 .footer-copy {
   border-top: 1px solid rgba(255, 250, 240, 0.14);
   padding-top: 18px;
-  display: grid;
-  grid-template-columns: 2fr 1.2fr 0.8fr; /* 좌측 저작권, 중앙 버튼, 우측 플로팅 버튼 회피용 빈 열 */
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding-right: 220px; /* 우측 플로팅 버튼 영역을 회피하며 적절한 우측 중간 지점으로 조율 */
 }
 
 #nonpay-modal-trigger {
@@ -3734,6 +3735,7 @@ footer p {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    padding-right: 0;
   }
 
   /* 주요진료분야 모바일 팝업 크기 일치 */
