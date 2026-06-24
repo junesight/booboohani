@@ -97,9 +97,10 @@ const galleryFloors = {
     { src: GALLERY_PLACEHOLDER, caption: "3층 치료실" },
   ],
   4: [
-    { src: GALLERY_PLACEHOLDER, caption: "4층 진료 공간" },
-    { src: GALLERY_PLACEHOLDER, caption: "4층 회복 공간" },
-    { src: GALLERY_PLACEHOLDER, caption: "4층 휴식 공간" },
+    { src: "assets/gallery-4f-01.jpg", caption: "입원실 로비" },
+    { src: "assets/gallery-4f-02.jpg", caption: "입원실(4인실)" },
+    { src: "assets/gallery-4f-03.jpg", caption: "입원실(2인실)" },
+    { src: "assets/gallery-4f-04.jpg", caption: "입원실 화장실" },
   ],
 };
 
