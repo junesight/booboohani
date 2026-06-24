@@ -522,7 +522,7 @@ function renderCareModalContent() {
   }
 }
 
-function openCareModal(card) {
+function openCareModal(card, preventPushState = false) {
   if (window.innerWidth > 768) {
     const isDetailCard = card.classList.contains("has-detail") || card.closest(".has-detail");
     if (!isDetailCard) {
@@ -538,6 +538,9 @@ function openCareModal(card) {
     careModal.hidden = false;
     document.body.classList.add("modal-open");
     careModal.querySelector(".modal-close")?.focus();
+    if (!preventPushState) {
+      pushModalState("care", card.id);
+    }
   }
 }
 
@@ -545,7 +548,7 @@ function closeCareModal() {
   if (!careModal) return;
   activeCareCard = null;
   careModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden) || (lindaModal && !lindaModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden) || (lindaModal && !lindaModal.hidden) || (gongjinModal && !gongjinModal.hidden) || (nonpayModal && !nonpayModal.hidden) || (certModal && !certModal.hidden) || (admissionModal && !admissionModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -554,22 +557,27 @@ function closeCareModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
+  popModalStateIfNeeded();
 }
 
-function openYakchimModal(card) {
+function openYakchimModal(card, isFromCare = false) {
   lastFocusedCard = card;
   if (yakchimModal) {
     yakchimModal.hidden = false;
     document.body.classList.add("modal-open");
     yakchimModal.querySelector(".modal-close")?.focus();
-    pushModalState();
+    if (isFromCare) {
+      pushModalState("detail", card.id);
+    } else {
+      pushModalState();
+    }
   }
 }
 
 function closeYakchimModal() {
   if (!yakchimModal) return;
   yakchimModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (hanyakModal && !hanyakModal.hidden) || (lindaModal && !lindaModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (hanyakModal && !hanyakModal.hidden) || (lindaModal && !lindaModal.hidden) || (gongjinModal && !gongjinModal.hidden) || (nonpayModal && !nonpayModal.hidden) || (certModal && !certModal.hidden) || (admissionModal && !admissionModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -581,20 +589,24 @@ function closeYakchimModal() {
   popModalStateIfNeeded();
 }
 
-function openHanyakModal(card) {
+function openHanyakModal(card, isFromCare = false) {
   lastFocusedCard = card;
   if (hanyakModal) {
     hanyakModal.hidden = false;
     document.body.classList.add("modal-open");
     hanyakModal.querySelector(".modal-close")?.focus();
-    pushModalState();
+    if (isFromCare) {
+      pushModalState("detail", card.id);
+    } else {
+      pushModalState();
+    }
   }
 }
 
 function closeHanyakModal() {
   if (!hanyakModal) return;
   hanyakModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (lindaModal && !lindaModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (lindaModal && !lindaModal.hidden) || (gongjinModal && !gongjinModal.hidden) || (nonpayModal && !nonpayModal.hidden) || (certModal && !certModal.hidden) || (admissionModal && !admissionModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -606,7 +618,7 @@ function closeHanyakModal() {
   popModalStateIfNeeded();
 }
 
-function openLindaModal(card) {
+function openLindaModal(card, isFromCare = false) {
   lastFocusedCard = card;
   if (lindaModal) {
     lindaModal.hidden = false;
@@ -618,14 +630,18 @@ function openLindaModal(card) {
     if (iframe && iframe.dataset.src) {
       iframe.src = iframe.dataset.src;
     }
-    pushModalState();
+    if (isFromCare) {
+      pushModalState("detail", card.id);
+    } else {
+      pushModalState();
+    }
   }
 }
 
 function closeLindaModal() {
   if (!lindaModal) return;
   lindaModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden) || (gongjinModal && !gongjinModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden) || (gongjinModal && !gongjinModal.hidden) || (nonpayModal && !nonpayModal.hidden) || (certModal && !certModal.hidden) || (admissionModal && !admissionModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -643,7 +659,7 @@ function closeLindaModal() {
   popModalStateIfNeeded();
 }
 
-function openGongjinModal(card) {
+function openGongjinModal(card, isFromCare = false) {
   lastFocusedCard = card;
   if (gongjinModal) {
     gongjinModal.hidden = false;
@@ -655,14 +671,18 @@ function openGongjinModal(card) {
     if (iframe && iframe.dataset.src) {
       iframe.src = iframe.dataset.src;
     }
-    pushModalState();
+    if (isFromCare) {
+      pushModalState("detail", card.id);
+    } else {
+      pushModalState();
+    }
   }
 }
 
 function closeGongjinModal() {
   if (!gongjinModal) return;
   gongjinModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden) || (lindaModal && !lindaModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden) || (lindaModal && !lindaModal.hidden) || (gongjinModal && !gongjinModal.hidden) || (nonpayModal && !nonpayModal.hidden) || (certModal && !certModal.hidden) || (admissionModal && !admissionModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
@@ -1079,18 +1099,21 @@ careModalDetailBtn?.addEventListener("click", () => {
   if (!activeCareCard) return;
   const cardId = activeCareCard.id;
 
-  // 먼저 공통 팝업(care-modal)을 닫음
-  closeCareModal();
+  // care-modal을 닫지 않고 화면에서만 숨김 (history.back을 일으키지 않기 위함)
+  if (careModal) {
+    careModal.hidden = true;
+    careModal.classList.remove("is-method-modal");
+  }
 
-  // 해당 카드의 상세 팝업 오픈
+  // 해당 카드의 상세 팝업 오픈 (두 번째 인자로 true 전달)
   if (cardId === "yakchim-card") {
-    openYakchimModal(activeCareCard);
+    openYakchimModal(activeCareCard, true);
   } else if (cardId === "hanyak-card") {
-    openHanyakModal(activeCareCard);
+    openHanyakModal(activeCareCard, true);
   } else if (cardId === "linda-card") {
-    openLindaModal(activeCareCard);
+    openLindaModal(activeCareCard, true);
   } else if (cardId === "gongjin-card") {
-    openGongjinModal(activeCareCard);
+    openGongjinModal(activeCareCard, true);
   }
 });
 
@@ -1351,15 +1374,39 @@ function isAnyModalOpen() {
   );
 }
 
-function pushModalState() {
-  if (!history.state || !history.state.modalOpen) {
-    history.pushState({ modalOpen: true }, "");
+let isPoppingAllStates = false;
+
+function pushModalState(forceType, cardId) {
+  if (forceType === "care" && cardId) {
+    history.pushState({ modalOpen: "care", cardId: cardId }, "");
+  } else if (forceType === "detail" && cardId) {
+    history.pushState({ modalOpen: "detail", cardId: cardId }, "");
+  } else {
+    if (!history.state || !history.state.modalOpen) {
+      history.pushState({ modalOpen: true }, "");
+    }
   }
 }
 
 function popModalStateIfNeeded() {
   if (!isAnyModalOpen() && history.state && history.state.modalOpen) {
+    isPoppingAllStates = true;
     history.back();
+  }
+}
+
+function closeAllDetailModals() {
+  if (yakchimModal) yakchimModal.hidden = true;
+  if (hanyakModal) hanyakModal.hidden = true;
+  if (lindaModal) {
+    lindaModal.hidden = true;
+    const iframe = lindaModal.querySelector("#linda-iframe");
+    if (iframe) iframe.src = "";
+  }
+  if (gongjinModal) {
+    gongjinModal.hidden = true;
+    const iframe = gongjinModal.querySelector("#gongjin-iframe");
+    if (iframe) iframe.src = "";
   }
 }
 
@@ -1375,18 +1422,7 @@ function closeAllModals() {
     careModal.hidden = true;
     careModal.classList.remove("is-method-modal");
   }
-  if (yakchimModal) yakchimModal.hidden = true;
-  if (hanyakModal) hanyakModal.hidden = true;
-  if (lindaModal) {
-    lindaModal.hidden = true;
-    const iframe = lindaModal.querySelector("#linda-iframe");
-    if (iframe) iframe.src = "";
-  }
-  if (gongjinModal) {
-    gongjinModal.hidden = true;
-    const iframe = gongjinModal.querySelector("#gongjin-iframe");
-    if (iframe) iframe.src = "";
-  }
+  closeAllDetailModals();
   if (nonpayModal) {
     nonpayModal.hidden = true;
   }
@@ -1405,8 +1441,39 @@ function closeAllModals() {
 }
 
 window.addEventListener("popstate", (event) => {
-  if (!event.state || !event.state.modalOpen) {
+  if (isPoppingAllStates) {
+    if (event.state && event.state.modalOpen) {
+      history.back();
+    } else {
+      isPoppingAllStates = false;
+      closeAllModals();
+    }
+    return;
+  }
+
+  const state = event.state;
+  if (!state || !state.modalOpen) {
     closeAllModals();
+  } else if (state.modalOpen === "care") {
+    closeAllDetailModals();
+    const card = document.getElementById(state.cardId);
+    if (card) {
+      openCareModal(card, true);
+    }
+  } else if (state.modalOpen === "detail") {
+    if (careModal) careModal.hidden = true;
+    const card = document.getElementById(state.cardId);
+    if (card) {
+      if (state.cardId === "yakchim-card") {
+        openYakchimModal(card, true);
+      } else if (state.cardId === "hanyak-card") {
+        openHanyakModal(card, true);
+      } else if (state.cardId === "linda-card") {
+        openLindaModal(card, true);
+      } else if (state.cardId === "gongjin-card") {
+        openGongjinModal(card, true);
+      }
+    }
   }
 });
 
