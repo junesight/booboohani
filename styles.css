@@ -2625,7 +2625,7 @@ footer p {
   gap: 10px;
   align-items: flex-end;
   flex-shrink: 0;
-  padding-right: 220px; /* 우측 플로팅 버튼 영역 회피 */
+  padding-right: 340px; /* 우측 플로팅 버튼 영역을 넉넉히 회피하며 조금 더 좌측으로 조정 */
   margin-top: 6px;
 }
 
