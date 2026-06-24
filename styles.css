@@ -1348,8 +1348,17 @@ h3 {
 
 .modal-care-body {
   width: 100%;
-  padding: 0 12px;
+  padding: 0 12px 60px;
   box-sizing: border-box;
+}
+
+#modal-care-detail-btn-wrapper {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  width: auto;
 }
 
 .modal-detail-custom-btn {
