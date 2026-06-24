@@ -31,6 +31,9 @@ const hanyakCloseButtons = document.querySelectorAll("[data-hanyak-close]");
 const lindaModal = document.querySelector("#linda-modal");
 const lindaCloseButtons = document.querySelectorAll("[data-linda-close]");
 
+const gongjinModal = document.querySelector("#gongjin-modal");
+const gongjinCloseButtons = document.querySelectorAll("[data-gongjin-close]");
+
 const galleryTabs = document.querySelectorAll(".gallery-tabs button");
 const galleryStage = document.querySelector(".gallery-stage");
 const galleryImage = document.querySelector("#gallery-main-image");
@@ -578,13 +581,48 @@ function openLindaModal(card) {
 function closeLindaModal() {
   if (!lindaModal) return;
   lindaModal.hidden = true;
-  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden);
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden) || (gongjinModal && !gongjinModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
   }
 
   // Stop video on close
   const iframe = lindaModal.querySelector("#linda-iframe");
+  if (iframe) {
+    iframe.src = "";
+  }
+
+  if (lastFocusedCard) {
+    lastFocusedCard.focus();
+    lastFocusedCard = null;
+  }
+}
+
+function openGongjinModal(card) {
+  lastFocusedCard = card;
+  if (gongjinModal) {
+    gongjinModal.hidden = false;
+    document.body.classList.add("modal-open");
+    gongjinModal.querySelector(".modal-close")?.focus();
+
+    // Autoplay video on open
+    const iframe = gongjinModal.querySelector("#gongjin-iframe");
+    if (iframe && iframe.dataset.src) {
+      iframe.src = iframe.dataset.src;
+    }
+  }
+}
+
+function closeGongjinModal() {
+  if (!gongjinModal) return;
+  gongjinModal.hidden = true;
+  const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden) || (lindaModal && !lindaModal.hidden);
+  if (!isAnyModalOpen) {
+    document.body.classList.remove("modal-open");
+  }
+
+  // Stop video on close
+  const iframe = gongjinModal.querySelector("#gongjin-iframe");
   if (iframe) {
     iframe.src = "";
   }
@@ -952,6 +990,8 @@ methodCards.forEach((card) => {
       openHanyakModal(card);
     } else if (card.id === "linda-card") {
       openLindaModal(card);
+    } else if (card.id === "gongjin-card") {
+      openGongjinModal(card);
     } else {
       openCareModal(card);
     }
@@ -972,6 +1012,10 @@ hanyakCloseButtons.forEach((button) => {
 
 lindaCloseButtons.forEach((button) => {
   button.addEventListener("click", closeLindaModal);
+});
+
+gongjinCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeGongjinModal);
 });
 
 carePrevButton?.addEventListener("click", () => {
@@ -1095,6 +1139,10 @@ document.addEventListener("keydown", (event) => {
 
   if (event.key === "Escape" && lindaModal && !lindaModal.hidden) {
     closeLindaModal();
+  }
+
+  if (event.key === "Escape" && gongjinModal && !gongjinModal.hidden) {
+    closeGongjinModal();
   }
 
   if (event.key === "Escape" && careModal && !careModal.hidden) {
