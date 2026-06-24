@@ -3736,6 +3736,10 @@ footer p {
     padding-right: 0;
   }
 
+  .footer-divider {
+    display: none !important;
+  }
+
   /* 주요진료분야 모바일 팝업 크기 일치 */
   #care-modal .modal-content-small {
     height: 340px;
@@ -3817,5 +3821,59 @@ footer p {
     letter-spacing: -0.5px;
     white-space: nowrap;
     min-width: 60px;
+  }
+}
+
+/* --- 증명서 발급 안내 팝업 스타일 보완 --- */
+.cert-modal .yakchim-modal-panel {
+  max-width: 720px;
+}
+
+.cert-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+.cert-modal-body::-webkit-scrollbar-track {
+  background: rgba(22, 61, 50, 0.05);
+  border-radius: 3px;
+}
+.cert-modal-body::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border-radius: 3px;
+}
+
+.cert-table tbody tr:hover {
+  background-color: rgba(22, 61, 50, 0.03);
+}
+
+.cert-table th {
+  font-family: "Noto Serif KR", serif;
+}
+
+@media (max-width: 768px) {
+  .cert-modal .yakchim-modal-panel {
+    padding: 36px 16px 24px;
+  }
+  
+  .cert-steps {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+    font-size: 11px !important;
+  }
+  
+  .cert-steps div {
+    padding: 8px 4px !important;
+  }
+  
+  .cert-table {
+    font-size: 12px !important;
+  }
+  
+  .cert-table th,
+  .cert-table td {
+    padding: 6px 4px !important;
+  }
+  
+  .cert-table td {
+    word-break: keep-all;
   }
 }

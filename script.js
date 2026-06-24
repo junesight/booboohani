@@ -27,6 +27,9 @@ const careModalDetailBtn = document.querySelector("#modal-care-detail-btn");
 const nonpayModal = document.querySelector("#nonpay-modal");
 const nonpayTrigger = document.querySelector("#nonpay-modal-trigger");
 const nonpayCloseButtons = document.querySelectorAll("[data-nonpay-close]");
+const certModal = document.querySelector("#cert-modal");
+const certTrigger = document.querySelector("#cert-modal-trigger");
+const certCloseButtons = document.querySelectorAll("[data-cert-close]");
 const careCards = document.querySelectorAll(".care-card");
 const careCloseButtons = document.querySelectorAll("[data-care-close]");
 const carePrevButton = document.querySelector(".care-prev");
@@ -1120,6 +1123,38 @@ nonpayCloseButtons.forEach((button) => {
   button.addEventListener("click", closeNonpayModal);
 });
 
+function openCertModal() {
+  if (certModal) {
+    certModal.hidden = false;
+    document.body.classList.add("modal-open");
+    certModal.querySelector(".modal-close")?.focus();
+    pushModalState();
+  }
+}
+
+function closeCertModal() {
+  if (!certModal) return;
+  certModal.hidden = true;
+  if (!isAnyModalOpen()) {
+    document.body.classList.remove("modal-open");
+  }
+
+  if (lastFocusedCard) {
+    lastFocusedCard.focus();
+    lastFocusedCard = null;
+  }
+  popModalStateIfNeeded();
+}
+
+certTrigger?.addEventListener("click", (e) => {
+  e.preventDefault();
+  openCertModal();
+});
+
+certCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeCertModal);
+});
+
 carePrevButton?.addEventListener("click", () => {
   navigateCareModal(-1);
 });
@@ -1254,6 +1289,10 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && nonpayModal && !nonpayModal.hidden) {
     closeNonpayModal();
   }
+
+  if (event.key === "Escape" && certModal && !certModal.hidden) {
+    closeCertModal();
+  }
 });
 
 // --- 브라우저 뒤로가기(History API) 모달 연동 로직 ---
@@ -1267,7 +1306,8 @@ function isAnyModalOpen() {
     (hanyakModal && !hanyakModal.hidden) ||
     (lindaModal && !lindaModal.hidden) ||
     (gongjinModal && !gongjinModal.hidden) ||
-    (nonpayModal && !nonpayModal.hidden)
+    (nonpayModal && !nonpayModal.hidden) ||
+    (certModal && !certModal.hidden)
   );
 }
 
@@ -1309,6 +1349,9 @@ function closeAllModals() {
   }
   if (nonpayModal) {
     nonpayModal.hidden = true;
+  }
+  if (certModal) {
+    certModal.hidden = true;
   }
   document.body.classList.remove("modal-open");
   

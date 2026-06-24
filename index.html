@@ -1221,6 +1221,8 @@
       <div class="footer-copy">
         <p>Copyright (c) 2019 해나무부부한의원 All rights reserved. <button class="admin-trigger" type="button" aria-label="관리자 메뉴 열기">Edit</button></p>
         <a href="#" id="nonpay-modal-trigger">비보험 수가 안내</a>
+        <span class="footer-divider" style="color: rgba(255, 250, 240, 0.3); margin: 0 12px;">|</span>
+        <a href="#" id="cert-modal-trigger">증명서 발급 안내</a>
       </div>
     </footer>
 
@@ -1291,6 +1293,84 @@
               <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">의무기록 사본 복사 (1~5매 / 6매 이상)</td><td style="padding: 10px 8px; text-align: right;">1매당 1,000원 / 1매당 100원</td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 증명서 발급 안내 모달 -->
+    <div
+      class="yakchim-modal cert-modal"
+      id="cert-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cert-modal-title"
+      hidden
+    >
+      <button class="modal-backdrop" type="button" data-cert-close aria-label="팝업 닫기"></button>
+      <div class="yakchim-modal-panel" style="width: min(720px, 100%);">
+        <button class="modal-close" type="button" data-cert-close aria-label="팝업 닫기">
+          ×
+        </button>
+        <div class="yakchim-modal-head">
+          <h2 id="cert-modal-title">증명서 발급 안내</h2>
+        </div>
+        <div class="cert-modal-body" style="max-height: 60svh; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-right: 8px;">
+          <!-- 1. 증명서 신청 자격 -->
+          <div class="cert-section" style="margin-bottom: 24px;">
+            <h4 style="color: var(--green); border-left: 3px solid var(--green); padding-left: 8px; font-weight: 700; margin-bottom: 8px; font-size: 15px;">증명서 신청 자격</h4>
+            <p style="font-size: 13px; color: #555a51; line-height: 1.6; margin-left: 11px;">
+              본인 또는 직계존/비속 또는 배우자의 직계존속인 경우 구비서류 지참 후 발급 가능합니다.
+            </p>
+          </div>
+
+          <!-- 2. 발급서류 및 절차 -->
+          <div class="cert-section" style="margin-bottom: 24px;">
+            <h4 style="color: var(--green); border-left: 3px solid var(--green); padding-left: 8px; font-weight: 700; margin-bottom: 12px; font-size: 15px;">발급 절차</h4>
+            <div class="cert-steps" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; font-size: 13px; font-weight: 700;">
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 12px 6px; border-radius: 6px; color: var(--green);">01. 접수</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 12px 6px; border-radius: 6px; color: var(--green);">02. 안내</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 12px 6px; border-radius: 6px; color: var(--green);">03. 담당의 작성</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 12px 6px; border-radius: 6px; color: var(--green);">04. 발급</div>
+            </div>
+          </div>
+
+          <!-- 3. 증빙서류 -->
+          <div class="cert-section" style="margin-bottom: 24px;">
+            <h4 style="color: var(--green); border-left: 3px solid var(--green); padding-left: 8px; font-weight: 700; margin-bottom: 8px; font-size: 15px;">증빙서류</h4>
+            <table class="cert-table" style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; line-height: 1.5; margin-bottom: 12px;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--green); color: var(--green); font-weight: 700;">
+                  <th style="padding: 8px 6px; width: 30%;">신청자</th>
+                  <th style="padding: 8px 6px;">구비서류</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 6px; font-weight: 700;">본인</td><td style="padding: 8px 6px;">신분증</td></tr>
+                <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 6px; font-weight: 700;">배우자 / 직계존비속<br>배우자의 직계존속</td><td style="padding: 8px 6px;">요청하는 자의 신분증, 가족관계 증명서 또는 주민등록등본, 환자가 자필서명한 동의서, 환자의 신분증 사본</td></tr>
+                <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 6px; font-weight: 700;">대리인</td><td style="padding: 8px 6px;">요청하는 자의 신분증, 가족관계 증명서 또는 주민등록등본, 환자가 자필서명한 동의서, 환자의 신분증 사본</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 4. 환자 동의를 받을 수 없는 경우 -->
+          <div class="cert-section" style="margin-bottom: 12px;">
+            <h4 style="color: var(--green); border-left: 3px solid var(--green); padding-left: 8px; font-weight: 700; margin-bottom: 8px; font-size: 15px;">환자 동의를 받을 수 없는 경우</h4>
+            <table class="cert-table" style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; line-height: 1.5;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--green); color: var(--green); font-weight: 700;">
+                  <th style="padding: 8px 6px; width: 30%;">신청자구분</th>
+                  <th style="padding: 8px 6px;">구비서류</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 6px; font-weight: 700;">공통서류</td><td style="padding: 8px 6px;">요청하는 자의 신분증, 가족관계 증명서 또는 주민등록등본</td></tr>
+                <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 6px; font-weight: 700;">사망 시</td><td style="padding: 8px 6px;">제적등본, 사망진단서</td></tr>
+                <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 6px; font-weight: 700;">의식불명 또는<br>자필서명 불가</td><td style="padding: 8px 6px;">환자가 의식불명 또는 중증의 질환으로 자필서명을 할 수 없다는 진단서</td></tr>
+                <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 6px; font-weight: 700;">행방불명 시</td><td style="padding: 8px 6px;">법원의 실종 선고 결정문 사본</td></tr>
+                <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 6px; font-weight: 700;">의사무능력자</td><td style="padding: 8px 6px;">법원의 금치산 선고 결정문 사본, 의사무능력자를 증명하는 정신과 전문의 진단서</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
