@@ -2605,20 +2605,38 @@ footer p {
 .footer-copy {
   border-top: 1px solid rgba(255, 250, 240, 0.14);
   padding-top: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 220px; /* 우측 플로팅 버튼 영역을 회피하며 적절한 우측 중간 지점으로 조율 */
 }
 
-#nonpay-modal-trigger {
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.footer-left {
+  display: grid;
+  gap: 18px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+  flex-shrink: 0;
+  padding-right: 220px; /* 우측 플로팅 버튼 영역 회피 */
+  margin-top: 6px;
+}
+
+.footer-links a {
   color: var(--gold);
   font-weight: 700;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
 
-#nonpay-modal-trigger:hover {
+.footer-links a:hover {
   opacity: 0.8;
 }
 
@@ -3736,8 +3754,16 @@ footer p {
     padding-right: 0;
   }
 
-  .footer-divider {
-    display: none !important;
+  .footer-content {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .footer-links {
+    align-items: flex-start;
+    padding-right: 0;
+    margin-top: 0;
+    gap: 8px;
   }
 
   /* 주요진료분야 모바일 팝업 크기 일치 */
