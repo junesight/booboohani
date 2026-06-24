@@ -3900,10 +3900,10 @@ footer p {
     width: calc(100% - 20px);
   }
   .contact-info-buttons .button.info-btn {
-    font-size: 11px;
+    font-size: 12px;
     min-height: 36px;
     padding: 0 4px;
-    letter-spacing: -0.7px;
+    letter-spacing: -0.8px;
     line-height: 1.25;
     text-align: center;
     word-break: keep-all;
