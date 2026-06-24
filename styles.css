@@ -1348,6 +1348,27 @@ h3 {
 
 .modal-care-body {
   width: 100%;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.modal-detail-custom-btn {
+  min-height: 40px !important;
+  height: 40px;
+  width: auto !important;
+  padding: 0 32px !important;
+  font-size: 14px !important;
+  border-radius: 999px;
+  border: none;
+  background: var(--green);
+  color: var(--paper);
+  transition: background 180ms ease, transform 180ms ease;
+  box-shadow: 0 4px 12px rgba(22, 61, 50, 0.12);
+}
+
+.modal-detail-custom-btn:hover {
+  background: #113027;
+  transform: translateY(-1px);
 }
 
 .modal-care-body ul {
@@ -3678,7 +3699,7 @@ footer p {
 
   /* 주요진료분야 모바일 팝업 크기 일치 */
   #care-modal .modal-content-small {
-    height: 390px;
+    height: 430px;
     padding: 36px 32px 30px;
     justify-content: flex-start;
   }
