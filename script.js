@@ -443,6 +443,7 @@ async function openScheduleModal() {
   document.body.classList.add("modal-open");
   scheduleOverview.innerHTML = "<span>스케쥴을 불러오는 중입니다.</span>";
   scheduleModal.querySelector(".modal-close").focus();
+  pushModalState();
 
   try {
     const rows = await fetchWeeklySchedules();
@@ -461,6 +462,7 @@ function closeScheduleModal() {
     document.body.classList.remove("modal-open");
   }
   scheduleTrigger?.focus();
+  popModalStateIfNeeded();
 }
 
 function renderCareModalContent() {
@@ -540,6 +542,7 @@ function openYakchimModal(card) {
     yakchimModal.hidden = false;
     document.body.classList.add("modal-open");
     yakchimModal.querySelector(".modal-close")?.focus();
+    pushModalState();
   }
 }
 
@@ -555,6 +558,7 @@ function closeYakchimModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
+  popModalStateIfNeeded();
 }
 
 function openHanyakModal(card) {
@@ -563,6 +567,7 @@ function openHanyakModal(card) {
     hanyakModal.hidden = false;
     document.body.classList.add("modal-open");
     hanyakModal.querySelector(".modal-close")?.focus();
+    pushModalState();
   }
 }
 
@@ -578,6 +583,7 @@ function closeHanyakModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
+  popModalStateIfNeeded();
 }
 
 function openLindaModal(card) {
@@ -592,6 +598,7 @@ function openLindaModal(card) {
     if (iframe && iframe.dataset.src) {
       iframe.src = iframe.dataset.src;
     }
+    pushModalState();
   }
 }
 
@@ -613,6 +620,7 @@ function closeLindaModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
+  popModalStateIfNeeded();
 }
 
 function openGongjinModal(card) {
@@ -627,6 +635,7 @@ function openGongjinModal(card) {
     if (iframe && iframe.dataset.src) {
       iframe.src = iframe.dataset.src;
     }
+    pushModalState();
   }
 }
 
@@ -648,6 +657,7 @@ function closeGongjinModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
+  popModalStateIfNeeded();
 }
 
 function navigateCareModal(direction) {
@@ -748,6 +758,7 @@ function openDoctorModal(card) {
   modal.hidden = false;
   document.body.classList.add("modal-open");
   modal.querySelector(".modal-close").focus();
+  pushModalState();
 }
 
 function closeDoctorModal() {
@@ -766,6 +777,7 @@ function closeDoctorModal() {
       lastFocusedCard.focus();
     }
   }
+  popModalStateIfNeeded();
 }
 
 function navigateDoctorModal(direction) {
@@ -939,6 +951,7 @@ function openAdminModal() {
   adminError.textContent = "";
   adminSuccess.textContent = "";
   adminPassword.focus();
+  pushModalState();
 }
 
 function closeAdminModal() {
@@ -946,6 +959,7 @@ function closeAdminModal() {
 
   adminModal.hidden = true;
   document.body.classList.remove("modal-open");
+  popModalStateIfNeeded();
 }
 
 function unlockAdminMenu() {
@@ -1189,5 +1203,69 @@ document.addEventListener("keydown", (event) => {
 
   if (event.key === "Escape" && careModal && !careModal.hidden) {
     closeCareModal();
+  }
+});
+
+// --- 브라우저 뒤로가기(History API) 모달 연동 로직 ---
+function isAnyModalOpen() {
+  return (
+    (modal && !modal.hidden) ||
+    (scheduleModal && !scheduleModal.hidden) ||
+    (adminModal && !adminModal.hidden) ||
+    (careModal && !careModal.hidden) ||
+    (yakchimModal && !yakchimModal.hidden) ||
+    (hanyakModal && !hanyakModal.hidden) ||
+    (lindaModal && !lindaModal.hidden) ||
+    (gongjinModal && !gongjinModal.hidden)
+  );
+}
+
+function pushModalState() {
+  if (!history.state || !history.state.modalOpen) {
+    history.pushState({ modalOpen: true }, "");
+  }
+}
+
+function popModalStateIfNeeded() {
+  if (!isAnyModalOpen() && history.state && history.state.modalOpen) {
+    history.back();
+  }
+}
+
+function closeAllModals() {
+  if (modal) {
+    modal.hidden = true;
+    modalImage.src = "";
+  }
+  if (scheduleModal) scheduleModal.hidden = true;
+  if (adminModal) adminModal.hidden = true;
+  if (careModal) {
+    activeCareCard = null;
+    careModal.hidden = true;
+    careModal.classList.remove("is-method-modal");
+  }
+  if (yakchimModal) yakchimModal.hidden = true;
+  if (hanyakModal) hanyakModal.hidden = true;
+  if (lindaModal) {
+    lindaModal.hidden = true;
+    const iframe = lindaModal.querySelector("#linda-iframe");
+    if (iframe) iframe.src = "";
+  }
+  if (gongjinModal) {
+    gongjinModal.hidden = true;
+    const iframe = gongjinModal.querySelector("#gongjin-iframe");
+    if (iframe) iframe.src = "";
+  }
+  document.body.classList.remove("modal-open");
+  
+  if (lastFocusedCard) {
+    lastFocusedCard.focus();
+    lastFocusedCard = null;
+  }
+}
+
+window.addEventListener("popstate", (event) => {
+  if (!event.state || !event.state.modalOpen) {
+    closeAllModals();
   }
 });
