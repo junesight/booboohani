@@ -410,6 +410,8 @@ h3 {
 
 .record-count strong {
   font-size: 1.18em;
+  border-bottom: 3px solid var(--gold);
+  padding-bottom: 2px;
 }
 
 .section,
