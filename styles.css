@@ -1214,6 +1214,23 @@ h3 {
   font-weight: 700;
 }
 
+.linda-item li strong {
+  display: block;
+  font-size: 15px;
+  color: #0a251e;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.linda-item li span {
+  display: block;
+  padding-left: 16px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  word-break: keep-all;
+}
+
 .linda-process {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
