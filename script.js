@@ -1,3 +1,13 @@
+// 최초 진입 시 브라우저 스크롤 위치 복원 차단 및 최상단 강제 고정
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.addEventListener('load', () => {
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+});
+
 const modal = document.querySelector("#doctor-modal");
 const modalImage = document.querySelector("#modal-doctor-image");
 const modalName = document.querySelector("#modal-doctor-name");
