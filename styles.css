@@ -3708,9 +3708,14 @@ footer p {
 
   /* 주요진료분야 모바일 팝업 크기 일치 */
   #care-modal .modal-content-small {
-    height: 430px;
+    height: 300px;
     padding: 36px 32px 30px;
     justify-content: flex-start;
+  }
+
+  /* 치료방법 모바일 팝업 크기 확대 (버튼 및 긴 텍스트 수용) */
+  #care-modal.is-method-modal .modal-content-small {
+    height: 470px;
   }
 
 }

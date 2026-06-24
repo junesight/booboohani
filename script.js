@@ -484,6 +484,15 @@ function renderCareModalContent() {
   if (careModalTitle) careModalTitle.textContent = title;
   if (careModalDetails) careModalDetails.innerHTML = detailsHtml;
 
+  // 카드 타입에 따라 모달 클래스 실시간 업데이트
+  if (careModal) {
+    if (activeCareCard.classList.contains("method-card")) {
+      careModal.classList.add("is-method-modal");
+    } else {
+      careModal.classList.remove("is-method-modal");
+    }
+  }
+
   // 상세 모달이 존재하는 카드의 경우 "자세히 보기" 버튼 노출
   if (careModalDetailBtnWrapper) {
     const hasDetail = ["yakchim-card", "hanyak-card", "linda-card", "gongjin-card"].includes(activeCareCard?.id);
