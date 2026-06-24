@@ -2607,13 +2607,26 @@ footer p {
 }
 
 .mobile-only,
+.mobile-only-block,
 .mobile-break {
   display: none;
+}
+
+.desktop-only {
+  display: block;
 }
 
 @media (max-width: 768px) {
   .mobile-only {
     display: inline;
+  }
+
+  .mobile-only-block {
+    display: block !important;
+  }
+
+  .desktop-only {
+    display: none !important;
   }
 
   .mobile-break {
