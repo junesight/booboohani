@@ -1129,7 +1129,21 @@ h3 {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 0;
+}
+
+.linda-intro {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0 auto 36px;
+  max-width: 720px;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.linda-intro strong {
+  color: var(--green);
+  font-weight: 700;
 }
 
 .linda-grid {
