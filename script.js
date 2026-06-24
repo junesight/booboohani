@@ -12,6 +12,8 @@ const careModal = document.querySelector("#care-modal");
 const careModalNumber = document.querySelector("#modal-care-number");
 const careModalTitle = document.querySelector("#modal-care-title");
 const careModalDetails = document.querySelector("#modal-care-details");
+const careModalDetailBtnWrapper = document.querySelector("#modal-care-detail-btn-wrapper");
+const careModalDetailBtn = document.querySelector("#modal-care-detail-btn");
 const careCards = document.querySelectorAll(".care-card");
 const careCloseButtons = document.querySelectorAll("[data-care-close]");
 const carePrevButton = document.querySelector(".care-prev");
@@ -481,6 +483,12 @@ function renderCareModalContent() {
   if (careModalNumber) careModalNumber.textContent = number;
   if (careModalTitle) careModalTitle.textContent = title;
   if (careModalDetails) careModalDetails.innerHTML = detailsHtml;
+
+  // 상세 모달이 존재하는 카드의 경우 "자세히 보기" 버튼 노출
+  if (careModalDetailBtnWrapper) {
+    const hasDetail = ["yakchim-card", "hanyak-card", "linda-card", "gongjin-card"].includes(activeCareCard?.id);
+    careModalDetailBtnWrapper.style.display = hasDetail ? "block" : "none";
+  }
 }
 
 function openCareModal(card) {
@@ -984,15 +992,21 @@ careCards.forEach((card) => {
 const methodCards = document.querySelectorAll(".method-card");
 methodCards.forEach((card) => {
   card.addEventListener("click", () => {
-    if (card.id === "yakchim-card") {
-      openYakchimModal(card);
-    } else if (card.id === "hanyak-card") {
-      openHanyakModal(card);
-    } else if (card.id === "linda-card") {
-      openLindaModal(card);
-    } else if (card.id === "gongjin-card") {
-      openGongjinModal(card);
+    if (window.innerWidth > 768) {
+      // 데스크탑: 상세 팝업 바로 열기
+      if (card.id === "yakchim-card") {
+        openYakchimModal(card);
+      } else if (card.id === "hanyak-card") {
+        openHanyakModal(card);
+      } else if (card.id === "linda-card") {
+        openLindaModal(card);
+      } else if (card.id === "gongjin-card") {
+        openGongjinModal(card);
+      } else {
+        openCareModal(card);
+      }
     } else {
+      // 모바일: 상세가 있더라도 무조건 care-modal을 먼저 띄워 좌우 화살표 전환 보장
       openCareModal(card);
     }
   });
@@ -1016,6 +1030,25 @@ lindaCloseButtons.forEach((button) => {
 
 gongjinCloseButtons.forEach((button) => {
   button.addEventListener("click", closeGongjinModal);
+});
+
+careModalDetailBtn?.addEventListener("click", () => {
+  if (!activeCareCard) return;
+  const cardId = activeCareCard.id;
+
+  // 먼저 공통 팝업(care-modal)을 닫음
+  closeCareModal();
+
+  // 해당 카드의 상세 팝업 오픈
+  if (cardId === "yakchim-card") {
+    openYakchimModal(activeCareCard);
+  } else if (cardId === "hanyak-card") {
+    openHanyakModal(activeCareCard);
+  } else if (cardId === "linda-card") {
+    openLindaModal(activeCareCard);
+  } else if (cardId === "gongjin-card") {
+    openGongjinModal(activeCareCard);
+  }
 });
 
 carePrevButton?.addEventListener("click", () => {
