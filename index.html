@@ -1215,15 +1215,86 @@
         <p>사업자등록번호 : 411-91-59413 <span>|</span> Email : booboo2721075@gmail.com</p>
       </div>
       <div class="footer-info footer-info-mobile">
-        <p>대표 : 최보빈 <span>|</span> 주소 : 목포시 옥암로 193, 1~4층</p>
-        <p>Tel : 061-272-1075 <span>|</span> Fax : 061-282-1076</p>
-        <p>사업자등록번호 : 411-91-59413</p>
-        <p>Email : booboo2721075@gmail.com</p>
+        <span>문의전화 : 061) 272-1075</span>
+        <span>전남 목포시 옥암로 193 (꿀벌신협 옆)</span>
       </div>
       <div class="footer-copy">
-        <p>Copyright (c) 2026 부부한의원. All right reserved. <button class="admin-trigger" type="button" aria-label="관리자 메뉴 열기">Edit</button></p>
+        <p>Copyright (c) 2019 해나무부부한의원 All rights reserved. <button class="admin-trigger" type="button" aria-label="관리자 메뉴 열기">Edit</button></p>
+        <a href="#" id="nonpay-modal-trigger" style="color: var(--gold); font-weight: 700; margin-top: 8px; display: inline-block;">비보험 수가 안내</a>
       </div>
     </footer>
+
+    <!-- 비보험 수가 안내 모달 -->
+    <div
+      class="yakchim-modal nonpay-modal"
+      id="nonpay-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="nonpay-modal-title"
+      hidden
+    >
+      <button class="modal-backdrop" type="button" data-nonpay-close aria-label="팝업 닫기"></button>
+      <div class="yakchim-modal-panel" style="width: min(720px, 100%);">
+        <button class="modal-close" type="button" data-nonpay-close aria-label="팝업 닫기">
+          ×
+        </button>
+        <div class="yakchim-modal-head">
+          <h2 id="nonpay-modal-title">비보험 수가 안내</h2>
+        </div>
+        <div class="nonpay-modal-body" style="max-height: 60svh; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-right: 8px;">
+          <table class="nonpay-table" style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; line-height: 1.5;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--green); color: var(--green); font-weight: 700;">
+                <th style="padding: 10px 8px;">분류</th>
+                <th style="padding: 10px 8px;">항목</th>
+                <th style="padding: 10px 8px; text-align: right;">비용</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 한방시술 및 처치료 -->
+              <tr style="border-bottom: 1px solid var(--line);"><td rowspan="7" style="padding: 10px 8px; font-weight: 700; color: var(--green); vertical-align: middle;">한방시술<br>및 처치료</td><td style="padding: 10px 8px;">어혈약침 (1회)</td><td style="padding: 10px 8px; text-align: right;">5,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">척추신처방 약침 (1회)</td><td style="padding: 10px 8px; text-align: right;">10,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">박리약침 / 대용량정밀약침 (1회)</td><td style="padding: 10px 8px; text-align: right;">10,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">정밀박리약침 (1회)</td><td style="padding: 10px 8px; text-align: right;">20,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">자하거 약침 / 디나 약침 (1회)</td><td style="padding: 10px 8px; text-align: right;">30,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">비급여 단순추나 (1회)</td><td style="padding: 10px 8px; text-align: right;">25,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">비급여 복잡추나 (1회)</td><td style="padding: 10px 8px; text-align: right;">40,000원</td></tr>
+              <!-- 한약 -->
+              <tr style="border-bottom: 1px solid var(--line);"><td rowspan="5" style="padding: 10px 8px; font-weight: 700; color: var(--green); vertical-align: middle;">한약</td><td style="padding: 10px 8px;">처방한약 (1일분 - 감기/소화불량/통증/피로)</td><td style="padding: 10px 8px; text-align: right;">10,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">쌍화탕 (30포)</td><td style="padding: 10px 8px; text-align: right;">90,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">오미자차 (40포)</td><td style="padding: 10px 8px; text-align: right;">100,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">치료 한약 (30일분)</td><td style="padding: 10px 8px; text-align: right;">400,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">녹각 한약 (60만) / 녹용 한약 (70만) (30일분)</td><td style="padding: 10px 8px; text-align: right;">600,000원 ~</td></tr>
+              <!-- 린다이어트 -->
+              <tr style="border-bottom: 1px solid var(--line);"><td rowspan="6" style="padding: 10px 8px; font-weight: 700; color: var(--green); vertical-align: middle;">린다이어트</td><td style="padding: 10px 8px;">린스탠다드 (4주 / 12주 / 24주)</td><td style="padding: 10px 8px; text-align: right;">240,000원 / 540,000원 / 980,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">린프리미엄 (4주 / 12주)</td><td style="padding: 10px 8px; text-align: right;">440,000원 / 1,110,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">린프리미엄 녹용 (4주 / 12주)</td><td style="padding: 10px 8px; text-align: right;">640,000원 / 1,710,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">린데일리 (4주 / 12주 / 24주)</td><td style="padding: 10px 8px; text-align: right;">180,000원 / 399,000원 / 720,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">린디톡스 / 회복환(7일) / 기타 소화·갱년기환(7일)</td><td style="padding: 10px 8px; text-align: right;">100,000원 / 40,000원 / 20,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">디톡스환, 영양환, 회복환 (7일분)</td><td style="padding: 10px 8px; text-align: right;">40,000원</td></tr>
+              <!-- 공진단 / 경옥고 -->
+              <tr style="border-bottom: 1px solid var(--line);"><td rowspan="4" style="padding: 10px 8px; font-weight: 700; color: var(--green); vertical-align: middle;">공진단 / 환</td><td style="padding: 10px 8px;">수공진단 사향 (10환 / 30환)</td><td style="padding: 10px 8px; text-align: right;">450,000원 / 1,290,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">수공진단 사향원방 (10환 / 30환)</td><td style="padding: 10px 8px; text-align: right;">680,000원 / 1,950,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">수공진단 (녹용 / 침향 / 사향라이트) (10환)</td><td style="padding: 10px 8px; text-align: right;">200,000원 / 220,000원 / 320,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">목향공진단 (10환 / 30환) / 계족환 (30일분)</td><td style="padding: 10px 8px; text-align: right;">200,000원 / 500,000원 / 150,000원</td></tr>
+              <!-- 산제 및 액상제 -->
+              <tr style="border-bottom: 1px solid var(--line);"><td rowspan="3" style="padding: 10px 8px; font-weight: 700; color: var(--green); vertical-align: middle;">경옥고 / 산제</td><td style="padding: 10px 8px;">수경옥고 원방 / 녹용 (스틱형, 30포)</td><td style="padding: 10px 8px; text-align: right;">175,000원 / 195,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">수총명공진단 (스틱형, 30포)</td><td style="padding: 10px 8px; text-align: right;">220,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">콜드퀵/까스퀵 (6포) / 우황청심원현탁액</td><td style="padding: 10px 8px; text-align: right;">15,000원 / 18,000원</td></tr>
+              <!-- 외용제 및 병실료 -->
+              <tr style="border-bottom: 1px solid var(--line);"><td rowspan="2" style="padding: 10px 8px; font-weight: 700; color: var(--green); vertical-align: middle;">외용제 / 병실</td><td style="padding: 10px 8px;">자운고 / 한방 파스 / 쿨링겔(파스)</td><td style="padding: 10px 8px; text-align: right;">7,000원 / 4,000원 / 10,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">상급병실료 (2인실, 1일)</td><td style="padding: 10px 8px; text-align: right;">40,000원</td></tr>
+              <!-- 서류 발급 수수료 -->
+              <tr style="border-bottom: 1px solid var(--line);"><td rowspan="4" style="padding: 10px 8px; font-weight: 700; color: var(--green); vertical-align: middle;">제증명 수수료</td><td style="padding: 10px 8px;">일반 진단서 / 소견서 / 입퇴원·통원확인서</td><td style="padding: 10px 8px; text-align: right;">20,000원 / 5,000원 / 3,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">상해진단서 (3주 미만 / 3주 이상)</td><td style="padding: 10px 8px; text-align: right;">100,000원 / 150,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">국민연금·장애정도 심사용 진단서</td><td style="padding: 10px 8px; text-align: right;">15,000원</td></tr>
+              <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">의무기록 사본 복사 (1~5매 / 6매 이상)</td><td style="padding: 10px 8px; text-align: right;">1매당 1,000원 / 1매당 100원</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <div class="floating-actions" aria-label="빠른 문의">
       <a class="floating-button phone" href="tel:061-272-1075" target="_blank" rel="noreferrer"><img class="floating-icon" src="assets/floating-phone.png" alt="" /> 전화 문의</a>
       <a class="floating-button naver" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer"><img class="floating-icon" src="assets/floating-naver.png" alt="" /> 네이버 예약</a>

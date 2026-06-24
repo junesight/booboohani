@@ -14,6 +14,9 @@ const careModalTitle = document.querySelector("#modal-care-title");
 const careModalDetails = document.querySelector("#modal-care-details");
 const careModalDetailBtnWrapper = document.querySelector("#modal-care-detail-btn-wrapper");
 const careModalDetailBtn = document.querySelector("#modal-care-detail-btn");
+const nonpayModal = document.querySelector("#nonpay-modal");
+const nonpayTrigger = document.querySelector("#nonpay-modal-trigger");
+const nonpayCloseButtons = document.querySelectorAll("[data-nonpay-close]");
 const careCards = document.querySelectorAll(".care-card");
 const careCloseButtons = document.querySelectorAll("[data-care-close]");
 const carePrevButton = document.querySelector(".care-prev");
@@ -1075,6 +1078,38 @@ careModalDetailBtn?.addEventListener("click", () => {
   }
 });
 
+function openNonpayModal() {
+  if (nonpayModal) {
+    nonpayModal.hidden = false;
+    document.body.classList.add("modal-open");
+    nonpayModal.querySelector(".modal-close")?.focus();
+    pushModalState();
+  }
+}
+
+function closeNonpayModal() {
+  if (!nonpayModal) return;
+  nonpayModal.hidden = true;
+  if (!isAnyModalOpen()) {
+    document.body.classList.remove("modal-open");
+  }
+
+  if (lastFocusedCard) {
+    lastFocusedCard.focus();
+    lastFocusedCard = null;
+  }
+  popModalStateIfNeeded();
+}
+
+nonpayTrigger?.addEventListener("click", (e) => {
+  e.preventDefault();
+  openNonpayModal();
+});
+
+nonpayCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeNonpayModal);
+});
+
 carePrevButton?.addEventListener("click", () => {
   navigateCareModal(-1);
 });
@@ -1205,6 +1240,10 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && careModal && !careModal.hidden) {
     closeCareModal();
   }
+
+  if (event.key === "Escape" && nonpayModal && !nonpayModal.hidden) {
+    closeNonpayModal();
+  }
 });
 
 // --- 브라우저 뒤로가기(History API) 모달 연동 로직 ---
@@ -1217,7 +1256,8 @@ function isAnyModalOpen() {
     (yakchimModal && !yakchimModal.hidden) ||
     (hanyakModal && !hanyakModal.hidden) ||
     (lindaModal && !lindaModal.hidden) ||
-    (gongjinModal && !gongjinModal.hidden)
+    (gongjinModal && !gongjinModal.hidden) ||
+    (nonpayModal && !nonpayModal.hidden)
   );
 }
 
@@ -1256,6 +1296,9 @@ function closeAllModals() {
     gongjinModal.hidden = true;
     const iframe = gongjinModal.querySelector("#gongjin-iframe");
     if (iframe) iframe.src = "";
+  }
+  if (nonpayModal) {
+    nonpayModal.hidden = true;
   }
   document.body.classList.remove("modal-open");
   

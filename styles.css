@@ -3746,3 +3746,59 @@ footer p {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* --- 비보험 수가 팝업 스타일 보완 --- */
+.nonpay-modal .yakchim-modal-panel {
+  max-width: 720px; /* 기존 panel보다 적당한 너비로 제한 */
+}
+
+/* 모달 본문 스크롤 영역 꾸미기 */
+.nonpay-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+.nonpay-modal-body::-webkit-scrollbar-track {
+  background: rgba(22, 61, 50, 0.05);
+  border-radius: 3px;
+}
+.nonpay-modal-body::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border-radius: 3px;
+}
+
+/* 테이블 호버 및 세부 디테일 */
+.nonpay-table tbody tr:hover {
+  background-color: rgba(22, 61, 50, 0.03);
+}
+
+.nonpay-table th {
+  font-family: "Noto Serif KR", serif;
+}
+
+/* 모바일 전용 반응형 덮어쓰기 */
+@media (max-width: 768px) {
+  .nonpay-modal .yakchim-modal-panel {
+    padding: 36px 16px 24px; /* 패딩 축소하여 테이블 가로 폭 확보 */
+  }
+  
+  .nonpay-table {
+    font-size: 13px !important;
+  }
+  
+  .nonpay-table th,
+  .nonpay-table td {
+    padding: 8px 4px !important;
+  }
+  
+  /* 모바일에서 줄바꿈이 깔끔하게 처리되도록 조율 */
+  .nonpay-table td {
+    word-break: keep-all;
+  }
+  
+  /* 첫번째 열(분류)의 텍스트가 줄바꿈되어 깨지지 않도록 최소 너비 및 사이즈 조율 */
+  .nonpay-table td[rowspan] {
+    font-size: 12px;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    min-width: 60px;
+  }
+}
