@@ -2672,14 +2672,14 @@ footer p {
   }
 
   .yakchim-grid .yakchim-item {
-    width: 388px;
-    max-width: none;
+    width: 100%;
+    max-width: 388px;
   }
 
   .yakchim-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 6px !important;
   }
 
   .yakchim-tags span {
@@ -2732,8 +2732,8 @@ footer p {
   }
 
   .hanyak-grid > .hanyak-item {
-    width: 388px;
-    max-width: none;
+    width: 100%;
+    max-width: 388px;
   }
 
   .hanyak-grid > .hanyak-item:not(.span-all) li {
@@ -2741,8 +2741,8 @@ footer p {
   }
 
   .process-item {
-    width: 388px;
-    max-width: none;
+    width: 100%;
+    max-width: 388px;
   }
 
   .process-item p {
