@@ -3879,11 +3879,11 @@ footer p {
   transition: all 0.25s ease;
   cursor: pointer;
   border-radius: 999px;
-  min-height: 52px;
+  min-height: 46px; /* 52px에서 46px로 아기자기하게 조정 */
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 14px; /* 16px에서 14px로 비율 축소 */
   font-weight: 800;
 }
 
