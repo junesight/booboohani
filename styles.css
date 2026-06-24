@@ -2625,13 +2625,14 @@ footer p {
   gap: 10px;
   align-items: flex-end;
   flex-shrink: 0;
-  padding-right: 340px; /* 우측 플로팅 버튼 영역을 넉넉히 회피하며 조금 더 좌측으로 조정 */
+  padding-right: 440px; /* 더 좌측으로 밀어내기 위해 패딩 확장 */
   margin-top: 6px;
 }
 
 .footer-links a {
   color: var(--gold);
   font-weight: 700;
+  font-size: 15px; /* 글씨 크기 15px로 더 시원하게 확대 */
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
