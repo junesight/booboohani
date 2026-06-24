@@ -30,6 +30,9 @@ const nonpayCloseButtons = document.querySelectorAll("[data-nonpay-close]");
 const certModal = document.querySelector("#cert-modal");
 const certTrigger = document.querySelector("#cert-modal-trigger");
 const certCloseButtons = document.querySelectorAll("[data-cert-close]");
+const admissionModal = document.querySelector("#admission-modal");
+const admissionTrigger = document.querySelector("#admission-modal-trigger");
+const admissionCloseButtons = document.querySelectorAll("[data-admission-close]");
 const careCards = document.querySelectorAll(".care-card");
 const careCloseButtons = document.querySelectorAll("[data-care-close]");
 const carePrevButton = document.querySelector(".care-prev");
@@ -1155,6 +1158,38 @@ certCloseButtons.forEach((button) => {
   button.addEventListener("click", closeCertModal);
 });
 
+function openAdmissionModal() {
+  if (admissionModal) {
+    admissionModal.hidden = false;
+    document.body.classList.add("modal-open");
+    admissionModal.querySelector(".modal-close")?.focus();
+    pushModalState();
+  }
+}
+
+function closeAdmissionModal() {
+  if (!admissionModal) return;
+  admissionModal.hidden = true;
+  if (!isAnyModalOpen()) {
+    document.body.classList.remove("modal-open");
+  }
+
+  if (lastFocusedCard) {
+    lastFocusedCard.focus();
+    lastFocusedCard = null;
+  }
+  popModalStateIfNeeded();
+}
+
+admissionTrigger?.addEventListener("click", (e) => {
+  e.preventDefault();
+  openAdmissionModal();
+});
+
+admissionCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeAdmissionModal);
+});
+
 carePrevButton?.addEventListener("click", () => {
   navigateCareModal(-1);
 });
@@ -1293,6 +1328,10 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && certModal && !certModal.hidden) {
     closeCertModal();
   }
+
+  if (event.key === "Escape" && admissionModal && !admissionModal.hidden) {
+    closeAdmissionModal();
+  }
 });
 
 // --- 브라우저 뒤로가기(History API) 모달 연동 로직 ---
@@ -1307,7 +1346,8 @@ function isAnyModalOpen() {
     (lindaModal && !lindaModal.hidden) ||
     (gongjinModal && !gongjinModal.hidden) ||
     (nonpayModal && !nonpayModal.hidden) ||
-    (certModal && !certModal.hidden)
+    (certModal && !certModal.hidden) ||
+    (admissionModal && !admissionModal.hidden)
   );
 }
 
@@ -1352,6 +1392,9 @@ function closeAllModals() {
   }
   if (certModal) {
     certModal.hidden = true;
+  }
+  if (admissionModal) {
+    admissionModal.hidden = true;
   }
   document.body.classList.remove("modal-open");
   

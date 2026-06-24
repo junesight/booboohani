@@ -649,7 +649,20 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
+      <!-- 입원/서류/비급여 팝업 안내 버튼 세트 -->
+      <div class="contact-info-buttons">
+        <a class="button info-btn" href="#" id="admission-modal-trigger">
+          <span>입퇴원 안내</span>
+        </a>
+        <a class="button info-btn" href="#" id="cert-modal-trigger">
+          <span>증명서 발급 안내</span>
+        </a>
+        <a class="button info-btn" href="#" id="nonpay-modal-trigger">
+          <span>비보험 수가 안내</span>
+        </a>
+      </div>
+    </section>
     </main>
 
     <div
@@ -1206,25 +1219,17 @@
     </div>
 
     <footer>
-      <div class="footer-content">
-        <div class="footer-left">
-          <div class="footer-brand">
-            <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
-            <strong>부부한의원 (목포)</strong>
-          </div>
-          <div class="footer-info footer-info-desktop">
-            <p>대표 : 최보빈 <span>|</span> 주소 : 목포시 옥암로 193, 1~4층 <span>|</span> Tel : 061-272-1075 <span>|</span> Fax : 061-282-1076</p>
-            <p>사업자등록번호 : 411-91-59413 <span>|</span> Email : booboo2721075@gmail.com</p>
-          </div>
-          <div class="footer-info footer-info-mobile">
-            <span>문의전화 : 061) 272-1075</span>
-            <span>전남 목포시 옥암로 193 (꿀벌신협 옆)</span>
-          </div>
-        </div>
-        <div class="footer-links">
-          <a href="#" id="nonpay-modal-trigger">비보험 수가 안내</a>
-          <a href="#" id="cert-modal-trigger">증명서 발급 안내</a>
-        </div>
+      <div class="footer-brand">
+        <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
+        <strong>부부한의원 (목포)</strong>
+      </div>
+      <div class="footer-info footer-info-desktop">
+        <p>대표 : 최보빈 <span>|</span> 주소 : 목포시 옥암로 193, 1~4층 <span>|</span> Tel : 061-272-1075 <span>|</span> Fax : 061-282-1076</p>
+        <p>사업자등록번호 : 411-91-59413 <span>|</span> Email : booboo2721075@gmail.com</p>
+      </div>
+      <div class="footer-info footer-info-mobile">
+        <span>문의전화 : 061) 272-1075</span>
+        <span>전남 목포시 옥암로 193 (꿀벌신협 옆)</span>
       </div>
       <div class="footer-copy">
         <p>Copyright (c) 2019 해나무부부한의원 All rights reserved. <button class="admin-trigger" type="button" aria-label="관리자 메뉴 열기">Edit</button></p>
@@ -1298,6 +1303,85 @@
               <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 10px 8px;">의무기록 사본 복사 (1~5매 / 6매 이상)</td><td style="padding: 10px 8px; text-align: right;">1매당 1,000원 / 1매당 100원</td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 입퇴원 안내 모달 -->
+    <div
+      class="yakchim-modal admission-modal"
+      id="admission-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="admission-modal-title"
+      hidden
+    >
+      <button class="modal-backdrop" type="button" data-admission-close aria-label="팝업 닫기"></button>
+      <div class="yakchim-modal-panel" style="width: min(720px, 100%);">
+        <button class="modal-close" type="button" data-admission-close aria-label="팝업 닫기">
+          ×
+        </button>
+        <div class="yakchim-modal-head">
+          <h2 id="admission-modal-title">입퇴원 안내</h2>
+        </div>
+        <div class="admission-modal-body" style="max-height: 60svh; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-right: 8px;">
+          <!-- 1. 입원실 운영 -->
+          <div class="admission-section" style="margin-bottom: 24px;">
+            <h4 style="color: var(--green); border-left: 3px solid var(--green); padding-left: 8px; font-weight: 700; margin-bottom: 8px; font-size: 15px;">입원실 운영</h4>
+            <p style="font-size: 13px; color: #555a51; line-height: 1.6; margin-left: 11px;">
+              해나무부부한의원은 교통사고 등으로 입원치료가 필요한 환자분들을 위한 입원실을 운영합니다.
+              각 병실에는 개인 화장실 및 1인 개인 TV가 설치되어 쾌적하고 편안한 입원 환경을 제공합니다.
+            </p>
+          </div>
+
+          <!-- 2. 입원 안내 (절차) -->
+          <div class="admission-section" style="margin-bottom: 24px;">
+            <h4 style="color: var(--green); border-left: 3px solid var(--green); padding-left: 8px; font-weight: 700; margin-bottom: 12px; font-size: 15px;">입원 절차</h4>
+            <div class="admission-steps" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; text-align: center; font-size: 11px; font-weight: 700;">
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 10px 4px; border-radius: 6px; color: var(--green);">01. 내원</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 10px 4px; border-radius: 6px; color: var(--green);">02. 입원 결정</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 10px 4px; border-radius: 6px; color: var(--green);">03. 서약서 작성</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 10px 4px; border-radius: 6px; color: var(--green);">04. 병실 배정</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 10px 4px; border-radius: 6px; color: var(--green);">05. 생활 안내</div>
+            </div>
+          </div>
+
+          <!-- 3. 퇴원 안내 (절차) -->
+          <div class="admission-section" style="margin-bottom: 24px;">
+            <h4 style="color: var(--green); border-left: 3px solid var(--green); padding-left: 8px; font-weight: 700; margin-bottom: 12px; font-size: 15px;">퇴원 절차</h4>
+            <div class="admission-steps" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; text-align: center; font-size: 11px; font-weight: 700;">
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 10px 4px; border-radius: 6px; color: var(--green);">01. 퇴원 예고</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 10px 4px; border-radius: 6px; color: var(--green);">02. 퇴원 결정</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 10px 4px; border-radius: 6px; color: var(--green);">03. 정산 심사</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 10px 4px; border-radius: 6px; color: var(--green);">04. 수납 완료</div>
+              <div style="background: rgba(22, 61, 50, 0.05); padding: 10px 4px; border-radius: 6px; color: var(--green);">05. 약 수령/귀가</div>
+            </div>
+          </div>
+
+          <!-- 4. 상세 안내 테이블 -->
+          <div class="admission-section" style="margin-bottom: 12px;">
+            <h4 style="color: var(--green); border-left: 3px solid var(--green); padding-left: 8px; font-weight: 700; margin-bottom: 8px; font-size: 15px;">상세 안내</h4>
+            <table class="admission-table" style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; line-height: 1.6;">
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; font-weight: 700; width: 30%; color: var(--green);">병실 배정</td>
+                  <td style="padding: 10px 8px; color: #555a51;">입원 당일 병실이 결정되며, 재원자 희망병실 우선 배정 후 잔여 병상 순서대로 배정됩니다.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; font-weight: 700; color: var(--green);">필요 서류</td>
+                  <td style="padding: 10px 8px; color: #555a51;">입원약정서(보증인 1명 필수), 본인 신분증</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; font-weight: 700; color: var(--green);">퇴원 예고제</td>
+                  <td style="padding: 10px 8px; color: #555a51;">원활한 수속을 위해 퇴원 하루 전에 담당 원장님이나 간호사에게 의사를 말씀해 주세요. 필요한 제증명 서류는 하루 전 간호사실에 미리 신청해 주셔야 퇴원 시 즉시 수령 가능합니다.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; font-weight: 700; color: var(--green);">퇴원 약</td>
+                  <td style="padding: 10px 8px; color: #555a51;">퇴원 시 상비약과 처방약을 수령하게 되며, 조제 중인 한약(탕약)은 퇴원 후 댁으로 택배 무료 배송해 드립니다.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

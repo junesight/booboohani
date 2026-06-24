@@ -2607,39 +2607,7 @@ footer p {
   padding-top: 18px;
 }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 48px;
-}
 
-.footer-left {
-  display: grid;
-  gap: 18px;
-}
-
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-end;
-  flex-shrink: 0;
-  padding-right: 440px; /* 더 좌측으로 밀어내기 위해 패딩 확장 */
-  margin-top: 6px;
-}
-
-.footer-links a {
-  color: var(--gold);
-  font-weight: 700;
-  font-size: 15px; /* 글씨 크기 15px로 더 시원하게 확대 */
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.footer-links a:hover {
-  opacity: 0.8;
-}
 
 .floating-actions {
   position: fixed;
@@ -3755,18 +3723,6 @@ footer p {
     padding-right: 0;
   }
 
-  .footer-content {
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .footer-links {
-    align-items: flex-start;
-    padding-right: 0;
-    margin-top: 0;
-    gap: 8px;
-  }
-
   /* 주요진료분야 모바일 팝업 크기 일치 */
   #care-modal .modal-content-small {
     height: 340px;
@@ -3901,6 +3857,94 @@ footer p {
   }
   
   .cert-table td {
+    word-break: keep-all;
+  }
+}
+
+/* --- 예약 섹션 하단 팝업 버튼 세트 --- */
+.contact-info-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 14px;
+  width: 100%;
+}
+
+.contact-info-buttons .button.info-btn {
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  box-shadow: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border-radius: 999px;
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.contact-info-buttons .button.info-btn:hover {
+  background: var(--gold);
+  color: var(--paper); /* 호버 시 색상 반전 */
+}
+
+@media (max-width: 768px) {
+  .contact-info-buttons {
+    grid-template-columns: 1fr; /* 모바일에서는 수직 정렬 */
+    gap: 10px;
+    margin-top: 10px;
+  }
+}
+
+/* --- 입퇴원 안내 팝업 스타일 보완 --- */
+.admission-modal .yakchim-modal-panel {
+  max-width: 720px;
+}
+
+.admission-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+.admission-modal-body::-webkit-scrollbar-track {
+  background: rgba(22, 61, 50, 0.05);
+  border-radius: 3px;
+}
+.admission-modal-body::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border-radius: 3px;
+}
+
+.admission-table tbody tr:hover {
+  background-color: rgba(22, 61, 50, 0.03);
+}
+
+.admission-table td {
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 768px) {
+  .admission-modal .yakchim-modal-panel {
+    padding: 36px 16px 24px;
+  }
+  
+  .admission-steps {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+    font-size: 10px !important;
+  }
+  
+  .admission-steps div {
+    padding: 8px 4px !important;
+  }
+  
+  .admission-table {
+    font-size: 12px !important;
+  }
+  
+  .admission-table td {
+    padding: 8px 4px !important;
     word-break: keep-all;
   }
 }
