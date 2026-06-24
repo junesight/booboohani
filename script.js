@@ -566,6 +566,12 @@ function openLindaModal(card) {
     lindaModal.hidden = false;
     document.body.classList.add("modal-open");
     lindaModal.querySelector(".modal-close")?.focus();
+
+    // Autoplay video on open
+    const iframe = lindaModal.querySelector("#linda-iframe");
+    if (iframe && iframe.dataset.src) {
+      iframe.src = iframe.dataset.src;
+    }
   }
 }
 
@@ -575,6 +581,12 @@ function closeLindaModal() {
   const isAnyModalOpen = (modal && !modal.hidden) || (scheduleModal && !scheduleModal.hidden) || (adminModal && !adminModal.hidden) || (careModal && !careModal.hidden) || (yakchimModal && !yakchimModal.hidden) || (hanyakModal && !hanyakModal.hidden);
   if (!isAnyModalOpen) {
     document.body.classList.remove("modal-open");
+  }
+
+  // Stop video on close
+  const iframe = lindaModal.querySelector("#linda-iframe");
+  if (iframe) {
+    iframe.src = "";
   }
 
   if (lastFocusedCard) {
