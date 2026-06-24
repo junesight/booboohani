@@ -1270,3 +1270,26 @@ window.addEventListener("popstate", (event) => {
     closeAllModals();
   }
 });
+
+// --- 스크롤 시 스르르 나타나는 애니메이션 (Intersection Observer) ---
+document.addEventListener("DOMContentLoaded", () => {
+  const revealOptions = {
+    root: null,
+    rootMargin: "0px 0px -80px 0px", // 화면 바닥에 닿기 조금 전에 트리거되도록 마진 설정
+    threshold: 0.1
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target); // 한 번 나타나면 감시 해제하여 자원 절약
+      }
+    });
+  }, revealOptions);
+
+  const revealElements = document.querySelectorAll(".scroll-reveal");
+  revealElements.forEach((el) => {
+    revealObserver.observe(el);
+  });
+});

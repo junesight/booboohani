@@ -3721,3 +3721,17 @@ footer p {
   }
 
 }
+
+/* --- 스크롤 시 스르르 나타나는 애니메이션 효과 --- */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.215, 0.61, 0.355, 1),
+              transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
