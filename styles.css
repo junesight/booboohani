@@ -3894,10 +3894,19 @@ footer p {
 
 @media (max-width: 768px) {
   .contact-info-buttons {
-    grid-template-columns: 1fr; /* 모바일에서는 수직 정렬 */
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
     margin: 20px auto 48px;
-    width: calc(100% - 40px);
+    width: calc(100% - 20px);
+  }
+  .contact-info-buttons .button.info-btn {
+    font-size: 11px;
+    min-height: 36px;
+    padding: 0 4px;
+    letter-spacing: -0.7px;
+    line-height: 1.25;
+    text-align: center;
+    word-break: keep-all;
   }
 }
 
