@@ -3254,6 +3254,12 @@ footer p {
   .hero-actions .button:first-child {
     grid-column: span 2;
   }
+  
+  .hero-actions .button {
+    min-height: 44px;
+    font-size: 14px;
+    padding: 0 16px;
+  }
 
   h1 {
     font-size: 40px;
