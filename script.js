@@ -993,15 +993,27 @@ function updatePatientRecord(date, count) {
   }
 }
 
-function loadPatientRecord() {
-  const savedRecord = localStorage.getItem(RECORD_STORAGE_KEY);
-  if (!savedRecord) return;
-
+async function loadPatientRecord() {
   try {
-    const record = JSON.parse(savedRecord);
-    updatePatientRecord(record.date, record.count);
+    const url = `${SUPABASE_URL}/rest/v1/patient_records?id=eq.1&select=*`;
+    const response = await fetch(url, {
+      headers: {
+        apikey: SUPABASE_PUBLISHABLE_KEY,
+        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("데이터를 가져오는 데 실패했습니다.");
+    }
+
+    const data = await response.json();
+    if (data && data.length > 0) {
+      const record = data[0];
+      updatePatientRecord(record.date, record.count);
+    }
   } catch (error) {
-    localStorage.removeItem(RECORD_STORAGE_KEY);
+    console.error("내원 환자수 데이터를 로드하지 못했습니다:", error);
   }
 }
 
@@ -1044,7 +1056,7 @@ function unlockAdminMenu() {
   adminRecordDate.focus();
 }
 
-function savePatientRecord() {
+async function savePatientRecord() {
   const isoDate = adminRecordDate.value.trim();
   const date = formatISOToKoreanDate(isoDate);
   const count = normalizePatientCount(adminRecordCount.value);
@@ -1055,11 +1067,43 @@ function savePatientRecord() {
     return;
   }
 
-  updatePatientRecord(date, count);
-  localStorage.setItem(RECORD_STORAGE_KEY, JSON.stringify({ date, count }));
-  adminRecordCount.value = count;
-  adminSuccess.classList.remove("is-error");
-  adminSuccess.textContent = "내원 환자수가 업데이트되었습니다.";
+  // 중복 클릭 방지 및 UI 피드백을 위해 버튼 비활성화 및 상태 변경
+  if (adminSaveRecord) {
+    adminSaveRecord.disabled = true;
+    adminSaveRecord.textContent = "저장 중...";
+  }
+
+  try {
+    const url = `${SUPABASE_URL}/rest/v1/patient_records?id=eq.1`;
+    const response = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        apikey: SUPABASE_PUBLISHABLE_KEY,
+        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+        "Content-Type": "application/json",
+        "Prefer": "return=representation",
+      },
+      body: JSON.stringify({ date, count }),
+    });
+
+    if (!response.ok) {
+      throw new Error("서버 저장에 실패했습니다.");
+    }
+
+    updatePatientRecord(date, count);
+    adminRecordCount.value = count;
+    adminSuccess.classList.remove("is-error");
+    adminSuccess.textContent = "내원 환자수가 업데이트되었습니다.";
+  } catch (error) {
+    console.error("내원 환자수 저장 실패:", error);
+    adminSuccess.classList.add("is-error");
+    adminSuccess.textContent = "내원 환자수를 저장하지 못했습니다. 다시 시도해 주세요.";
+  } finally {
+    if (adminSaveRecord) {
+      adminSaveRecord.disabled = false;
+      adminSaveRecord.textContent = "저장";
+    }
+  }
 }
 
 doctorCards.forEach((card) => {
