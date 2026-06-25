@@ -3789,6 +3789,22 @@ footer p {
   font-family: "Noto Serif KR", serif;
 }
 
+.nonpay-table th:first-child,
+.nonpay-table td[rowspan] {
+  width: 90px;
+  min-width: 90px;
+}
+
+.nonpay-mobile-br {
+  display: none;
+}
+
+.nonpay-indent {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+
 /* 모바일 전용 반응형 덮어쓰기 */
 @media (max-width: 768px) {
   .nonpay-modal .yakchim-modal-panel {
@@ -3797,6 +3813,10 @@ footer p {
   
   .nonpay-table {
     font-size: 13px !important;
+  }
+  
+  .nonpay-table th {
+    width: auto !important;
   }
   
   .nonpay-table th,
@@ -3815,6 +3835,17 @@ footer p {
     letter-spacing: -0.5px;
     white-space: nowrap;
     min-width: 60px;
+    width: auto !important;
+  }
+
+  .nonpay-mobile-br {
+    display: block;
+    content: "";
+    margin-top: 2px;
+  }
+
+  .nonpay-indent {
+    display: inline;
   }
 }
 
