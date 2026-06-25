@@ -947,6 +947,31 @@ function restartGalleryAutoplay() {
   startGalleryAutoplay();
 }
 
+function parseKoreanDateToISO(koreanDateStr) {
+  if (!koreanDateStr) return "";
+  const regex = /(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/;
+  const match = koreanDateStr.match(regex);
+  if (match) {
+    const year = match[1];
+    const month = match[2].padStart(2, "0");
+    const day = match[3].padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+  return "";
+}
+
+function formatISOToKoreanDate(isoDateStr) {
+  if (!isoDateStr) return "";
+  const parts = isoDateStr.split("-");
+  if (parts.length === 3) {
+    const year = parts[0];
+    const month = parts[1].padStart(2, "0");
+    const day = parts[2].padStart(2, "0");
+    return `${year}년 ${month}월 ${day}일`;
+  }
+  return isoDateStr;
+}
+
 function normalizePatientCount(value) {
   const trimmed = String(value || "").trim();
   if (!trimmed) return "";
@@ -1013,13 +1038,15 @@ function unlockAdminMenu() {
   adminDashboard.hidden = false;
   adminError.textContent = "";
   adminSuccess.textContent = "";
-  adminRecordDate.value = recordEndDate?.textContent || "";
+  const currentEndDate = recordEndDate?.textContent || "";
+  adminRecordDate.value = parseKoreanDateToISO(currentEndDate);
   adminRecordCount.value = recordPatientCount?.textContent || "";
   adminRecordDate.focus();
 }
 
 function savePatientRecord() {
-  const date = adminRecordDate.value.trim();
+  const isoDate = adminRecordDate.value.trim();
+  const date = formatISOToKoreanDate(isoDate);
   const count = normalizePatientCount(adminRecordCount.value);
 
   if (!date || !count) {
