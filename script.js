@@ -1314,6 +1314,15 @@ loadPatientRecord();
 adminTrigger?.addEventListener("click", openAdminModal);
 adminLoginButton?.addEventListener("click", unlockAdminMenu);
 adminSaveRecord?.addEventListener("click", savePatientRecord);
+adminRecordDate?.addEventListener("click", () => {
+  try {
+    if (typeof adminRecordDate.showPicker === "function") {
+      adminRecordDate.showPicker();
+    }
+  } catch (e) {
+    // Fail-safe for older browsers
+  }
+});
 scheduleTrigger?.addEventListener("click", openScheduleModal);
 
 adminPassword?.addEventListener("keydown", (event) => {
