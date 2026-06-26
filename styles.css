@@ -3907,6 +3907,69 @@ footer p {
   }
 }
 
+/* --- 증명서 다운로드 버튼 스타일 --- */
+.cert-download-section {
+  margin-top: 32px;
+  border-top: 1px dashed var(--line);
+  padding-top: 24px;
+}
+
+.cert-download-title {
+  color: var(--green);
+  border-left: 3px solid var(--green);
+  padding-left: 8px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.cert-download-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.btn-cert-download {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--paper);
+  border: 1px solid var(--green);
+  color: var(--green);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-cert-download:hover {
+  background-color: var(--green);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(22, 61, 50, 0.15);
+  transform: translateY(-1px);
+}
+
+.btn-cert-download svg {
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn-cert-download:hover svg {
+  transform: translateY(2px);
+}
+
+@media (max-width: 576px) {
+  .btn-cert-download {
+    padding: 10px 8px;
+    font-size: 12.5px;
+    gap: 4px;
+  }
+}
+
 /* --- 예약 섹션 하단 팝업 버튼 세트 --- */
 .contact-info-buttons {
   display: grid;
