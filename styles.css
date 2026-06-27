@@ -251,7 +251,6 @@ h3 {
   display: block;
 }
 
-.hero-actions,
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
@@ -259,11 +258,20 @@ h3 {
 }
 
 .hero-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 142px);
   justify-content: center;
+  gap: 12px;
 }
 
 .hero-actions .button {
-  min-width: 142px;
+  min-width: 0;
+  width: 100%;
+}
+
+.hero-actions .button:nth-child(1),
+.hero-actions .button:nth-child(2) {
+  grid-column: span 2;
 }
 
 .button {
@@ -3315,8 +3323,9 @@ footer p {
     margin-inline: auto;
   }
   
-  .hero-actions .button:first-child {
-    grid-column: span 2;
+  .hero-actions .button:nth-child(1),
+  .hero-actions .button:nth-child(2) {
+    grid-column: span 1;
   }
   
   .hero-actions .button {
