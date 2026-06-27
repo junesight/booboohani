@@ -117,8 +117,8 @@ const galleryFloors = {
   ],
   4: [
     { src: "assets/gallery-4f-01.jpg", caption: "입원실 로비" },
-    { src: "assets/gallery-4f-02.jpg", caption: "입원실(4인실)" },
-    { src: "assets/gallery-4f-03.jpg", caption: "입원실(2인실)" },
+    { src: "assets/gallery-4f-02.jpg", caption: "입원실(2인실)" },
+    { src: "assets/gallery-4f-03.jpg", caption: "입원실(4인실)" },
     { src: "assets/gallery-4f-04.jpg", caption: "입원실 화장실" },
   ],
 };
