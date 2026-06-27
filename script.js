@@ -128,7 +128,7 @@ const galleryFloors = {
     { src: "assets/gallery-3f-03.jpg", caption: "입원환자 면회 라운지" },
     { src: "assets/gallery-3f-04.jpg", caption: "입원환자 면회 라운지" },
     { src: "assets/gallery-3f-05.jpg", caption: "사무실" },
-    { src: "assets/gallery-3f-06.jpg", caption: "약제실" },
+    { src: "assets/gallery-3f-06.jpg", caption: "한약 조제실" },
     { src: "assets/gallery-3f-07.jpg", caption: "탕전실" },
     { src: "assets/gallery-3f-08.jpg", caption: "직원 식당" },
   ],
