@@ -274,6 +274,14 @@ h3 {
   grid-column: span 2;
 }
 
+.pc-only {
+  display: inline;
+}
+
+.mobile-only {
+  display: none;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -3137,6 +3145,14 @@ footer p {
     padding: 36px 20px;
     width: min(500px, 100%);
     overflow-x: auto;
+  }
+
+  .pc-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: inline;
   }
 
   /* Contact / Reservation 모바일 스타일 리셋 */
