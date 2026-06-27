@@ -262,6 +262,10 @@ h3 {
   justify-content: center;
 }
 
+.hero-actions .button {
+  min-width: 142px;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -3319,6 +3323,7 @@ footer p {
     min-height: 40px;
     font-size: 14px;
     padding: 0 16px;
+    min-width: auto;
   }
 
   h1 {
