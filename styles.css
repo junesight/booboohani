@@ -3159,6 +3159,10 @@ footer p {
     display: inline;
   }
 
+  .intro {
+    margin-bottom: 30px;
+  }
+
   /* Contact / Reservation 모바일 스타일 리셋 */
   .contact {
     padding: clamp(48px, 6vw, 68px) clamp(24px, 5vw, 64px);
