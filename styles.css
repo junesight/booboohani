@@ -468,6 +468,10 @@ h3 {
   padding: clamp(36px, 5vw, 64px) 0 28px;
 }
 
+.intro {
+  margin-bottom: 70px;
+}
+
 .section-grid p:last-child {
   align-self: center;
   margin-bottom: 0;
