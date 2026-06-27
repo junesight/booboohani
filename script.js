@@ -123,9 +123,14 @@ const galleryFloors = {
     { src: "assets/gallery-2f-15.jpg", caption: "치료실" },
   ],
   3: [
-    { src: GALLERY_PLACEHOLDER, caption: "3층 입원 치료 공간" },
-    { src: GALLERY_PLACEHOLDER, caption: "3층 휴게 공간" },
-    { src: GALLERY_PLACEHOLDER, caption: "3층 치료실" },
+    { src: "assets/gallery-3f-01.jpg", caption: "입원환자 면회 라운지" },
+    { src: "assets/gallery-3f-02.jpg", caption: "입원환자 면회 라운지" },
+    { src: "assets/gallery-3f-03.jpg", caption: "입원환자 면회 라운지" },
+    { src: "assets/gallery-3f-04.jpg", caption: "입원환자 면회 라운지" },
+    { src: "assets/gallery-3f-05.jpg", caption: "사무실" },
+    { src: "assets/gallery-3f-06.jpg", caption: "약제실" },
+    { src: "assets/gallery-3f-07.jpg", caption: "탕전실" },
+    { src: "assets/gallery-3f-08.jpg", caption: "직원 식당" },
   ],
   4: [
     { src: "assets/gallery-4f-01.jpg", caption: "입원실 로비" },
