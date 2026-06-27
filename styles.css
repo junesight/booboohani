@@ -3804,16 +3804,16 @@ footer p {
     padding-right: 0;
   }
 
-  /* 주요진료분야 모바일 팝업 크기 일치 */
+  /* 주요진료분야 모바일 팝업 크기 일치 (상하폭 축소) */
   #care-modal .modal-content-small {
-    height: 340px;
-    padding: 36px 32px 30px;
+    height: 300px;
+    padding: 30px 24px 24px;
     justify-content: flex-start;
   }
 
-  /* 치료방법 모바일 팝업 크기 확대 (버튼 및 긴 텍스트 수용) */
+  /* 치료방법 모바일 팝업 크기 (상하폭 축소) */
   #care-modal.is-method-modal .modal-content-small {
-    height: 470px;
+    height: 400px;
   }
 
 }
