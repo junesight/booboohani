@@ -48,7 +48,6 @@ a {
 }
 
 /* --- 앵커 스크롤 이동 시 상단 고정 헤더 높이만큼의 여백 확보 --- */
-#home,
 #care,
 #methods,
 #doctors,
@@ -56,6 +55,10 @@ a {
 #location,
 #contact {
   scroll-margin-top: -75px;
+}
+
+#home {
+  scroll-margin-top: 0;
 }
 
 .admin-trigger {
