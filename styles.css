@@ -216,7 +216,7 @@ h2 {
 
 h1 {
   max-width: 600px;
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
   font-size: clamp(42px, 6vw, 78px);
   font-weight: 700;
 }
