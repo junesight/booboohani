@@ -2148,6 +2148,15 @@ body.modal-open {
   margin: 0;
 }
 
+.contact-top-link {
+  position: absolute;
+  top: clamp(28px, 4vw, 48px);
+  right: clamp(28px, 5vw, 64px);
+  color: var(--green);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 200px;
@@ -3142,6 +3151,10 @@ footer p {
   .contact .eyebrow {
     position: static;
     margin-bottom: 16px;
+  }
+
+  .contact-top-link {
+    display: none;
   }
 
   .contact-grid {
