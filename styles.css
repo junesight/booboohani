@@ -2391,6 +2391,12 @@ body.modal-open {
   margin: 0;
   text-align: center;
 }
+
+#location .section-heading a {
+  position: absolute;
+  right: 0;
+  bottom: 24px;
+}
 .location-content {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
