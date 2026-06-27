@@ -133,12 +133,12 @@ const doctorIdsByName = {
 };
 
 const scheduleImagesByName = {
-  "최보빈 원장": "assets/schedule-choi-bb.png",
-  "김준현 원장": "assets/schedule-kim-jh.png",
-  "김영윤 원장": "assets/schedule-kim-yy.png",
-  "박지현 원장": "assets/schedule-park-jh.png",
-  "안태윤 원장": "assets/schedule-ahn-ty.png",
-  "황두호 원장": "assets/schedule-hwang-dh.png",
+  "최보빈 원장": "assets/schedule-choi-bb.webp",
+  "김준현 원장": "assets/schedule-kim-jh.webp",
+  "김영윤 원장": "assets/schedule-kim-yy.webp",
+  "박지현 원장": "assets/schedule-park-jh.webp",
+  "안태윤 원장": "assets/schedule-ahn-ty.webp",
+  "황두호 원장": "assets/schedule-hwang-dh.webp",
 };
 
 const doctorProfiles = {
@@ -812,6 +812,7 @@ function closeDoctorModal() {
 
   if (scheduleModal && !scheduleModal.hidden) {
     scheduleModal.querySelector(".modal-close")?.focus();
+    lastFocusedCard = null;
   } else {
     if (lastFocusedCard) {
       lastFocusedCard.focus();
