@@ -52,9 +52,12 @@ a {
 #methods,
 #doctors,
 #gallery,
-#location,
-#contact {
+#location {
   scroll-margin-top: -75px;
+}
+
+#contact {
+  scroll-margin-top: 130px;
 }
 
 #home {
