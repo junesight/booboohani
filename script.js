@@ -263,8 +263,22 @@ function formatDoctorDisplayName(name) {
 
 function getCurrentWeekDates() {
   const today = new Date();
-  const day = today.getDay();
-  const diff = day === 0 ? -6 : 1 - day;
+  const day = today.getDay(); // 0 = 일요일, 1 = 월요일, ...
+  const hour = today.getHours();
+
+  let diff;
+  if (day === 0) {
+    // 일요일 오후 2시(14시) 이후에는 다음 주 스케쥴을 가져옴
+    if (hour >= 14) {
+      diff = 1;
+    } else {
+      diff = -6;
+    }
+  } else {
+    // 월요일~토요일은 이번 주 월요일 기준
+    diff = 1 - day;
+  }
+
   const monday = new Date(today);
   monday.setHours(0, 0, 0, 0);
   monday.setDate(today.getDate() + diff);
