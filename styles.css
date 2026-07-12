@@ -1725,6 +1725,38 @@ h3 {
   font-weight: 900;
 }
 
+.schedule-date-cell.is-sat strong,
+.schedule-date-cell.is-sat span {
+  color: #2b6cb0 !important;
+}
+
+.schedule-date-cell.is-sun-holiday strong,
+.schedule-date-cell.is-sun-holiday span {
+  color: #c53030 !important;
+}
+
+/* 개별 원장님 팝업 진료일의 토/일/공휴일 날짜 색상 (딥그린 배경용 - 밝은 색으로 지정) */
+.modal-date-cell:not(.is-off).is-sat strong,
+.modal-date-cell:not(.is-off).is-sat span {
+  color: #63b3ed !important;
+}
+
+.modal-date-cell:not(.is-off).is-sun-holiday strong,
+.modal-date-cell:not(.is-off).is-sun-holiday span {
+  color: #fc8181 !important;
+}
+
+/* 개별 원장님 팝업 휴진일의 토/일/공휴일 날짜 색상 (연한 배경용 - 원래 어두운 색상 유지) */
+.modal-date-cell.is-off.is-sat strong,
+.modal-date-cell.is-off.is-sat span {
+  color: #2b6cb0 !important;
+}
+
+.modal-date-cell.is-off.is-sun-holiday strong,
+.modal-date-cell.is-off.is-sun-holiday span {
+  color: #c53030 !important;
+}
+
 .schedule-row .schedule-pill {
   min-height: 70px;
   gap: 1px;

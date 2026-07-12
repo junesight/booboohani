@@ -287,6 +287,54 @@ function getCurrentWeekDates() {
   return Array.from({ length: 7 }, (_, index) => addDays(weekStart, index));
 }
 
+function getDateColorClass(date, index, rows = []) {
+  const PUBLIC_HOLIDAYS_2026 = [
+    '2026-01-01',
+    '2026-02-16',
+    '2026-02-17',
+    '2026-02-18',
+    '2026-03-01',
+    '2026-03-02',
+    '2026-05-05',
+    '2026-05-24',
+    '2026-05-25',
+    '2026-06-03',
+    '2026-06-06',
+    '2026-07-17',
+    '2026-08-15',
+    '2026-08-17',
+    '2026-09-24',
+    '2026-09-25',
+    '2026-09-26',
+    '2026-10-03',
+    '2026-10-05',
+    '2026-10-09',
+    '2026-12-25',
+  ];
+
+  const isHoliday = PUBLIC_HOLIDAYS_2026.includes(date) || rows.some(
+    (row) =>
+      row.date === date &&
+      (row.status === "공휴일" ||
+        row.status === "휴일" ||
+        row.status === "휴원" ||
+        row.status === "대체공휴일"),
+  );
+
+  if (isHoliday) {
+    return "is-sun-holiday";
+  }
+
+  if (index === 5) {
+    return "is-sat";
+  }
+  if (index === 6) {
+    return "is-sun-holiday";
+  }
+
+  return "";
+}
+
 function formatScheduleStatus(status) {
   const value = String(status || "");
 
@@ -343,10 +391,12 @@ function renderWeeklySchedule(doctorId, rows = []) {
       const status = formatScheduleStatus(rowsByDate.get(date)?.status);
       const isOff = status === "휴진";
       const isNight = status === "~8시";
+      const colorClass = getDateColorClass(date, index, rows);
 
       item.className = [
         "schedule-date-cell",
         "modal-date-cell",
+        colorClass,
         isOff ? "is-off" : "",
         isNight ? "is-night" : "",
       ].filter(Boolean).join(" ");
@@ -426,8 +476,9 @@ function renderScheduleOverview(rows = []) {
   headerSchedule.replaceChildren(
     ...weekDates.map((date, index) => {
       const cell = document.createElement("div");
+      const colorClass = getDateColorClass(date, index, rows);
 
-      cell.className = "schedule-date-cell";
+      cell.className = `schedule-date-cell ${colorClass}`.trim();
       cell.innerHTML = `
         <strong>${formatMonthDay(date)}</strong>
         <span>${DAY_LABELS[index]}</span>
