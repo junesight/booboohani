@@ -336,13 +336,13 @@ function getDateColorClass(date, index, rows = []) {
 }
 
 function formatScheduleStatus(status) {
-  const value = String(status || "");
+  const value = String(status || "").trim();
 
   if (["휴무", "휴일", "공휴일", "휴원", "연차", "연차사용", "대체 필요", ""].includes(value)) {
     return "휴진";
   }
 
-  if (["8", "7", "6", "5", "4", "2"].includes(value)) {
+  if (!isNaN(value) && value !== "") {
     return `~${value}시`;
   }
 
