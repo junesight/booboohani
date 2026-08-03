@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://booboo.co.kr/sitemap.xml

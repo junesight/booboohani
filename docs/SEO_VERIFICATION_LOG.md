@@ -111,3 +111,40 @@ Content-Type: text/css; charset=utf-8
 - [ ] PR 병합 완료 후, 실제 서비스 운영 도메인의 robots.txt 경로(`https://booboo.co.kr/robots.txt`)에 브라우저로 직접 접속합니다.
 - [ ] 응답 코드가 `200 OK` 인지 확인합니다.
 - [ ] 출력된 내용이 `User-agent: *` 및 `Allow: /` 와 일치하는지 최종 확인합니다.
+
+---
+
+## [SEO-004] sitemap.xml 생성 및 검증
+
+- **검증일**: 2026-08-03
+- **생성 파일**: `sitemap.xml`
+- **수정 파일**: `robots.txt`
+- **sitemap URL**: `https://booboo.co.kr/sitemap.xml`
+- **sitemap 포함 URL**: `https://booboo.co.kr/`
+- **lastmod**: `2026-08-03`
+- **robots.txt 추가 라인**: `Sitemap: https://booboo.co.kr/sitemap.xml`
+- **sitemap.xml 목적**: 검색엔진에 공식 루트 URL을 명시적으로 제공
+- **최종 판정**: **PASS**
+
+### 1. 검증 결과
+- [x] **sitemap.xml 파일 루트 생성**: 저장소 최상위 루트 디렉토리에 `sitemap.xml` 파일 신규 추가 완료.
+- [x] **XML 선언 확인**: 파일 상단에 `<?xml version="1.0" encoding="UTF-8"?>` 선언부 확인.
+- [x] **urlset 네임스페이스 확인**: 표준 네임스페이스 `xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"` 적용 확인.
+- [x] **loc 값 확인**: 대표 URL인 `https://booboo.co.kr/`가 정확히 매핑된 것 확인.
+- [x] **lastmod 값 확인**: `2026-08-03` 날짜 포맷 확인.
+- [x] **sitemap 내 URL 개수**: 1개의 루트 URL만 포함된 것 확인.
+- [x] **robots.txt에 Sitemap 라인 추가**: `robots.txt` 하단에 정상 추가됨 확인.
+- [x] **robots.txt Sitemap 값 정합성**: 정확히 `Sitemap: https://booboo.co.kr/sitemap.xml`로 매핑된 것 확인.
+- [x] **robots.txt Sitemap 라인 중복 없음**: 해당 지시어가 단 1개만 기재되었음을 확인.
+- [x] **index.html 변경 없음**: 메인 마크업 파일 변경 없음.
+- [x] **styles.css 변경 없음**: 스타일시트 변경 없음.
+- [x] **script.js 변경 없음**: 스크립트 파일 변경 없음.
+- [x] **assets 변경 없음**: 이미지 등 에셋 자원 변경 없음.
+- [x] **CNAME 변경 없음**: 루트 CNAME 파일 변경 없음.
+
+### 2. 수동 확인 항목 (운영 반영 후)
+- [ ] PR 병합 완료 후, 실제 서비스 운영 도메인의 사이트맵 경로(`https://booboo.co.kr/sitemap.xml`)에 접속하여 200 OK 및 올바른 내용 출력 확인.
+- [ ] sitemap.xml에 `https://booboo.co.kr/` URL이 포함되어 있는지 확인.
+- [ ] PR 병합 완료 후, 실제 서비스 운영 도메인의 robots.txt 경로(`https://booboo.co.kr/robots.txt`)에 접속하여 200 OK 및 `Sitemap: https://booboo.co.kr/sitemap.xml` 라인이 있는지 확인.
+- [ ] Google Search Console에 sitemap.xml 수동 제출 및 검증.
+- [ ] 네이버 서치어드바이저에 sitemap.xml 수동 제출 및 검증.
