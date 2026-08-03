@@ -12,12 +12,17 @@
 
 ### 수정
 
-## 2026-08-03 — 사이트맵 생성 및 크롤러 연동 완료
+## 2026-08-03 — 홈페이지 메타 타이틀 최적화 및 사이트맵 연동 완료
+
+- 작업 ID: SEO-005
+- 변경: [SEO-005] 홈페이지의 `<title>` 메타 태그를 타겟팅 지역 및 주요 진료과목을 포함한 최적화 문구로 변경했습니다.
+- 검증: index.html 내 title 교체 정합성 검토 및 의료 광고 가이드 준수 여부 정적 검증 완료
+- 배포 commit: (main 병합 시 확정)
 
 - 작업 ID: SEO-004
 - 변경: [SEO-004] sitemap.xml을 생성하고 robots.txt에 사이트맵 경로를 등록했습니다.
 - 검증: sitemap.xml 생성 및 XML 선언/네임스페이스/loc/lastmod 정합성 검토, robots.txt 내 Sitemap 지시어 추가 검증 완료
-- 배포 commit: (main 병합 시 확정)
+- 배포 commit: e2dc10f29a3f3374da5d54ace09ada02d93802c0
 
 - 작업 ID: SEO-003
 - 변경: [SEO-003] 검색엔진 크롤러 수집 허용을 명시하는 robots.txt를 추가했습니다.

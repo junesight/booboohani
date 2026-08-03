@@ -19,7 +19,7 @@
 - [x] SEO-002 www/비www 및 canonical 통일
 - [x] SEO-003 robots.txt 생성 및 검증
 - [x] SEO-004 sitemap.xml 생성 및 검증
-- [ ] SEO-005 홈페이지 Title 최적화
+- [x] SEO-005 홈페이지 Title 최적화
 - [ ] SEO-006 Meta description 적용
 - [ ] SEO-007 Open Graph 및 Twitter Card 적용
 - [ ] SEO-008 카카오톡·문자·SNS 공유 화면 검수

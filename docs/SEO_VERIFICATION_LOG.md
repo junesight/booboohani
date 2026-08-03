@@ -148,3 +148,22 @@ Content-Type: text/css; charset=utf-8
 - [ ] PR 병합 완료 후, 실제 서비스 운영 도메인의 robots.txt 경로(`https://booboo.co.kr/robots.txt`)에 접속하여 200 OK 및 `Sitemap: https://booboo.co.kr/sitemap.xml` 라인이 있는지 확인.
 - [ ] Google Search Console에 sitemap.xml 수동 제출 및 검증.
 - [ ] 네이버 서치어드바이저에 sitemap.xml 수동 제출 및 검증.
+
+---
+
+## [SEO-005] 홈페이지 Title 최적화
+
+- **검증일**: 2026-08-03
+- **수정 파일**: [index.html](file:///C:/Users/user/.gemini/antigravity/scratch/booboohani/index.html)
+- **최종 판정**: **PASS**
+
+### 1. 검증 결과
+- [x] **Title 태그 변경**: 최적화 타이틀 `목포 부부한의원 | 365진료 / 매일야간진료 / 척추·관절·교통사고 치료 / 추나·초음파 치료`로 정상 교체 완료.
+- [x] **키워드 유효성**: 지역명(목포), 핵심 아이덴티티(부부한의원), 강점(365진료, 매일야간진료), 치료 과목(척추, 관절, 교통사고, 추나, 초음파)이 규격에 맞게 모두 포함됨.
+- [x] **의료 가이드라인 준수**: AGENTS.md 5항에 명시된 금지된 과장 표현(완치, 보장, 100%, 최고 등)이 전혀 없음.
+- [x] **정적 리소스 변경 없음**: index.html의 title 태그 외에 styles.css, script.js 및 assets 에셋은 일절 수정되지 않았음을 확인.
+- [x] **CNAME 변경 없음**: 루트 CNAME 파일 변경 없음.
+
+### 2. 수동 확인 항목 (운영 반영 후)
+- [ ] PR 병합 완료 후, 실제 서비스 운영 도메인 `https://booboo.co.kr/` 에 브라우저로 접속하여 탭 타이틀이 정상 노출되는지 확인.
+- [ ] 페이지 소스보기(Ctrl + U)로 `<title>` 태그 내용 확인.
