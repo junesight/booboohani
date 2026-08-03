@@ -15,7 +15,7 @@
 
 ## Phase 1 — 기술적 Quick Win
 
-- [ ] SEO-001 HTTP→HTTPS 301 리디렉션 검증
+- [x] SEO-001 HTTP→HTTPS 301 리디렉션 검증
 - [ ] SEO-002 www/비www 및 canonical 통일
 - [ ] SEO-003 robots.txt 생성 및 검증
 - [ ] SEO-004 sitemap.xml 생성 및 검증

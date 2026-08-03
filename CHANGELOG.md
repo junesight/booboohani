@@ -12,12 +12,17 @@
 
 ### 수정
 
-## 2026-08-03 — 초기 SEO 기준선 확정 및 운영 안정화
+## 2026-08-03 — HTTP 리디렉션 검증 및 초기 SEO 기준선 확정
+
+- 작업 ID: SEO-001
+- 변경: HTTP 요청을 HTTPS 공식 도메인으로 안전하게 강제 리디렉션하는 기술적 검증 완료 및 로그 작성
+- 검증: curl.exe를 통한 HTTP header, Location, redirect chain, 정적 리소스 경로 보존 여부 검증
+- 배포 commit: (main 병합 시 확정)
 
 - 작업 ID: SEO-000
 - 변경: 2026-07-25 수행한 초기 SEO/AEO 기준 점수(35점) 및 저장소 파일 기반 기술 검증 완료
 - 검증: 기술적 SEO/온페이지/AEO 구성요소 비파괴 분석 및 점수 검산
-- 배포 commit: (main 병합 시 확정)
+- 배포 commit: 7c626c5341493468f76c99c844cf5a9bbfba6c19
 
 - 작업 ID: OPS-003
 - 변경: 장애 복구 및 롤백 안정을 위한 BACKUP_AND_ROLLBACK.md 가이드 생성
