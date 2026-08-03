@@ -12,12 +12,17 @@
 
 ### 수정
 
-## 2026-08-03 — HTTP 리디렉션 검증 및 초기 SEO 기준선 확정
+## 2026-08-03 — 대표 URL 설정 및 검증 완료
+
+- 작업 ID: SEO-002
+- 변경: [SEO-002] 부부한의원 홈페이지의 canonical URL을 `https://booboo.co.kr/` 기준으로 명시했습니다.
+- 검증: index.html head 내 canonical 추가 여부, HTTPS non-www trailing slash 기준 정합성 검증 완료
+- 배포 commit: (main 병합 시 확정)
 
 - 작업 ID: SEO-001
 - 변경: HTTP 요청을 HTTPS 공식 도메인으로 안전하게 강제 리디렉션하는 기술적 검증 완료 및 로그 작성
 - 검증: curl.exe를 통한 HTTP header, Location, redirect chain, 정적 리소스 경로 보존 여부 검증
-- 배포 commit: (main 병합 시 확정)
+- 배포 commit: 8c2d44f18d2e07189e96f198e983617cb0f44984
 
 - 작업 ID: SEO-000
 - 변경: 2026-07-25 수행한 초기 SEO/AEO 기준 점수(35점) 및 저장소 파일 기반 기술 검증 완료
