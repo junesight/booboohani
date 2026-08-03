@@ -3,7 +3,6 @@ description: 부부한의원 홈페이지 SEO/AEO 개선 항목
 title: "[SEO-000] "
 labels:
   - seo
-type: Task
 body:
   - type: markdown
     attributes:
