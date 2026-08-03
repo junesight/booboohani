@@ -63,4 +63,24 @@ Content-Type: text/css; charset=utf-8
 
 ### 3. 작업 정보
 - **관련 작업 브랜치**: `docs/seo-001-verify-https-redirect`
-- **커밋 해시**: (main 병합 시 확정)
+- **커밋 해시**: 8c2d44f18d2e07189e96f198e983617cb0f44984
+
+---
+
+## [SEO-002] canonical URL 통일
+
+- **검증일**: 2026-08-03
+- **공식 canonical 기준 URL**: `https://booboo.co.kr/`
+- **수정 파일**: [index.html](file:///C:/Users/user/.gemini/antigravity/scratch/booboohani/index.html)
+- **최종 판정**: **PASS**
+
+### 1. 검증 결과
+- [x] **canonical 태그 추가**: `index.html` 내 `<link rel="canonical" ...>` 태그 정상 삽입 완료.
+- [x] **canonical 값 정합성**: 지정된 공식 대표 주소인 `https://booboo.co.kr/` (HTTPS 적용, non-www, trailing slash 포함)과 완벽히 일치함.
+- [x] **`<head>` 내부 위치**: charset, viewport, title 메타 태그 바로 하단인 `<head>` 영역 내부(6라인)에 정상 배치됨.
+- [x] **중복 태그 없음**: 동일 문서 내 canonical 선언 태그가 1개만 유일하게 존재하는 것을 확인함.
+- [x] **CSS/JS/assets 변경 없음**: 홈페이지 렌더링 및 기능 오작동 영향도가 전혀 없음을 대조 검토 완료.
+- [x] **CNAME 변경 없음**: 루트 CNAME 파일 변경 없음.
+
+### 2. 수동 확인 항목 (운영 반영 후)
+- [ ] PR 병합 완료 후, 실제 서비스 운영 도메인(`https://booboo.co.kr/`)에 브라우저로 접속하여 페이지 소스(F12) 내에 `<link rel="canonical" href="https://booboo.co.kr/">` 태그가 정확히 반영되었는지 수동으로 교차 검증을 진행해야 합니다.
