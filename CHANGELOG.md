@@ -12,12 +12,17 @@
 
 ### 수정
 
-## 2026-08-03 — 검색엔진 크롤러 제어 파일 추가 및 대표 URL 설정 완료
+## 2026-08-03 — 사이트맵 생성 및 크롤러 연동 완료
+
+- 작업 ID: SEO-004
+- 변경: [SEO-004] sitemap.xml을 생성하고 robots.txt에 사이트맵 경로를 등록했습니다.
+- 검증: sitemap.xml 생성 및 XML 선언/네임스페이스/loc/lastmod 정합성 검토, robots.txt 내 Sitemap 지시어 추가 검증 완료
+- 배포 commit: (main 병합 시 확정)
 
 - 작업 ID: SEO-003
 - 변경: [SEO-003] 검색엔진 크롤러 수집 허용을 명시하는 robots.txt를 추가했습니다.
 - 검증: robots.txt 생성 여부, User-agent, Allow 규칙 및 Disallow/Sitemap 부재 여부 정적 검증 완료
-- 배포 commit: (main 병합 시 확정)
+- 배포 commit: d553c1b5c751bf2bd547396167e03bf69534d36f
 
 - 작업 ID: SEO-002
 - 변경: [SEO-002] 부부한의원 홈페이지의 canonical URL을 `https://booboo.co.kr/` 기준으로 명시했습니다.
