@@ -12,12 +12,19 @@
 
 ### 수정
 
+## 2026-08-04 — SNS 공유 메타태그 및 대표 이미지 추가 완료
+
+- 작업 ID: SEO-007
+- 변경: [SEO-007] 카카오톡, X, 블로그 공유를 위한 Open Graph 및 Twitter Card 메타태그와 대표 로고 이미지(og-image.png)를 추가했습니다.
+- 검증: index.html 내 og/twitter 태그 구문 정합성 및 대표 이미지 로컬 추가 검증 완료
+- 배포 commit: (main 병합 시 확정)
+
 ## 2026-08-04 — 홈페이지 메타 설명문 최적화 완료
 
 - 작업 ID: SEO-006
 - 변경: [SEO-006] 홈페이지의 `<meta name="description">` 태그를 상세 치료과목 및 진료일정을 결합한 최적화 문구로 변경했습니다.
 - 검증: index.html 내 meta description 변경 정합성 및 의료광고 가이드라인 준수 여부 정적 검증 완료
-- 배포 commit: (main 병합 시 확정)
+- 배포 commit: 812700b1abfe400750aa1e3636efb20b9ea28871
 
 ## 2026-08-03 — 홈페이지 메타 타이틀 최적화 및 사이트맵 연동 완료
 
