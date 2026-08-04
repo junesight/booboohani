@@ -12,12 +12,19 @@
 
 ### 수정
 
+## 2026-08-04 — WebSite 및 Organization 구조화 데이터 적용 완료
+
+- 작업 ID: AEO-002
+- 변경: [AEO-002] schema.org 표준에 따른 WebSite 및 Organization JSON-LD 구조화 데이터를 홈페이지 head 내 주입 완료했습니다.
+- 검증: index.html 내 JSON-LD Graph 구문 규격 및 상호 링크 정합성 검토 완료
+- 배포 commit: (main 병합 시 확정)
+
 ## 2026-08-04 — MedicalClinic 구조화 데이터 적용 완료
 
 - 작업 ID: AEO-001
 - 변경: [AEO-001] schema.org 표준에 따른 MedicalClinic 및 LocalBusiness JSON-LD 구조화 데이터를 홈페이지 head 내 주입 완료했습니다.
 - 검증: index.html 내 JSON-LD 구문 규격 및 우편번호 58658 정합성 검토 완료
-- 배포 commit: (main 병합 시 확정)
+- 배포 commit: a07ac730a8c51b9801add66574546e57f61f4d5d
 
 ## 2026-08-04 — SNS 공유 카드 렌더링 검수 완료
 

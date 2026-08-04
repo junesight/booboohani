@@ -244,3 +244,23 @@ Content-Type: text/css; charset=utf-8
 ### 2. 수동 확인 항목 (운영 반영 후)
 - [ ] PR 병합 완료 후, 실제 서비스 운영 도메인 `https://booboo.co.kr/` 에 접속하여 페이지 소스보기(Ctrl + U)로 JSON-LD가 안전하게 포함되었는지 확인.
 - [ ] 구글 리치 결과 테스트 도구(Rich Results Test) 또는 스키마 검증 도구(Schema Validator)를 사용하여 생성된 JSON-LD 소스가 구문 에러 없이 올바르게 추출되는지 교차 확인.
+
+---
+
+## [AEO-002] WebSite·Organization JSON-LD
+
+- **검증일**: 2026-08-04
+- **수정 파일**: [index.html](file:///C:/Users/user/.gemini/antigravity/scratch/booboohani/index.html)
+- **최종 판정**: **PASS**
+
+### 1. 검증 결과
+- [x] **JSON-LD 스크립트 추가**: index.html 내 `</head>` 직전에 `WebSite` 및 `Organization` 구조화 데이터 스크립트(`application/ld+json`) 주입 완료.
+- [x] **WebSite 엔티티 검증**: 도메인 `https://booboo.co.kr/`, 공식 사이트명 `부부한의원` 및 publisher(Organization id)가 규격에 맞게 기입됨을 확인.
+- [x] **Organization 엔티티 검증**: 로고 이미지(`booboo-logo.png`), 대표 이미지(`og-image.png`), 이메일 및 전화번호, 주소와 우편번호 `58658`이 스펙에 일치함을 확인.
+- [x] **연동 채널 연합**: sameAs 프로퍼티에 카카오 채널 및 네이버 예약 주소가 정확히 바인딩됨을 확인.
+- [x] **정적 리소스 변경 없음**: index.html의 스키마 추가 외에 styles.css, script.js 및 에셋 변경 없음.
+- [x] **CNAME 변경 없음**: 루트 CNAME 파일 변경 없음.
+
+### 2. 수동 확인 항목 (운영 반영 후)
+- [ ] PR 병합 완료 후, 실제 서비스 운영 도메인 `https://booboo.co.kr/` 에 접속하여 페이지 소스보기(Ctrl + U)로 JSON-LD가 안전하게 포함되었는지 확인.
+- [ ] 구글 리치 결과 테스트 도구(Rich Results Test) 또는 스키마 검증 도구(Schema Validator)를 사용하여 생성된 JSON-LD 소스가 구문 에러 없이 올바르게 추출되는지 교차 확인.
