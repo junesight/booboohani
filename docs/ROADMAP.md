@@ -27,7 +27,7 @@
 ## Phase 2 — AEO 기반
 
 - [x] AEO-001 MedicalClinic·LocalBusiness JSON-LD
-- [ ] AEO-002 WebSite·Organization JSON-LD
+- [x] AEO-002 WebSite·Organization JSON-LD
 - [ ] AEO-003 홈페이지 FAQ 추가
 - [ ] AEO-004 FAQPage JSON-LD
 - [ ] AEO-005 개인정보처리방침 독립 URL 확인
