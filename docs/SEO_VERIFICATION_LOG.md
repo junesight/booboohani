@@ -223,3 +223,24 @@ Content-Type: text/css; charset=utf-8
 ### 2. 수동 확인 항목 (운영 반영 후)
 - [ ] 카카오톡 캐시 초기화 도구(Kakao Developers)를 사용해 `https://booboo.co.kr/` 캐시를 수동으로 갱신하여 최신화.
 - [ ] 실제 모바일 카카오톡 메신저 상에서 주소창 공유 시 썸네일(로고), 타이틀, 상세 설명 카드가 올바른 비율로 선명하게 표시되는지 육안 확인.
+
+---
+
+## [AEO-001] MedicalClinic·LocalBusiness JSON-LD
+
+- **검증일**: 2026-08-04
+- **수정 파일**: [index.html](file:///C:/Users/user/.gemini/antigravity/scratch/booboohani/index.html)
+- **최종 판정**: **PASS**
+
+### 1. 검증 결과
+- [x] **JSON-LD 스크립트 추가**: index.html 내 `</head>` 직전에 구조화 데이터 스크립트(`application/ld+json`) 주입 완료.
+- [x] **주소 및 우편번호 확인**: 우편번호 `58658`로 보정 입력 및 대표 주소 목포시 옥암로 193 정합성 검증 완료.
+- [x] **진료 정보 연동**: 평일 진료(OpeningHours: 09:00 - 20:00), 주말/공휴일 진료(OpeningHours: 08:30 - 14:00) 구조화 스펙 추가 완료.
+- [x] **의료 정보 연동**: 전통 한의학(TraditionalChineseMedicine), 침구학(Acupuncture), 물리치료(Physiotherapy) 전문분야 매핑 완료.
+- [x] **지리 좌표 연동**: 위도 `34.80879`, 경도 `126.42777` 매핑 완료.
+- [x] **정적 리소스 변경 없음**: index.html의 구조화 데이터 추가 외에 styles.css, script.js 및 에셋 변경 없음.
+- [x] **CNAME 변경 없음**: 루트 CNAME 파일 변경 없음.
+
+### 2. 수동 확인 항목 (운영 반영 후)
+- [ ] PR 병합 완료 후, 실제 서비스 운영 도메인 `https://booboo.co.kr/` 에 접속하여 페이지 소스보기(Ctrl + U)로 JSON-LD가 안전하게 포함되었는지 확인.
+- [ ] 구글 리치 결과 테스트 도구(Rich Results Test) 또는 스키마 검증 도구(Schema Validator)를 사용하여 생성된 JSON-LD 소스가 구문 에러 없이 올바르게 추출되는지 교차 확인.
