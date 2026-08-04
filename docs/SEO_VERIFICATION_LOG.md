@@ -185,3 +185,24 @@ Content-Type: text/css; charset=utf-8
 
 ### 2. 수동 확인 항목 (운영 반영 후)
 - [ ] PR 병합 완료 후, 실제 서비스 운영 도메인 `https://booboo.co.kr/` 에 접속하여 페이지 소스보기(Ctrl + U)로 `<meta name="description"` 태그 내용이 정확히 반영되었는지 최종 확인.
+
+---
+
+## [SEO-007] Open Graph 및 Twitter Card 적용
+
+- **검증일**: 2026-08-04
+- **생성 파일**: `assets/og-image.png`
+- **수정 파일**: [index.html](file:///C:/Users/user/.gemini/antigravity/scratch/booboohani/index.html)
+- **최종 판정**: **PASS**
+
+### 1. 검증 결과
+- [x] **공유 이미지 파일 추가**: 사용자 제공 고유 로고 이미지를 `assets/og-image.png`로 저장소 내 추가 확인.
+- [x] **Open Graph 태그 추가**: og:type(website), og:url, og:title, og:description, og:image(https://booboo.co.kr/assets/og-image.png 절대주소)가 index.html 내 정상 기입됨을 확인.
+- [x] **Twitter Card 태그 추가**: twitter:card(summary_large_image), twitter:url, twitter:title, twitter:description, twitter:image가 index.html 내 정상 기입됨을 확인.
+- [x] **의료 가이드라인 준수**: 메타태그 내 광고성 및 과장성 금지 키워드 유입 검증 완료.
+- [x] **정적 리소스 변경 없음**: index.html의 meta 태그 및 og-image.png 복사 외에 styles.css, script.js 및 기타 자원은 변경 없음.
+- [x] **CNAME 변경 없음**: 루트 CNAME 파일 변경 없음.
+
+### 2. 수동 확인 항목 (운영 반영 후)
+- [ ] PR 병합 완료 후, 실제 서비스 운영 도메인 `https://booboo.co.kr/` 에 접속하여 페이지 소스보기(Ctrl + U)로 og 및 twitter 태그가 정확히 반영되었는지 최종 확인.
+- [ ] 카카오톡 공유 디버거 또는 실제 모바일 카톡 링크 전송 테스트를 통해 공유 카드 타이틀, 설명, 대표 이미지(로고)가 의도대로 가독성 있게 표현되는지 교차 확인.
