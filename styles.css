@@ -1494,7 +1494,7 @@ h3 {
   max-height: calc(100svh - 56px);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: minmax(640px, auto) auto;
+  grid-template-rows: minmax(640px, auto) auto auto;
   overflow-y: auto;
   background: var(--paper);
   border: 1px solid rgba(255, 250, 240, 0.7);
@@ -1875,9 +1875,71 @@ h3 {
   display: none;
 }
 
-.modal-schedule {
+.modal-research {
   grid-column: 1 / -1;
   grid-row: 2;
+  border-top: 1px solid var(--line);
+  padding: 34px clamp(28px, 4vw, 48px) 30px;
+  background: var(--paper);
+}
+
+.modal-research[hidden] {
+  display: none !important;
+}
+
+.modal-research-head h3 {
+  margin: 0 0 22px 0;
+  font-size: 23px;
+  color: var(--green);
+  font-weight: 700;
+}
+
+.modal-research ul.research-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.modal-research ul.research-list li {
+  position: relative;
+  padding-left: 15px;
+  color: #4d524a;
+  font-size: 16px;
+  line-height: 1.5;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.modal-research ul.research-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.modal-research .publication-title {
+  flex: 1;
+}
+
+.modal-research .publication-journal {
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.modal-schedule {
+  grid-column: 1 / -1;
+  grid-row: 3;
   margin-top: 0;
   border-top: 1px solid var(--line);
   padding: 28px clamp(28px, 4vw, 48px) 34px;
@@ -2949,7 +3011,7 @@ footer p {
     height: auto;
     max-height: calc(100svh - 56px);
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
     overflow-y: auto;
   }
 
@@ -2966,9 +3028,25 @@ footer p {
     overflow: visible;
   }
 
-  .modal-schedule {
+  .modal-research {
     grid-column: 1;
     grid-row: 3;
+  }
+
+  .modal-research ul.research-list li {
+    display: block;
+  }
+
+  .modal-research .publication-journal {
+    display: block;
+    margin-top: 4px;
+    margin-left: 0;
+    text-align: right;
+  }
+
+  .modal-schedule {
+    grid-column: 1;
+    grid-row: 4;
   }
 
   .weekly-schedule {
@@ -3824,6 +3902,16 @@ footer p {
   .floating-icon {
     width: 22px;
     height: 22px;
+  }
+
+  .modal-research {
+    padding: 28px 18px 22px;
+  }
+
+  .modal-research-head h3 {
+    font-size: 19px;
+    margin-bottom: 16px;
+    text-align: center;
   }
 
   .modal-schedule {

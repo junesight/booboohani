@@ -15,6 +15,8 @@ const modalRole = document.querySelector("#modal-doctor-role");
 const modalBio = document.querySelector("#modal-doctor-bio");
 const modalScheduleRange = document.querySelector("#modal-schedule-range");
 const modalWeeklySchedule = document.querySelector("#modal-weekly-schedule");
+const modalResearch = document.querySelector("#modal-doctor-research");
+const modalResearchList = document.querySelector("#modal-research-list");
 const doctorCards = document.querySelectorAll(".doctor-card");
 const closeButtons = document.querySelectorAll("[data-modal-close]");
 
@@ -225,6 +227,20 @@ const doctorProfiles = {
     "척추신경추나의학회 정회원",
     "척추신경추나의학회 심화과정 M1 수료",
     "척추신경추나의학회 심화과정 M3 수료",
+  ],
+};
+
+const doctorResearch = {
+  "김준현 원장": [
+    "<span class=\"publication-title\"><strong>[SCIE 국제학술지 게재 논문]</strong><br>Eleutherococcus sessiliflorus Inhibits Receptor Activator of Nuclear Factor Kappa-B Ligand (RANKL)-Induced Osteoclast Differentiation and Prevents Ovariectomy (OVX)-Induced Bone Loss</span> <span class=\"publication-journal\">[ Molecules, 2021 ]</span>",
+    "<span class=\"publication-title\">Inhibitory Effects of Water Extracts of Eucommiae Cortex and Psoraleae Semen Alone and in Combination on Osteoclast Differentiation and Bone</span> <span class=\"publication-journal\">[ Journal of Acupuncture Research, 2017 ]</span>",
+    "<span class=\"publication-title\">삼음교(SP6) 침구자극이 정상 성인의 족부 온도 변화에 미치는 영향</span> <span class=\"publication-journal\">[ Journal of Acupuncture Research, 2016 ]</span>",
+    "<span class=\"publication-title\">뇌졸중 환자에게 유치도뇨관 삽입 이후 발생한 다제내성 녹농균 요로감염 한방치험 1례</span> <span class=\"publication-journal\">[ 대한한방내과학회지, 2016 ]</span>",
+    "<span class=\"publication-title\">안면홍조를 호소하는 뇌경색 환자 한방치료 치험 1례</span> <span class=\"publication-journal\">[ 대한한방내과학회지, 2016 ]</span>",
+    "<span class=\"publication-title\">지실과 자초 전탕액 외치법을 병행한 간경변 환자의 노인성 가려움증 치험 1례</span> <span class=\"publication-journal\">[ 한방안이비인후피부과학회지, 2016 ]</span>",
+    "<span class=\"publication-title\">쌍보환 추출물의 파골세포 분화 억제와 골 흡수 억제 효과</span> <span class=\"publication-journal\">[ Journal of Acupuncture Research, 2015 ]</span>",
+    "<span class=\"publication-title\">외상성 경추 골절 후 발생한 Brown-Séquard 증후군 환자 1례</span> <span class=\"publication-journal\">[ Journal of Acupuncture Research, 2015 ]</span>",
+    "<span class=\"publication-title\">3단계 발목 염좌 모델에서 구허(GB40)에 대한 약침별 Weight Bearing Ratio의 효과 비교</span> <span class=\"publication-journal\">[ Journal of Acupuncture Research, 2014 ]</span>",
   ],
 };
 
@@ -875,6 +891,18 @@ function openDoctorModal(card) {
       return listItem;
     }),
   );
+  if (doctorResearch[name] && doctorResearch[name].length > 0) {
+    modalResearchList.replaceChildren(
+      ...doctorResearch[name].map((item) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = item;
+        return listItem;
+      }),
+    );
+    modalResearch.hidden = false;
+  } else {
+    modalResearch.hidden = true;
+  }
   loadDoctorWeeklySchedule(name);
 
   modal.hidden = false;
