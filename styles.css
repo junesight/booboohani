@@ -3915,6 +3915,18 @@ footer p {
     text-align: center;
   }
 
+  .modal-research ul.research-list li {
+    font-size: 14px;
+  }
+
+  .modal-research ul.research-list li::before {
+    top: 8px;
+  }
+
+  .modal-research .publication-journal {
+    font-size: 12px;
+  }
+
   .modal-schedule {
     padding: 24px 18px;
   }
