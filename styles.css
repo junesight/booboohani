@@ -4368,8 +4368,8 @@ footer p {
 .promo-modal-content {
   position: relative;
   background-color: #fff;
-  width: 95%;
-  max-width: 1000px;
+  width: 90%;
+  max-width: 540px;
   max-height: 92vh;
   border-radius: 12px;
   overflow: hidden;
