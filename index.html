@@ -31,7 +31,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Pretendard:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1.9.3" />
+    <link rel="stylesheet" href="styles.css?v=1.9.4" />
     <!-- Structured Data (JSON-LD) - MedicalClinic / LocalBusiness -->
     <script type="application/ld+json">
     {
@@ -1707,6 +1707,20 @@
       <a class="floating-button naver" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer"><img class="floating-icon" src="assets/floating-naver.png" alt="" /> 네이버 예약</a>
       <a class="floating-button kakao" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer"><img class="floating-icon" src="assets/floating-kakao.png" alt="" /> 카톡 문의</a>
     </div>
-    <script src="script.js?v=1.9.3"></script>
+
+    <!-- 프로모션 공지 팝업 모달 -->
+    <div id="promo-modal" class="promo-modal" role="dialog" aria-modal="true" aria-label="이벤트 공지 배너" hidden>
+      <div class="promo-modal-content">
+        <div class="promo-modal-body">
+          <img src="assets/promo-popup.jpg" alt="수능 100일 몰입을 처방합니다 - 총명공진단 수 2026년 8월 11일 ~ 11월 19일" />
+        </div>
+        <div class="promo-modal-footer">
+          <button type="button" class="promo-hide-btn" id="promo-hide-today">오늘 하루 보지 않기</button>
+          <button type="button" class="promo-close-btn" id="promo-close">닫기</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js?v=1.9.4"></script>
   </body>
 </html>

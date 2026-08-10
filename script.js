@@ -1546,10 +1546,16 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && admissionModal && !admissionModal.hidden) {
     closeAdmissionModal();
   }
+
+  const promoModal = document.getElementById("promo-modal");
+  if (event.key === "Escape" && promoModal && !promoModal.hidden) {
+    closePromoModal();
+  }
 });
 
 // --- 브라우저 뒤로가기(History API) 모달 연동 로직 ---
 function isAnyModalOpen() {
+  const promoModal = document.getElementById("promo-modal");
   return (
     (modal && !modal.hidden) ||
     (scheduleModal && !scheduleModal.hidden) ||
@@ -1561,7 +1567,8 @@ function isAnyModalOpen() {
     (gongjinModal && !gongjinModal.hidden) ||
     (nonpayModal && !nonpayModal.hidden) ||
     (certModal && !certModal.hidden) ||
-    (admissionModal && !admissionModal.hidden)
+    (admissionModal && !admissionModal.hidden) ||
+    (promoModal && !promoModal.hidden)
   );
 }
 
@@ -1690,3 +1697,43 @@ document.addEventListener("DOMContentLoaded", () => {
     revealObserver.observe(el);
   });
 });
+
+// --- 프로모션 공지 팝업 모달 관리 ---
+function closePromoModal() {
+  const promoModal = document.getElementById("promo-modal");
+  if (!promoModal) return;
+  promoModal.hidden = true;
+  if (!isAnyModalOpen()) {
+    document.body.classList.remove("modal-open");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const promoModal = document.getElementById("promo-modal");
+  const promoHideToday = document.getElementById("promo-hide-today");
+  const promoClose = document.getElementById("promo-close");
+
+  if (!promoModal) return;
+
+  // 오늘 하루 보지 않기 여부 검증
+  const hideUntil = localStorage.getItem("promoHideUntil");
+  const now = new Date().getTime();
+
+  if (!hideUntil || now > parseInt(hideUntil, 10)) {
+    promoModal.hidden = false;
+    document.body.classList.add("modal-open");
+  }
+
+  // 닫기 버튼 이벤트
+  promoClose?.addEventListener("click", closePromoModal);
+
+  // 오늘 하루 보지 않기 버튼 이벤트
+  promoHideToday?.addEventListener("click", () => {
+    const midnight = new Date();
+    // 당일 자정(23시 59분 59초 999밀리초)으로 만료 타임스탬프 설정
+    midnight.setHours(23, 59, 59, 999);
+    localStorage.setItem("promoHideUntil", midnight.getTime().toString());
+    closePromoModal();
+  });
+});
+
