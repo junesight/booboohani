@@ -4369,7 +4369,8 @@ footer p {
   position: relative;
   background-color: #fff;
   width: 90%;
-  max-width: 1080px; /* PC 좌우 배치를 위해 확장 */
+  max-width: 1080px; /* Fallback */
+  max-width: min(1080px, calc((92vh - 58px) * 1.42)); /* 이미지 종횡비(1.42)와 브라우저 높이를 매칭하여 좌우 흰색 여백 방지 */
   max-height: 92vh;
   border-radius: 12px;
   overflow: hidden;
