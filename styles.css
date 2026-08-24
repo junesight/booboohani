@@ -4368,8 +4368,8 @@ footer p {
 .promo-modal-content {
   position: relative;
   background-color: #fff;
-  width: 90%;
-  max-width: 540px;
+  width: 95%;
+  max-width: 1080px;
   max-height: 92vh;
   border-radius: 12px;
   overflow: hidden;
@@ -4392,10 +4392,22 @@ footer p {
 
 .promo-modal-body {
   flex: 1;
-  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
 }
 
-.promo-modal-body img {
+.promo-item {
+  flex: 1;
+  min-width: 0;
+  border-right: 1px solid #f0f0f0;
+}
+
+.promo-item:last-child {
+  border-right: none;
+}
+
+.promo-item img {
   display: block;
   width: 100%;
   height: auto;
@@ -4407,6 +4419,7 @@ footer p {
   display: flex;
   border-top: 1px solid #eee;
   background-color: #fcfcfc;
+  z-index: 10;
 }
 
 .promo-modal-footer button {
@@ -4435,13 +4448,33 @@ footer p {
   font-weight: 700;
 }
 
-/* 모바일 최적화 */
-@media (max-width: 480px) {
+/* 모바일 및 태블릿 최적화 */
+@media (max-width: 768px) {
   .promo-modal-content {
-    width: 88%;
+    width: 90%;
+    max-width: 450px;
   }
+
+  .promo-modal-body {
+    flex-direction: column;
+    max-height: 60vh;
+  }
+
+  .promo-item {
+    border-right: none;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .promo-item:last-child {
+    border-bottom: none;
+  }
+
+  .promo-item img {
+    max-height: none;
+  }
+
   .promo-modal-footer button {
-    padding: 14px;
+    padding: 15px;
     font-size: 14px;
   }
 }
