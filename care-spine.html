@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- color-scheme 방지 메타태그 추가 -->
+    <meta name="color-scheme" content="only light" />
+    <title>목포 허리디스크·목디스크·협착증 한방 통합치료 | 부부한의원</title>
+    <meta name="description" content="목포 부부한의원 척추클리닉. 목디스크, 허리디스크, 척추관협착증 등 척추 질환을 침, 약침, 추나, 한약을 병행한 세심하고 체계적인 통합 한방치료로 빠른 회복을 돕습니다." />
+    <link rel="canonical" href="https://booboo.co.kr/care-spine.html" />
+    <link rel="stylesheet" href="styles.css?v=1.9.8" />
+    <style>
+      /* 서브페이지 전용 임시/보완 스타일링 */
+      .subpage-hero {
+        background-color: var(--bg-soft);
+        padding: clamp(60px, 8vw, 100px) 0;
+        text-align: center;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 40px;
+      }
+      .subpage-hero h1 {
+        font-family: "Noto Serif KR", serif;
+        font-size: clamp(32px, 5vw, 44px);
+        color: var(--green);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      .subpage-hero p {
+        font-size: 17px;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .sub-content-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(48px, 6vw, 80px);
+        padding: 20px 0 60px;
+      }
+      .spine-intro-section {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 30px;
+      }
+      .spine-intro-section h2 {
+        font-family: "Noto Serif KR", serif;
+        font-size: clamp(24px, 3.5vw, 32px);
+        color: var(--green);
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+      .spine-intro-section p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #4d524a;
+      }
+      .sub-section-title {
+        font-family: "Noto Serif KR", serif;
+        font-size: 26px;
+        color: var(--green);
+        border-bottom: 2px solid var(--gold);
+        padding-bottom: 12px;
+        margin-bottom: 30px;
+        font-weight: 700;
+      }
+      .disease-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+      .disease-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 28px 24px;
+        box-shadow: 0 8px 24px rgba(60, 50, 34, 0.04);
+      }
+      .disease-card h3 {
+        color: var(--green);
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .disease-card p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: #5d635f;
+        margin: 0;
+      }
+      .treatment-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+      }
+      .treatment-item {
+        display: flex;
+        gap: 20px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 24px;
+      }
+      .treatment-num {
+        font-family: "Noto Serif KR", serif;
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .treatment-body h3 {
+        color: var(--green);
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .treatment-body p {
+        font-size: 14.5px;
+        line-height: 1.7;
+        color: #5d635f;
+        margin: 0;
+      }
+      .process-flow {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 16px;
+        text-align: center;
+      }
+      .process-step {
+        background: var(--bg-soft);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px 12px;
+      }
+      .process-step span {
+        font-size: 13px;
+        color: var(--gold);
+        font-weight: 700;
+        display: block;
+        margin-bottom: 6px;
+      }
+      .process-step strong {
+        font-size: 16px;
+        color: var(--green);
+        font-weight: 700;
+        display: block;
+        margin-bottom: 8px;
+      }
+      .process-step p {
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--muted);
+        margin: 0;
+      }
+      .subpage-cta {
+        background-color: var(--green);
+        border-radius: 12px;
+        padding: 40px;
+        text-align: center;
+        color: var(--paper);
+        margin-top: 20px;
+      }
+      .subpage-cta h3 {
+        font-family: "Noto Serif KR", serif;
+        font-size: 26px;
+        margin-bottom: 12px;
+        font-weight: 700;
+        color: var(--paper);
+      }
+      .subpage-cta p {
+        font-size: 16px;
+        margin-bottom: 24px;
+        color: rgba(255, 250, 240, 0.85);
+      }
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 28px;
+        border-radius: 6px;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 15px;
+        transition: transform 0.15s, background-color 0.15s;
+      }
+      .cta-btn.primary {
+        background-color: var(--gold);
+        color: var(--green);
+      }
+      .cta-btn.secondary {
+        background-color: rgba(255, 250, 240, 0.14);
+        color: var(--paper);
+        border: 1px solid rgba(255, 250, 240, 0.28);
+      }
+      .cta-btn:hover {
+        transform: translateY(-2px);
+      }
+      
+      @media (max-width: 992px) {
+        .process-flow {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 12px;
+        }
+      }
+      @media (max-width: 768px) {
+        .disease-grid, .treatment-list {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .process-flow {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .subpage-cta {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body style="background-color: var(--bg-soft); color: var(--ink); margin: 0; font-family: Pretendard, sans-serif;">
+    <header class="site-header" aria-label="주요 메뉴">
+      <div class="brand-group">
+        <a class="brand" href="index.html">
+          <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
+          <span>
+            <strong>부부한의원</strong>
+            <small>Booboo Korean Medicine Clinic</small>
+          </span>
+        </a>
+      </div>
+      <nav class="navigation">
+        <a href="index.html#care">진료 분야</a>
+        <a href="index.html#methods">치료 시스템</a>
+        <a href="index.html#doctors">의료진 소개</a>
+        <a href="index.html#gallery">한의원 둘러보기</a>
+        <a href="index.html#location">오시는 길</a>
+        <a href="index.html#contact">예약 안내</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 서브페이지 상단 히어로 -->
+      <section class="subpage-hero">
+        <div class="section" style="padding: 0;">
+          <p class="eyebrow" style="margin-bottom: 8px;">Spine Clinic</p>
+          <h1>척추 질환 클리닉</h1>
+          <p>구조의 바름과 기능의 회복을 목표로,<br class="mobile-only" /> 통증의 근본 원인에 다가섭니다.</p>
+        </div>
+      </section>
+
+      <!-- 본문 섹션 -->
+      <section class="section" style="padding-top: 0;">
+        <!-- 한의원 척추 진료 철학 -->
+        <div class="spine-intro-section">
+          <h2>통증 완화를 넘어,<br />척추 본연의 기능을 복원합니다.</h2>
+          <p>
+            척추 질환은 단순히 뼈와 디스크만의 문제가 아닙니다. 척추의 틀어진 정렬과 주변 근육, 힘줄, 인대의 불균형이 복합적으로 얽혀 나타나는 결과입니다. 부부한의원은 신경 압박과 염증을 빠르게 제어하는 한편, 구조적인 부정렬을 바로잡아 통증의 원인을 해소하고 재발을 예방하는 1:1 맞춤 통합치료를 제공합니다.
+          </p>
+        </div>
+
+        <div class="sub-content-grid">
+          <!-- 1. 주요 진료 대상 질환 -->
+          <div>
+            <h2 class="sub-section-title">주요 진료 대상 질환</h2>
+            <div class="disease-grid">
+              <div class="disease-card">
+                <h3>허리디스크 (요추추간판탈출증)</h3>
+                <p>밀려 나온 추간판이 신경을 압박하여 허리 통증과 함께 다리 저림, 당김 증상을 유발합니다. 염증 완화와 척추 정렬 복원을 통해 근본을 치료합니다.</p>
+              </div>
+              <div class="disease-card">
+                <h3>목디스크 (경추추간판탈출증)</h3>
+                <p>경추 추간판의 손상으로 목, 어깨 통증과 더불어 팔과 손가락 끝까지 저린 감각 이상을 유발합니다. 경추 주변 심부 근육의 긴장을 풀고 균형을 잡아줍니다.</p>
+              </div>
+              <div class="disease-card">
+                <h3>척추관협착증</h3>
+                <p>황색인대 등이 두꺼워져 척추관이 좁아지며 신경을 조이는 질환입니다. 조금만 걸어도 다리가 터질 듯 아프고 굽히면 편해지는 증상에 관절 유착 박리와 뼈보강 치료를 적용합니다.</p>
+              </div>
+              <div class="disease-card">
+                <h3>급성 요추 염좌 및 만성 요통</h3>
+                <p>무거운 물건을 들다 삐끗한 급성 통증부터 장기간 지속된 누적성 허리 만성 통증까지, 척추 지지인대의 손상을 치료하고 근육 강화를 병행해 만성화를 예방합니다.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. 부부한의원 척추 치료 솔루션 -->
+          <div>
+            <h2 class="sub-section-title">부부한의원 척추 치료 솔루션</h2>
+            <div class="treatment-list">
+              <div class="treatment-item">
+                <span class="treatment-num">01</span>
+                <div class="treatment-body">
+                  <h3>추나요법 (정골·경근 치료)</h3>
+                  <p>한의사가 손과 신체 일부를 이용해 틀어진 골반과 척추 뼈의 부정렬을 교정(정골)하고, 굳어진 심부 근육과 인대막의 긴장을 이완(경근)시켜 균형을 바로잡습니다.</p>
+                </div>
+              </div>
+              <div class="treatment-item">
+                <span class="treatment-num">02</span>
+                <div class="treatment-body">
+                  <h3>맞춤형 약침 치료</h3>
+                  <p>정제된 한약재 성분을 추출한 약침을 척추 주변 통증점과 경혈에 직접 주입하여 신경 염증을 빠르게 가라앉히고 근육과 인대 손상의 회복 속도를 끌어올립니다.</p>
+                </div>
+              </div>
+              <div class="treatment-item">
+                <span class="treatment-num">03</span>
+                <div class="treatment-body">
+                  <h3>특화 도침 & 침 치료</h3>
+                  <p>일반 침과 더불어 두껍고 끝이 납작한 특수 도침을 활용해 척추 신경근 주변부의 만성적인 협착과 단단하게 유착된 섬유 조직을 미세 박리하여 압박을 즉각 해소합니다.</p>
+                </div>
+              </div>
+              <div class="treatment-item">
+                <span class="treatment-num">04</span>
+                <div class="treatment-body">
+                  <h3>뼈·근육 보강 한약 처방</h3>
+                  <p>약해진 척추 관절 뼈를 튼튼하게 하고 척추를 지지하는 인대와 근육을 보강하는 한약을 처방합니다. 염증 재발 방지와 척추 노화 지연을 돕습니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. 진료 및 치료 절차 -->
+          <div>
+            <h2 class="sub-section-title">척추 클리닉 치료 프로세스</h2>
+            <div class="process-flow">
+              <div class="process-step">
+                <span>Step 01</span>
+                <strong>예약 및 접수</strong>
+                <p>안내 데스크 접수 후 진료 신청서 작성</p>
+              </div>
+              <div class="process-step">
+                <span>Step 02</span>
+                <strong>사전 검사</strong>
+                <p>문진표 작성, 체성분 및 맥파 스트레스 검사</p>
+              </div>
+              <div class="process-step">
+                <span>Step 03</span>
+                <strong>1:1 맞춤 진료</strong>
+                <p>원장 진찰을 통한 관절 가동성 및 통증 원인 분석</p>
+              </div>
+              <div class="process-step">
+                <span>Step 04</span>
+                <strong>통합 한방 치료</strong>
+                <p>추나, 도침, 약침, 침치료 및 물리치료 복합 시행</p>
+              </div>
+              <div class="process-step">
+                <span>Step 05</span>
+                <strong>귀가 및 사후 관리</strong>
+                <p>맞춤 생활 수칙 교육 및 지속적인 추적 지도</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. CTA 영역 -->
+          <div class="subpage-cta">
+            <h3>대기 시간을 줄이고 더 편안한 진료를 위해</h3>
+            <p>예약 후 내원하시면 원활한 1:1 맞춤 집중 진료 및 추나 교정 치료를 즉시 받아보실 수 있습니다.</p>
+            <div class="cta-buttons">
+              <a href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" class="cta-btn primary" target="_blank" rel="noreferrer">
+                <span>네이버 예약하기</span>
+              </a>
+              <a href="http://pf.kakao.com/_VlVkG/chat" class="cta-btn secondary" target="_blank" rel="noreferrer">
+                <span>카카오톡 문의</span>
+              </a>
+              <a href="tel:061-272-1075" class="cta-btn secondary">
+                <span>전화 예약 문의</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand">
+        <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
+        <strong>부부한의원</strong>
+      </div>
+      <div class="footer-info footer-info-desktop">
+        <p>대표 : 최보빈 <span>|</span> 주소 : 목포시 옥암로 193, 1~4층 <span>|</span> Tel : 061-272-1075 <span>|</span> Fax : 061-284-1074</p>
+        <p>사업자등록번호 : 411-91-59413 <span>|</span> Email : booboo2721075@gmail.com</p>
+      </div>
+      <div class="footer-info footer-info-mobile">
+        <p>대표 : 최보빈 <span>|</span> 주소 : 목포시 옥암로 193, 1~4층</p>
+        <p>Tel : 061-272-1075 <span>|</span> Fax : 061-284-1074</p>
+        <p>사업자등록번호 : 411-91-59413</p>
+        <p>Email : booboo2721075@gmail.com</p>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html" onclick="window.open(this.href, 'privacyPolicy', 'width=800,height=800,scrollbars=yes,resizable=yes'); return false;">개인정보처리방침</a>
+      </div>
+      <div class="footer-copy">
+        <p>Copyright (c) 2019 부부한의원 All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

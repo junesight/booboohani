@@ -617,6 +617,25 @@ h3 {
   line-height: 1.72;
 }
 
+.care-detail-link {
+  margin-top: auto;
+  padding-top: 14px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  transition: color 0.15s;
+}
+
+.care-detail-link:hover {
+  color: var(--green);
+}
+
 .doctors {
 }
 
