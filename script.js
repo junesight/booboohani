@@ -1230,6 +1230,10 @@ closeButtons.forEach((button) => {
 
 careCards.forEach((card) => {
   card.addEventListener("click", () => {
+    if (card.id === "care-spine-card" && window.innerWidth > 768) {
+      location.href = "care-spine.html";
+      return;
+    }
     openCareModal(card);
   });
 });
