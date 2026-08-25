@@ -4613,4 +4613,21 @@ footer p {
   }
 }
 
+/* --- 푸터 링크 (개인정보처리방침 등) 스타일 --- */
+.footer-links {
+  margin-bottom: 14px;
+}
+
+.footer-links a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.footer-links a:hover {
+  color: var(--paper);
+  text-decoration: underline;
+}
+
 
