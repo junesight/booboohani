@@ -166,7 +166,50 @@
         padding: 40px clamp(20px, 4vw, 48px) !important;
         margin-top: 40px !important;
         margin-bottom: 0 !important;
-        display: block !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+      .subpage-cta.contact .contact-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+      }
+      .subpage-cta.contact .contact-text-area {
+        text-align: center !important;
+        align-items: center !important;
+        margin-bottom: 24px !important;
+      }
+      .subpage-cta.contact .contact-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 16px !important;
+        flex-wrap: wrap !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+      .subpage-cta.contact .contact-actions .button {
+        width: auto !important;
+        min-width: 160px !important;
+        padding: 0 24px !important;
+        flex: none !important;
+      }
+      
+      @media (max-width: 768px) {
+        .subpage-cta.contact .contact-actions {
+          gap: 8px !important;
+        }
+        .subpage-cta.contact .contact-actions .button {
+          min-width: 0 !important;
+          flex: 1 !important;
+          padding: 6px 4px !important;
+          font-size: 14px !important;
+        }
       }
       
       @media (max-width: 992px) {
@@ -324,11 +367,11 @@
           <!-- 4. CTA 영역 -->
           <div class="subpage-cta contact">
             <div class="contact-grid">
-              <div class="contact-text-area" style="text-align: left; align-items: flex-start;">
-                <h3 style="color: var(--green); font-family: 'Noto Serif KR', serif; font-weight: 700; margin-top: 0; margin-bottom: 8px; font-size: 24px;">대기 시간을 줄이고 더 편안한 진료를 위해</h3>
-                <p style="font-size: 15px; color: #4d524a; margin: 0; line-height: 1.6;">예약 후 내원하시면 원활한 1:1 맞춤 집중 진료 및 추나 교정 치료를 즉시 받아보실 수 있습니다.</p>
+              <div class="contact-text-area">
+                <h3>대기 시간을 줄이고 더 편안한 진료를 위해</h3>
+                <p>예약 후 내원하시면 원활한 1:1 맞춤 집중 진료 및 추나 교정 치료를 즉시 받아보실 수 있습니다.</p>
               </div>
-              <div class="contact-actions" style="margin-top: 0;">
+              <div class="contact-actions">
                 <a class="button phone" href="tel:061-272-1075">
                   <img class="button-icon" src="assets/floating-phone.png" alt="" />
                   <span>전화 문의</span>
