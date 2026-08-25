@@ -615,7 +615,7 @@ function renderCareModalContent() {
 
   // 상세 모달이 존재하는 카드의 경우 "자세히 보기" 버튼 노출
   if (careModalDetailBtnWrapper) {
-    const hasDetail = ["yakchim-card", "hanyak-card", "linda-card", "gongjin-card"].includes(activeCareCard?.id);
+    const hasDetail = ["yakchim-card", "hanyak-card", "linda-card", "gongjin-card", "care-spine-card"].includes(activeCareCard?.id);
     careModalDetailBtnWrapper.style.display = hasDetail ? "block" : "none";
   }
 }
@@ -1287,8 +1287,11 @@ careModalDetailBtn?.addEventListener("click", () => {
     careModal.classList.remove("is-method-modal");
   }
 
-  // 해당 카드의 상세 팝업 오픈 (두 번째 인자로 true 전달)
-  if (cardId === "yakchim-card") {
+  // 척추 독립 페이지로 이동 또는 상세 팝업 오픈
+  if (cardId === "care-spine-card") {
+    document.body.classList.remove("modal-open");
+    location.href = "care-spine.html";
+  } else if (cardId === "yakchim-card") {
     openYakchimModal(activeCareCard, true);
   } else if (cardId === "hanyak-card") {
     openHanyakModal(activeCareCard, true);
