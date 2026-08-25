@@ -4515,8 +4515,15 @@ footer p {
 }
 
 .faq-list {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.faq-column {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -4588,6 +4595,10 @@ footer p {
 
 /* FAQ 모바일 최적화 */
 @media (max-width: 768px) {
+  .faq-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
   .faq-question {
     padding: 16px 20px;
     font-size: 15px;
