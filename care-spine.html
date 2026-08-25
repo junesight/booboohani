@@ -8,6 +8,7 @@
     <title>목포 허리디스크·목디스크·협착증 한방 통합치료 | 부부한의원</title>
     <meta name="description" content="목포 부부한의원 척추클리닉. 목디스크, 허리디스크, 척추관협착증 등 척추 질환을 침, 약침, 추나, 한약을 병행한 세심하고 체계적인 통합 한방치료로 빠른 회복을 돕습니다." />
     <link rel="canonical" href="https://booboo.co.kr/care-spine.html" />
+    <link rel="icon" type="image/png" href="assets/booboo-logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -128,7 +129,7 @@
       }
       .process-flow {
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 16px;
         text-align: center;
       }
@@ -158,59 +159,19 @@
         color: var(--muted);
         margin: 0;
       }
-      .subpage-cta {
-        background-color: var(--green);
-        border-radius: 12px;
-        padding: 40px;
-        text-align: center;
-        color: var(--paper);
-        margin-top: 20px;
-      }
-      .subpage-cta h3 {
-        font-family: "Noto Serif KR", serif;
-        font-size: 26px;
-        margin-bottom: 12px;
-        font-weight: 700;
-        color: var(--paper);
-      }
-      .subpage-cta p {
-        font-size: 16px;
-        margin-bottom: 24px;
-        color: rgba(255, 250, 240, 0.85);
-      }
-      .cta-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-      .cta-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 14px 28px;
-        border-radius: 6px;
-        font-weight: 700;
-        text-decoration: none;
-        font-size: 15px;
-        transition: transform 0.15s, background-color 0.15s;
-      }
-      .cta-btn.primary {
-        background-color: var(--gold);
-        color: var(--green);
-      }
-      .cta-btn.secondary {
-        background-color: rgba(255, 250, 240, 0.14);
-        color: var(--paper);
-        border: 1px solid rgba(255, 250, 240, 0.28);
-      }
-      .cta-btn:hover {
-        transform: translateY(-2px);
+      .subpage-cta.contact {
+        background-color: #d8c8a9 !important;
+        border: 1px solid rgba(22, 61, 50, 0.16) !important;
+        border-radius: 12px !important;
+        padding: 40px clamp(20px, 4vw, 48px) !important;
+        margin-top: 40px !important;
+        margin-bottom: 0 !important;
+        display: block !important;
       }
       
       @media (max-width: 992px) {
         .process-flow {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 12px;
         }
       }
@@ -320,13 +281,13 @@
                 <span class="treatment-num">03</span>
                 <div class="treatment-body">
                   <h3>침 & 도침 치료</h3>
-                  <p>일반 침과 더불어 필요에 따라 두껍고 끝이 납작한 특수 도침을 활용해 척추 신경근 주변부의 만성적인 협착과 단단하게 유착된 섬유 조직을 미세 박리하여 압박을 즉각 해소합니다.</p>
+                  <p>일반 침과 더불어 필요에 따라 두껍고 끝이 납작한 도침을 활용해 척추 신경근 주변부의 만성적인 협착과 단단하게 유착된 섬유 조직을 미세 박리하여 압박을 해소합니다.</p>
                 </div>
               </div>
               <div class="treatment-item">
                 <span class="treatment-num">04</span>
                 <div class="treatment-body">
-                  <h3>뼈·근육 보강 한약 처방</h3>
+                  <h3>통증 조절과 근골격 보강을 위한 한약 처방</h3>
                   <p>약해진 척추 관절 뼈를 튼튼하게 하고 척추를 지지하는 인대와 근육을 보강하는 한약을 처방합니다. 염증 재발 방지와 척추 노화 지연을 돕습니다.</p>
                 </div>
               </div>
@@ -340,45 +301,47 @@
               <div class="process-step">
                 <span>Step 01</span>
                 <strong>예약 및 접수</strong>
-                <p>안내 데스크 접수 후 진료 신청서 작성</p>
+                <p>안내 데스크 접수 및 진료 신청서(또는 문진표) 작성</p>
               </div>
               <div class="process-step">
                 <span>Step 02</span>
-                <strong>사전 검사</strong>
-                <p>문진표 작성, 체성분 및 맥파 스트레스 검사</p>
+                <strong>1:1 맞춤 진료</strong>
+                <p>원장님 진료를 통한 통증 원인 분석 및 치료 계획 수립</p>
               </div>
               <div class="process-step">
                 <span>Step 03</span>
-                <strong>1:1 맞춤 진료</strong>
-                <p>원장 진찰을 통한 관절 가동성 및 통증 원인 분석</p>
+                <strong>통합 한방 치료</strong>
+                <p>침, 약침, 추나, 도침 치료 및 한방 물리치료 복합 시행</p>
               </div>
               <div class="process-step">
                 <span>Step 04</span>
-                <strong>통합 한방 치료</strong>
-                <p>추나, 도침, 약침, 침치료 및 물리치료 복합 시행</p>
-              </div>
-              <div class="process-step">
-                <span>Step 05</span>
                 <strong>귀가 및 사후 관리</strong>
-                <p>맞춤 생활 수칙 교육 및 지속적인 추적 지도</p>
+                <p>맞춤 생활 수칙 교육 및 지속적인 추적 관찰 안내</p>
               </div>
             </div>
           </div>
 
           <!-- 4. CTA 영역 -->
-          <div class="subpage-cta">
-            <h3>대기 시간을 줄이고 더 편안한 진료를 위해</h3>
-            <p>예약 후 내원하시면 원활한 1:1 맞춤 집중 진료 및 추나 교정 치료를 즉시 받아보실 수 있습니다.</p>
-            <div class="cta-buttons">
-              <a href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" class="cta-btn primary" target="_blank" rel="noreferrer">
-                <span>네이버 예약하기</span>
-              </a>
-              <a href="http://pf.kakao.com/_VlVkG/chat" class="cta-btn secondary" target="_blank" rel="noreferrer">
-                <span>카카오톡 문의</span>
-              </a>
-              <a href="tel:061-272-1075" class="cta-btn secondary">
-                <span>전화 예약 문의</span>
-              </a>
+          <div class="subpage-cta contact">
+            <div class="contact-grid">
+              <div class="contact-text-area" style="text-align: left; align-items: flex-start;">
+                <h3 style="color: var(--green); font-family: 'Noto Serif KR', serif; font-weight: 700; margin-top: 0; margin-bottom: 8px; font-size: 24px;">대기 시간을 줄이고 더 편안한 진료를 위해</h3>
+                <p style="font-size: 15px; color: #4d524a; margin: 0; line-height: 1.6;">예약 후 내원하시면 원활한 1:1 맞춤 집중 진료 및 추나 교정 치료를 즉시 받아보실 수 있습니다.</p>
+              </div>
+              <div class="contact-actions" style="margin-top: 0;">
+                <a class="button phone" href="tel:061-272-1075">
+                  <img class="button-icon" src="assets/floating-phone.png" alt="" />
+                  <span>전화 문의</span>
+                </a>
+                <a class="button naver" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer">
+                  <img class="button-icon" src="assets/floating-naver.png" alt="" />
+                  <span>네이버 예약</span>
+                </a>
+                <a class="button kakao" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer">
+                  <img class="button-icon" src="assets/floating-kakao.png" alt="" />
+                  <span>카톡 문의</span>
+                </a>
+              </div>
             </div>
           </div>
 
