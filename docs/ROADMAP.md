@@ -28,10 +28,10 @@
 
 - [x] AEO-001 MedicalClinic·LocalBusiness JSON-LD
 - [x] AEO-002 WebSite·Organization JSON-LD
-- [ ] AEO-003 홈페이지 FAQ 추가
-- [ ] AEO-004 FAQPage JSON-LD
-- [ ] AEO-005 개인정보처리방침 독립 URL 확인
-- [ ] AEO-006 llms.txt 도입 검토
+- [x] AEO-003 홈페이지 FAQ 추가
+- [x] AEO-004 FAQPage JSON-LD
+- [x] AEO-005 개인정보처리방침 독립 URL 확인
+- [x] AEO-006 llms.txt 도입 검토
 
 ## Phase 3 — 콘텐츠 구조
 
