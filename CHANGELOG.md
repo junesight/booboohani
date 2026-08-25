@@ -15,14 +15,14 @@
 ## 2026-08-25 — 홈페이지 FAQ 및 FAQPage JSON-LD 구조화 데이터 적용 완료
 
 - 작업 ID: AEO-003
-  - 변경: [AEO-003] 홈페이지 하단 예약 안내 영역 뒤에 자주 묻는 질문(FAQ) 10가지를 네이티브 아코디언(<details>) UI로 추가했습니다.
+  - 변경: [AEO-003] 홈페이지 하단 예약 안내 영역 뒤에 자주 묻는 질문(FAQ) 10가지를 좌우 2단 다중 열 구조의 네이티브 아코디언(<details>) UI로 추가하여 화면 높이를 줄이고 가독성을 높였습니다.
   - 검증: index.html 마크업 유효성 및 styles.css 반응형 스타일 수동 검증 완료
-  - 배포 commit: e2f916b1a734b25c23da68c501b5ae0ebbd3d08d
+  - 배포 commit: 65d4876a7156be717d2d63ee558bd66736b07087
 
 - 작업 ID: AEO-004
   - 변경: [AEO-004] 자주 묻는 질문 10가지에 부합하는 FAQPage JSON-LD 구조화 데이터를 head 영역에 삽입했습니다.
   - 검증: JSON-LD 구문 유효성 검토 및 본문 텍스트와의 100% 일치성 검증 완료
-  - 배포 commit: e2f916b1a734b25c23da68c501b5ae0ebbd3d08d
+  - 배포 commit: 65d4876a7156be717d2d63ee558bd66736b07087
 
 
 ## 2026-08-04 — WebSite 및 Organization 구조화 데이터 적용 완료
