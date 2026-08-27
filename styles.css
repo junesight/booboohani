@@ -565,7 +565,8 @@ h3 {
   box-shadow: 0 16px 40px rgba(22, 61, 50, 0.08);
 }
 
-#care-spine-card {
+#care-spine-card,
+#care-joint-card {
   cursor: pointer;
 }
 
