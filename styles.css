@@ -567,7 +567,8 @@ h3 {
 
 #care-spine-card,
 #care-joint-card,
-#care-accident-card {
+#care-accident-card,
+#care-sports-card {
   cursor: pointer;
 }
 
