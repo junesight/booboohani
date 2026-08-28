@@ -1801,3 +1801,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// --- 로컬 SEO 전환 추적 이벤트 바인딩 ---
+document.addEventListener("DOMContentLoaded", () => {
+  const trackableElements = document.querySelectorAll("[data-track-click]");
+
+  trackableElements.forEach((el) => {
+    el.addEventListener("click", () => {
+      const channel = el.getAttribute("data-track-click");
+      const currentPath = window.location.pathname;
+      
+      // 1. 브라우저 콘솔 로깅 (검증용)
+      console.log(`[Conversion Track] Clicked: ${channel} from ${currentPath}`);
+
+      // 2. Google Analytics (GA4) 이벤트 전송 트리거
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "click_contact", {
+          "contact_method": channel,
+          "page_path": currentPath
+        });
+      }
+
+      // 3. 네이버 프리미엄 로그 분석 전환 이벤트 대응
+      if (typeof window.wcs === "object" && typeof window._nasa === "object") {
+        let nasaVal = "1"; // 기본값
+        if (channel === "phone") nasaVal = "1";
+        if (channel === "naver-booking") nasaVal = "2";
+        if (channel === "kakao-chat") nasaVal = "3";
+        
+        window._nasa = {};
+        window._nasa["cnv"] = window.wcs.cnv("2", nasaVal); // 2: 구매/예약 완료 관련 커스텀 전환 유형
+        window.wcs_do(_nasa);
+      }
+    });
+  });
+});
+

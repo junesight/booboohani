@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예약 및 문의 안내 ┃ 부부한의원</title>
+    <meta
+      name="description"
+      content="부부한의원 예약 및 문의 안내 페이지입니다. 일반 진료, 다이어트, 교통사고, 입원 치료 등 진료 분야별 맞춤형 예약 가이드와 채널을 제공합니다."
+    />
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <!-- Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Pretendard:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=1.9.8" />
+
+    <!-- Google Analytics (GA4) Template - Replace G-XXXXXXXXXX with your actual Measurement ID -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
+
+    <!-- Naver Analytics Template - Replace YOUR_NAVER_ANALYTICS_KEY with Gwangju-Jeonnam Special City account key -->
+    <!--
+    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+    <script type="text/javascript">
+      if(!window.wcs_add) var wcs_add = {};
+      wcs_add["wa"] = "YOUR_NAVER_ANALYTICS_KEY";
+      if(window.wcs) {
+        wcs_do();
+      }
+    </script>
+    -->
+  </head>
+  <body class="subpage">
+    <header>
+      <div class="header-top">
+        <a href="index.html#home" class="logo" aria-label="부부한의원 홈으로">
+          <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
+          <span>부부한의원</span>
+        </a>
+        <div class="social-links">
+          <a href="https://blog.naver.com/booboo-hani" target="_blank" rel="noreferrer" aria-label="네이버 블로그">
+            <img src="assets/icon-blog.png" alt="" />
+          </a>
+          <a href="https://www.instagram.com/boo.boo0513" target="_blank" rel="noreferrer" aria-label="인스타그램">
+            <img src="assets/icon-instagram.png" alt="" />
+          </a>
+          <a href="https://www.youtube.com/@booboohani" target="_blank" rel="noreferrer" aria-label="유튜브">
+            <img src="assets/icon-youtube.png" alt="" />
+          </a>
+          <a href="http://pf.kakao.com/_VlVkG" target="_blank" rel="noreferrer" aria-label="채널톡">
+            <img src="assets/icon-channel-talk.png" alt="" />
+          </a>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html#home">홈</a>
+        <div class="dropdown">
+          <a href="index.html#care" class="dropdown-trigger">진료 분야</a>
+          <div class="dropdown-menu">
+            <a href="care-spine.html">척추 질환</a>
+            <a href="care-joint.html">관절 질환</a>
+            <a href="care-accident.html">교통사고</a>
+            <a href="care-sports.html">스포츠 손상</a>
+            <a href="care-diet.html">다이어트</a>
+            <a href="care-digestion.html">소화·순환</a>
+            <a href="care-women-children.html">여성·소아</a>
+            <a href="care-autonomic.html">자율신경실조</a>
+          </div>
+        </div>
+        <a href="index.html#methods">치료 시스템</a>
+        <a href="index.html#doctors">의료진 소개</a>
+        <a href="index.html#gallery">한의원 둘러보기</a>
+        <a href="index.html#location">오시는 길</a>
+        <a href="booking.html" class="active">예약 및 안내</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 히어로 배너 -->
+      <section class="subpage-hero">
+        <div class="section" style="padding: 0;">
+          <img src="assets/care-icon-03.webp" alt="" style="width: 330px; max-width: 80%; height: auto; margin-top: -30px !important; margin-bottom: -45px !important;" />
+          <p class="eyebrow" style="margin-bottom: 2px; margin-top: 0;">Booking & Inquiries</p>
+          <h1>예약 및 상담 안내</h1>
+          <p>내원하시기 전 편리한 수단으로 예약을 주시면,<br />대기 시간을 줄이고 더욱 세심한 일대일 진료를 받아보실 수 있습니다.</p>
+        </div>
+      </section>
+
+      <!-- 예약 채널 가이드 (카테고리별) -->
+      <section class="section" style="background-color: var(--white); padding: 60px 20px;">
+        <div class="section-container" style="max-width: 1000px; margin: 0 auto;">
+          <h2 style="font-family: 'Noto Serif KR', serif; font-size: clamp(24px, 4vw, 32px); color: var(--green); text-align: center; margin-bottom: 40px; font-weight: 700;">
+            진료 과목별 맞춤 예약 가이드
+          </h2>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+            <!-- 일반/척추/관절 진료 -->
+            <div style="background-color: #f7f9f6; padding: 30px; border-radius: 12px; border: 1px solid var(--line); display: flex; flex-direction: column;">
+              <h3 style="font-size: 18px; color: var(--green); font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-block; width: 8px; height: 8px; background-color: var(--green); border-radius: 50%;"></span>
+                일반 진료 & 척추·관절 교정
+              </h3>
+              <p style="font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1;">
+                침, 약침, 물리치료 및 비수술 척추·관절 교정(추나요법) 치료 등은 **네이버 예약**을 이용하시면 편리하게 빈 시간대를 조회하고 즉시 예약하실 수 있습니다.
+              </p>
+              <span style="font-size: 12px; font-weight: 700; color: var(--green); background-color: #eef4ee; padding: 6px 12px; border-radius: 6px; align-self: flex-start;">
+                네이버 예약 추천
+              </span>
+            </div>
+
+            <!-- 다이어트 진료 -->
+            <div style="background-color: #f7f9f6; padding: 30px; border-radius: 12px; border: 1px solid var(--line); display: flex; flex-direction: column;">
+              <h3 style="font-size: 18px; color: var(--green); font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-block; width: 8px; height: 8px; background-color: var(--green); border-radius: 50%;"></span>
+                체질 맞춤 린다이어트
+              </h3>
+              <p style="font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1;">
+                다이어트 진료는 인바디(체성분) 검사, 문진표 작성, 혈관 건강 진단 및 심층 상담이 필요하여 **최소 1시간 단위 사전 예약**이 권장됩니다.
+              </p>
+              <span style="font-size: 12px; font-weight: 700; color: #d69e2e; background-color: #fefcbf; padding: 6px 12px; border-radius: 6px; align-self: flex-start;">
+                네이버 예약 & 카톡 문의
+              </span>
+            </div>
+
+            <!-- 교통사고 클리닉 -->
+            <div style="background-color: #f7f9f6; padding: 30px; border-radius: 12px; border: 1px solid var(--line); display: flex; flex-direction: column;">
+              <h3 style="font-size: 18px; color: var(--green); font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-block; width: 8px; height: 8px; background-color: var(--green); border-radius: 50%;"></span>
+                교통사고 후유증 통합치료
+              </h3>
+              <p style="font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1;">
+                내원 시 데스크에 **사고접수번호**와 **상대 보험사 담당자 연락처**를 제시해 주세요. 원활한 서류 처리 및 치료 준비를 위해 전화 예약 후 방문하시면 가장 신속하게 안내해 드립니다.
+              </p>
+              <span style="font-size: 12px; font-weight: 700; color: #e53e3e; background-color: #fff5f5; padding: 6px 12px; border-radius: 6px; align-self: flex-start;">
+                전화 예약 & 접수번호 지참
+              </span>
+            </div>
+
+            <!-- 입원실 집중 치료 -->
+            <div style="background-color: #f7f9f6; padding: 30px; border-radius: 12px; border: 1px solid var(--line); display: flex; flex-direction: column;">
+              <h3 style="font-size: 18px; color: var(--green); font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-block; width: 8px; height: 8px; background-color: var(--green); border-radius: 50%;"></span>
+                집중 입원 치료 (병동)
+              </h3>
+              <p style="font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1;">
+                사고 후유증 및 수술 후 급성기 집중 재활을 위한 쾌적한 2층 병동을 운영 중입니다. 실시간 잔여 병상 유무 확인 및 병실 예약은 **100% 전화 연결**을 통해서만 접수 가능합니다.
+              </p>
+              <span style="font-size: 12px; font-weight: 700; color: #2b6cb0; background-color: #ebf8ff; padding: 6px 12px; border-radius: 6px; align-self: flex-start;">
+                전화 문의 필수
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 예약 및 문의 수단 허브 (UTM/전환 연결) -->
+      <section class="section" style="background-color: #f4ece1; padding: 60px 20px;">
+        <div class="section-container" style="max-width: 900px; margin: 0 auto; text-align: center;">
+          <h2 style="font-family: 'Noto Serif KR', serif; font-size: clamp(24px, 4vw, 32px); color: var(--green); margin-bottom: 15px; font-weight: 700;">
+            간편한 예약 및 문의 상담 채널
+          </h2>
+          <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 40px; line-height: 1.6;">
+            아래 원하시는 버튼을 클릭하시면 각 전문 서비스 채널로 바로 이동합니다.<br />
+            모든 채널은 실시간 모니터링을 통해 정성껏 답변을 드립니다.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 500px; margin: 0 auto;">
+            <!-- 전화 연결 -->
+            <a href="tel:061-272-1075" class="button phone" data-track-click="phone" style="display: flex; align-items: center; justify-content: center; gap: 12px; height: 56px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px;">
+              <img src="assets/floating-phone.png" alt="" style="width: 24px; height: auto;" />
+              전화 바로 연결 (061-272-1075)
+            </a>
+
+            <!-- 네이버 예약 -->
+            <a href="https://booking.naver.com/booking/13/bizes/1260872?utm_source=official_website&utm_medium=cta_button&utm_campaign=booking_hub" class="button naver" data-track-click="naver-booking" target="_blank" rel="noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 12px; height: 56px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px;">
+              <img src="assets/floating-naver.png" alt="" style="width: 24px; height: auto;" />
+              네이버 실시간 예약 바로가기
+            </a>
+
+            <!-- 카톡 상담 -->
+            <a href="http://pf.kakao.com/_VlVkG/chat?utm_source=official_website&utm_medium=cta_button&utm_campaign=booking_hub" class="button kakao" data-track-click="kakao-chat" target="_blank" rel="noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 12px; height: 56px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px;">
+              <img src="assets/floating-kakao.png" alt="" style="width: 24px; height: auto;" />
+              카카오톡 1:1 채팅 문의
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 길찾기 및 위치/주차 안내 -->
+      <section class="section" style="background-color: var(--white); padding: 60px 20px;">
+        <div class="section-container" style="max-width: 900px; margin: 0 auto;">
+          <h2 style="font-family: 'Noto Serif KR', serif; font-size: clamp(24px, 4vw, 32px); color: var(--green); text-align: center; margin-bottom: 40px; font-weight: 700;">
+            주차 및 내원 안내
+          </h2>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            <!-- 주차 정보 -->
+            <div>
+              <h3 style="font-size: 18px; color: var(--green); font-weight: 700; margin-bottom: 15px; border-left: 4px solid var(--green); padding-left: 10px;">
+                주차장 안내 (무료 지원)
+              </h3>
+              <ul style="padding-left: 20px; font-size: 14px; line-height: 1.8; color: var(--text-muted); margin: 0;">
+                <li style="margin-bottom: 8px;">한의원 바로 맞은편 **다이소 건물 주차장**을 편리하게 이용하실 수 있습니다.</li>
+                <li style="margin-bottom: 8px;">외래 진료 및 상담 환자 전원에게 **2시간 무료 주차**를 제공합니다.</li>
+                <li>원활한 주차 정산을 위해 수납 시 데스크에 **차량 번호**를 반드시 말씀해 주세요.</li>
+              </ul>
+            </div>
+
+            <!-- 지도 길찾기 로컬 연동 -->
+            <div>
+              <h3 style="font-size: 18px; color: var(--green); font-weight: 700; margin-bottom: 15px; border-left: 4px solid var(--green); padding-left: 10px;">
+                모바일 네비게이션 길찾기
+              </h3>
+              <p style="font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px;">
+                클릭 시 본인 기기의 선호하는 지도 앱으로 바로 연결되어 쉽게 오시는 길을 안내받으실 수 있습니다.
+              </p>
+              
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <a href="https://map.naver.com/p/entry/place/1260872" target="_blank" rel="noreferrer" data-track-click="map-naver" style="font-size: 13px; font-weight: 700; text-decoration: none; color: #ffffff; background-color: #03c75a; padding: 10px 16px; border-radius: 6px; display: inline-flex; align-items: center; gap: 6px;">
+                  네이버 지도 길찾기
+                </a>
+                <a href="https://place.map.kakao.com/26417711" target="_blank" rel="noreferrer" data-track-click="map-kakao" style="font-size: 13px; font-weight: 700; text-decoration: none; color: #1e1e1e; background-color: #fee500; padding: 10px 16px; border-radius: 6px; display: inline-flex; align-items: center; gap: 6px;">
+                  카카오맵 길찾기
+                </a>
+                <a href="https://maps.app.goo.gl/tM41bCigCusZzYc69" target="_blank" rel="noreferrer" data-track-click="map-google" style="font-size: 13px; font-weight: 700; text-decoration: none; color: #ffffff; background-color: #4285f4; padding: 10px 16px; border-radius: 6px; display: inline-flex; align-items: center; gap: 6px;">
+                  구글 지도 길찾기
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand">
+        <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
+        <strong>부부한의원</strong>
+      </div>
+      <div class="footer-info footer-info-desktop">
+        <p>대표 : 최보빈 <span>|</span> 주소 : 전남광주통합특별시 목포시 옥암로 193, 1~4층 <span>|</span> Tel : 061-272-1075 <span>|</span> Fax : 061-284-1074</p>
+        <p>사업자등록번호 : 411-91-59413 <span>|</span> Email : booboo2721075@gmail.com</p>
+      </div>
+      <div class="footer-info footer-info-mobile">
+        <p>대표 : 최보빈 <span>|</span> 주소 : 전남광주통합특별시 목포시 옥암로 193, 1~4층</p>
+        <p>Tel : 061-272-1075 <span>|</span> Fax : 061-284-1074</p>
+        <p>사업자등록번호 : 411-91-59413</p>
+        <p>Email : booboo2721075@gmail.com</p>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html" onclick="window.open(this.href, 'privacyPolicy', 'width=800,height=800,scrollbars=yes,resizable=yes'); return false;">개인정보처리방침</a>
+      </div>
+      <div class="footer-copy">
+        <p>Copyright (c) 2019 부부한의원 All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
