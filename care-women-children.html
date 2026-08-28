@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="only light" />
+    <title>목포 여성질환·소아성장 한방 통합치료 | 부부한의원</title>
+    <meta name="description" content="목포 부부한의원 여성 및 소아 클리닉. 생리통, 생리불순, 갱년기 증후군 등 여성의 생애주기별 질환부터 소아의 잦은 감기, 비염, 성장 부진 및 면역력 강화까지 체질에 맞춘 세심한 한방 치료로 온 가족의 건강을 보살봅니다." />
+    <link rel="canonical" href="https://booboo.co.kr/care-women-children.html" />
+    <link rel="icon" type="image/png" href="assets/booboo-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Pretendard:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=1.9.8" />
+    <style>
+      /* 서브페이지 전용 임시/보완 스타일링 */
+      .subpage-hero {
+        background-color: var(--bg-soft);
+        padding: 16px 0 40px 0 !important;
+        text-align: center;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 40px;
+      }
+      .subpage-hero h1 {
+        font-family: "Noto Serif KR", serif;
+        font-size: clamp(32px, 5vw, 44px);
+        color: var(--green);
+        margin-top: 0 !important;
+        margin-bottom: 4px !important;
+        font-weight: 700;
+      }
+      .subpage-hero p {
+        font-size: 17px;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .sub-content-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(48px, 6vw, 80px);
+        padding: 20px 0 60px;
+      }
+      .spine-intro-section {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 30px;
+      }
+      .spine-intro-section h2 {
+        font-family: "Noto Serif KR", serif;
+        font-size: clamp(24px, 3.5vw, 32px);
+        color: var(--green);
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+      .spine-intro-section p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #4d524a;
+      }
+      .sub-section-title {
+        font-family: "Noto Serif KR", serif;
+        font-size: 26px;
+        color: var(--green);
+        border-bottom: 2px solid var(--gold);
+        padding-bottom: 12px;
+        margin-bottom: 30px;
+        font-weight: 700;
+      }
+      .disease-category-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(24px, 4vw, 40px);
+      }
+      .disease-category-title {
+        font-family: "Noto Serif KR", serif;
+        font-size: 20px;
+        color: var(--green);
+        border-bottom: 2px solid var(--green);
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+      .disease-category-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .disease-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+      .disease-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 28px 24px;
+        box-shadow: 0 8px 24px rgba(60, 50, 34, 0.04);
+      }
+      .disease-card h3 {
+        color: var(--green);
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .disease-card p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: #5d635f;
+        margin: 0;
+      }
+      .treatment-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+      }
+      .treatment-item {
+        display: flex;
+        gap: 20px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 24px;
+      }
+      .treatment-num {
+        font-family: "Noto Serif KR", serif;
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .treatment-body h3 {
+        color: var(--green);
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .treatment-body p {
+        font-size: 14.5px;
+        line-height: 1.7;
+        color: #5d635f;
+        margin: 0;
+      }
+      .process-flow {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+        text-align: center;
+      }
+      .process-step {
+        background: var(--bg-soft);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px 12px;
+      }
+      .process-step span {
+        font-size: 13px;
+        color: var(--gold);
+        font-weight: 700;
+        display: block;
+        margin-bottom: 6px;
+      }
+      .process-step strong {
+        font-size: 16px;
+        color: var(--green);
+        font-weight: 700;
+        display: block;
+        margin-bottom: 8px;
+      }
+      .process-step p {
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--muted);
+        margin: 0;
+      }
+      .subpage-cta.contact {
+        background-color: #d8c8a9 !important;
+        border: 1px solid rgba(22, 61, 50, 0.16) !important;
+        border-radius: 12px !important;
+        padding: 40px clamp(20px, 4vw, 48px) !important;
+        margin-top: 40px !important;
+        margin-bottom: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+      .subpage-cta.contact .contact-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        gap: 20px !important;
+      }
+      .subpage-cta.contact .contact-text-area {
+        text-align: center !important;
+        align-items: center !important;
+        margin-bottom: 0 !important;
+      }
+      .subpage-cta.contact .contact-text-area p {
+        font-size: clamp(16px, 2.2vw, 19px) !important;
+        font-weight: 700 !important;
+        color: var(--green) !important;
+        line-height: 1.6 !important;
+        margin: 0 !important;
+      }
+      .subpage-cta.contact .contact-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 16px !important;
+        flex-wrap: wrap !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+      .subpage-cta.contact .contact-actions .button {
+        width: auto !important;
+        min-width: 160px !important;
+        padding: 0 24px !important;
+        flex: none !important;
+      }
+      
+      @media (max-width: 768px) {
+        .subpage-cta.contact .contact-actions {
+          gap: 8px !important;
+        }
+        .subpage-cta.contact .contact-actions .button {
+          min-width: 0 !important;
+          flex: 1 !important;
+          padding: 6px 4px !important;
+          font-size: 14px !important;
+        }
+      }
+      
+      @media (max-width: 992px) {
+        .process-flow {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+        }
+      }
+      @media (max-width: 768px) {
+        .disease-category-wrapper {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .disease-grid, .treatment-list {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .process-flow {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .subpage-cta {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body style="background-color: var(--bg-soft);">
+    <header class="site-header" aria-label="주요 메뉴">
+      <div class="brand-group">
+        <a class="brand" href="index.html">
+          <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
+          <span>
+            <strong>부부한의원</strong>
+            <small>Booboo Korean Medicine Clinic</small>
+          </span>
+        </a>
+        <div class="social-links" aria-label="부부한의원 소셜 채널">
+          <a href="https://blog.naver.com/booboo1075" target="_blank" rel="noreferrer" aria-label="네이버 블로그">
+            <img src="assets/icon-blog.png" alt="" />
+          </a>
+          <a href="https://www.instagram.com/boo.boo0513" target="_blank" rel="noreferrer" aria-label="인스타그램">
+            <img src="assets/icon-instagram.png" alt="" />
+          </a>
+          <a href="https://www.youtube.com/@booboohani" target="_blank" rel="noreferrer" aria-label="유튜브">
+            <img src="assets/icon-youtube.png" alt="" />
+          </a>
+          <a href="http://pf.kakao.com/_VlVkG" target="_blank" rel="noreferrer" aria-label="채널톡">
+            <img src="assets/icon-channel-talk.png" alt="" />
+          </a>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html#home">홈</a>
+        <a href="index.html#care">진료 분야</a>
+        <a href="index.html#methods">치료 시스템</a>
+        <a href="index.html#doctors">의료진 소개</a>
+        <a href="index.html#gallery">한의원 둘러보기</a>
+        <a href="index.html#location">오시는 길</a>
+        <a href="index.html#contact">예약 안내</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 서브페이지 상단 히어로 -->
+      <section class="subpage-hero">
+        <div class="section" style="padding: 0;">
+          <img src="assets/care-icon-07.webp" alt="" style="width: 330px; max-width: 80%; height: auto; margin-top: -30px !important; margin-bottom: -45px !important;" />
+          <p class="eyebrow" style="margin-bottom: 2px; margin-top: 0;">Women & Children Clinic</p>
+          <h1>여성 및 소아</h1>
+          <p>여성의 생애주기별 건강과 소아의 건강한 성장을 돕는 1:1 맞춤형 케어</p>
+        </div>
+      </section>
+
+      <!-- 본문 섹션 -->
+      <section class="section" style="padding-top: 0;">
+        <!-- 여성 및 소아 진료 철학 -->
+        <div class="spine-intro-section">
+          <h2>부드럽고 세심한 치료로 몸의 자생력을 높입니다.</h2>
+          <p>
+            여성의 몸은 생애 전반에 걸쳐 지속적인 호르몬과 기혈의 변화를 겪으며, <br />
+            소아의 신체는 면역계와 골격계가 활발히 확립되는 섬세한 과정을 지나고 있습니다. <br />
+            부부한의원은 통증 중심의 인위적인 개입을 배제하고, <br />
+            생애주기별 흐름에 맞는 1:1 맞춤 치료를 통하여 <br />
+            여성의 자궁 균형을 회복하고 호르몬 변화에 대한 적응력을 높이며, <br />
+            아이들의 비강 호흡 정화, 바른 비례 성장을 돕습니다.
+          </p>
+        </div>
+
+        <div class="sub-content-grid">
+          <!-- 1. 주요 대상 상황 -->
+          <div>
+            <h2 class="sub-section-title">주요 진료 대상 및 상황</h2>
+            <div class="disease-category-wrapper">
+              <!-- 여성 클리닉 -->
+              <div>
+                <h3 class="disease-category-title">여성 클리닉</h3>
+                <div class="disease-category-list">
+                  <div class="disease-card">
+                    <h3>생리통, 생리불순 및 자궁 질환</h3>
+                    <p>하복부 기혈 정체와 어혈로 인한 생리통, 주기가 일정하지 않은 생리불순 및 다낭성 난소 증후군 등을 관리하고 자궁 기능을 보강합니다.</p>
+                  </div>
+                  <div class="disease-card">
+                    <h3>갱년기 증후군 및 안면홍조</h3>
+                    <p>여성호르몬 저하에 따른 열감, 발한, 야간 수면 장애, 무력감, 두근거림 등 갱년기에 겪는 자율신경계 과민 증상을 편안하게 완충합니다.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 소아 클리닉 -->
+              <div>
+                <h3 class="disease-category-title">소아 클리닉</h3>
+                <div class="disease-category-list">
+                  <div class="disease-card">
+                    <h3>성장 지연 및 소아 식욕 부진</h3>
+                    <p>소화기 기능이 약해 음식 섭취가 부진하고 또래에 비해 성장이 더딘 아동의 소화 기능 개선과 골격 및 성장판 주변부 발달을 보강합니다.</p>
+                  </div>
+                  <div class="disease-card">
+                    <h3>소아 만성 비염 및 호흡기 질환</h3>
+                    <p>온도 변화에 민감하고 호흡기 장벽이 연약해 쉽게 발생하는 코막힘, 비염, 재채기, 잦은 감기 등을 다스려 편안한 호흡을 돕습니다.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. 맞춤 한방 치료법 -->
+          <div>
+            <h2 class="sub-section-title">여성·소아 맞춤 치료 솔루션</h2>
+            <div class="treatment-list">
+              <div class="treatment-item">
+                <span class="treatment-num">01</span>
+                <div class="treatment-body">
+                  <h3>침 치료</h3>
+                  <p>여성 자궁 주변의 기혈 정체와 어혈을 소통시키고, 소아의 자율신경 조절 및 성장판 주변부 경혈을 자극하는 안전하고 섬세한 침 치료를 시행합니다.</p>
+                </div>
+              </div>
+              <div class="treatment-item">
+                <span class="treatment-num">02</span>
+                <div class="treatment-body">
+                  <h3>맞춤형 약침 치료</h3>
+                  <p>통증과 순환에 도움이 되는 녹용 약침에 피로 누적으로 인한 회복력, 기능 저하에 도움이 되는 자하거(태반) 약침까지 적절하게 활용하여 효과적인 치료를 도모합니다.</p>
+                </div>
+              </div>
+              <div class="treatment-item">
+                <span class="treatment-num">03</span>
+                <div class="treatment-body">
+                  <h3>한약 처방 (맞춤한약 혹은 첩약건강보험 2차 시범사업)</h3>
+                  <p>자궁 환경 개선과 호르몬 균형을 돕는 여성 한약 및 소아의 비강 점막 장벽 강화와 골격 및 뼈 발달을 돕는 안전한 성장 한약을 맞춤형으로 조제 처방합니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. 진료 및 치료 절차 -->
+          <div>
+            <h2 class="sub-section-title">여성·소아 클리닉 진행 프로세스</h2>
+            <div class="process-flow">
+              <div class="process-step">
+                <span>Step 01</span>
+                <strong>예약 및 접수</strong>
+                <p>안내 데스크 예약 확인, 접수 및 문진표 작성</p>
+              </div>
+              <div class="process-step">
+                <span>Step 02</span>
+                <strong>1:1 맞춤 진료</strong>
+                <p>원장님 진료를 통해 체질 판단, 자궁 기능 평가 및 성장 지표 분석</p>
+              </div>
+              <div class="process-step">
+                <span>Step 03</span>
+                <strong>통합 한방 치료</strong>
+                <p>침, 맞춤형 약침 치료 등 개인별 상태에 맞는 세밀한 한방 치료 시행</p>
+              </div>
+              <div class="process-step">
+                <span>Step 04</span>
+                <strong>귀가 및 사후관리</strong>
+                <p>수납 및 약재 안내 후 가정 내 생활 수칙 교육과 정기 추적 관찰</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. CTA 영역 -->
+          <div class="subpage-cta contact">
+            <div class="contact-grid">
+              <div class="contact-text-area">
+                <p>예약 후 내원하시면 <br class="mobile-only" />1:1 맞춤 집중 진료를 <br class="mobile-only" />대기 없이 원활하게 받아보실 수 있습니다.</p>
+              </div>
+              <div class="contact-actions">
+                <a class="button phone" href="tel:061-272-1075">
+                  <img class="button-icon" src="assets/floating-phone.png" alt="" />
+                  <span>전화 문의</span>
+                </a>
+                <a class="button naver" href="https://m.booking.naver.com/booking/13/bizes/1260872?theme=place&lang=ko&area=pll" target="_blank" rel="noreferrer">
+                  <img class="button-icon" src="assets/floating-naver.png" alt="" />
+                  <span>네이버 예약</span>
+                </a>
+                <a class="button kakao" href="http://pf.kakao.com/_VlVkG/chat" target="_blank" rel="noreferrer">
+                  <img class="button-icon" src="assets/floating-kakao.png" alt="" />
+                  <span>카톡 문의</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand">
+        <img src="assets/booboo-logo.png" alt="부부한의원 로고" />
+        <strong>부부한의원</strong>
+      </div>
+      <div class="footer-info footer-info-desktop">
+        <p>대표 : 최보빈 <span>|</span> 주소 : 목포시 옥암로 193, 1~4층 <span>|</span> Tel : 061-272-1075 <span>|</span> Fax : 061-284-1074</p>
+        <p>사업자등록번호 : 411-91-59413 <span>|</span> Email : booboo2721075@gmail.com</p>
+      </div>
+      <div class="footer-info footer-info-mobile">
+        <p>대표 : 최보빈 <span>|</span> 주소 : 목포시 옥암로 193, 1~4층</p>
+        <p>Tel : 061-272-1075 <span>|</span> Fax : 061-284-1074</p>
+        <p>사업자등록번호 : 411-91-59413</p>
+        <p>Email : booboo2721075@gmail.com</p>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html" onclick="window.open(this.href, 'privacyPolicy', 'width=800,height=800,scrollbars=yes,resizable=yes'); return false;">개인정보처리방침</a>
+      </div>
+      <div class="footer-copy">
+        <p>Copyright (c) 2019 부부한의원 All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
