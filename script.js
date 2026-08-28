@@ -615,7 +615,7 @@ function renderCareModalContent() {
 
   // 상세 모달이 존재하는 카드의 경우 "자세히 보기" 버튼 노출
   if (careModalDetailBtnWrapper) {
-    const hasDetail = ["yakchim-card", "hanyak-card", "linda-card", "gongjin-card", "care-spine-card", "care-joint-card", "care-accident-card", "care-sports-card", "care-diet-card", "care-digestion-card", "care-women-children-card"].includes(activeCareCard?.id);
+    const hasDetail = ["yakchim-card", "hanyak-card", "linda-card", "gongjin-card", "care-spine-card", "care-joint-card", "care-accident-card", "care-sports-card", "care-diet-card", "care-digestion-card", "care-women-children-card", "care-autonomic-card"].includes(activeCareCard?.id);
     careModalDetailBtnWrapper.style.display = hasDetail ? "block" : "none";
   }
 }
@@ -1262,6 +1262,10 @@ careCards.forEach((card) => {
       location.href = "care-women-children.html";
       return;
     }
+    if (card.id === "care-autonomic-card" && window.innerWidth > 768) {
+      location.href = "care-autonomic.html";
+      return;
+    }
     openCareModal(card);
   });
 });
@@ -1345,6 +1349,9 @@ careModalDetailBtn?.addEventListener("click", () => {
   } else if (cardId === "care-women-children-card") {
     document.body.classList.remove("modal-open");
     location.href = "care-women-children.html";
+  } else if (cardId === "care-autonomic-card") {
+    document.body.classList.remove("modal-open");
+    location.href = "care-autonomic.html";
   } else if (cardId === "yakchim-card") {
     openYakchimModal(activeCareCard, true);
   } else if (cardId === "hanyak-card") {
