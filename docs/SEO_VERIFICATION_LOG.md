@@ -327,3 +327,24 @@ Content-Type: text/css; charset=utf-8
 ### 2. 수동 확인 항목 (운영 반영 후)
 - [ ] PR 병합 완료 후, 실제 서비스 운영 도메인 `https://booboo.co.kr/care-women-children.html` 주소 접속 후 200 OK 상태 및 렌더링 확인.
 - [ ] 메인 도메인 여성 및 소아 카드를 PC(마우스 호버) 및 모바일(상세보기 클릭) 환경에서 클릭했을 때 여성/소아 서브페이지로 자연스럽게 전환 이동하는지 검수.
+
+---
+
+## [CONTENT-005-autonomic] 자율신경실조 독립 페이지 구축
+
+- **검증일**: 2026-08-28
+- **생성 파일**: `care-autonomic.html`
+- **수정 파일**: [index.html](file:///C:/Users/user/.gemini/antigravity/scratch/booboohani/index.html), [script.js](file:///C:/Users/user/.gemini/antigravity/scratch/booboohani/script.js)
+- **최종 판정**: **PASS**
+
+### 1. 검증 결과
+- [x] **독립 상세 페이지 생성**: 저장소 최상위 루트 디렉토리에 `care-autonomic.html` 신규 파일 생성 완료.
+- [x] **톤앤매너 일치성**: Noto Serif KR 및 Pretendard 폰트 연동, 서브 헤로, 2단 질환/치료법 리스트 및 4단계 프로세스 레이아웃이 기존 서브페이지들과 완벽히 조화됨을 확인.
+- [x] **메인 연동 확인**: `index.html` 내 자율신경실조 카드가 `has-detail`, `tabindex="0"`, `care-autonomic-card` 속성을 확보하고 링크가 정상 연동되었음을 확인.
+- [x] **스크립트 액션 연동**: `script.js` 내 상세 버튼 활성화 판단용 `hasDetail` 배열, PC/모바일 카드 클릭 리스너 내에 `care-autonomic-card` 분기 처리가 정상 추가되었음을 확인.
+- [x] **의료 가이드라인 준수**: 자율신경실조 효능에 대한 과장된 광고성 금지 문구(완치, 보장, 즉시 등)의 유입 유무 검증 통과.
+- [x] **정적 리소스 무결성**: 스타일 및 구동 로직 연동을 위한 변경 외에 styles.css 및 CNAME 등 핵심 에셋 무결함 확인.
+
+### 2. 수동 확인 항목 (운영 반영 후)
+- [ ] PR 병합 완료 후, 실제 서비스 운영 도메인 `https://booboo.co.kr/care-autonomic.html` 주소 접속 후 200 OK 상태 및 렌더링 확인.
+- [ ] 메인 도메인 자율신경실조 카드를 PC(마우스 호버) 및 모바일(상세보기 클릭) 환경에서 클릭했을 때 자율신경실조 서브페이지로 자연스럽게 전환 이동하는지 검수.

@@ -41,6 +41,7 @@
 - [x] CONTENT-004 다이어트 독립 페이지
 - [x] CONTENT-005-digestion 소화 및 순환장애 독립 페이지
 - [x] CONTENT-005-women-children 여성 및 소아 독립 페이지
+- [x] CONTENT-005-autonomic 자율신경실조 독립 페이지
 - [ ] CONTENT-005 약침·추나·침도 치료 페이지
 - [ ] CONTENT-006 의료진별 독립 페이지
 - [ ] CONTENT-007 페이지 간 내부 링크 구조
