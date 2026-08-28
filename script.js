@@ -1229,7 +1229,11 @@ closeButtons.forEach((button) => {
 });
 
 careCards.forEach((card) => {
-  card.addEventListener("click", () => {
+  card.addEventListener("click", (event) => {
+    // 하위 a 링크 클릭 시 부모 클릭 리스너 스킵 (이중 동작 및 모달 팝업 노출 방지)
+    if (event.target.tagName === "A" || event.target.closest("a")) {
+      return;
+    }
     if (card.id === "care-spine-card" && window.innerWidth > 768) {
       location.href = "care-spine.html";
       return;
@@ -1264,7 +1268,11 @@ careCards.forEach((card) => {
 
 const methodCards = document.querySelectorAll(".method-card");
 methodCards.forEach((card) => {
-  card.addEventListener("click", () => {
+  card.addEventListener("click", (event) => {
+    // 하위 a 링크 클릭 시 부모 클릭 리스너 스킵 (이중 동작 및 모달 팝업 노출 방지)
+    if (event.target.tagName === "A" || event.target.closest("a")) {
+      return;
+    }
     if (window.innerWidth > 768) {
       // 데스크탑: 상세 팝업 바로 열기
       if (card.id === "yakchim-card") {
