@@ -239,6 +239,68 @@
           padding: 30px 20px;
         }
       }
+      /* 진료 분야 간 이동 서브 네비게이션 스타일 */
+      .care-sub-nav-wrapper {
+        box-sizing: border-box;
+        width: min(1240px, calc(100% - 40px));
+        margin: 50px auto 0;
+        text-align: center;
+        background: var(--bg-soft);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 30px 24px;
+      }
+      .care-sub-nav-title {
+        font-family: "Noto Serif KR", serif;
+        font-size: 19px;
+        color: var(--green);
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+      .care-sub-nav {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 8px;
+      }
+      .care-sub-nav a {
+        display: block;
+        text-align: center;
+        padding: 14px 10px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--muted);
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(60, 50, 34, 0.02);
+      }
+      .care-sub-nav a:hover {
+        background: var(--bg-soft);
+        color: var(--green);
+        border-color: var(--green);
+      }
+      .care-sub-nav a.active {
+        background: var(--green);
+        color: var(--paper);
+        border-color: var(--green);
+        font-weight: 700;
+      }
+      @media (max-width: 768px) {
+        .care-sub-nav-wrapper {
+          margin: 35px auto 0;
+          padding: 20px 16px;
+        }
+        .care-sub-nav {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+        .care-sub-nav a {
+          font-size: 14px;
+          padding: 11px 6px;
+        }
+      }
     </style>
   </head>
   <body style="background-color: var(--bg-soft);">
@@ -268,7 +330,19 @@
       </div>
       <nav>
         <a href="index.html#home">홈</a>
-        <a href="index.html#care">진료 분야</a>
+        <div class="dropdown">
+          <a href="index.html#care" class="dropdown-trigger">진료 분야</a>
+          <div class="dropdown-menu">
+            <a href="care-spine.html">척추 질환</a>
+            <a href="care-joint.html">관절 질환</a>
+            <a href="care-accident.html">교통사고</a>
+            <a href="care-sports.html">스포츠 손상</a>
+            <a href="care-diet.html">다이어트</a>
+            <a href="care-digestion.html">소화·순환</a>
+            <a href="care-women-children.html">여성·소아</a>
+            <a href="care-autonomic.html">자율신경실조</a>
+          </div>
+        </div>
         <a href="index.html#methods">치료 시스템</a>
         <a href="index.html#doctors">의료진 소개</a>
         <a href="index.html#gallery">한의원 둘러보기</a>
@@ -282,6 +356,8 @@
       <!-- 서브페이지 상단 히어로 -->
       <section class="subpage-hero">
         <div class="section" style="padding: 0;">
+          <!-- 진료 분야 간 서브 내비게이션 -->
+          
           <img src="assets/care-icon-08.webp" alt="" style="width: 330px; max-width: 80%; height: auto; margin-top: -30px !important; margin-bottom: -45px !important;" />
           <p class="eyebrow" style="margin-bottom: 2px; margin-top: 0;">Autonomic Clinic</p>
           <h1>자율신경실조</h1>
@@ -403,6 +479,21 @@
                 </a>
               </div>
             </div>
+          </div>
+
+          <!-- 진료 분야 간 서브 내비게이션 -->
+          <div class="care-sub-nav-wrapper">
+            <h3 class="care-sub-nav-title">다른 질환 살펴보기</h3>
+            <div class="care-sub-nav">
+            <a href="care-spine.html">척추 질환</a>
+            <a href="care-joint.html">관절 질환</a>
+            <a href="care-accident.html">교통사고</a>
+            <a href="care-sports.html">스포츠 손상</a>
+            <a href="care-diet.html">다이어트</a>
+            <a href="care-digestion.html">소화·순환</a>
+            <a href="care-women-children.html">여성·소아</a>
+            <a href="care-autonomic.html" class="active">자율신경실조</a>
+          </div>
           </div>
 
         </div>

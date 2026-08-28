@@ -44,7 +44,7 @@
 - [x] CONTENT-005-autonomic 자율신경실조 독립 페이지
 - [ ] CONTENT-005 약침·추나·침도 치료 페이지
 - [ ] CONTENT-006 의료진별 독립 페이지
-- [ ] CONTENT-007 페이지 간 내부 링크 구조
+- [x] CONTENT-007 페이지 간 내부 링크 구조
 
 ## Phase 4 — 로컬 SEO·예약
 
