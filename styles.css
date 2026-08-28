@@ -4561,11 +4561,18 @@ footer p {
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.faq-item:hover {
+  border-color: var(--gold);
+  background-color: var(--paper);
+  box-shadow: 0 4px 12px rgba(60, 50, 34, 0.04);
 }
 
 .faq-item[open] {
   border-color: var(--gold);
+  background-color: var(--paper);
   box-shadow: 0 4px 12px rgba(181, 150, 95, 0.08);
 }
 
