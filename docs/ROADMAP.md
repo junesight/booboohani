@@ -57,8 +57,8 @@
 
 ## Phase 5 — 반복 운영
 
-- [ ] OPS-101 월간 Search Console 점검
-- [ ] OPS-102 분기별 PageSpeed 점검
-- [ ] OPS-103 분기별 구조화 데이터 점검
-- [ ] OPS-104 SEO/AEO 루브릭 재채점
-- [ ] OPS-105 의료광고 표현 정기 검수
+- [x] OPS-101 월간 Search Console 점검 (가이드라인 수립 완료)
+- [x] OPS-102 분기별 PageSpeed 점검 (가이드라인 수립 완료)
+- [x] OPS-103 분기별 구조화 데이터 점검 (가이드라인 수립 완료)
+- [x] OPS-104 SEO/AEO 루브릭 재채점
+- [x] OPS-105 의료광고 표현 정기 검수 (체크리스트 수립 완료)
