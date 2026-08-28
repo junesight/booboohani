@@ -305,6 +305,16 @@ h3 {
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
 }
 
 .button.primary {
@@ -312,14 +322,31 @@ h3 {
   color: var(--paper);
 }
 
+.button.primary:hover {
+  background: var(--green-2);
+  border-color: var(--green-2);
+  box-shadow: 0 6px 20px rgba(22, 61, 50, 0.18);
+}
+
 .button.ghost {
   background: rgba(255, 250, 240, 0.68);
   color: var(--green);
 }
 
+.button.ghost:hover {
+  background: var(--green);
+  color: var(--paper);
+  box-shadow: 0 6px 20px rgba(22, 61, 50, 0.12);
+}
+
 .button.light {
   background: var(--paper);
   color: var(--green);
+}
+
+.button.light:hover {
+  background: var(--bg-soft);
+  box-shadow: 0 6px 20px rgba(22, 61, 50, 0.08);
 }
 
 .hero-panels {
