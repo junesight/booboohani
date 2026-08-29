@@ -658,12 +658,21 @@ function closeCareModal() {
   popModalStateIfNeeded();
 }
 
+function clearUrlHash() {
+  if (window.location.hash) {
+    history.replaceState("", document.title, window.location.pathname + window.location.search);
+  }
+}
+
 function openYakchimModal(card, isFromCare = false) {
   lastFocusedCard = card;
   if (yakchimModal) {
     yakchimModal.hidden = false;
     document.body.classList.add("modal-open");
     yakchimModal.querySelector(".modal-close")?.focus();
+    if (window.location.hash !== "#pharmacoacupuncture") {
+      window.location.hash = "pharmacoacupuncture";
+    }
     if (isFromCare) {
       pushModalState("detail", card.id);
     } else {
@@ -684,6 +693,7 @@ function closeYakchimModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
+  clearUrlHash();
   popModalStateIfNeeded();
 }
 
@@ -693,6 +703,9 @@ function openHanyakModal(card, isFromCare = false) {
     hanyakModal.hidden = false;
     document.body.classList.add("modal-open");
     hanyakModal.querySelector(".modal-close")?.focus();
+    if (window.location.hash !== "#herb-med") {
+      window.location.hash = "herb-med";
+    }
     if (isFromCare) {
       pushModalState("detail", card.id);
     } else {
@@ -713,6 +726,7 @@ function closeHanyakModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
+  clearUrlHash();
   popModalStateIfNeeded();
 }
 
@@ -727,6 +741,9 @@ function openLindaModal(card, isFromCare = false) {
     const iframe = lindaModal.querySelector("#linda-iframe");
     if (iframe && iframe.dataset.src) {
       iframe.src = iframe.dataset.src;
+    }
+    if (window.location.hash !== "#leandiet") {
+      window.location.hash = "leandiet";
     }
     if (isFromCare) {
       pushModalState("detail", card.id);
@@ -754,6 +771,7 @@ function closeLindaModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
+  clearUrlHash();
   popModalStateIfNeeded();
 }
 
@@ -768,6 +786,9 @@ function openGongjinModal(card, isFromCare = false) {
     const iframe = gongjinModal.querySelector("#gongjin-iframe");
     if (iframe && iframe.dataset.src) {
       iframe.src = iframe.dataset.src;
+    }
+    if (window.location.hash !== "#thesoo") {
+      window.location.hash = "thesoo";
     }
     if (isFromCare) {
       pushModalState("detail", card.id);
@@ -795,6 +816,7 @@ function closeGongjinModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
+  clearUrlHash();
   popModalStateIfNeeded();
 }
 
@@ -1700,6 +1722,7 @@ function closeAllModals() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
+  clearUrlHash();
 }
 
 window.addEventListener("popstate", (event) => {
@@ -1799,5 +1822,34 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("promoHideUntil", midnight.getTime().toString());
     closePromoModal();
   });
+});
+
+// --- URL 해시를 기반으로 한 치료 모달 다이렉트 링킹 및 라우팅 ---
+function handleUrlHashModal() {
+  const hash = window.location.hash;
+  if (!hash) {
+    closeAllDetailModals();
+    return;
+  }
+
+  if (hash === "#pharmacoacupuncture") {
+    const card = document.getElementById("yakchim-card");
+    if (card) openYakchimModal(card, false);
+  } else if (hash === "#herb-med") {
+    const card = document.getElementById("hanyak-card");
+    if (card) openHanyakModal(card, false);
+  } else if (hash === "#leandiet") {
+    const card = document.getElementById("linda-card");
+    if (card) openLindaModal(card, false);
+  } else if (hash === "#thesoo") {
+    const card = document.getElementById("gongjin-card");
+    if (card) openGongjinModal(card, false);
+  }
+}
+
+window.addEventListener("hashchange", handleUrlHashModal);
+
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(handleUrlHashModal, 150);
 });
 
