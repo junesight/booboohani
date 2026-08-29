@@ -2,6 +2,12 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <script>
+      if (self !== top) {
+        top.location = self.location;
+      }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- color-scheme 방지 메타태그 추가 -->
     <meta name="color-scheme" content="only light" />
