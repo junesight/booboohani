@@ -184,7 +184,7 @@ main {
   padding: clamp(54px, 7vw, 92px) clamp(20px, 5vw, 64px) clamp(52px, 6vw, 84px);
   background:
     linear-gradient(180deg, rgba(239, 231, 216, 0.5), rgba(239, 231, 216, 0.76)),
-    url("assets/hero-treatment-room.png") center / cover no-repeat;
+    url("assets/hero-treatment-room.webp") center / cover no-repeat;
 }
 
 .hero::after {
@@ -2944,7 +2944,7 @@ footer p {
     padding-bottom: 42px;
     background:
       linear-gradient(180deg, rgba(248, 243, 234, 0.36), rgba(239, 231, 216, 0.9)),
-      url("assets/mobile-hero-bg.png") center top / cover no-repeat;
+      url("assets/mobile-hero-bg.webp") center top / cover no-repeat;
   }
 
   .hero-panels {
@@ -3528,7 +3528,7 @@ footer p {
     padding-inline: 18px;
     background:
       linear-gradient(180deg, rgba(248, 243, 234, 0.3), rgba(239, 231, 216, 0.88)),
-      url("assets/mobile-hero-bg.png") center top / cover no-repeat;
+      url("assets/mobile-hero-bg.webp") center top / cover no-repeat;
   }
 
   .hero-actions {
