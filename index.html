@@ -110,54 +110,56 @@
       ]
     }
     </script>
-    <!-- Structured Data (JSON-LD) - WebSite / Organization -->
+    <!-- Structured Data (JSON-LD) - WebSite / Organization (Split for Parser Compatibility) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://booboo.co.kr/#website",
-          "url": "https://booboo.co.kr/",
-          "name": "부부한의원",
-          "alternateName": ["목포 부부한의원", "목포부부한의원"],
-          "publisher": {
-            "@id": "https://booboo.co.kr/#organization"
-          }
-        },
-        {
-          "@type": "Organization",
-          "@id": "https://booboo.co.kr/#organization",
-          "name": "부부한의원",
-          "alternateName": "목포 부부한의원",
-          "url": "https://booboo.co.kr/",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://booboo.co.kr/assets/booboo-logo.png"
-          },
-          "image": "https://booboo.co.kr/assets/og-image.png",
-          "telephone": "+82-61-272-1075",
-          "email": "booboo2721075@gmail.com",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "KR",
-            "addressRegion": "전남광주통합특별시",
-            "addressLocality": "목포시",
-            "streetAddress": "옥암로 193, 1~4층",
-            "postalCode": "58658"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+82-61-272-1075",
-            "contactType": "customer service",
-            "areaServed": "KR",
-            "availableLanguage": "Korean"
-          },
-          "sameAs": [
-            "http://pf.kakao.com/_VlVkG",
-            "https://booking.naver.com/booking/13/bizes/1260872"
-          ]
-        }
+      "@type": "WebSite",
+      "@id": "https://booboo.co.kr/#website",
+      "url": "https://booboo.co.kr/",
+      "name": "부부한의원",
+      "alternateName": ["목포 부부한의원", "목포부부한의원"],
+      "publisher": {
+        "@id": "https://booboo.co.kr/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://booboo.co.kr/#breadcrumb"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://booboo.co.kr/#organization",
+      "name": "부부한의원",
+      "alternateName": "목포 부부한의원",
+      "url": "https://booboo.co.kr/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://booboo.co.kr/assets/booboo-logo.png"
+      },
+      "image": "https://booboo.co.kr/assets/og-image.png",
+      "telephone": "+82-61-272-1075",
+      "email": "booboo2721075@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KR",
+        "addressRegion": "전남광주통합특별시",
+        "addressLocality": "목포시",
+        "streetAddress": "옥암로 193, 1~4층",
+        "postalCode": "58658"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+82-61-272-1075",
+        "contactType": "customer service",
+        "areaServed": "KR",
+        "availableLanguage": "Korean"
+      },
+      "sameAs": [
+        "http://pf.kakao.com/_VlVkG",
+        "https://booking.naver.com/booking/13/bizes/1260872"
       ]
     }
     </script>
@@ -254,6 +256,7 @@
 {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "@id": "https://booboo.co.kr/#breadcrumb",
       "itemListElement": [
             {
                   "@type": "ListItem",
