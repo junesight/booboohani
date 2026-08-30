@@ -660,7 +660,11 @@ function closeCareModal() {
 
 function clearUrlHash() {
   if (window.location.hash) {
-    history.replaceState("", document.title, window.location.pathname + window.location.search);
+    try {
+      history.replaceState("", document.title, window.location.pathname + window.location.search);
+    } catch (e) {
+      console.warn("History replaceState failed:", e);
+    }
   }
 }
 
@@ -1661,21 +1665,29 @@ function isAnyModalOpen() {
 let isPoppingAllStates = false;
 
 function pushModalState(forceType, cardId) {
-  if (forceType === "care" && cardId) {
-    history.pushState({ modalOpen: "care", cardId: cardId }, "");
-  } else if (forceType === "detail" && cardId) {
-    history.pushState({ modalOpen: "detail", cardId: cardId }, "");
-  } else {
-    if (!history.state || !history.state.modalOpen) {
-      history.pushState({ modalOpen: true }, "");
+  try {
+    if (forceType === "care" && cardId) {
+      history.pushState({ modalOpen: "care", cardId: cardId }, "");
+    } else if (forceType === "detail" && cardId) {
+      history.pushState({ modalOpen: "detail", cardId: cardId }, "");
+    } else {
+      if (!history.state || !history.state.modalOpen) {
+        history.pushState({ modalOpen: true }, "");
+      }
     }
+  } catch (e) {
+    console.warn("History pushState failed:", e);
   }
 }
 
 function popModalStateIfNeeded() {
-  if (!isAnyModalOpen() && history.state && history.state.modalOpen) {
-    isPoppingAllStates = true;
-    history.back();
+  try {
+    if (!isAnyModalOpen() && history.state && history.state.modalOpen) {
+      isPoppingAllStates = true;
+      history.back();
+    }
+  } catch (e) {
+    console.warn("History back failed:", e);
   }
 }
 
@@ -1728,7 +1740,11 @@ function closeAllModals() {
 window.addEventListener("popstate", (event) => {
   if (isPoppingAllStates) {
     if (event.state && event.state.modalOpen) {
-      history.back();
+      try {
+        history.back();
+      } catch (e) {
+        console.warn("History back failed in popstate:", e);
+      }
     } else {
       isPoppingAllStates = false;
       closeAllModals();
