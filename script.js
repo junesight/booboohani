@@ -93,7 +93,7 @@ const RECORD_STORAGE_KEY = "boobooPatientRecord";
 
 const galleryFloors = {
   1: [
-    { src: "assets/gallery-1f-01.jpg", caption: "외부" },
+    { src: "assets/gallery-1f-01.webp", caption: "외부" },
     { src: "assets/gallery-1f-02.jpg", caption: "로비" },
     { src: "assets/gallery-1f-03.jpg", caption: "로비" },
     { src: "assets/gallery-1f-04.jpg", caption: "로비" },
