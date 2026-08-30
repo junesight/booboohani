@@ -1785,58 +1785,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// --- 지도 스크립트 지연 로딩 ---
-function loadDaumRoughmap() {
-  const mapContainer = document.getElementById("daumRoughmapContainer1557364853173");
-  if (!mapContainer || mapContainer.dataset.loaded === "true") return;
-
-  const renderMap = () => {
-    if (!window.daum?.roughmap?.Lander) return;
-
-    new window.daum.roughmap.Lander({
-      timestamp: mapContainer.dataset.timestamp,
-      key: mapContainer.dataset.key
-    }).render();
-
-    mapContainer.dataset.loaded = "true";
-  };
-
-  if (window.daum?.roughmap?.Lander) {
-    renderMap();
-    return;
-  }
-
-  const script = document.createElement("script");
-  script.charset = "UTF-8";
-  script.className = "daum_roughmap_loader_script";
-  script.src = "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
-  script.async = true;
-  script.onload = renderMap;
-  document.body.appendChild(script);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const mapContainer = document.getElementById("daumRoughmapContainer1557364853173");
-  if (!mapContainer) return;
-
-  if (!("IntersectionObserver" in window)) {
-    window.addEventListener("load", loadDaumRoughmap, { once: true });
-    return;
-  }
-
-  const mapObserver = new IntersectionObserver((entries, observer) => {
-    if (!entries.some((entry) => entry.isIntersecting)) return;
-
-    loadDaumRoughmap();
-    observer.disconnect();
-  }, {
-    rootMargin: "300px 0px",
-    threshold: 0
-  });
-
-  mapObserver.observe(mapContainer);
-});
-
 // --- 프로모션 공지 팝업 모달 관리 ---
 function closePromoModal() {
   const promoModal = document.getElementById("promo-modal");

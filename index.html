@@ -834,13 +834,14 @@
           -->
           <div class="map-area">
             <div class="map-embed">
-              <div
-                id="daumRoughmapContainer1557364853173"
-                class="root_daum_roughmap root_daum_roughmap_landing"
-                data-timestamp="1557364853173"
-                data-key="tf27"
-                style="width: 100%; height: 100%;"
-              ></div>
+              <div id="daumRoughmapContainer1557364853173" class="root_daum_roughmap root_daum_roughmap_landing" style="width: 100%; height: 100%;"></div>
+              <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+              <script charset="UTF-8">
+                new daum.roughmap.Lander({
+                  "timestamp" : "1557364853173",
+                  "key" : "tf27"
+                }).render();
+              </script>
             </div>
             <div class="map-actions">
               <a class="button naver" href="https://naver.me/G9r5Gz2l" target="_blank" rel="noreferrer">
