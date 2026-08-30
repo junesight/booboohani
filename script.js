@@ -674,14 +674,6 @@ function openYakchimModal(card, isFromCare = false) {
     yakchimModal.hidden = false;
     document.body.classList.add("modal-open");
     yakchimModal.querySelector(".modal-close")?.focus();
-    if (window.location.hash !== "#pharmacoacupuncture") {
-      window.location.hash = "pharmacoacupuncture";
-    }
-    if (isFromCare) {
-      pushModalState("detail", card.id);
-    } else {
-      pushModalState();
-    }
   }
 }
 
@@ -697,8 +689,6 @@ function closeYakchimModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
-  clearUrlHash();
-  popModalStateIfNeeded();
 }
 
 function openHanyakModal(card, isFromCare = false) {
@@ -707,14 +697,6 @@ function openHanyakModal(card, isFromCare = false) {
     hanyakModal.hidden = false;
     document.body.classList.add("modal-open");
     hanyakModal.querySelector(".modal-close")?.focus();
-    if (window.location.hash !== "#herb-med") {
-      window.location.hash = "herb-med";
-    }
-    if (isFromCare) {
-      pushModalState("detail", card.id);
-    } else {
-      pushModalState();
-    }
   }
 }
 
@@ -730,8 +712,6 @@ function closeHanyakModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
-  clearUrlHash();
-  popModalStateIfNeeded();
 }
 
 function openLindaModal(card, isFromCare = false) {
@@ -745,14 +725,6 @@ function openLindaModal(card, isFromCare = false) {
     const iframe = lindaModal.querySelector("#linda-iframe");
     if (iframe && iframe.dataset.src) {
       iframe.src = iframe.dataset.src;
-    }
-    if (window.location.hash !== "#leandiet") {
-      window.location.hash = "leandiet";
-    }
-    if (isFromCare) {
-      pushModalState("detail", card.id);
-    } else {
-      pushModalState();
     }
   }
 }
@@ -775,8 +747,6 @@ function closeLindaModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
-  clearUrlHash();
-  popModalStateIfNeeded();
 }
 
 function openGongjinModal(card, isFromCare = false) {
@@ -790,14 +760,6 @@ function openGongjinModal(card, isFromCare = false) {
     const iframe = gongjinModal.querySelector("#gongjin-iframe");
     if (iframe && iframe.dataset.src) {
       iframe.src = iframe.dataset.src;
-    }
-    if (window.location.hash !== "#thesoo") {
-      window.location.hash = "thesoo";
-    }
-    if (isFromCare) {
-      pushModalState("detail", card.id);
-    } else {
-      pushModalState();
     }
   }
 }
@@ -820,8 +782,6 @@ function closeGongjinModal() {
     lastFocusedCard.focus();
     lastFocusedCard = null;
   }
-  clearUrlHash();
-  popModalStateIfNeeded();
 }
 
 function navigateCareModal(direction) {
