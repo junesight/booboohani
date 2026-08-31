@@ -60,10 +60,53 @@
       .privacy-section li {
         margin-bottom: 6px;
       }
+      .privacy-header {
+        min-height: 72px;
+      }
+      .privacy-header .header-container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      .privacy-header .logo-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--green);
+        text-decoration: none;
+      }
+      .privacy-header .logo-img {
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      .privacy-header .logo-text {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .privacy-header .nav-menu {
+        margin-left: auto;
+      }
+      @media (max-width: 768px) {
+        .privacy-header {
+          min-height: 64px;
+        }
+        .privacy-header .logo-img {
+          width: 38px;
+          height: 38px;
+          flex-basis: 38px;
+          border-radius: 9px;
+        }
+        .privacy-header .logo-text {
+          font-size: 18px;
+        }
+      }
     </style>
   </head>
   <body style="background-color: var(--bg-soft);">
-    <header class="site-header" aria-label="주요 메뉴">
+    <header class="site-header privacy-header" aria-label="주요 메뉴">
       <div class="header-container">
         <a class="logo-link" href="index.html">
           <img class="logo-img" src="assets/booboo-logo.webp" alt="부부한의원 로고" width="200" height="200" />
@@ -111,7 +154,7 @@
           <h2>5. 개인정보보호 책임자</h2>
           <p>한의원은 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보보호 책임자를 지정하고 있습니다.</p>
           <ul>
-            <li><strong>개인정보보호 책임자:</strong> 부부한의원 원장단</li>
+            <li><strong>개인정보보호 책임자:</strong> 부부한의원 최보빈</li>
             <li><strong>대표 전화번호:</strong> 061-272-1075</li>
             <li><strong>이메일 주소:</strong> booboo2721075@gmail.com</li>
             <li><strong>주소:</strong> 전남광주통합특별시 목포시 옥암로 193, 1~4층</li>
@@ -130,7 +173,7 @@
         <strong>부부한의원</strong>
       </div>
       <p class="business-info">
-        대표자 : 최부배, 황대혜 <span>|</span> 사업자등록번호 : 411-91-59413 <span>|</span> Email : booboo2721075@gmail.com<br />
+        대표자 : 최보빈 <span>|</span> 사업자등록번호 : 411-91-59413 <span>|</span> Email : booboo2721075@gmail.com<br />
         주소 : 전남광주통합특별시 목포시 옥암로 193, 1~4층 (석현동, 꿀벌신협 옆) <span>|</span> TEL : 061-272-1075 <span>|</span> FAX : 061-284-1074
       </p>
       <div class="footer-links" style="margin-bottom: 14px;">
