@@ -1787,8 +1787,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!promoModal) return;
 
-  // 오늘 하루 보지 않기 여부 검증 (새 프로모션 배너 갱신: v2)
-  const hideUntil = localStorage.getItem("promoHideUntil_v2");
+  // 오늘 하루 보지 않기 여부 검증 (새 프로모션 배너 갱신: v3)
+  const hideUntil = localStorage.getItem("promoHideUntil_v3");
   const now = new Date().getTime();
 
   if (!hideUntil || now > parseInt(hideUntil, 10)) {
@@ -1805,7 +1805,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const midnight = new Date();
     // 당일 자정(23시 59분 59초 999밀리초)으로 만료 타임스탬프 설정
     midnight.setHours(23, 59, 59, 999);
-    localStorage.setItem("promoHideUntil_v2", midnight.getTime().toString());
+    localStorage.setItem("promoHideUntil_v3", midnight.getTime().toString());
     closePromoModal();
   });
 });

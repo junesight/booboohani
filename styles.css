@@ -4424,8 +4424,8 @@ footer p {
   position: relative;
   background-color: #fff;
   width: 90%;
-  max-width: 1080px; /* Fallback */
-  max-width: min(1080px, calc((92vh - 58px) * 1.42)); /* 이미지 종횡비(1.42)와 브라우저 높이를 매칭하여 좌우 흰색 여백 방지 */
+  max-width: 520px; /* Fallback */
+  max-width: min(520px, calc((92vh - 58px) * 0.66)); /* 이미지 종횡비(0.66)와 브라우저 높이를 매칭하여 좌우 흰색 여백 방지 */
   max-height: 92vh;
   border-radius: 12px;
   overflow: hidden;
@@ -4449,38 +4449,17 @@ footer p {
 .promo-modal-body {
   flex: 1;
   max-height: calc(92vh - 58px);
-  overflow-y: auto;
+  overflow: hidden;
 }
 
-.promo-item a {
+.promo-modal-body a {
   display: block;
   width: 100%;
   height: 100%;
   text-decoration: none;
 }
 
-/* PC 버전 뷰 (기본값) */
-.promo-pc-view {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-
-.promo-mobile-view {
-  display: none;
-}
-
-.promo-pc-view .promo-item {
-  flex: 1;
-  min-width: 0;
-  border-right: 1px solid #f0f0f0;
-}
-
-.promo-pc-view .promo-item:last-child {
-  border-right: none;
-}
-
-.promo-pc-view .promo-item img {
+.promo-modal-body img {
   display: block;
   width: 100%;
   height: auto;
@@ -4525,37 +4504,15 @@ footer p {
 @media (max-width: 768px) {
   .promo-modal-content {
     width: 90%;
-    max-width: 450px; /* 모바일 상하 배치를 위해 축소 */
+    max-width: min(420px, calc((90vh - 52px) * 0.66));
   }
 
   .promo-modal-body {
-    max-height: 60vh;
+    max-height: calc(90vh - 52px);
   }
 
-  .promo-pc-view {
-    display: none;
-  }
-
-  .promo-mobile-view {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .promo-mobile-view .promo-item {
-    width: 100%;
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  .promo-mobile-view .promo-item:last-child {
-    border-bottom: none;
-  }
-
-  .promo-mobile-view .promo-item img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+  .promo-modal-body img {
+    max-height: calc(90vh - 52px);
   }
 
   .promo-modal-footer button {
