@@ -12,11 +12,10 @@ const modal = document.querySelector("#doctor-modal");
 const modalImage = document.querySelector("#modal-doctor-image");
 const modalName = document.querySelector("#modal-doctor-name");
 const modalRole = document.querySelector("#modal-doctor-role");
-const modalBio = document.querySelector("#modal-doctor-bio");
+const modalBios = document.querySelectorAll("#modal-doctor-bio > ul");
 const modalScheduleRange = document.querySelector("#modal-schedule-range");
 const modalWeeklySchedule = document.querySelector("#modal-weekly-schedule");
 const modalResearch = document.querySelector("#modal-doctor-research");
-const modalResearchList = document.querySelector("#modal-research-list");
 const doctorCards = document.querySelectorAll(".doctor-card");
 const closeButtons = document.querySelectorAll("[data-modal-close]");
 
@@ -93,52 +92,52 @@ const RECORD_STORAGE_KEY = "boobooPatientRecord";
 
 const galleryFloors = {
   1: [
-    { src: "assets/gallery-1f-01.webp", caption: "외부" },
-    { src: "assets/gallery-1f-02.jpg", caption: "로비" },
-    { src: "assets/gallery-1f-03.jpg", caption: "로비" },
-    { src: "assets/gallery-1f-04.jpg", caption: "로비" },
-    { src: "assets/gallery-1f-05.jpg", caption: "데스크" },
-    { src: "assets/gallery-1f-06.jpg", caption: "진료실 복도" },
-    { src: "assets/gallery-1f-07.jpg", caption: "진료실" },
-    { src: "assets/gallery-1f-08.jpg", caption: "치료실 입구" },
-    { src: "assets/gallery-1f-09.jpg", caption: "치료실" },
-    { src: "assets/gallery-1f-10.jpg", caption: "치료실" },
-    { src: "assets/gallery-1f-11.jpg", caption: "치료실" },
-    { src: "assets/gallery-1f-12.jpg", caption: "검진실" },
-    { src: "assets/gallery-1f-13.jpg", caption: "검진실" },
+    { src: "assets/gallery/gallery-1f-01.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-01.webp", caption: "외부" },
+    { src: "assets/gallery/gallery-1f-02.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-02.webp", caption: "로비" },
+    { src: "assets/gallery/gallery-1f-03.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-03.webp", caption: "로비" },
+    { src: "assets/gallery/gallery-1f-04.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-04.webp", caption: "로비" },
+    { src: "assets/gallery/gallery-1f-05.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-05.webp", caption: "데스크" },
+    { src: "assets/gallery/gallery-1f-06.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-06.webp", caption: "진료실 복도" },
+    { src: "assets/gallery/gallery-1f-07.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-07.webp", caption: "진료실" },
+    { src: "assets/gallery/gallery-1f-08.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-08.webp", caption: "치료실 입구" },
+    { src: "assets/gallery/gallery-1f-09.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-09.webp", caption: "치료실" },
+    { src: "assets/gallery/gallery-1f-10.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-10.webp", caption: "치료실" },
+    { src: "assets/gallery/gallery-1f-11.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-11.webp", caption: "치료실" },
+    { src: "assets/gallery/gallery-1f-12.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-12.webp", caption: "검진실" },
+    { src: "assets/gallery/gallery-1f-13.webp", thumbnail: "assets/gallery/thumbs/gallery-1f-13.webp", caption: "검진실" },
   ],
   2: [
-    { src: "assets/gallery-2f-01.jpg", caption: "진료실" },
-    { src: "assets/gallery-2f-02.jpg", caption: "진료실" },
-    { src: "assets/gallery-2f-03.jpg", caption: "진료실" },
-    { src: "assets/gallery-2f-04.jpg", caption: "회복관리실" },
-    { src: "assets/gallery-2f-05.jpg", caption: "회복관리실" },
-    { src: "assets/gallery-2f-06.jpg", caption: "회복관리실" },
-    { src: "assets/gallery-2f-07.jpg", caption: "회복관리실" },
-    { src: "assets/gallery-2f-08.jpg", caption: "회복관리실 - 수치료기" },
-    { src: "assets/gallery-2f-09.jpg", caption: "회복관리실 - 세라젬" },
-    { src: "assets/gallery-2f-10.jpg", caption: "회복관리실 - 반신욕" },
-    { src: "assets/gallery-2f-11.jpg", caption: "회복관리실 - 힐링베드, 롤링베드" },
-    { src: "assets/gallery-2f-12.jpg", caption: "회복관리실" },
-    { src: "assets/gallery-2f-13.jpg", caption: "회복관리실 - 황금다리" },
-    { src: "assets/gallery-2f-14.jpg", caption: "회복관리실 - 황토파라핀" },
-    { src: "assets/gallery-2f-15.jpg", caption: "치료실" },
+    { src: "assets/gallery/gallery-2f-01.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-01.webp", caption: "진료실" },
+    { src: "assets/gallery/gallery-2f-02.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-02.webp", caption: "진료실" },
+    { src: "assets/gallery/gallery-2f-03.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-03.webp", caption: "진료실" },
+    { src: "assets/gallery/gallery-2f-04.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-04.webp", caption: "회복관리실" },
+    { src: "assets/gallery/gallery-2f-05.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-05.webp", caption: "회복관리실" },
+    { src: "assets/gallery/gallery-2f-06.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-06.webp", caption: "회복관리실" },
+    { src: "assets/gallery/gallery-2f-07.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-07.webp", caption: "회복관리실" },
+    { src: "assets/gallery/gallery-2f-08.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-08.webp", caption: "회복관리실 - 수치료기" },
+    { src: "assets/gallery/gallery-2f-09.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-09.webp", caption: "회복관리실 - 세라젬" },
+    { src: "assets/gallery/gallery-2f-10.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-10.webp", caption: "회복관리실 - 반신욕" },
+    { src: "assets/gallery/gallery-2f-11.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-11.webp", caption: "회복관리실 - 힐링베드, 롤링베드" },
+    { src: "assets/gallery/gallery-2f-12.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-12.webp", caption: "회복관리실" },
+    { src: "assets/gallery/gallery-2f-13.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-13.webp", caption: "회복관리실 - 황금다리" },
+    { src: "assets/gallery/gallery-2f-14.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-14.webp", caption: "회복관리실 - 황토파라핀" },
+    { src: "assets/gallery/gallery-2f-15.webp", thumbnail: "assets/gallery/thumbs/gallery-2f-15.webp", caption: "치료실" },
   ],
   3: [
-    { src: "assets/gallery-3f-01.jpg", caption: "입원환자 면회 라운지" },
-    { src: "assets/gallery-3f-02.jpg", caption: "입원환자 면회 라운지" },
-    { src: "assets/gallery-3f-03.jpg", caption: "입원환자 면회 라운지" },
-    { src: "assets/gallery-3f-04.jpg", caption: "입원환자 면회 라운지" },
-    { src: "assets/gallery-3f-05.jpg", caption: "사무실" },
-    { src: "assets/gallery-3f-06.jpg", caption: "한약 조제실" },
-    { src: "assets/gallery-3f-07.jpg", caption: "탕전실" },
-    { src: "assets/gallery-3f-08.jpg", caption: "직원 식당" },
+    { src: "assets/gallery/gallery-3f-01.webp", thumbnail: "assets/gallery/thumbs/gallery-3f-01.webp", caption: "입원환자 면회 라운지" },
+    { src: "assets/gallery/gallery-3f-02.webp", thumbnail: "assets/gallery/thumbs/gallery-3f-02.webp", caption: "입원환자 면회 라운지" },
+    { src: "assets/gallery/gallery-3f-03.webp", thumbnail: "assets/gallery/thumbs/gallery-3f-03.webp", caption: "입원환자 면회 라운지" },
+    { src: "assets/gallery/gallery-3f-04.webp", thumbnail: "assets/gallery/thumbs/gallery-3f-04.webp", caption: "입원환자 면회 라운지" },
+    { src: "assets/gallery/gallery-3f-05.webp", thumbnail: "assets/gallery/thumbs/gallery-3f-05.webp", caption: "사무실" },
+    { src: "assets/gallery/gallery-3f-06.webp", thumbnail: "assets/gallery/thumbs/gallery-3f-06.webp", caption: "한약 조제실" },
+    { src: "assets/gallery/gallery-3f-07.webp", thumbnail: "assets/gallery/thumbs/gallery-3f-07.webp", caption: "탕전실" },
+    { src: "assets/gallery/gallery-3f-08.webp", thumbnail: "assets/gallery/thumbs/gallery-3f-08.webp", caption: "직원 식당" },
   ],
   4: [
-    { src: "assets/gallery-4f-01.jpg", caption: "입원실 로비" },
-    { src: "assets/gallery-4f-02.jpg", caption: "입원실(2인실)" },
-    { src: "assets/gallery-4f-03.jpg", caption: "입원실(4인실)" },
-    { src: "assets/gallery-4f-04.jpg", caption: "입원실 화장실" },
+    { src: "assets/gallery/gallery-4f-01.webp", thumbnail: "assets/gallery/thumbs/gallery-4f-01.webp", caption: "입원실 로비" },
+    { src: "assets/gallery/gallery-4f-02.webp", thumbnail: "assets/gallery/thumbs/gallery-4f-02.webp", caption: "입원실(2인실)" },
+    { src: "assets/gallery/gallery-4f-03.webp", thumbnail: "assets/gallery/thumbs/gallery-4f-03.webp", caption: "입원실(4인실)" },
+    { src: "assets/gallery/gallery-4f-04.webp", thumbnail: "assets/gallery/thumbs/gallery-4f-04.webp", caption: "입원실 화장실" },
   ],
 };
 
@@ -160,95 +159,12 @@ const scheduleImagesByName = {
   "황두호 원장": "assets/schedule-hwang-dh.webp",
 };
 
-const doctorProfiles = {
-  "최보빈 원장": [
-    "부부한의원 대표원장",
-    "원광대학교 한의학과 졸업",
-    "서울 오금고등학교 졸업",
-    "",
-    "대한 여한의사회 장학생",
-    "대한 복지학회 정회원",
-    "대한 약침학회 정회원",
-    "장부형상학회 정회원",
-    "대한 침도학회 정회원",
-    "대한 비만학회 정회원",
-  ],
-  "김준현 원장": [
-    "부부한의원 총괄진료원장",
-    "침구의학과 전문의, 한의학 박사",
-    "원광대 전주한방병원 일반 및 전문 수련의 과정 수료",
-    "원광대 일반대학원 박사과정 수료",
-    "원광대학교 한의학과 졸업",
-    "목포고등학교 졸업",
-    "",
-    "미국 근골격계 초음파 자격증(APCA RMSK) 보유",
-    "대한침구의학회 평생회원",
-    "척추신경추나의학회 정회원",
-    "대한한의사전문의협회 정회원",
-  ],
-  "김영윤 원장": [
-    "부부한의원 원장",
-    "대구한의대학교 한의학과 졸업",
-    "남악고등학교 졸업",
-    "",
-    "대한약침학회 회원",
-    "대한동의방약학회 준회원",
-    "척추신경추나의학회 준회원",
-    "Mongolia Monos Pharmacy University 실습 수료",
-  ],
-  "박지현 원장": [
-    "부부한의원 원장",
-    "상지대학교 한의학과 수석졸업",
-    "대구 덕원고등학교 졸업",
-    "",
-    "전) 안산중앙한의원 진료원장",
-    "미국 근골격계 초음파 자격증 (APCA RMSK) 보유",
-    "한방비만학회 회원",
-    "대한약침학회 회원",
-    "대한동의방약학회 준회원",
-  ],
-  "안태윤 원장": [
-    "부부한의원 원장",
-    "대전대학교 한의학과 졸업",
-    "충남고등학교 졸업",
-    "",
-    "전) 삼성바로튼튼한의원 진료원장",
-    "전) 목포 부부요양병원 진료원장",
-    "전) 경기 광주시 보건소 역학조사관",
-    "척추신경추나의학회 정회원",
-    "한방비만학회 정회원",
-  ],
-  "황두호 원장": [
-    "부부한의원 원장",
-    "세명대학교 한의학과 졸업",
-    "상산고등학교 졸업",
-    "",
-    "미국 근골격계 초음파 자격증 (APCA RMSK) 보유",
-    "척추신경추나의학회 정회원",
-    "척추신경추나의학회 심화과정 M1 수료",
-    "척추신경추나의학회 심화과정 M3 수료",
-  ],
-};
-
-const doctorResearch = {
-  "김준현 원장": [
-    "<span class=\"publication-title\"><strong>[SCIE 국제학술지 게재 논문]</strong><br>Eleutherococcus sessiliflorus Inhibits Receptor Activator of Nuclear Factor Kappa-B Ligand (RANKL)-Induced Osteoclast Differentiation and Prevents Ovariectomy (OVX)-Induced Bone Loss</span> <span class=\"publication-journal\">[ Molecules, 2021 ]</span>",
-    "<span class=\"publication-title\">Inhibitory Effects of Water Extracts of Eucommiae Cortex and Psoraleae Semen Alone and in Combination on Osteoclast Differentiation and Bone</span> <span class=\"publication-journal\">[ Journal of Acupuncture Research, 2017 ]</span>",
-    "<span class=\"publication-title\">삼음교(SP6) 침구자극이 정상 성인의 족부 온도 변화에 미치는 영향</span> <span class=\"publication-journal\">[ Journal of Acupuncture Research, 2016 ]</span>",
-    "<span class=\"publication-title\">뇌졸중 환자에게 유치도뇨관 삽입 이후 발생한 다제내성 녹농균 요로감염 한방치험 1례</span> <span class=\"publication-journal\">[ 대한한방내과학회지, 2016 ]</span>",
-    "<span class=\"publication-title\">안면홍조를 호소하는 뇌경색 환자 한방치료 치험 1례</span> <span class=\"publication-journal\">[ 대한한방내과학회지, 2016 ]</span>",
-    "<span class=\"publication-title\">지실과 자초 전탕액 외치법을 병행한 간경변 환자의 노인성 가려움증 치험 1례</span> <span class=\"publication-journal\">[ 한방안이비인후피부과학회지, 2016 ]</span>",
-    "<span class=\"publication-title\">쌍보환 추출물의 파골세포 분화 억제와 골 흡수 억제 효과</span> <span class=\"publication-journal\">[ Journal of Acupuncture Research, 2015 ]</span>",
-    "<span class=\"publication-title\">외상성 경추 골절 후 발생한 Brown-Séquard 증후군 환자 1례</span> <span class=\"publication-journal\">[ Journal of Acupuncture Research, 2015 ]</span>",
-    "<span class=\"publication-title\">3단계 발목 염좌 모델에서 구허(GB40)에 대한 약침별 Weight Bearing Ratio의 효과 비교</span> <span class=\"publication-journal\">[ Journal of Acupuncture Research, 2014 ]</span>",
-  ],
-};
-
 let lastFocusedCard = null;
 let weeklyScheduleCache = null;
 let activeGalleryFloor = "1";
 let activeGalleryIndex = 0;
 let galleryAutoplayTimer = null;
+let isGalleryVisible = false;
 let galleryTouchStartX = 0;
 let galleryTouchStartY = 0;
 
@@ -863,32 +779,10 @@ function openDoctorModal(card) {
   modalRole.textContent = role;
   modalImage.src = image;
   modalImage.alt = `${name} 프로필 사진`;
-  modalBio.replaceChildren(
-    ...doctorProfiles[name].map((item) => {
-      const listItem = document.createElement("li");
-
-      if (item === "") {
-        listItem.className = "bio-spacer";
-        listItem.setAttribute("aria-hidden", "true");
-      } else {
-        listItem.textContent = item;
-      }
-
-      return listItem;
-    }),
-  );
-  if (doctorResearch[name] && doctorResearch[name].length > 0) {
-    modalResearchList.replaceChildren(
-      ...doctorResearch[name].map((item) => {
-        const listItem = document.createElement("li");
-        listItem.innerHTML = item;
-        return listItem;
-      }),
-    );
-    modalResearch.hidden = false;
-  } else {
-    modalResearch.hidden = true;
-  }
+  modalBios.forEach((bio) => {
+    bio.hidden = bio.dataset.doctorName !== name;
+  });
+  modalResearch.hidden = modalResearch.dataset.doctorName !== name;
   loadDoctorWeeklySchedule(name);
 
   modal.hidden = false;
@@ -1008,7 +902,11 @@ function renderGallery() {
     button.className = `gallery-thumb${index === activeGalleryIndex ? " is-active" : ""}`;
     button.type = "button";
     button.setAttribute("aria-label", `${photo.caption} 보기`);
-    image.src = photo.src;
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.width = 320;
+    image.height = 180;
+    image.src = photo.thumbnail;
     image.alt = "";
 
     button.append(image);
@@ -1032,9 +930,10 @@ function moveGallery(step) {
 }
 
 function startGalleryAutoplay() {
-  if (!galleryImage) return;
-
   window.clearInterval(galleryAutoplayTimer);
+  galleryAutoplayTimer = null;
+  if (!galleryImage || !isGalleryVisible || document.hidden) return;
+
   galleryAutoplayTimer = window.setInterval(() => {
     moveGallery(1);
   }, 5000);
@@ -1513,7 +1412,17 @@ galleryStage?.addEventListener(
 );
 
 renderGallery();
-startGalleryAutoplay();
+if (galleryStage && "IntersectionObserver" in window) {
+  const galleryObserver = new IntersectionObserver((entries) => {
+    isGalleryVisible = entries[0].isIntersecting;
+    startGalleryAutoplay();
+  }, { threshold: 0.1 });
+  galleryObserver.observe(galleryStage);
+} else {
+  isGalleryVisible = true;
+  startGalleryAutoplay();
+}
+document.addEventListener("visibilitychange", startGalleryAutoplay);
 loadPatientRecord();
 
 adminTrigger?.addEventListener("click", openAdminModal);
@@ -1740,6 +1649,11 @@ window.addEventListener("popstate", (event) => {
 
 // --- 스크롤 시 스르르 나타나는 애니메이션 (Intersection Observer) ---
 document.addEventListener("DOMContentLoaded", () => {
+  if (!("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
   const revealOptions = {
     root: null,
     rootMargin: "0px 0px -80px 0px", // 화면 바닥에 닿기 조금 전에 트리거되도록 마진 설정
@@ -1759,6 +1673,7 @@ document.addEventListener("DOMContentLoaded", () => {
   revealElements.forEach((el) => {
     revealObserver.observe(el);
   });
+  document.documentElement.classList.add("reveal-ready");
 });
 
 // --- 프로모션 공지 팝업 모달 관리 ---
