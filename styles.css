@@ -393,6 +393,25 @@ h3 {
   text-align: center;
 }
 
+.weekday-hours {
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+}
+
+.hero-panel strong.weekday-hours {
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+.hero-panel .weekday-hours .hour-digit {
+  display: inline-block;
+  width: 0.6em;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+}
+
 .hero-panel span {
   margin-top: 6px;
   color: rgba(255, 250, 240, 0.78);
@@ -888,6 +907,7 @@ h3 {
 
 .gallery-thumb img {
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
   display: block;
   object-fit: cover;
@@ -1904,6 +1924,10 @@ h3 {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.modal-section ul[hidden] {
+  display: none;
 }
 
 .modal-section li {
@@ -2973,6 +2997,10 @@ footer p {
     font-size: 22px;
   }
 
+  .hero-panel strong.weekday-hours {
+    font-size: 16px;
+  }
+
   .hero-panel span {
     font-size: 14px;
     margin-top: 2px;
@@ -3430,8 +3458,14 @@ footer p {
       font-size: 16.5px;
     }
 
+    .clinic-time-card .highlight-time.weekday-hours {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
     .clinic-time-card .sub-text {
-      font-size: 12.5px;
+      font-size: 11px;
+      line-height: 1.5;
     }
 
     .reservation-table {
@@ -3489,6 +3523,18 @@ footer p {
   .contact .contact-actions .button-icon {
     width: 16px;
     height: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-panel {
+    padding-inline: 6px;
+  }
+}
+
+@media (max-width: 340px) {
+  .hero-panel strong.weekday-hours {
+    font-size: 14px;
   }
 }
 
@@ -4082,11 +4128,16 @@ footer p {
 
 /* --- 스크롤 시 스르르 나타나는 애니메이션 효과 --- */
 .scroll-reveal {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none;
   transition: opacity 1.2s cubic-bezier(0.215, 0.61, 0.355, 1),
               transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
   will-change: opacity, transform;
+}
+
+.reveal-ready .scroll-reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .scroll-reveal.is-visible {

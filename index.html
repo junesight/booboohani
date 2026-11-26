@@ -14,17 +14,17 @@
     <link rel="canonical" href="https://booboo.co.kr/">
     <meta name="naver-site-verification" content="40009eb7c5d3d63226526fd9859ccd014acc60e0" />
     <link rel="icon" type="image/png" href="assets/booboo-logo.webp" />
-    <link rel="preload" as="image" href="assets/hero-treatment-room.webp" media="(min-width: 769px)" />
-    <link rel="preload" as="image" href="assets/mobile-hero-bg.webp" media="(max-width: 768px)" />
+    <link rel="preload" as="image" href="assets/hero-treatment-room.webp" type="image/webp" fetchpriority="high" media="(min-width: 769px)" />
+    <link rel="preload" as="image" href="assets/mobile-hero-bg.webp" type="image/webp" fetchpriority="high" media="(max-width: 768px)" />
     <meta
       name="description"
-      content="부부한의원은 목포·남악에서 평일 야간진료와 토·일·공휴일 진료를 운영합니다. 척추관절 통증, 교통사고 후유증, 린다이어트, 추나·약침·한약 진료를 제공합니다."
+      content="목포·남악에서 평일 야간진료와 토·일·공휴일 진료를 운영하며, 척추관절 통증, 교통사고 후유증, 린다이어트, 추나·약침·한약 진료를 제공합니다."
     />
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://booboo.co.kr/" />
     <meta property="og:title" content="부부한의원 | 목포 365진료·평일 야간진료·척추관절·교통사고·린다이어트" />
-    <meta property="og:description" content="부부한의원은 목포·남악에서 평일 야간진료와 토·일·공휴일 진료를 운영합니다. 척추관절 통증, 교통사고 후유증, 린다이어트, 추나·약침·한약 진료를 제공합니다." />
+    <meta property="og:description" content="목포 부부한의원. 평일야간진료. 토·일·공휴일진료. 척추·관절통증. 교통사고후유증. 린다이어트. 약침·추나·한약 (☏ 061-272-1075)" />
     <meta property="og:image" content="https://booboo.co.kr/assets/og-image-wide.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -36,7 +36,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://booboo.co.kr/" />
     <meta name="twitter:title" content="부부한의원 | 목포 365진료·평일 야간진료·척추관절·교통사고·린다이어트" />
-    <meta name="twitter:description" content="부부한의원은 목포·남악에서 평일 야간진료와 토·일·공휴일 진료를 운영합니다. 척추관절 통증, 교통사고 후유증, 린다이어트, 추나·약침·한약 진료를 제공합니다." />
+    <meta name="twitter:description" content="목포 부부한의원. 평일야간진료. 토·일·공휴일진료. 척추·관절통증. 교통사고후유증. 린다이어트. 약침·추나·한약 (☏ 061-272-1075)" />
     <meta name="twitter:image" content="https://booboo.co.kr/assets/og-image-wide.png" />
     <meta name="twitter:image:alt" content="부부한의원 로고와 슬로건" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,7 +53,7 @@
         rel="stylesheet"
       />
     </noscript>
-    <link rel="stylesheet" href="styles.css?v=1.9.10" />
+    <link rel="stylesheet" href="styles.css?v=1.9.11" />
     <!-- Structured Data (JSON-LD) - MedicalClinic / LocalBusiness -->
     <script type="application/ld+json">
     {
@@ -122,6 +122,18 @@
             "Friday"
           ],
           "opens": "09:00",
+          "closes": "12:20"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "14:00",
           "closes": "20:00"
         },
         {
@@ -145,7 +157,7 @@
       "https://booking.naver.com/booking/13/bizes/1260872",
       "https://www.instagram.com/boo.boo0513",
       "https://www.youtube.com/@booboohani",
-      "https://map.naver.com/p/entry/place/11833777"
+      "https://map.naver.com/p/entry/place/32446999"
     ]
     }
     </script>
@@ -201,17 +213,17 @@
       "https://booking.naver.com/booking/13/bizes/1260872",
       "https://www.instagram.com/boo.boo0513",
       "https://www.youtube.com/@booboohani",
-      "https://map.naver.com/p/entry/place/11833777"
+      "https://map.naver.com/p/entry/place/32446999"
     ]
     }
     </script>
-    <!-- Structured Data (JSON-LD) - Physicians -->
+    <!-- Structured Data (JSON-LD) - Medical staff -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "Physician",
+          "@type": "Person",
           "@id": "https://booboo.co.kr/#physician-choi-bo-bin",
           "name": "최보빈",
           "honorificSuffix": "원장",
@@ -221,7 +233,10 @@
           "worksFor": {
             "@id": "https://booboo.co.kr/#clinic"
           },
-          "medicalSpecialty": "한의학",
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "한의사"
+          },
           "knowsAbout": [
             "침 치료",
             "약침 치료",
@@ -232,7 +247,7 @@
           ]
         },
         {
-          "@type": "Physician",
+          "@type": "Person",
           "@id": "https://booboo.co.kr/#physician-kim-jun-hyun",
           "name": "김준현",
           "honorificSuffix": "원장",
@@ -242,7 +257,10 @@
           "worksFor": {
             "@id": "https://booboo.co.kr/#clinic"
           },
-          "medicalSpecialty": "한의학",
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "한의사"
+          },
           "knowsAbout": [
             "침 치료",
             "약침 치료",
@@ -253,7 +271,7 @@
           ]
         },
         {
-          "@type": "Physician",
+          "@type": "Person",
           "@id": "https://booboo.co.kr/#physician-kim-young-yoon",
           "name": "김영윤",
           "honorificSuffix": "원장",
@@ -263,7 +281,10 @@
           "worksFor": {
             "@id": "https://booboo.co.kr/#clinic"
           },
-          "medicalSpecialty": "한의학",
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "한의사"
+          },
           "knowsAbout": [
             "침 치료",
             "약침 치료",
@@ -274,7 +295,7 @@
           ]
         },
         {
-          "@type": "Physician",
+          "@type": "Person",
           "@id": "https://booboo.co.kr/#physician-park-ji-hyun",
           "name": "박지현",
           "honorificSuffix": "원장",
@@ -284,7 +305,10 @@
           "worksFor": {
             "@id": "https://booboo.co.kr/#clinic"
           },
-          "medicalSpecialty": "한의학",
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "한의사"
+          },
           "knowsAbout": [
             "침 치료",
             "약침 치료",
@@ -295,7 +319,7 @@
           ]
         },
         {
-          "@type": "Physician",
+          "@type": "Person",
           "@id": "https://booboo.co.kr/#physician-ahn-tae-yoon",
           "name": "안태윤",
           "honorificSuffix": "원장",
@@ -305,7 +329,10 @@
           "worksFor": {
             "@id": "https://booboo.co.kr/#clinic"
           },
-          "medicalSpecialty": "한의학",
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "한의사"
+          },
           "knowsAbout": [
             "침 치료",
             "약침 치료",
@@ -316,7 +343,7 @@
           ]
         },
         {
-          "@type": "Physician",
+          "@type": "Person",
           "@id": "https://booboo.co.kr/#physician-hwang-du-ho",
           "name": "황두호",
           "honorificSuffix": "원장",
@@ -326,7 +353,10 @@
           "worksFor": {
             "@id": "https://booboo.co.kr/#clinic"
           },
-          "medicalSpecialty": "한의학",
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "한의사"
+          },
           "knowsAbout": [
             "침 치료",
             "약침 치료",
@@ -345,6 +375,7 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "@id": "https://booboo.co.kr/#faq",
+      "dateModified": "2026-11-26",
       "mainEntityOfPage": "https://booboo.co.kr/",
       "mainEntity": [
         {
@@ -400,7 +431,7 @@
           "name": "추나요법 치료도 건강보험이나 실손보험(실비) 적용이 되나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "네, 추나요법은 환자 1인당 연간 20회까지 건강보험 혜택(본인부담률 50~80%)이 적용되어 비용 부담 없이 치료받으실 수 있습니다. 또한 건강보험이 적용된 급여 항목이므로 가입하신 실손의료보험(실비보험) 청구도 가능합니다."
+            "text": "네, 추나요법은 환자 1인당 연간 20회까지 건강보험 혜택(본인부담률 50~80%)이 적용되어 비용 부담을 줄일 수 있습니다. 또한 건강보험이 적용된 급여 항목이므로 가입하신 실손의료보험(실비보험) 청구도 가능합니다."
           }
         },
         {
@@ -524,13 +555,14 @@
         <div class="hero-panels" aria-label="진료시간 안내">
           <div class="hero-panel">
             <p>평일 진료 <small>(매일 야간진료)</small></p>
-            <strong>09:00 - 20:00</strong>
-            <span>점심시간 12:20 - 14:00</span>
+            <strong class="weekday-hours">오전 <span class="hour-digit">0</span><span class="hour-digit">9</span>:<span class="hour-digit">0</span><span class="hour-digit">0</span> - <span class="hour-digit">1</span><span class="hour-digit">2</span>:<span class="hour-digit">2</span><span class="hour-digit">0</span></strong>
+            <strong class="weekday-hours">오후 <span class="hour-digit">1</span><span class="hour-digit">4</span>:<span class="hour-digit">0</span><span class="hour-digit">0</span> - <span class="hour-digit">2</span><span class="hour-digit">0</span>:<span class="hour-digit">0</span><span class="hour-digit">0</span></strong>
+            <span>(점심시간 12:20 - 14:00)</span>
           </div>
           <div class="hero-panel">
             <p>토·일·공휴일 진료 <small>(365일 진료)</small></p>
             <strong>08:30 - 14:00</strong>
-            <span>점심시간 없이 진료</span>
+            <span>(점심시간 없이 진료)</span>
           </div>
         </div>
 
@@ -875,7 +907,7 @@
         <div class="gallery-stage" aria-live="polite">
           <button class="gallery-arrow gallery-prev" type="button" aria-label="이전 사진">‹</button>
           <figure>
-            <img id="gallery-main-image" src="assets/gallery-1f-01.webp" alt="부부한의원 1층 외부" width="1100" height="630" loading="lazy" />
+            <img id="gallery-main-image" src="assets/gallery/gallery-1f-01.webp" alt="부부한의원 1층 외부" width="1100" height="630" loading="lazy" decoding="async" />
             <figcaption id="gallery-caption">외부</figcaption>
           </figure>
           <button class="gallery-arrow gallery-next" type="button" aria-label="다음 사진">›</button>
@@ -1044,7 +1076,8 @@
                   <div class="clinic-time-cards">
                     <div class="clinic-time-card">
                       <strong class="highlight-title">평일 매일 야간진료</strong>
-                      <strong class="highlight-time">09:00 - 20:00</strong>
+                      <strong class="highlight-time weekday-hours">오전 09:00 - 12:20</strong>
+                      <strong class="highlight-time weekday-hours">오후 14:00 - 20:00</strong>
                       <span class="sub-text">(점심시간 12:20 - 14:00)</span>
                     </div>
                     <div class="clinic-time-card">
@@ -1182,7 +1215,7 @@
           <details class="faq-item" name="faq-accordion">
             <summary class="faq-question">추나요법 치료도 건강보험이나 실손보험(실비) 적용이 되나요?</summary>
             <div class="faq-answer">
-              <p>네, 추나요법은 환자 1인당 <strong>연간 20회까지 건강보험 혜택(본인부담률 50~80%)</strong>이 적용되어 비용 부담 없이 치료받으실 수 있습니다. 또한 건강보험이 적용된 급여 항목이므로 가입하신 실손의료보험(실비보험) 청구도 가능합니다.</p>
+              <p>네, 추나요법은 환자 1인당 <strong>연간 20회까지 건강보험 혜택(본인부담률 50~80%)</strong>이 적용되어 비용 부담을 줄일 수 있습니다. 또한 건강보험이 적용된 급여 항목이므로 가입하신 실손의료보험(실비보험) 청구도 가능합니다.</p>
             </div>
           </details>
 
@@ -1232,15 +1265,91 @@
         <div class="modal-detail">
           <p class="eyebrow" id="modal-doctor-role">진료원장</p>
           <h2 id="modal-doctor-name">원장명</h2>
-          <div class="modal-section">
-            <ul id="modal-doctor-bio"></ul>
+          <div class="modal-section" id="modal-doctor-bio">
+            <ul data-doctor-name="최보빈 원장" aria-label="최보빈 원장 약력" hidden>
+              <li>부부한의원 대표원장</li>
+              <li>원광대학교 한의학과 졸업</li>
+              <li>서울 오금고등학교 졸업</li>
+              <li class="bio-spacer" aria-hidden="true"></li>
+              <li>대한 여한의사회 장학생</li>
+              <li>대한 복지학회 정회원</li>
+              <li>대한 약침학회 정회원</li>
+              <li>장부형상학회 정회원</li>
+              <li>대한 침도학회 정회원</li>
+              <li>대한 비만학회 정회원</li>
+            </ul>
+            <ul data-doctor-name="김준현 원장" aria-label="김준현 원장 약력" hidden>
+              <li>부부한의원 총괄진료원장</li>
+              <li>침구의학과 전문의, 한의학 박사</li>
+              <li>원광대 전주한방병원 일반 및 전문 수련의 과정 수료</li>
+              <li>원광대 일반대학원 박사과정 수료</li>
+              <li>원광대학교 한의학과 졸업</li>
+              <li>목포고등학교 졸업</li>
+              <li class="bio-spacer" aria-hidden="true"></li>
+              <li>미국 근골격계 초음파 자격증(APCA RMSK) 보유</li>
+              <li>대한침구의학회 평생회원</li>
+              <li>척추신경추나의학회 정회원</li>
+              <li>대한한의사전문의협회 정회원</li>
+            </ul>
+            <ul data-doctor-name="김영윤 원장" aria-label="김영윤 원장 약력" hidden>
+              <li>부부한의원 원장</li>
+              <li>대구한의대학교 한의학과 졸업</li>
+              <li>남악고등학교 졸업</li>
+              <li class="bio-spacer" aria-hidden="true"></li>
+              <li>대한약침학회 회원</li>
+              <li>대한동의방약학회 준회원</li>
+              <li>척추신경추나의학회 준회원</li>
+              <li>Mongolia Monos Pharmacy University 실습 수료</li>
+            </ul>
+            <ul data-doctor-name="박지현 원장" aria-label="박지현 원장 약력" hidden>
+              <li>부부한의원 원장</li>
+              <li>상지대학교 한의학과 수석졸업</li>
+              <li>대구 덕원고등학교 졸업</li>
+              <li class="bio-spacer" aria-hidden="true"></li>
+              <li>전) 안산중앙한의원 진료원장</li>
+              <li>미국 근골격계 초음파 자격증 (APCA RMSK) 보유</li>
+              <li>한방비만학회 회원</li>
+              <li>대한약침학회 회원</li>
+              <li>대한동의방약학회 준회원</li>
+            </ul>
+            <ul data-doctor-name="안태윤 원장" aria-label="안태윤 원장 약력" hidden>
+              <li>부부한의원 원장</li>
+              <li>대전대학교 한의학과 졸업</li>
+              <li>충남고등학교 졸업</li>
+              <li class="bio-spacer" aria-hidden="true"></li>
+              <li>전) 삼성바로튼튼한의원 진료원장</li>
+              <li>전) 목포 부부요양병원 진료원장</li>
+              <li>전) 경기 광주시 보건소 역학조사관</li>
+              <li>척추신경추나의학회 정회원</li>
+              <li>한방비만학회 정회원</li>
+            </ul>
+            <ul data-doctor-name="황두호 원장" aria-label="황두호 원장 약력" hidden>
+              <li>부부한의원 원장</li>
+              <li>세명대학교 한의학과 졸업</li>
+              <li>상산고등학교 졸업</li>
+              <li class="bio-spacer" aria-hidden="true"></li>
+              <li>미국 근골격계 초음파 자격증 (APCA RMSK) 보유</li>
+              <li>척추신경추나의학회 정회원</li>
+              <li>척추신경추나의학회 심화과정 M1 수료</li>
+              <li>척추신경추나의학회 심화과정 M3 수료</li>
+            </ul>
           </div>
         </div>
-        <div class="modal-research" id="modal-doctor-research" hidden>
+        <div class="modal-research" id="modal-doctor-research" data-doctor-name="김준현 원장" hidden>
           <div class="modal-research-head">
             <h3>주요 연구 및 논문</h3>
           </div>
-          <ul class="research-list" id="modal-research-list"></ul>
+          <ul class="research-list" id="modal-research-list">
+            <li><span class="publication-title"><strong>[SCIE 국제학술지 게재 논문]</strong><br>Eleutherococcus sessiliflorus Inhibits Receptor Activator of Nuclear Factor Kappa-B Ligand (RANKL)-Induced Osteoclast Differentiation and Prevents Ovariectomy (OVX)-Induced Bone Loss</span> <span class="publication-journal">[ Molecules, 2021 ]</span></li>
+            <li><span class="publication-title">Inhibitory Effects of Water Extracts of Eucommiae Cortex and Psoraleae Semen Alone and in Combination on Osteoclast Differentiation and Bone</span> <span class="publication-journal">[ Journal of Acupuncture Research, 2017 ]</span></li>
+            <li><span class="publication-title">삼음교(SP6) 침구자극이 정상 성인의 족부 온도 변화에 미치는 영향</span> <span class="publication-journal">[ Journal of Acupuncture Research, 2016 ]</span></li>
+            <li><span class="publication-title">뇌졸중 환자에게 유치도뇨관 삽입 이후 발생한 다제내성 녹농균 요로감염 한방치험 1례</span> <span class="publication-journal">[ 대한한방내과학회지, 2016 ]</span></li>
+            <li><span class="publication-title">안면홍조를 호소하는 뇌경색 환자 한방치료 치험 1례</span> <span class="publication-journal">[ 대한한방내과학회지, 2016 ]</span></li>
+            <li><span class="publication-title">지실과 자초 전탕액 외치법을 병행한 간경변 환자의 노인성 가려움증 치험 1례</span> <span class="publication-journal">[ 한방안이비인후피부과학회지, 2016 ]</span></li>
+            <li><span class="publication-title">쌍보환 추출물의 파골세포 분화 억제와 골 흡수 억제 효과</span> <span class="publication-journal">[ Journal of Acupuncture Research, 2015 ]</span></li>
+            <li><span class="publication-title">외상성 경추 골절 후 발생한 Brown-Séquard 증후군 환자 1례</span> <span class="publication-journal">[ Journal of Acupuncture Research, 2015 ]</span></li>
+            <li><span class="publication-title">3단계 발목 염좌 모델에서 구허(GB40)에 대한 약침별 Weight Bearing Ratio의 효과 비교</span> <span class="publication-journal">[ Journal of Acupuncture Research, 2014 ]</span></li>
+          </ul>
         </div>
         <div class="modal-schedule" aria-live="polite">
           <div class="modal-schedule-head">
@@ -2128,6 +2237,6 @@
       </div>
     </div>
 
-    <script src="script.js?v=1.9.10"></script>
+    <script src="script.js?v=1.9.11"></script>
   </body>
 </html>
