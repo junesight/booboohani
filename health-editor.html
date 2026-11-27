@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>건강 정보 및 칼럼 관리 | 부부한의원</title>
+    <link rel="icon" href="/assets/booboo-logo.webp">
+    <link rel="stylesheet" href="/styles.css?v=1.9.11">
+    <link rel="stylesheet" href="/health-vendor/quill.css">
+    <link rel="stylesheet" href="/health.css">
+    <script defer src="/health-vendor/quill.js"></script>
+    <script defer src="/health-vendor/lucide.js"></script>
+    <script defer src="/health-editor.js"></script>
+  </head>
+  <body class="health-editor-page">
+    <header class="health-editor-header">
+      <a class="health-editor-brand" href="/health.html"><img src="/assets/booboo-logo.webp" width="36" height="36" alt="부부한의원"><span><strong>건강 정보 및 칼럼</strong><small>부부한의원 · 로컬</small></span></a>
+      <div class="health-editor-actions">
+        <a class="editor-button editor-icon-button" href="/health.html" title="글 목록" aria-label="글 목록"><i data-lucide="list"></i></a>
+        <button class="editor-button" type="button" id="preview-post" title="미리보기"><i data-lucide="eye"></i><span class="editor-action-label">미리보기</span></button>
+        <button class="editor-button" type="button" id="save-draft"><i data-lucide="save"></i><span id="save-label">임시저장</span></button>
+        <button class="editor-button primary" type="button" id="publish-post"><i data-lucide="send"></i><span id="publish-label">발행</span></button>
+      </div>
+    </header>
+    <div class="health-editor-layout">
+      <details class="editor-library" open>
+        <summary>글 관리 <span id="post-count">0</span></summary>
+        <div class="editor-library-actions"><select id="post-filter" aria-label="글 상태"><option value="all">전체</option><option value="published">발행</option><option value="draft">임시저장</option></select><button class="editor-button editor-icon-button" type="button" id="new-post" title="새 글" aria-label="새 글"><i data-lucide="file-plus-2"></i></button></div>
+        <div id="post-list" class="editor-post-list"></div>
+      </details>
+      <main class="editor-workspace">
+        <div class="editor-workspace-heading"><h1 id="editor-heading">새 글</h1><span class="editor-state" id="save-state" role="status">저장 전</span></div>
+        <div class="editor-error" id="editor-error" role="alert" hidden></div>
+        <div class="editor-form-layout">
+          <section class="editor-document" aria-label="게시글 본문 편집">
+            <textarea class="editor-title" id="post-title" placeholder="제목을 입력하세요" aria-label="글 제목" maxlength="160" rows="2"></textarea>
+            <div id="health-toolbar">
+              <span class="ql-formats"><select class="ql-header" aria-label="문단 종류"><option selected value="">본문</option><option value="2">큰 제목</option><option value="3">작은 제목</option></select><select class="ql-size" aria-label="글자 크기"><option value="14px">14</option><option value="16px">16</option><option selected value="">18</option><option value="22px">22</option><option value="28px">28</option><option value="36px">36</option></select></span>
+              <span class="ql-formats"><button class="ql-bold" title="굵게" aria-label="굵게"></button><button class="ql-italic" title="기울임" aria-label="기울임"></button><button class="ql-underline" title="밑줄" aria-label="밑줄"></button><button class="ql-strike" title="취소선" aria-label="취소선"></button></span>
+              <span class="ql-formats"><select class="ql-color" title="글자색" aria-label="글자색"><option selected value="#20251f"></option><option value="#163d32"></option><option value="#b99a63"></option><option value="#b33939"></option><option value="#2765a1"></option><option value="#777777"></option></select><select class="ql-background" title="강조색" aria-label="강조색"><option selected value=""></option><option value="#fff0a8"></option><option value="#dcebdc"></option><option value="#f5dede"></option><option value="#ddeafa"></option></select></span>
+              <span class="ql-formats"><select class="ql-align" title="문단 정렬" aria-label="문단 정렬"><option selected value=""></option><option value="center"></option><option value="right"></option><option value="justify"></option></select><button class="ql-list" value="bullet" title="글머리 목록" aria-label="글머리 목록"></button><button class="ql-list" value="ordered" title="번호 목록" aria-label="번호 목록"></button><button class="ql-blockquote" title="인용문" aria-label="인용문"></button></span>
+              <span class="ql-formats"><button class="ql-link" title="링크" aria-label="링크"></button><button class="ql-image" title="이미지 삽입" aria-label="이미지 삽입"></button><button class="ql-clean" title="서식 지우기" aria-label="서식 지우기"></button></span>
+            </div>
+            <div id="health-editor" aria-label="글 본문"></div>
+          </section>
+          <aside class="editor-settings" aria-label="발행 설정">
+            <dl class="editor-publisher"><dt>발행 기관</dt><dd>부부한의원</dd></dl>
+            <label class="editor-field"><span>카테고리</span><select id="post-category" required><option value="">카테고리 선택</option><option value="pain">통증</option><option value="accident">교통사고</option><option value="women-children">여성&amp;소아</option><option value="digestion">소화&amp;순환&amp;자율신경</option><option value="diet">다이어트</option><option value="treatment">치료수단(침,약침,추나,한약 등)</option><option value="seasonal">계절건강정보</option></select></label>
+            <div class="editor-field editor-cover-field"><span>대표 이미지</span><button class="editor-cover-button" type="button" id="choose-cover" title="대표 이미지 선택"><img id="cover-preview" src="" alt="" hidden><span class="editor-cover-placeholder" id="cover-placeholder"><i data-lucide="image-plus"></i>이미지 선택</span></button><div class="editor-cover-actions"><button class="editor-button" type="button" id="remove-cover" hidden><i data-lucide="x"></i>제거</button></div></div>
+            <label class="editor-field"><span>이미지 설명</span><input id="cover-alt" maxlength="240" placeholder="대표 이미지 설명"></label>
+            <div class="editor-setting-footer"><a class="editor-button" id="view-post" href="#" target="_blank" rel="noopener" hidden><i data-lucide="book-open"></i>발행 글 보기</a><button class="editor-button" type="button" id="unpublish-post" hidden><i data-lucide="archive"></i>비공개 전환</button><button class="editor-button danger editor-icon-button" type="button" id="delete-post" title="글 삭제" aria-label="글 삭제" hidden><i data-lucide="trash-2"></i></button></div>
+          </aside>
+        </div>
+      </main>
+    </div>
+    <input type="file" id="cover-file" accept="image/jpeg,image/png,image/webp" hidden>
+    <input type="file" id="body-file" accept="image/jpeg,image/png,image/webp" hidden>
+    <dialog id="preview-dialog" class="editor-dialog"><div class="editor-dialog-head"><h2>미리보기</h2><button type="button" class="editor-button editor-icon-button" data-close-dialog title="닫기" aria-label="미리보기 닫기"><i data-lucide="x"></i></button></div><iframe id="preview-frame" title="게시글 미리보기" sandbox=""></iframe></dialog>
+    <dialog id="image-dialog" class="editor-dialog"><div class="editor-dialog-head"><h2>본문 이미지</h2><button type="button" class="editor-button editor-icon-button" data-close-dialog title="닫기" aria-label="이미지 설정 닫기"><i data-lucide="x"></i></button></div><form class="editor-image-form" id="image-settings"><img id="inline-image-preview" alt="선택한 이미지"><label>이미지 설명<input id="inline-image-alt" maxlength="240"></label><label>이미지 너비<select id="inline-image-width"><option value="100%">본문 너비</option><option value="640">640px</option><option value="400">400px</option><option value="240">240px</option></select></label><div class="health-editor-actions"><button type="button" id="remove-inline-image" class="editor-button danger" hidden><i data-lucide="trash-2"></i>삭제</button><button type="submit" class="editor-button primary">적용</button></div></form></dialog>
+    <div id="editor-toast" class="editor-toast" role="status" hidden></div>
+  </body>
+</html>

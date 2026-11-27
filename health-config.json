@@ -1,0 +1,15 @@
+{
+  "projectId": "1qhc62dz",
+  "dataset": "production",
+  "apiVersion": "2026-11-27",
+  "studioUrl": "https://booboohani-health.sanity.studio",
+  "categories": [
+    ["pain", "통증"],
+    ["accident", "교통사고"],
+    ["women-children", "여성&소아"],
+    ["digestion", "소화&순환&자율신경"],
+    ["diet", "다이어트"],
+    ["treatment", "치료수단(침,약침,추나,한약 등)"],
+    ["seasonal", "계절건강정보"]
+  ]
+}
