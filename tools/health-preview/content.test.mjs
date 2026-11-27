@@ -99,6 +99,16 @@ test("all eight care page headers link to health between doctors and gallery", a
   assert(homeHeader.includes('<a href="#health">건강 정보</a>'));
 });
 
+test("all eight care pages have one desktop phone number with the original contact links", async () => {
+  for (const name of ["spine", "joint", "accident", "sports", "diet", "digestion", "women-children", "autonomic"]) {
+    const html = await readFile(new URL(`../../care-${name}.html`, import.meta.url), "utf8");
+    assert.equal((html.match(/<small class="contact-phone-number">061-272-1075<\/small>/g) || []).length, 1, name);
+    assert(html.includes('href="tel:061-272-1075"'), name);
+    assert(html.includes('href="http://pf.kakao.com/_VlVkG/chat"'), name);
+    assert(html.includes("bizes/1260872"), name);
+  }
+});
+
 test("column lists, categories and articles share the scoped public theme class", () => {
   const pages = [
     listPage(source, samplePosts(), new URL("http://localhost/health.html")),

@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import {createHash} from "node:crypto";
 import {mkdtemp, readFile, stat, rm} from "node:fs/promises";
 import {tmpdir} from "node:os";
 import path from "node:path";
@@ -33,6 +34,14 @@ test("production build generates indexable static category/detail pages, exclude
     const category = await readFile(path.join(output, "health/category/pain-page-2.html"), "utf8");
     assert(category.includes('href="https://booboo.co.kr/health/category/pain-page-2.html"'));
     const article = await readFile(path.join(output, "health/fixture-1.html"), "utf8");
+    const cssVersion = async (file) => createHash("sha256").update(await readFile(path.join(output, file))).digest("hex").slice(0, 12);
+    const stylesVersion = await cssVersion("styles.css");
+    const healthVersion = await cssVersion("health.css");
+    for (const html of [home, list, article, await readFile(path.join(output, "care-spine.html"), "utf8")]) {
+      assert(html.includes(`styles.css?v=${stylesVersion}`));
+      assert(!html.includes("styles.css?v=1.9.11"));
+    }
+    for (const html of [list, article]) assert(html.includes(`health.css?v=${healthVersion}`));
     assert(article.includes("<h1>검증용 칼럼 1</h1>"));
     assert(article.includes('"@type":"Article"'));
     assert(article.includes('class="health-clinic-panel"'));
