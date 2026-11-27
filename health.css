@@ -48,7 +48,8 @@ body.health-public { background: var(--bg-soft); }
 .health-article-cover { display: block; width: 100%; height: auto; background: transparent; }
 .health-prose { padding-top: 34px; font-size: 18px; line-height: 1.95; overflow-wrap: anywhere; }
 .health-prose p { margin: 0 0 1.4em; }
-.health-prose .health-image-caption { text-align: center; }
+.health-prose p:has(> img):has(+ .health-image-caption) { margin-bottom: 8px; line-height: 0; }
+.health-prose .health-image-caption { text-align: center; font-size: .875em; line-height: 1.65; color: var(--muted); }
 .health-prose h2, .health-prose h3, .health-prose h4 { font-family: Pretendard, sans-serif; color: var(--green); line-height: 1.55; margin: 1.8em 0 .7em; }
 .health-prose h2 { border-left: 4px solid var(--green-2); padding-left: 14px; }
 .health-prose h2 { font-size: 28px; }
