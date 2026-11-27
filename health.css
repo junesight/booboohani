@@ -50,7 +50,7 @@ body.health-public { background: var(--bg-soft); }
 .health-prose p { margin: 0 0 1.4em; }
 .health-prose .health-image-caption { text-align: center; }
 .health-prose h2, .health-prose h3, .health-prose h4 { font-family: Pretendard, sans-serif; color: var(--green); line-height: 1.55; margin: 1.8em 0 .7em; }
-.health-prose h2, .health-prose h3 { border-left: 4px solid var(--green-2); padding-left: 14px; }
+.health-prose h2 { border-left: 4px solid var(--green-2); padding-left: 14px; }
 .health-prose h2 { font-size: 28px; }
 .health-prose h3 { font-size: 23px; }
 .health-prose h4 { font-size: 20px; }
