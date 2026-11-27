@@ -5,6 +5,7 @@ import { readFile, writeFile, mkdir, rename, stat } from "node:fs/promises";
 import { randomUUID, randomBytes } from "node:crypto";
 import sharp from "sharp";
 import { categories, samplePosts, publishedPosts, cards, listPage, articlePage, cleanBody, plainText, safeImage, withMobileContact } from "./content.mjs";
+import {scheduleEngine} from "./clinic-panel.mjs";
 import {fetchSanityPosts, studioLinks} from "./sanity-source.mjs";
 import settings from "../../health-config.json" with {type: "json"};
 
@@ -137,6 +138,7 @@ const server = http.createServer(async (req, res) => {
       return send(res, 200, { src: `/health-media/${id}.webp`, thumbnail: `/health-media/${id}-thumb.webp` });
     }
     if (!["GET", "HEAD"].includes(req.method)) throw fail(405, "지원하지 않는 요청입니다.");
+    if (route === "/article-schedule-engine.js") return send(res, 200, req.method === "HEAD" ? "" : scheduleEngine(await readFile(path.join(root, "script.js"), "utf8")), "application/javascript; charset=utf-8");
     if (route === "/" || route === "/index.html") {
       const source = await readFile(path.join(root, "index.html"), "utf8");
       const posts = publishedPosts(await readPosts()).slice(0, 4);

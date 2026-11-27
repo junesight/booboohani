@@ -222,3 +222,60 @@ body.health-public { background: var(--bg-soft); }
   #health-editor .ql-editor.ql-blank::before { left: 20px; right: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .health-card, .health-card img { transition: none; } }
+.health-article-layout { position: relative; width: min(800px, calc(100% - 40px)); margin: 0 auto; }
+.health-article-layout .health-article { width: 100%; }
+.health-toc { display: none; }
+.health-prose :is(h2, h3)[id] { scroll-margin-top: 24px; }
+@media (min-width: 1320px) {
+  .health-toc { display: block; position: absolute; top: 150px; bottom: 90px; left: -244px; width: 220px; }
+  .health-toc nav {
+    display: block;
+    position: sticky;
+    top: 112px;
+    max-height: calc(100dvh - 140px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 22px 18px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .health-toc h2 { margin: 0 0 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-family: Pretendard, sans-serif; font-size: 16px; line-height: 1.5; text-align: center; }
+  .health-toc ol { list-style: none; padding: 0; margin: 0; }
+  .health-toc li + li { margin-top: 12px; }
+  .health-toc a { display: block; line-height: 1.65; overflow-wrap: anywhere; text-decoration: none; }
+  .health-toc .health-toc-h3 { padding-left: 12px; font-size: 13px; }
+  .health-toc a:hover { text-decoration: underline; }
+  .health-toc a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+}
+.health-clinic-panel { display: none; }
+.health-schedule-dialog { width: min(1180px, calc(100% - 64px)); max-width: none; max-height: calc(100dvh - 56px); padding: 0; border: 0; color: var(--text); background: var(--paper); }
+.health-schedule-dialog::backdrop { background: rgb(0 0 0 / 45%); }
+.health-schedule-dialog .schedule-modal-panel { width: 100%; max-height: none; box-shadow: none; }
+.health-schedule-dialog .health-weekly-close { display: grid; place-items: center; }
+.health-weekly-retry { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; margin-top: 18px; background: transparent; color: var(--green); border: 1px solid var(--line); cursor: pointer; }
+.health-weekly-retry[hidden], .health-weekly-trigger[hidden] { display: none; }
+@media (min-width: 1320px) {
+  .health-clinic-panel { display: block; position: absolute; top: 150px; bottom: 90px; right: -244px; width: 220px; }
+  .health-clinic-sticky { position: sticky; top: 112px; max-height: calc(100dvh - 140px); overflow-y: auto; overscroll-behavior: contain; padding: 22px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+  .health-clinic-sticky h2 { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: Pretendard, sans-serif; font-size: 16px; line-height: 1.5; margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); color: var(--green); text-align: center; }
+  .health-clinic-sticky h2 svg { width: 18px; height: 18px; }
+  .health-clinic-hours { padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); text-align: center; }
+  .health-clinic-hours strong, .health-clinic-hours span { display: block; }
+  .health-clinic-hours .highlight-title { font-size: 14px; color: var(--green); margin-bottom: 7px; }
+  .health-clinic-hours .highlight-time { font-family: Pretendard, sans-serif; font-size: 15px; line-height: 1.7; font-variant-numeric: tabular-nums; }
+  .health-clinic-hours .sub-text { font-size: 11px; line-height: 1.7; color: var(--muted); margin-top: 5px; }
+  .health-weekly-trigger { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; min-height: 44px; padding: 8px 6px; background: transparent; border: 1px solid var(--green); border-radius: 4px; color: var(--green); font-size: 12px; font-weight: 700; cursor: pointer; }
+  .health-weekly-trigger svg { flex: 0 0 18px; height: 18px; }
+  .health-clinic-actions { display: grid; gap: 8px; margin-top: 18px; }
+  .health-clinic-actions .button { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 8px; border-radius: 4px; font-size: 13px; }
+  .health-clinic-actions img { width: 22px; height: 22px; object-fit: contain; }
+  .health-clinic-actions .button.phone { background: var(--green); color: #fff; border: 0; }
+  .health-clinic-actions .button.naver { background: #03c75a; color: #fff; border: 0; }
+  .health-clinic-actions .button.kakao { background: #f6d54a; color: #392d00; border: 0; }
+  .health-clinic-actions .button:hover { filter: brightness(.94); }
+  .health-clinic-panel a:focus-visible, .health-clinic-panel button:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+}

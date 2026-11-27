@@ -7,6 +7,7 @@ import {XMLParser, XMLBuilder} from "fast-xml-parser";
 import settings from "../../health-config.json" with {type: "json"};
 import {categories, categoryName, cards, publishedPosts, plainText, listingPath, listPage, articlePage, withMobileContact} from "./content.mjs";
 import {fetchSanityPosts, studioLinks} from "./sanity-source.mjs";
+import {scheduleEngine} from "./clinic-panel.mjs";
 
 export const siteRoot = fileURLToPath(new URL("../../", import.meta.url));
 const outputFile = async (directory, relative, text) => {
@@ -15,7 +16,7 @@ const outputFile = async (directory, relative, text) => {
   await writeFile(file, text);
 };
 const jsonScript = (value) => JSON.stringify(value).replaceAll("<", "\\u003c");
-const copyFiles = ["styles.css", "script.js", "health.css", "health-public.js", "mobile-navigation.js", "robots.txt", "llms.txt", "CNAME"];
+const copyFiles = ["styles.css", "script.js", "health.css", "health-public.js", "mobile-navigation.js", "article-clinic.js", "robots.txt", "llms.txt", "CNAME"];
 
 export async function buildSite({posts, output = path.join(siteRoot, "dist"), sourceCommit, sourceDate, copyAssets = true} = {}) {
   const directory = path.resolve(output);
@@ -30,6 +31,7 @@ export async function buildSite({posts, output = path.join(siteRoot, "dist"), so
   await mkdir(directory, {recursive: true});
   if (copyAssets) await cp(path.join(siteRoot, "assets"), path.join(directory, "assets"), {recursive: true});
   for (const file of copyFiles) await cp(path.join(siteRoot, file), path.join(directory, file));
+  await outputFile(directory, "article-schedule-engine.js", scheduleEngine(await readFile(path.join(siteRoot, "script.js"), "utf8")));
   for (const file of await readdir(siteRoot)) {
     if (file.endsWith(".html") && !["index.html", "health-editor.html"].includes(file)) {
       const html = await readFile(path.join(siteRoot, file), "utf8");

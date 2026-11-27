@@ -35,6 +35,10 @@ test("production build generates indexable static category/detail pages, exclude
     const article = await readFile(path.join(output, "health/fixture-1.html"), "utf8");
     assert(article.includes("<h1>검증용 칼럼 1</h1>"));
     assert(article.includes('"@type":"Article"'));
+    assert(article.includes('class="health-clinic-panel"'));
+    assert(article.includes('id="article-schedule-modal"'));
+    assert((await readFile(path.join(output, "article-schedule-engine.js"), "utf8")).includes("ClinicArticleSchedule"));
+    assert((await readFile(path.join(output, "article-clinic.js"), "utf8")).includes("dialog.showModal()"));
     assert(article.includes('href="/health/category/pain.html"'));
     assert(!article.includes("localhost"));
     for (const route of ["care-spine.html", "care-joint.html", "care-accident.html", "care-sports.html", "care-diet.html", "care-digestion.html", "care-women-children.html", "care-autonomic.html", "privacy.html", "health.html", "health/page/2.html", "health/category/pain-page-2.html", "health/fixture-1.html"]) {

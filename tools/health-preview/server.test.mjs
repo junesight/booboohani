@@ -33,6 +33,16 @@ test("local CMS round trip, safety checks and restart persistence", async (t) =>
   t.after(async () => { await stop(); await rm(data, { recursive: true, force: true }); });
   await start();
 
+  await t.test("preview serves the isolated public schedule engine", async () => {
+    const response = await fetch(origin + "/article-schedule-engine.js");
+    assert.equal(response.status, 200);
+    assert(response.headers.get("content-type").includes("javascript"));
+    const engine = await response.text();
+    assert(engine.includes("ClinicArticleSchedule"));
+    assert(!engine.includes("ADMIN_PASSWORD"));
+    assert.equal((await fetch(origin + "/article-schedule-engine.js", {method: "HEAD"})).status, 200);
+  });
+
   await t.test("cross-origin and missing-token writes are blocked", async () => {
     const res = await fetch(origin + "/api/health/posts", { method: "POST", headers: { Origin: "https://example.com", "Content-Type": "application/json" }, body: "{}" });
     assert.equal(res.status, 403);
