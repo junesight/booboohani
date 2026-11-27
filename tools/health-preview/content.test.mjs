@@ -71,12 +71,14 @@ test("all eight care page headers link to health between doctors and gallery", a
   for (const name of ["spine", "joint", "accident", "sports", "diet", "digestion", "women-children", "autonomic"]) {
     const html = await readFile(new URL(`../../care-${name}.html`, import.meta.url), "utf8");
     const header = html.match(/<header class="site-header"[\s\S]*?<\/header>/)[0];
-    const link = '<a href="index.html#health">건강 정보</a>';
+    const link = '<a href="/health.html">건강 정보</a>';
     assert.equal(header.split(link).length - 1, 1, name);
     assert(header.indexOf("의료진 소개") < header.indexOf(link), name);
     assert(header.indexOf(link) < header.indexOf("한의원 둘러보기"), name);
     assert(html.includes('class="care-detail-page"'), name);
   }
+  const homeHeader = source.match(/<header class="site-header"[\s\S]*?<\/header>/)[0];
+  assert(homeHeader.includes('<a href="#health">건강 정보</a>'));
 });
 
 test("column lists, categories and articles share the scoped public theme class", () => {
