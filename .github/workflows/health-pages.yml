@@ -1,0 +1,85 @@
+name: Clinic Website and Health Columns
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+
+permissions:
+  contents: read
+  pages: read
+
+concurrency:
+  group: clinic-pages-${{ github.event_name == 'pull_request' && github.ref || 'production' }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      changed: ${{ steps.site.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: tools/health-preview/package-lock.json
+      - name: Install build dependencies
+        run: npm ci --prefix tools/health-preview --no-fund
+      - name: Test article rendering and local API boundaries
+        if: github.event_name != 'schedule'
+        run: node --test tools/health-preview/*.test.mjs
+      - name: Build published articles and static website
+        id: site
+        run: node tools/health-preview/build-site.mjs --check-live
+      - name: Upload PR preview files
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: clinic-website-preview
+          path: dist
+          retention-days: 7
+          include-hidden-files: true
+      - name: Configure Pages
+        if: github.event_name != 'pull_request' && steps.site.outputs.changed == 'true'
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request' && steps.site.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  studio-check:
+    if: github.event_name == 'pull_request' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: studio/package-lock.json
+      - run: npm ci --prefix studio --no-fund
+      - run: npm run build --prefix studio
+
+  deploy:
+    if: github.event_name != 'pull_request' && needs.build.outputs.changed == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4

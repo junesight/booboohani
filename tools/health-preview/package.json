@@ -1,0 +1,14 @@
+{
+  "name": "booboo-health-local-preview",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@portabletext/to-html": "6.0.0",
+    "@sanity/image-url": "2.2.0",
+    "fast-xml-parser": "5.12.1",
+    "lucide": "1.81.0",
+    "quill": "2.0.3",
+    "sanitize-html": "2.18.2",
+    "sharp": "0.35.5"
+  }
+}
