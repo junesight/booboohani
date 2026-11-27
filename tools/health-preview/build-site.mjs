@@ -5,7 +5,7 @@ import {execFileSync} from "node:child_process";
 import {createHash} from "node:crypto";
 import {XMLParser, XMLBuilder} from "fast-xml-parser";
 import settings from "../../health-config.json" with {type: "json"};
-import {categories, categoryName, cards, publishedPosts, plainText, listingPath, listPage, articlePage} from "./content.mjs";
+import {categories, categoryName, cards, publishedPosts, plainText, listingPath, listPage, articlePage, withMobileContact} from "./content.mjs";
 import {fetchSanityPosts, studioLinks} from "./sanity-source.mjs";
 
 export const siteRoot = fileURLToPath(new URL("../../", import.meta.url));
@@ -15,7 +15,7 @@ const outputFile = async (directory, relative, text) => {
   await writeFile(file, text);
 };
 const jsonScript = (value) => JSON.stringify(value).replaceAll("<", "\\u003c");
-const copyFiles = ["styles.css", "script.js", "health.css", "health-public.js", "robots.txt", "llms.txt", "CNAME"];
+const copyFiles = ["styles.css", "script.js", "health.css", "health-public.js", "mobile-navigation.js", "robots.txt", "llms.txt", "CNAME"];
 
 export async function buildSite({posts, output = path.join(siteRoot, "dist"), sourceCommit, sourceDate, copyAssets = true} = {}) {
   const directory = path.resolve(output);
@@ -31,13 +31,16 @@ export async function buildSite({posts, output = path.join(siteRoot, "dist"), so
   if (copyAssets) await cp(path.join(siteRoot, "assets"), path.join(directory, "assets"), {recursive: true});
   for (const file of copyFiles) await cp(path.join(siteRoot, file), path.join(directory, file));
   for (const file of await readdir(siteRoot)) {
-    if (file.endsWith(".html") && !["index.html", "health-editor.html"].includes(file)) await cp(path.join(siteRoot, file), path.join(directory, file));
+    if (file.endsWith(".html") && !["index.html", "health-editor.html"].includes(file)) {
+      const html = await readFile(path.join(siteRoot, file), "utf8");
+      await outputFile(directory, file, withMobileContact(html, source));
+    }
   }
   await outputFile(directory, ".nojekyll", "");
   const homeCards = articles.length ? cards(articles.slice(0, 4)) : '<p class="health-empty-inline">등록된 글이 없습니다.</p>';
   if (!source.includes("<!-- HEALTH_CARDS_START -->")) throw new Error("Missing homepage article markers.");
   const home = source.replace(/<!-- HEALTH_CARDS_START -->[\s\S]*?<!-- HEALTH_CARDS_END -->/, `<!-- HEALTH_CARDS_START -->${homeCards}<!-- HEALTH_CARDS_END -->`);
-  await outputFile(directory, "index.html", home);
+  await outputFile(directory, "index.html", withMobileContact(home, source));
   await outputFile(directory, "health-vendor/lucide.js", await readFile(path.join(siteRoot, "tools/health-preview/node_modules/lucide/dist/umd/lucide.min.js")));
 
   const searchData = articles.map((post) => ({id: post.id, title: post.title, category: post.category, categoryLabel: categoryName(post.category), coverThumb: post.coverThumb || post.cover, coverAlt: post.coverAlt, searchText: `${post.title} ${plainText(post.html)}`}));
