@@ -171,6 +171,16 @@ nav {
   font-weight: 600;
 }
 
+.care-detail-page .site-header > nav {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.care-detail-page .site-header > nav > a,
+.care-detail-page .site-header .dropdown-trigger {
+  white-space: nowrap;
+}
+
 main {
   overflow: hidden;
 }

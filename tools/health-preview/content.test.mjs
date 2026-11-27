@@ -66,3 +66,25 @@ test("main section order is doctors, health, gallery", () => {
   assert(source.indexOf('id="doctors"') < source.indexOf('id="health"'));
   assert(source.indexOf('id="health"') < source.indexOf('id="gallery"'));
 });
+
+test("all eight care page headers link to health between doctors and gallery", async () => {
+  for (const name of ["spine", "joint", "accident", "sports", "diet", "digestion", "women-children", "autonomic"]) {
+    const html = await readFile(new URL(`../../care-${name}.html`, import.meta.url), "utf8");
+    const header = html.match(/<header class="site-header"[\s\S]*?<\/header>/)[0];
+    const link = '<a href="index.html#health">건강 정보</a>';
+    assert.equal(header.split(link).length - 1, 1, name);
+    assert(header.indexOf("의료진 소개") < header.indexOf(link), name);
+    assert(header.indexOf(link) < header.indexOf("한의원 둘러보기"), name);
+    assert(html.includes('class="care-detail-page"'), name);
+  }
+});
+
+test("column lists, categories and articles share the scoped public theme class", () => {
+  const pages = [
+    listPage(source, samplePosts(), new URL("http://localhost/health.html")),
+    ...categories.map(([id]) => listPage(source, samplePosts(), new URL(`http://localhost/health.html?category=${id}`))),
+    articlePage(source, samplePosts()[0]),
+  ];
+  for (const html of pages) assert(html.includes('<body class="health-public">'));
+  assert(!source.includes('<body class="health-public">'));
+});
