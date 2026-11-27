@@ -56,12 +56,23 @@ export function cards(posts) {
   return posts.map((post) => `<article class="health-card"><a href="/health/${escapeHtml(post.id)}.html"><div class="health-card-image"><img src="${escapeHtml(post.coverThumb || post.cover)}" alt="${escapeHtml(post.coverAlt)}" width="600" height="600" loading="lazy" decoding="async">${post.sample ? '<span class="health-sample">예시</span>' : ""}</div><div class="health-card-copy"><p class="health-category">${escapeHtml(categoryName(post.category))}</p><h3>${escapeHtml(post.title)}</h3></div></a></article>`).join("");
 }
 
+export function mobileContactActions(source) {
+  const actions = source.match(/<div class="floating-actions"[\s\S]*?<\/div>/)?.[0];
+  if (!actions) throw new Error("Missing homepage contact actions.");
+  return actions.replace('class="floating-actions"', 'class="floating-actions mobile-contact-only"').replaceAll('src="assets/', 'src="/assets/');
+}
+
+export function withMobileContact(html, source) {
+  if (!html.includes("</footer>") || /class="[^"]*\bfloating-actions\b/.test(html)) return html;
+  return html.replace("</body>", `${mobileContactActions(source)}</body>`);
+}
+
 export function shell(source, { title, description, path, body, schema = null, production = false }) {
   const header = source.match(/<header class="site-header"[\s\S]*?<\/header>/)[0].replaceAll('href="#', 'href="/#');
   const footer = source.match(/<footer>[\s\S]*?<\/footer>/)[0].replace(/<button class="admin-trigger"[^>]*>[\s\S]*?<\/button>/, "").replaceAll('href="#', 'href="/#');
   const fonts = source.match(/<link rel="preconnect" href="https:\/\/fonts\.googleapis\.com"[\s\S]*?<\/noscript>/)?.[0] || "";
   const image = schema?.image || "https://booboo.co.kr/assets/og-image-wide.png";
-  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><base href="/"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="${production ? "index,follow" : "noindex,nofollow"}"><title>${escapeHtml(title)} | 부부한의원</title><meta name="description" content="${escapeHtml(description)}"><link rel="canonical" href="https://booboo.co.kr${escapeHtml(path)}"><meta property="og:title" content="${escapeHtml(title)} | 부부한의원"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:type" content="${schema ? "article" : "website"}"><meta property="og:url" content="https://booboo.co.kr${escapeHtml(path)}"><meta property="og:image" content="${escapeHtml(image)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${escapeHtml(image)}"><link rel="icon" href="/assets/booboo-logo.webp">${fonts}<link rel="stylesheet" href="/styles.css?v=1.9.11"><link rel="stylesheet" href="/health.css">${schema ? `<script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script>` : ""}</head><body class="health-public">${header}${body}${footer}</body></html>`;
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><base href="/"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="${production ? "index,follow" : "noindex,nofollow"}"><title>${escapeHtml(title)} | 부부한의원</title><meta name="description" content="${escapeHtml(description)}"><link rel="canonical" href="https://booboo.co.kr${escapeHtml(path)}"><meta property="og:title" content="${escapeHtml(title)} | 부부한의원"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:type" content="${schema ? "article" : "website"}"><meta property="og:url" content="https://booboo.co.kr${escapeHtml(path)}"><meta property="og:image" content="${escapeHtml(image)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${escapeHtml(image)}"><link rel="icon" href="/assets/booboo-logo.webp">${fonts}<link rel="stylesheet" href="/styles.css?v=1.9.11"><link rel="stylesheet" href="/health.css">${schema ? `<script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script>` : ""}</head><body class="health-public">${header}${body}${footer}${mobileContactActions(source)}</body></html>`;
 }
 
 export function listingPath(category = "", page = 1) {

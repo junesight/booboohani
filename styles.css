@@ -2896,6 +2896,10 @@ footer p {
   width: min(152px, calc(100vw - 36px));
 }
 
+.floating-actions.mobile-contact-only {
+  display: none;
+}
+
 .floating-button {
   min-height: 52px;
   display: inline-flex;
@@ -2929,6 +2933,41 @@ footer p {
 .floating-button.kakao {
   background: #f6d54a;
   color: #392d00;
+}
+
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+  body {
+    padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .floating-actions,
+  .floating-actions.mobile-contact-only {
+    display: grid;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: rgba(248, 243, 234, 0.94);
+    border-top: 1px solid var(--line);
+    backdrop-filter: blur(14px);
+  }
+
+  .floating-button {
+    min-height: 58px;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 13px;
+    gap: 7px;
+    padding: 0 8px;
+  }
+
+  .floating-icon {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 .mobile-only,
@@ -3984,36 +4023,6 @@ footer p {
     height: 4px;
     margin-right: 7px;
     vertical-align: 2px;
-  }
-
-  body {
-    padding-bottom: 66px;
-  }
-
-  .floating-actions {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0;
-    background: rgba(248, 243, 234, 0.94);
-    border-top: 1px solid var(--line);
-    backdrop-filter: blur(14px);
-  }
-
-  .floating-button {
-    min-height: 58px;
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 13px;
-    gap: 7px;
-    padding: 0 8px;
-  }
-
-  .floating-icon {
-    width: 22px;
-    height: 22px;
   }
 
   .modal-research {

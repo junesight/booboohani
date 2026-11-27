@@ -22,6 +22,8 @@ node tools/health-preview/build-site.mjs
 
 The production artifact is `dist/`. It includes normal pages/assets, static category/pagination/detail HTML, the article search data, and a generated sitemap. It excludes the local editor, Node server, source configuration, tests, Studio source, dependency folders and local data. Original JPG assets are retained.
 
+The homepage contact actions are the source of truth for phone, Naver reservation and Kakao links/icons. The build and local preview render the same mobile-only contact bar into other public pages with a footer, including care pages, privacy, column lists/categories/pagination and articles. It is static HTML, not client-side injection; the homepage bar is never duplicated. Secondary-page bars stay hidden on desktop, while narrow/touch screens use the bottom bar with footer clearance and safe-area padding. Verification files and the local authoring interface are unchanged. Verify the built artifact rather than opening an unbuilt care/privacy source file directly.
+
 For local Studio: `npm ci --prefix studio`, then `npm run dev --prefix studio`. For Studio verification: `npm run build --prefix studio`. To deploy a Studio change, an authorized project member must sign in through `npm exec --prefix studio -- sanity login`, then deploy from the `studio` directory. Never commit an authentication token.
 
 ## Automatic publication

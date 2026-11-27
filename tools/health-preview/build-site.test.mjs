@@ -37,6 +37,15 @@ test("production build generates indexable static category/detail pages, exclude
     assert(article.includes('"@type":"Article"'));
     assert(article.includes('href="/health/category/pain.html"'));
     assert(!article.includes("localhost"));
+    for (const route of ["care-spine.html", "care-joint.html", "care-accident.html", "care-sports.html", "care-diet.html", "care-digestion.html", "care-women-children.html", "care-autonomic.html", "privacy.html", "health.html", "health/page/2.html", "health/category/pain-page-2.html", "health/fixture-1.html"]) {
+      const page = await readFile(path.join(output, route), "utf8");
+      assert.equal((page.match(/class="floating-actions\b/g) || []).length, 1, route);
+      assert(page.includes('class="floating-actions mobile-contact-only"'), route);
+      assert(page.includes('src="/assets/floating-phone.png"'), route);
+    }
+    assert.equal((home.match(/class="floating-actions\b/g) || []).length, 1);
+    const verification = "googlec6e19113d29d97cb.html";
+    assert.equal(await readFile(path.join(output, verification), "utf8"), await readFile(new URL(`../../${verification}`, import.meta.url), "utf8"));
     const sitemap = new XMLParser().parse(await readFile(path.join(output, "sitemap.xml"), "utf8"));
     assert(sitemap.urlset.url.some((entry) => entry.loc === "https://booboo.co.kr/care-spine.html"));
     assert(sitemap.urlset.url.some((entry) => entry.loc === "https://booboo.co.kr/health/fixture-1.html"));

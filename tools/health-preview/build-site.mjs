@@ -5,7 +5,7 @@ import {execFileSync} from "node:child_process";
 import {createHash} from "node:crypto";
 import {XMLParser, XMLBuilder} from "fast-xml-parser";
 import settings from "../../health-config.json" with {type: "json"};
-import {categories, categoryName, cards, publishedPosts, plainText, listingPath, listPage, articlePage} from "./content.mjs";
+import {categories, categoryName, cards, publishedPosts, plainText, listingPath, listPage, articlePage, withMobileContact} from "./content.mjs";
 import {fetchSanityPosts, studioLinks} from "./sanity-source.mjs";
 
 export const siteRoot = fileURLToPath(new URL("../../", import.meta.url));
@@ -31,7 +31,10 @@ export async function buildSite({posts, output = path.join(siteRoot, "dist"), so
   if (copyAssets) await cp(path.join(siteRoot, "assets"), path.join(directory, "assets"), {recursive: true});
   for (const file of copyFiles) await cp(path.join(siteRoot, file), path.join(directory, file));
   for (const file of await readdir(siteRoot)) {
-    if (file.endsWith(".html") && !["index.html", "health-editor.html"].includes(file)) await cp(path.join(siteRoot, file), path.join(directory, file));
+    if (file.endsWith(".html") && !["index.html", "health-editor.html"].includes(file)) {
+      const html = await readFile(path.join(siteRoot, file), "utf8");
+      await outputFile(directory, file, withMobileContact(html, source));
+    }
   }
   await outputFile(directory, ".nojekyll", "");
   const homeCards = articles.length ? cards(articles.slice(0, 4)) : '<p class="health-empty-inline">등록된 글이 없습니다.</p>';

@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { readFile, writeFile, mkdir, rename, stat } from "node:fs/promises";
 import { randomUUID, randomBytes } from "node:crypto";
 import sharp from "sharp";
-import { categories, samplePosts, publishedPosts, cards, listPage, articlePage, cleanBody, plainText, safeImage } from "./content.mjs";
+import { categories, samplePosts, publishedPosts, cards, listPage, articlePage, cleanBody, plainText, safeImage, withMobileContact } from "./content.mjs";
 import {fetchSanityPosts, studioLinks} from "./sanity-source.mjs";
 import settings from "../../health-config.json" with {type: "json"};
 
@@ -158,7 +158,8 @@ const server = http.createServer(async (req, res) => {
     else if (/^\/health-media\/[a-f0-9-]+(?:-thumb)?\.webp$/.test(route)) file = path.join(local, "uploads", path.basename(route));
     else if (/^\/assets\//.test(route) || /^\/[a-zA-Z0-9_-]+\.(html|css|js|xml|txt)$/.test(route)) file = path.join(root, route);
     else throw fail(404, "페이지를 찾을 수 없습니다.");
-    const data = await readFile(file);
+    let data = await readFile(file);
+    if (path.extname(file) === ".html") data = withMobileContact(data.toString("utf8"), await readFile(path.join(root, "index.html"), "utf8"));
     return send(res, 200, req.method === "HEAD" ? "" : data, mime[path.extname(file)] || "application/octet-stream");
   } catch (error) {
     const status = error.status || (error.code === "ENOENT" ? 404 : 500);
