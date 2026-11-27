@@ -71,7 +71,9 @@ export function withMobileContact(html, source) {
 }
 
 export function shell(source, { title, description, path, body, schema = null, production = false }) {
-  const header = source.match(/<header class="site-header"[\s\S]*?<\/header>/)[0].replaceAll('href="#', 'href="/#');
+  const header = source.match(/<header class="site-header"[\s\S]*?<\/header>/)[0]
+    .replace('href="#health"', 'href="/health.html"')
+    .replaceAll('href="#', 'href="/#');
   const footer = source.match(/<footer>[\s\S]*?<\/footer>/)[0].replace(/<button class="admin-trigger"[^>]*>[\s\S]*?<\/button>/, "").replaceAll('href="#', 'href="/#');
   const fonts = source.match(/<link rel="preconnect" href="https:\/\/fonts\.googleapis\.com"[\s\S]*?<\/noscript>/)?.[0] || "";
   const image = schema?.image || "https://booboo.co.kr/assets/og-image-wide.png";
