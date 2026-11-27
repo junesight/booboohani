@@ -37,6 +37,10 @@ test("production build generates indexable static category/detail pages, exclude
     assert(article.includes('"@type":"Article"'));
     assert(article.includes('class="health-clinic-panel"'));
     assert(article.includes('id="article-schedule-modal"'));
+    assert(article.includes('class="health-adjacent"'));
+    assert(article.includes('class="health-related-list"'));
+    assert.equal((article.match(/alt="" width="64" height="64" loading="lazy" decoding="async"/g) || []).length, 5);
+    assert(article.indexOf('class="health-article-bottom"') < article.indexOf('class="health-article-links"'));
     assert((await readFile(path.join(output, "article-toc.js"), "utf8")).includes("history.replaceState"));
     assert((await readFile(path.join(output, "article-schedule-engine.js"), "utf8")).includes("ClinicArticleSchedule"));
     assert((await readFile(path.join(output, "article-clinic.js"), "utf8")).includes("dialog.showModal()"));

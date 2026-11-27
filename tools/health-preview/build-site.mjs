@@ -63,7 +63,7 @@ export async function buildSite({posts, output = path.join(siteRoot, "dist"), so
     }
   }
   for (const post of articles) {
-    await outputFile(directory, `health/${post.id}.html`, studioLinks(articlePage(source, post, {production: true, staticMode: true})));
+    await outputFile(directory, `health/${post.id}.html`, studioLinks(articlePage(source, post, {production: true, staticMode: true, posts: articles})));
     addedUrls.push({loc: `https://booboo.co.kr/health/${post.id}.html`, lastmod: post.updatedAt.slice(0, 10)});
   }
   const parser = new XMLParser({ignoreAttributes: false});
