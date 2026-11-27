@@ -22,6 +22,15 @@ test("rich text retains supported formatting and strips executable markup", () =
   for (const bad of ["<script", "onerror", "javascript:", "position", "external.test", "<iframe"]) assert(!html.includes(bad), bad);
 });
 
+test("image caption class survives sanitizing and the full article renderer", () => {
+  const caption = '<p class="health-image-caption">이미지 설명입니다.</p>';
+  assert.equal(cleanBody(caption), caption);
+  const post = {...samplePosts()[0], html: `<p>일반 본문</p>${caption}`};
+  const html = articlePage(source, post);
+  assert(html.includes(caption));
+  assert(html.includes("<p>일반 본문</p>"));
+});
+
 test("only managed images can be embedded", () => {
   assert.equal(safeImage("/assets/booboo-logo.webp"), "/assets/booboo-logo.webp");
   for (const value of ["//evil.test/a.png", "javascript:alert(1)", "data:image/svg+xml,x", "/assets/../x", "https://test.com/image.png"]) assert.equal(safeImage(value), "");
