@@ -19,6 +19,10 @@ test("article TOC is static HTML, escapes labels, preserves content, and is abse
   const source = await readFile(new URL("../../index.html", import.meta.url), "utf8");
   const post = {...samplePosts()[0], html: '<h2>&lt;태그&gt; &amp; 질문</h2><p><u>본문</u><img src="/assets/booboo-logo.webp" alt="로고"></p>'};
   const html = articlePage(source, post);
+  assert(html.includes('<main id="article-top" class="health-article">'));
+  const topLink = `<a href="/health/${post.id}.html#article-top">처음으로</a>`;
+  assert(html.includes(topLink));
+  assert(html.indexOf(topLink) < html.indexOf(`href="/health/${post.id}.html#article-section-1"`));
   assert(html.includes(`<a href="/health/${post.id}.html#article-section-1">&lt;태그&gt; &amp; 질문</a>`));
   assert(html.includes('<nav aria-labelledby="health-toc-title">'));
   assert(html.includes('<h2 id="article-section-1">&lt;태그&gt; &amp; 질문</h2>'));
