@@ -24,8 +24,8 @@ test("care pages and privacy get one server-rendered bar after the footer", asyn
   }
 });
 
-test("home, verification responses and editor documents are not changed", () => {
-  assert.equal(withMobileContact(source, source), source);
+test("home contact bar is not duplicated; verification and editor documents are unchanged", () => {
+  assert.equal(countBars(withMobileContact(source, source)), 1);
   for (const html of ["google-site-verification: test.html", "<html><body><form>Editor</form></body></html>"]) assert.equal(withMobileContact(html, source), html);
 });
 

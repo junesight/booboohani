@@ -15,7 +15,7 @@ const outputFile = async (directory, relative, text) => {
   await writeFile(file, text);
 };
 const jsonScript = (value) => JSON.stringify(value).replaceAll("<", "\\u003c");
-const copyFiles = ["styles.css", "script.js", "health.css", "health-public.js", "robots.txt", "llms.txt", "CNAME"];
+const copyFiles = ["styles.css", "script.js", "health.css", "health-public.js", "mobile-navigation.js", "robots.txt", "llms.txt", "CNAME"];
 
 export async function buildSite({posts, output = path.join(siteRoot, "dist"), sourceCommit, sourceDate, copyAssets = true} = {}) {
   const directory = path.resolve(output);
@@ -40,7 +40,7 @@ export async function buildSite({posts, output = path.join(siteRoot, "dist"), so
   const homeCards = articles.length ? cards(articles.slice(0, 4)) : '<p class="health-empty-inline">등록된 글이 없습니다.</p>';
   if (!source.includes("<!-- HEALTH_CARDS_START -->")) throw new Error("Missing homepage article markers.");
   const home = source.replace(/<!-- HEALTH_CARDS_START -->[\s\S]*?<!-- HEALTH_CARDS_END -->/, `<!-- HEALTH_CARDS_START -->${homeCards}<!-- HEALTH_CARDS_END -->`);
-  await outputFile(directory, "index.html", home);
+  await outputFile(directory, "index.html", withMobileContact(home, source));
   await outputFile(directory, "health-vendor/lucide.js", await readFile(path.join(siteRoot, "tools/health-preview/node_modules/lucide/dist/umd/lucide.min.js")));
 
   const searchData = articles.map((post) => ({id: post.id, title: post.title, category: post.category, categoryLabel: categoryName(post.category), coverThumb: post.coverThumb || post.cover, coverAlt: post.coverAlt, searchText: `${post.title} ${plainText(post.html)}`}));

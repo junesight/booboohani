@@ -42,7 +42,11 @@ test("production build generates indexable static category/detail pages, exclude
       assert.equal((page.match(/class="floating-actions\b/g) || []).length, 1, route);
       assert(page.includes('class="floating-actions mobile-contact-only"'), route);
       assert(page.includes('src="/assets/floating-phone.png"'), route);
+      assert.equal((page.match(/id="mobile-navigation"/g) || []).length, 1, route);
+      assert(page.includes('<script src="/mobile-navigation.js" defer></script>'), route);
     }
+    assert.equal((home.match(/id="mobile-navigation"/g) || []).length, 1);
+    assert((await readFile(path.join(output, "mobile-navigation.js"), "utf8")).includes("drawer.showModal()"));
     assert.equal((home.match(/class="floating-actions\b/g) || []).length, 1);
     const verification = "googlec6e19113d29d97cb.html";
     assert.equal(await readFile(path.join(output, verification), "utf8"), await readFile(new URL(`../../${verification}`, import.meta.url), "utf8"));
