@@ -293,8 +293,8 @@ body.health-public { background: var(--bg-soft); }
 .health-related h2 { margin: 0 0 24px; font-family: Pretendard, sans-serif; font-size: 20px; line-height: 1.5; color: var(--green); text-align: center; }
 .health-related-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
 .health-related-list li { border-bottom: 1px solid var(--line); }
-.health-related-list a { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 16px; min-height: 88px; padding: 12px 0; color: var(--green); }
-.health-related-list img { display: block; width: 64px; height: 64px; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
+.health-related-list a { display: grid; grid-template-columns: 128px minmax(0, 1fr); align-items: center; gap: 16px; min-height: 152px; padding: 12px 0; color: var(--green); }
+.health-related-list img { display: block; width: 128px; height: 128px; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
 .health-related-list span { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; font-size: 16px; font-weight: 600; line-height: 1.6; }
 .health-related-list a:hover span { text-decoration: underline; }
 .health-related-more { display: flex; justify-content: center; margin-top: 24px; }
@@ -306,7 +306,7 @@ body.health-public { background: var(--bg-soft); }
   .health-adjacent { grid-template-columns: 1fr; gap: 12px; }
   .health-adjacent > a, .health-adjacent > div { min-height: 96px; padding: 16px; }
   .health-adjacent strong { font-size: 15px; }
-  .health-related-list a { grid-template-columns: 52px minmax(0, 1fr); gap: 12px; min-height: 76px; }
-  .health-related-list img { width: 52px; height: 52px; }
+  .health-related-list a { grid-template-columns: 104px minmax(0, 1fr); gap: 12px; min-height: 128px; }
+  .health-related-list img { width: 104px; height: 104px; }
   .health-related-list span { font-size: 15px; line-height: 1.55; }
 }
