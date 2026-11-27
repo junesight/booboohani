@@ -7,7 +7,7 @@
 .health-card { min-width: 0; border: 1px solid var(--line); background: var(--paper); border-radius: 4px; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
 .health-card:hover { border-color: var(--gold); box-shadow: 0 8px 24px #163d320c; }
 .health-card > a { display: flex; flex-direction: column; height: 100%; }
-.health-card-image { position: relative; aspect-ratio: 1; overflow: hidden; background: #e0e5de; }
+.health-card-image { position: relative; aspect-ratio: 1; overflow: hidden; background: transparent; }
 .health-card-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
 .health-card:hover img { transform: scale(1.025); }
 .health-sample { position: absolute; top: 12px; left: 12px; padding: 2px 9px; font-size: 12px; color: var(--green); background: #fffaf0eb; border: 1px solid var(--line); border-radius: 2px; }
@@ -43,14 +43,14 @@
 .health-article-heading h1 { font-size: 38px; line-height: 1.5; color: var(--green); word-break: keep-all; overflow-wrap: anywhere; margin: 12px 0 24px; }
 .health-article-meta { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
 .health-article-meta span { margin: 0 8px; }
-.health-article-cover { display: block; width: 100%; height: auto; max-height: 600px; object-fit: contain; background: #e3e5df; }
+.health-article-cover { display: block; width: 100%; height: auto; background: transparent; }
 .health-prose { padding-top: 34px; font-size: 18px; line-height: 1.95; overflow-wrap: anywhere; }
 .health-prose p { margin: 0 0 1.4em; }
 .health-prose h2, .health-prose h3, .health-prose h4 { font-family: Pretendard, sans-serif; color: var(--green); line-height: 1.55; margin: 1.8em 0 .7em; }
 .health-prose h2 { font-size: 28px; }
 .health-prose h3 { font-size: 23px; }
 .health-prose h4 { font-size: 20px; }
-.health-prose img { display: inline-block; max-width: 100%; height: auto; vertical-align: middle; }
+.health-prose img { display: inline-block; max-width: 100%; height: auto; vertical-align: middle; background: transparent; }
 .health-prose a { text-decoration: underline; color: var(--green-2); }
 .health-prose blockquote { border-left: 3px solid var(--gold); margin: 24px 0; padding: 10px 24px; color: #4d5c51; }
 .health-prose .ql-align-center { text-align: center; }
