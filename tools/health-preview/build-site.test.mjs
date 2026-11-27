@@ -54,6 +54,9 @@ test("production build generates indexable static category/detail pages, exclude
     assert((await readFile(path.join(output, "mobile-navigation.js"), "utf8")).includes("drawer.showModal()"));
     assert.equal((home.match(/class="floating-actions\b/g) || []).length, 1);
     const verification = "googlec6e19113d29d97cb.html";
+    const privacy = await readFile(path.join(output, "privacy.html"), "utf8");
+    assert.equal((privacy.match(/<meta name="description"/g) || []).length, 1);
+    assert(privacy.includes('content="부부한의원 개인정보처리방침입니다. 개인정보의 수집·이용 목적, 보유기간, 제3자 제공 및 개인정보보호 책임자 연락처를 안내합니다."'));
     assert.equal(await readFile(path.join(output, verification), "utf8"), await readFile(new URL(`../../${verification}`, import.meta.url), "utf8"));
     const sitemap = new XMLParser().parse(await readFile(path.join(output, "sitemap.xml"), "utf8"));
     assert(sitemap.urlset.url.some((entry) => entry.loc === "https://booboo.co.kr/care-spine.html"));
