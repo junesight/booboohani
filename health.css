@@ -222,3 +222,32 @@ body.health-public { background: var(--bg-soft); }
   #health-editor .ql-editor.ql-blank::before { left: 20px; right: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .health-card, .health-card img { transition: none; } }
+.health-article-layout { position: relative; width: min(800px, calc(100% - 40px)); margin: 0 auto; }
+.health-article-layout .health-article { width: 100%; }
+.health-toc { display: none; }
+.health-prose :is(h2, h3)[id] { scroll-margin-top: 24px; }
+@media (min-width: 1320px) {
+  .health-toc { display: block; position: absolute; top: 150px; bottom: 90px; left: -244px; width: 220px; }
+  .health-toc nav {
+    display: block;
+    position: sticky;
+    top: 112px;
+    max-height: calc(100dvh - 140px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 22px 18px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .health-toc h2 { margin: 0 0 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-family: Pretendard, sans-serif; font-size: 16px; line-height: 1.5; }
+  .health-toc ol { list-style: none; padding: 0; margin: 0; }
+  .health-toc li + li { margin-top: 12px; }
+  .health-toc a { display: block; line-height: 1.65; overflow-wrap: anywhere; text-decoration: none; }
+  .health-toc .health-toc-h3 { padding-left: 12px; font-size: 13px; }
+  .health-toc a:hover { text-decoration: underline; }
+  .health-toc a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+}

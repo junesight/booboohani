@@ -26,6 +26,8 @@ The homepage contact actions are the source of truth for phone, Naver reservatio
 
 Public mobile headers and the right-side menu are rendered by `tools/health-preview/navigation.mjs` during build/preview. `mobile-navigation.js` controls the native modal dialog (focus, Escape, backdrop, scroll restoration); care links use an expandable submenu and health links open `/health.html`. Desktop homepage navigation remains unchanged. Verify the built preview rather than raw HTML source files.
 
+Article H2/H3 headings generate a static left-side table of contents during build/preview. Links include the article path because public pages use a root base URL. The sidebar uses the homepage background (`--bg`) and sticks below the header; it is hidden below 1320px to preserve the existing centered 800px article and mobile layout. Articles without headings have no table of contents. No Sanity document changes or extra browser scripts are required.
+
 For local Studio: `npm ci --prefix studio`, then `npm run dev --prefix studio`. For Studio verification: `npm run build --prefix studio`. To deploy a Studio change, an authorized project member must sign in through `npm exec --prefix studio -- sanity login`, then deploy from the `studio` directory. Never commit an authentication token.
 
 ## Automatic publication
