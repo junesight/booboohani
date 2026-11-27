@@ -25,7 +25,9 @@ test("article TOC is static HTML, escapes labels, preserves content, and is abse
   assert(html.indexOf(topLink) < html.indexOf(`href="/health/${post.id}.html#article-section-1"`));
   assert(html.includes(`<a href="/health/${post.id}.html#article-section-1">&lt;태그&gt; &amp; 질문</a>`));
   assert(html.includes('<nav aria-labelledby="health-toc-title">'));
+  assert(html.includes('<script src="/article-toc.js" defer></script>'));
   assert(html.includes('<h2 id="article-section-1">&lt;태그&gt; &amp; 질문</h2>'));
   assert(html.includes('<u>본문</u>'));
   assert(!articlePage(source, {...post, html: "<p>본문만</p>"}).includes('class="health-toc"'));
+  assert(!articlePage(source, {...post, html: "<p>본문만</p>"}).includes('src="/article-toc.js"'));
 });

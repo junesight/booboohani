@@ -37,6 +37,7 @@ test("production build generates indexable static category/detail pages, exclude
     assert(article.includes('"@type":"Article"'));
     assert(article.includes('class="health-clinic-panel"'));
     assert(article.includes('id="article-schedule-modal"'));
+    assert((await readFile(path.join(output, "article-toc.js"), "utf8")).includes("history.replaceState"));
     assert((await readFile(path.join(output, "article-schedule-engine.js"), "utf8")).includes("ClinicArticleSchedule"));
     assert((await readFile(path.join(output, "article-clinic.js"), "utf8")).includes("dialog.showModal()"));
     assert(article.includes('href="/health/category/pain.html"'));

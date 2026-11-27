@@ -112,6 +112,6 @@ export function articlePage(source, post, options = {}) {
   const schema = post.sample || post.status !== "published" ? null : { "@context": "https://schema.org", "@type": "Article", headline: post.title, description, image: post.cover.startsWith("https://") ? post.cover : `https://booboo.co.kr${post.cover}`, author: { "@type": "Organization", name: "부부한의원", url: "https://booboo.co.kr/" }, publisher: { "@type": "Organization", name: "부부한의원", url: "https://booboo.co.kr/" }, datePublished: post.publishedAt, dateModified: post.updatedAt, mainEntityOfPage: `https://booboo.co.kr/health/${post.id}.html`, articleSection: categoryName(post.category) };
   const articleBody = body.replace(`<div class="health-prose">${cleanHtml}</div>`, `<div class="health-prose">${contents.html}</div>`)
     .replace('<main class="health-article">', `<div class="health-article-layout">${articleToc(contents.headings, `/health/${post.id}.html`, escapeHtml)}<main id="article-top" class="health-article">`)
-    .replace("</main>", `</main>${clinic.sidebar}</div>${clinic.popup}`);
+    .replace("</main>", `</main>${clinic.sidebar}</div>${clinic.popup}${contents.headings.length ? '<script src="/article-toc.js" defer></script>' : ""}`);
   return withMobileNavigation(shell(source, { title: post.title, description, path: `/health/${post.id}.html`, body: options.staticMode ? articleBody.replace(`href="/health.html?category=${post.category}"`, `href="${listingPath(post.category)}"`) : articleBody, schema, production: options.production }));
 }
