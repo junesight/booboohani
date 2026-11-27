@@ -48,6 +48,15 @@ test("Portable Text preserves approved colors, sizes, underline, images and alig
   assert(html.includes('alt="진료실"'));
 });
 
+test("repeated empty Sanity paragraphs survive conversion and full article rendering", async () => {
+  const block = (text, index) => ({_type: "block", _key: `line-${index}`, style: "normal", markDefs: [], children: [{_type: "span", text, marks: []}]});
+  const body = ["앞 문단", "", "", "", "뒤 문단"].map(block);
+  const html = bodyHtml(body);
+  assert.equal(html, "<p>앞 문단</p><p></p><p></p><p></p><p>뒤 문단</p>");
+  const source = await readFile(new URL("../../index.html", import.meta.url), "utf8");
+  assert(articlePage(source, mapPost({...doc, body})).includes(html));
+});
+
 test("unsafe markup and unapproved custom styles cannot enter published HTML", () => {
   const html = bodyHtml([{_type: "block", _key: "p", markDefs: [{_key: "color", _type: "textColor", value: 'red;position:fixed'}], children: [{_type: "span", text: "<script>alert(1)</script>", marks: ["color"]}]}]);
   assert(!html.includes("<script>"));
