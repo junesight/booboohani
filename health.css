@@ -18,7 +18,8 @@ body.health-public { background: var(--bg-soft); }
 .health-more { padding: 6px 0; border-bottom: 1px solid var(--green); }
 .health-public .site-header nav { flex-wrap: wrap; justify-content: flex-end; }
 .health-page-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; padding-bottom: 36px; }
-.health-page-heading h1 { font-size: 44px; line-height: 1.4; margin: 0; color: var(--green); overflow-wrap: anywhere; word-break: keep-all; }
+.health-page-heading > div { flex: 1; min-width: 0; }
+.health-page-heading h1 { max-width: none; font-size: 44px; line-height: 1.4; margin: 0; color: var(--green); overflow-wrap: anywhere; word-break: keep-all; }
 .health-page-heading .eyebrow { margin-bottom: 12px; }
 .health-manage-link { color: var(--green); font-weight: 600; border-bottom: 1px solid var(--green); white-space: nowrap; font-size: 14px; }
 .health-categories { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0 25px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 9px 0; }
