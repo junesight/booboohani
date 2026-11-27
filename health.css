@@ -63,7 +63,9 @@ body.health-public { background: var(--bg-soft); }
 .health-prose .ql-indent-1 { padding-left: 2em; }
 .health-prose .ql-indent-2 { padding-left: 4em; }
 .health-prose .ql-indent-3 { padding-left: 6em; }
-.health-article-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 30px; margin-top: 35px; border-top: 1px solid var(--line); }
+.health-article-bottom { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; padding-top: 30px; margin-top: 35px; border-top: 1px solid var(--line); }
+.health-article-bottom > .health-outline-button { grid-column: 2; }
+.health-article-bottom > .health-manage-link { grid-column: 3; justify-self: end; }
 .health-outline-button { display: inline-flex; justify-content: center; align-items: center; min-height: 42px; border: 1px solid var(--green); border-radius: 4px; padding: 8px 25px; color: var(--green); font: inherit; cursor: pointer; background: transparent; }
 
 @media (min-width: 769px) {
