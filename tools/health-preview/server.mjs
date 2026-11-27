@@ -122,7 +122,7 @@ const server = http.createServer(async (req, res) => {
     if (route === "/api/health/preview" && req.method === "POST") {
       const input = await jsonBody(req);
       const preview = validate(input, null, true);
-      return send(res, 200, { html: articlePage(await readFile(path.join(root, "index.html"), "utf8"), preview) });
+      return send(res, 200, { html: articlePage(await readFile(path.join(root, "index.html"), "utf8"), preview, {posts: await readPosts()}) });
     }
     if (route === "/api/health/images" && req.method === "POST") {
       if (!["image/jpeg", "image/png", "image/webp"].includes(req.headers["content-type"])) throw fail(415, "JPG, PNG, WebP 이미지를 선택해 주세요.");
@@ -150,9 +150,10 @@ const server = http.createServer(async (req, res) => {
     }
     if (/^\/health\/[A-Za-z0-9_-]+\.html$/.test(route)) {
       const id = route.split("/").at(-1).replace(/\.html$/, "");
-      const post = (await readPosts()).find((p) => p.id === id && p.status === "published");
+      const posts = await readPosts();
+      const post = posts.find((p) => p.id === id && p.status === "published");
       if (!post) throw fail(404, "글을 찾을 수 없습니다.");
-      const html = articlePage(await readFile(path.join(root, "index.html"), "utf8"), post);
+      const html = articlePage(await readFile(path.join(root, "index.html"), "utf8"), post, {posts});
       return send(res, 200, sanityMode ? studioLinks(html) : html, "text/html; charset=utf-8");
     }
     let file;

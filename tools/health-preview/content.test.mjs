@@ -42,6 +42,15 @@ test("list filters render server-side without JavaScript", () => {
   assert(html.includes('name="robots" content="noindex,nofollow"'));
 });
 
+test("listing heading keeps the all title and uses only the selected category name", () => {
+  const all = listPage(source, samplePosts(), new URL("http://localhost/health.html"));
+  assert(all.includes("<h1>건강 정보 및 칼럼</h1>"));
+  for (const [id, label] of categories) {
+    const html = listPage(source, samplePosts(), new URL(`http://localhost/health.html?category=${id}`));
+    assert(html.includes(`<h1>${label.replaceAll("&", "&amp;")}</h1>`));
+  }
+});
+
 test("empty category and hostile search strings are escaped", () => {
   const html = listPage(source, samplePosts(), new URL("http://localhost/health.html?category=seasonal&q=%22%3E%3Cscript%3E"));
   assert(html.includes("등록된 글이 없습니다."));
