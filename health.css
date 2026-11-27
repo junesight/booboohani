@@ -65,6 +65,29 @@
 .health-article-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 30px; margin-top: 35px; border-top: 1px solid var(--line); }
 .health-outline-button { display: inline-flex; justify-content: center; align-items: center; min-height: 42px; border: 1px solid var(--green); border-radius: 4px; padding: 8px 25px; color: var(--green); font: inherit; cursor: pointer; background: transparent; }
 
+@media (min-width: 769px) {
+  .health-article-heading h1 { font-size: 34px; }
+  .health-prose { font-size: 16px; }
+  .health-prose h2 { font-size: 25px; }
+  .health-prose h3 { font-size: 21px; }
+  .health-prose h4 { font-size: 18px; }
+  /* Sanity's explicit size marks must scale along with the default body text. */
+  .health-prose span:is([style*="font-size:14px"], [style*="font-size: 14px"]) { font-size: 12.6px !important; }
+  .health-prose span:is([style*="font-size:16px"], [style*="font-size: 16px"]) { font-size: 14.4px !important; }
+  .health-prose span:is([style*="font-size:18px"], [style*="font-size: 18px"]) { font-size: 16.2px !important; }
+  .health-prose span:is([style*="font-size:22px"], [style*="font-size: 22px"]) { font-size: 19.8px !important; }
+  .health-prose span:is([style*="font-size:28px"], [style*="font-size: 28px"]) { font-size: 25.2px !important; }
+  .health-prose span:is([style*="font-size:36px"], [style*="font-size: 36px"]) { font-size: 32.4px !important; }
+  .health-prose .ql-size-small { font-size: 12.6px; }
+  .health-prose .ql-size-large { font-size: 21.6px; }
+  .health-prose .ql-size-huge { font-size: 28.8px; }
+  .health-article-cover { width: 85%; margin-inline: auto; }
+  .health-prose img { display: block; width: 85%; max-width: 85%; margin-inline: auto; }
+  .health-prose img[width="640"] { width: 544px; }
+  .health-prose img[width="400"] { width: 340px; }
+  .health-prose img[width="240"] { width: 204px; }
+}
+
 /* The editor is a separate local tool; existing main-page styles stay untouched. */
 .health-editor-page { background: #f1f3f0; color: #23372c; font-family: Pretendard, -apple-system, sans-serif; }
 .health-editor-page button, .health-editor-page input, .health-editor-page select, .health-editor-page textarea { font: inherit; }
