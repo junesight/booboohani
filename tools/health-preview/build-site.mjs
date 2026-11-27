@@ -27,6 +27,14 @@ export async function buildSite({posts, output = path.join(siteRoot, "dist"), so
   const commit = sourceCommit || execFileSync("git", ["rev-parse", "HEAD"], {cwd: siteRoot, encoding: "utf8"}).trim();
   const modified = sourceDate || execFileSync("git", ["log", "-1", "--format=%cI"], {cwd: siteRoot, encoding: "utf8"}).trim();
   const source = await readFile(path.join(siteRoot, "index.html"), "utf8");
+  const cssVersions = new Map();
+  for (const file of ["styles.css", "health.css"]) {
+    cssVersions.set(file, createHash("sha256").update(await readFile(path.join(siteRoot, file))).digest("hex").slice(0, 12));
+  }
+  const outputPage = (relative, html) => outputFile(directory, relative, html.replace(
+    /href=(["'])(\/?(?:styles|health)\.css)(?:\?[^"']*)?\1/g,
+    (_, quote, file) => `href=${quote}${file}?v=${cssVersions.get(file.replace(/^\//, ""))}${quote}`,
+  ));
   await rm(directory, {recursive: true, force: true});
   await mkdir(directory, {recursive: true});
   if (copyAssets) await cp(path.join(siteRoot, "assets"), path.join(directory, "assets"), {recursive: true});
@@ -35,14 +43,14 @@ export async function buildSite({posts, output = path.join(siteRoot, "dist"), so
   for (const file of await readdir(siteRoot)) {
     if (file.endsWith(".html") && !["index.html", "health-editor.html"].includes(file)) {
       const html = await readFile(path.join(siteRoot, file), "utf8");
-      await outputFile(directory, file, withMobileContact(html, source));
+      await outputPage(file, withMobileContact(html, source));
     }
   }
   await outputFile(directory, ".nojekyll", "");
   const homeCards = articles.length ? cards(articles.slice(0, 4)) : '<p class="health-empty-inline">등록된 글이 없습니다.</p>';
   if (!source.includes("<!-- HEALTH_CARDS_START -->")) throw new Error("Missing homepage article markers.");
   const home = source.replace(/<!-- HEALTH_CARDS_START -->[\s\S]*?<!-- HEALTH_CARDS_END -->/, `<!-- HEALTH_CARDS_START -->${homeCards}<!-- HEALTH_CARDS_END -->`);
-  await outputFile(directory, "index.html", withMobileContact(home, source));
+  await outputPage("index.html", withMobileContact(home, source));
   await outputFile(directory, "health-vendor/lucide.js", await readFile(path.join(siteRoot, "tools/health-preview/node_modules/lucide/dist/umd/lucide.min.js")));
 
   const searchData = articles.map((post) => ({id: post.id, title: post.title, category: post.category, categoryLabel: categoryName(post.category), coverThumb: post.coverThumb || post.cover, coverAlt: post.coverAlt, searchText: `${post.title} ${plainText(post.html)}`}));
@@ -58,12 +66,12 @@ export async function buildSite({posts, output = path.join(siteRoot, "dist"), so
       let html = listPage(source, articles, url, {staticMode: true, production: true});
       html = studioLinks(html).replace('<script src="/health-public.js">', `<script id="health-search-data" type="application/json">${jsonScript(searchData)}</script><script src="/health-public.js">`);
       const relative = listingPath(category, page);
-      await outputFile(directory, relative.slice(1), html);
+      await outputPage(relative.slice(1), html);
       addedUrls.push({loc: `https://booboo.co.kr${relative}`, lastmod: latestDate(selected)});
     }
   }
   for (const post of articles) {
-    await outputFile(directory, `health/${post.id}.html`, studioLinks(articlePage(source, post, {production: true, staticMode: true, posts: articles})));
+    await outputPage(`health/${post.id}.html`, studioLinks(articlePage(source, post, {production: true, staticMode: true, posts: articles})));
     addedUrls.push({loc: `https://booboo.co.kr/health/${post.id}.html`, lastmod: post.updatedAt.slice(0, 10)});
   }
   const parser = new XMLParser({ignoreAttributes: false});
