@@ -66,7 +66,8 @@
 .health-outline-button { display: inline-flex; justify-content: center; align-items: center; min-height: 42px; border: 1px solid var(--green); border-radius: 4px; padding: 8px 25px; color: var(--green); font: inherit; cursor: pointer; background: transparent; }
 
 @media (min-width: 769px) {
-  .health-article-heading h1 { font-size: 34px; }
+  .health-article-heading h1 { max-width: none; font-size: 34px; text-align: left; }
+  .health-article-meta { text-align: center; }
   .health-prose { font-size: 16px; }
   .health-prose h2 { font-size: 25px; }
   .health-prose h3 { font-size: 21px; }
