@@ -16,7 +16,7 @@ const outputFile = async (directory, relative, text) => {
   await writeFile(file, text);
 };
 const jsonScript = (value) => JSON.stringify(value).replaceAll("<", "\\u003c");
-const copyFiles = ["styles.css", "script.js", "health.css", "health-public.js", "mobile-navigation.js", "article-clinic.js", "robots.txt", "llms.txt", "CNAME"];
+const copyFiles = ["styles.css", "script.js", "health.css", "health-public.js", "mobile-navigation.js", "article-clinic.js", "article-toc.js", "robots.txt", "llms.txt", "CNAME"];
 
 export async function buildSite({posts, output = path.join(siteRoot, "dist"), sourceCommit, sourceDate, copyAssets = true} = {}) {
   const directory = path.resolve(output);
