@@ -22,7 +22,7 @@ export function cleanBody(html = "") {
   return sanitizeHtml(html, {
     allowedTags: ["p", "br", "h2", "h3", "h4", "strong", "b", "em", "i", "u", "s", "span", "a", "ul", "ol", "li", "blockquote", "img"],
     allowedAttributes: { "*": ["class", "style"], a: ["href", "target", "rel"], img: ["src", "alt", "width"] },
-    allowedClasses: { "*": ["ql-align-center", "ql-align-right", "ql-align-justify", "ql-size-small", "ql-size-large", "ql-size-huge", "ql-indent-1", "ql-indent-2", "ql-indent-3"] },
+    allowedClasses: { "*": ["health-image-caption", "ql-align-center", "ql-align-right", "ql-align-justify", "ql-size-small", "ql-size-large", "ql-size-huge", "ql-indent-1", "ql-indent-2", "ql-indent-3"] },
     allowedStyles: { "*": {
       color: [/^#[0-9a-f]{3,8}$/i, /^rgb\(\s*\d{1,3},\s*\d{1,3},\s*\d{1,3}\s*\)$/],
       "background-color": [/^#[0-9a-f]{3,8}$/i, /^rgb\(\s*\d{1,3},\s*\d{1,3},\s*\d{1,3}\s*\)$/],
