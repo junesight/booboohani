@@ -90,3 +90,20 @@ test("column lists, categories and articles share the scoped public theme class"
   for (const html of pages) assert(html.includes('<body class="health-public">'));
   assert(!source.includes('<body class="health-public">'));
 });
+
+test("column headers link directly to the health listing while home retains its section link", () => {
+  const posts = Array.from({length: 14}, (_, index) => ({...samplePosts()[0], id: `page-${index}`}));
+  const pages = [
+    listPage(source, posts, new URL("http://localhost/health.html")),
+    listPage(source, posts, new URL("http://localhost/health.html?page=2"), {staticMode: true}),
+    ...categories.map(([id]) => listPage(source, posts, new URL(`http://localhost/health.html?category=${id}`), {staticMode: true})),
+    articlePage(source, posts[0]),
+  ];
+  for (const html of pages) {
+    const header = html.match(/<header class="site-header"[\s\S]*?<\/header>/)[0];
+    assert(header.includes('<a href="/health.html">건강 정보</a>'));
+    assert(!header.includes('href="/#health"'));
+    assert(header.includes('href="/#doctors"'));
+  }
+  assert(source.includes('<a href="#health">건강 정보</a>'));
+});
