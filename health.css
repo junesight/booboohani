@@ -42,29 +42,35 @@ body.health-public { background: var(--bg-soft); }
 .health-article { width: min(800px, calc(100% - 40px)); margin: 0 auto; padding: 40px 0 90px; }
 .health-breadcrumb { flex-wrap: wrap; justify-content: flex-start; gap: 8px; font-size: 13px; font-weight: 400; color: var(--muted); padding-bottom: 38px; }
 .health-breadcrumb a { overflow-wrap: anywhere; }
-.health-article-heading h1 { font-size: 38px; line-height: 1.5; color: var(--green); word-break: keep-all; overflow-wrap: anywhere; margin: 12px 0 24px; }
+.health-article-heading h1 { font-size: 41.8px; line-height: 1.5; color: var(--green); word-break: keep-all; overflow-wrap: anywhere; margin: 12px 0 24px; }
 .health-article-meta { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
 .health-article-meta span { margin: 0 8px; }
 .health-article-cover { display: block; width: 100%; height: auto; background: transparent; }
-.health-prose { padding-top: 34px; font-size: 18px; line-height: 1.95; overflow-wrap: anywhere; }
-.health-prose p { margin: 0 0 1.4em; }
-.health-prose p:empty { min-height: 1lh; margin: 0; }
+.health-prose { padding-top: 34px; font-size: 19.8px; line-height: 1.95; overflow-wrap: anywhere; }
+.health-prose p { margin: 0 0 1.4em; line-height: 1.65; }
+.health-prose p:empty { min-height: 1lh; margin: 0; line-height: 1.95; }
 .health-prose p:has(> img):has(+ .health-image-caption) { margin-bottom: 8px; line-height: 0; }
 .health-prose .health-image-caption { text-align: center; font-size: .875em; line-height: 1.65; color: var(--muted); }
 .health-prose h2, .health-prose h3, .health-prose h4 { font-family: Pretendard, sans-serif; color: var(--green); line-height: 1.55; margin: 1.8em 0 .7em; }
 .health-prose h2 { border-left: 4px solid var(--green-2); padding-left: 14px; }
-.health-prose h2 { font-size: 28px; }
-.health-prose h3 { font-size: 23px; }
-.health-prose h4 { font-size: 20px; }
+.health-prose h2 { font-size: 30.8px; }
+.health-prose h3 { font-size: 25.3px; }
+.health-prose h4 { font-size: 22px; }
 .health-prose img { display: inline-block; max-width: 100%; height: auto; vertical-align: middle; background: transparent; }
 .health-prose a { text-decoration: underline; color: var(--green-2); }
 .health-prose blockquote { border-left: 3px solid var(--gold); margin: 24px 0; padding: 10px 24px; color: #4d5c51; }
 .health-prose .ql-align-center { text-align: center; }
 .health-prose .ql-align-right { text-align: right; }
 .health-prose .ql-align-justify { text-align: justify; }
-.health-prose .ql-size-small { font-size: 14px; }
-.health-prose .ql-size-large { font-size: 24px; }
-.health-prose .ql-size-huge { font-size: 32px; }
+.health-prose .ql-size-small { font-size: 15.4px; }
+.health-prose .ql-size-large { font-size: 26.4px; }
+.health-prose .ql-size-huge { font-size: 35.2px; }
+.health-prose span:is([style*="font-size:14px"], [style*="font-size: 14px"]) { font-size: 15.4px !important; }
+.health-prose span:is([style*="font-size:16px"], [style*="font-size: 16px"]) { font-size: 17.6px !important; }
+.health-prose span:is([style*="font-size:18px"], [style*="font-size: 18px"]) { font-size: 19.8px !important; }
+.health-prose span:is([style*="font-size:22px"], [style*="font-size: 22px"]) { font-size: 24.2px !important; }
+.health-prose span:is([style*="font-size:28px"], [style*="font-size: 28px"]) { font-size: 30.8px !important; }
+.health-prose span:is([style*="font-size:36px"], [style*="font-size: 36px"]) { font-size: 39.6px !important; }
 .health-prose .ql-indent-1 { padding-left: 2em; }
 .health-prose .ql-indent-2 { padding-left: 4em; }
 .health-prose .ql-indent-3 { padding-left: 6em; }
@@ -74,22 +80,22 @@ body.health-public { background: var(--bg-soft); }
 .health-outline-button { display: inline-flex; justify-content: center; align-items: center; min-height: 42px; border: 1px solid var(--green); border-radius: 4px; padding: 8px 25px; color: var(--green); font: inherit; cursor: pointer; background: transparent; }
 
 @media (min-width: 769px) {
-  .health-article-heading h1 { max-width: none; font-size: 34px; text-align: left; }
+  .health-article-heading h1 { max-width: none; font-size: 37.4px; text-align: left; }
   .health-article-meta { text-align: center; }
-  .health-prose { font-size: 16px; }
-  .health-prose h2 { font-size: 25px; }
-  .health-prose h3 { font-size: 21px; }
-  .health-prose h4 { font-size: 18px; }
+  .health-prose { font-size: 17.6px; }
+  .health-prose h2 { font-size: 27.5px; }
+  .health-prose h3 { font-size: 23.1px; }
+  .health-prose h4 { font-size: 19.8px; }
   /* Sanity's explicit size marks must scale along with the default body text. */
-  .health-prose span:is([style*="font-size:14px"], [style*="font-size: 14px"]) { font-size: 12.6px !important; }
-  .health-prose span:is([style*="font-size:16px"], [style*="font-size: 16px"]) { font-size: 14.4px !important; }
-  .health-prose span:is([style*="font-size:18px"], [style*="font-size: 18px"]) { font-size: 16.2px !important; }
-  .health-prose span:is([style*="font-size:22px"], [style*="font-size: 22px"]) { font-size: 19.8px !important; }
-  .health-prose span:is([style*="font-size:28px"], [style*="font-size: 28px"]) { font-size: 25.2px !important; }
-  .health-prose span:is([style*="font-size:36px"], [style*="font-size: 36px"]) { font-size: 32.4px !important; }
-  .health-prose .ql-size-small { font-size: 12.6px; }
-  .health-prose .ql-size-large { font-size: 21.6px; }
-  .health-prose .ql-size-huge { font-size: 28.8px; }
+  .health-prose span:is([style*="font-size:14px"], [style*="font-size: 14px"]) { font-size: 13.86px !important; }
+  .health-prose span:is([style*="font-size:16px"], [style*="font-size: 16px"]) { font-size: 15.84px !important; }
+  .health-prose span:is([style*="font-size:18px"], [style*="font-size: 18px"]) { font-size: 17.82px !important; }
+  .health-prose span:is([style*="font-size:22px"], [style*="font-size: 22px"]) { font-size: 21.78px !important; }
+  .health-prose span:is([style*="font-size:28px"], [style*="font-size: 28px"]) { font-size: 27.72px !important; }
+  .health-prose span:is([style*="font-size:36px"], [style*="font-size: 36px"]) { font-size: 35.64px !important; }
+  .health-prose .ql-size-small { font-size: 13.86px; }
+  .health-prose .ql-size-large { font-size: 23.76px; }
+  .health-prose .ql-size-huge { font-size: 31.68px; }
   .health-article-cover { width: 85%; margin-inline: auto; }
   .health-prose img { display: block; width: 85%; max-width: 85%; margin-inline: auto; }
   .health-prose img[width="640"] { width: 544px; }
@@ -209,8 +215,8 @@ body.health-public { background: var(--bg-soft); }
   .health-categories a { font-size: 14px; }
   .health-list-tools { padding: 22px 0; }
   .health-list-tools form { max-width: 190px; }
-  .health-article-heading h1 { font-size: 28px; }
-  .health-prose { font-size: 17px; }
+  .health-article-heading h1 { font-size: 30.8px; }
+  .health-prose { font-size: 18.7px; }
   .health-article { padding-top: 26px; }
   .health-breadcrumb { padding-bottom: 28px; font-size: 12px; }
   .health-editor-header { padding: 12px 16px; flex-wrap: wrap; gap: 14px; }
@@ -234,6 +240,7 @@ body.health-public { background: var(--bg-soft); }
 .health-toc { display: none; }
 .health-prose :is(h2, h3)[id] { scroll-margin-top: 24px; }
 @media (min-width: 1320px) {
+  .health-article-layout .health-article { width: calc(100% - 48px); }
   .health-toc { display: block; position: absolute; top: 150px; bottom: 90px; left: -244px; width: 220px; }
   .health-toc nav {
     display: block;
@@ -278,7 +285,9 @@ body.health-public { background: var(--bg-soft); }
   .health-weekly-trigger { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; min-height: 44px; padding: 8px 6px; background: transparent; border: 1px solid var(--green); border-radius: 4px; color: var(--green); font-size: 12px; font-weight: 700; cursor: pointer; }
   .health-weekly-trigger svg { flex: 0 0 18px; height: 18px; }
   .health-clinic-actions { display: grid; gap: 8px; margin-top: 18px; }
-  .health-clinic-actions .button { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 8px; border-radius: 4px; font-size: 13px; }
+  .health-clinic-actions .button { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 64px; padding: 8px; border-radius: 4px; font-size: 13px; }
+  .health-clinic-actions .contact-button-copy { display: flex; flex-direction: column; align-items: center; gap: 3px; line-height: 1.4; }
+  .health-clinic-actions .contact-phone-number { font-size: 12px; font-weight: 500; }
   .health-clinic-actions img { width: 22px; height: 22px; object-fit: contain; }
   .health-clinic-actions .button.phone { background: var(--green); color: #fff; border: 0; }
   .health-clinic-actions .button.naver { background: #03c75a; color: #fff; border: 0; }

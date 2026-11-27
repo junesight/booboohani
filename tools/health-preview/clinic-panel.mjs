@@ -18,7 +18,10 @@ export function clinicPanel(source, escape) {
   const contactHtml = links.map((link) => {
     const img = nodes(link, (node) => node.name === "img")[0];
     if (!img?.attribs.src?.startsWith("assets/") || !/^(tel:|https?:\/\/)/.test(link.attribs.href)) throw new Error("Invalid homepage contact link.");
-    return `<a class="${escape(link.attribs.class)}" href="${escape(link.attribs.href)}" target="_blank" rel="noopener noreferrer"><img src="/${escape(img.attribs.src)}" alt="" width="22" height="22">${escape(text(link).trim())}</a>`;
+    const number = nodes(link, (node) => hasClass(node, "contact-phone-number"))[0];
+    const label = nodes(link, (node) => node.name === "span" && !hasClass(node, "contact-button-copy"))[0];
+    const copy = number ? `<span class="contact-button-copy"><span>${escape(text(label))}</span><small class="contact-phone-number">${escape(text(number))}</small></span>` : escape(text(link).trim());
+    return `<a class="${escape(link.attribs.class)}" href="${escape(link.attribs.href)}" target="_blank" rel="noopener noreferrer"><img src="/${escape(img.attribs.src)}" alt="" width="22" height="22">${copy}</a>`;
   }).join("");
   const doctorHtml = doctors.map((doctor) => `<span data-name="${escape(doctor.attribs["data-name"])}" data-role="${escape(doctor.attribs["data-role"])}" data-image="${escape(doctor.attribs["data-image"])}"></span>`).join("");
   const sidebar = `<aside class="health-clinic-panel" aria-label="진료 및 예약 안내"><div class="health-clinic-sticky"><h2>${icon("Clock")}진료 시간</h2>${timeHtml}<button class="health-weekly-trigger" type="button" aria-haspopup="dialog" aria-controls="article-schedule-modal" hidden>${icon("CalendarDays")}의료진 주간 스케쥴</button><noscript><a href="/#home">의료진 주간 스케쥴 보기</a></noscript><div class="health-clinic-actions">${contactHtml}</div></div></aside>`;

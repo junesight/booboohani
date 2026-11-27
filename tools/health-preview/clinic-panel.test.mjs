@@ -11,6 +11,8 @@ test("right article panel reuses homepage hours, contacts and six medical staff"
   const {sidebar, popup} = clinicPanel(source, escapeHtml);
   for (const label of ["오전 09:00 - 12:20", "오후 14:00 - 20:00", "(점심시간 12:20 - 14:00)", "08:30 - 14:00", "(점심시간 없이 진료)", "전화 문의", "네이버 예약", "카톡 문의"]) assert(sidebar.includes(label));
   assert(sidebar.includes('href="tel:061-272-1075"'));
+  assert(sidebar.includes('<small class="contact-phone-number">061-272-1075</small>'));
+  assert.equal((sidebar.match(/class="contact-phone-number"/g) || []).length, 1);
   assert(sidebar.includes('href="http://pf.kakao.com/_VlVkG/chat"'));
   assert(sidebar.includes("bizes/1260872"));
   assert.equal((popup.match(/data-name=/g) || []).length, 6);
