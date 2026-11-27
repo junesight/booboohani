@@ -1,6 +1,7 @@
 import { icons } from "lucide";
 
 const icon = (name) => `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name].map(([tag, attrs]) => `<${tag} ${Object.entries(attrs).map(([key, value]) => `${key}="${value}"`).join(" ")}></${tag}>`).join("")}</svg>`;
+export { icon };
 
 export function withMobileNavigation(html) {
   if (!html.includes("</footer>") || html.includes('id="mobile-navigation"')) return html;

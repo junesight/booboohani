@@ -28,6 +28,8 @@ Public mobile headers and the right-side menu are rendered by `tools/health-prev
 
 Article H2/H3 headings generate a static left-side table of contents during build/preview. Links include the article path because public pages use a root base URL. The sidebar uses the homepage background (`--bg`) and sticks below the header; it is hidden below 1320px to preserve the existing centered 800px article and mobile layout. Articles without headings have no table of contents. No Sanity document changes or extra browser scripts are required.
 
+Articles also have a matching desktop-only right clinic panel. `clinic-panel.mjs` parses the homepage reservation hours, contact links and six public staff entries as the source of truth. At build/preview time Acorn selects only the allowlisted existing public schedule functions/constants from `script.js` for `article-schedule-engine.js`; no admin/gallery code is included and homepage behavior is untouched. `article-clinic.js` opens an accessible schedule dialog using the same overview renderer/styles and read-only public schedule query, fetched only on opening/retry. Empty/error states never imply a fully closed week. Doctor photos/names link to the homepage medical team. No new credentials, database changes or write requests are introduced. Preserve the selected function names or update the allowlist/tests together; a missing symbol fails the build.
+
 For local Studio: `npm ci --prefix studio`, then `npm run dev --prefix studio`. For Studio verification: `npm run build --prefix studio`. To deploy a Studio change, an authorized project member must sign in through `npm exec --prefix studio -- sanity login`, then deploy from the `studio` directory. Never commit an authentication token.
 
 ## Automatic publication
