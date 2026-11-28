@@ -19,7 +19,8 @@ test("production build generates indexable static category/detail pages, exclude
     const result = await buildSite({...options, posts, output});
     assert.equal(result.manifest.postCount, 14);
     const home = await readFile(path.join(output, "index.html"), "utf8");
-    assert.equal((home.match(/class="health-card"/g) || []).length, 4);
+    assert.equal((home.match(/class="health-card"/g) || []).length, 14);
+    assert(home.includes('class="health-carousel-track"'));
     assert(!home.includes("sample-pain"));
     assert(!home.includes("예시"));
     const list = await readFile(path.join(output, "health.html"), "utf8");

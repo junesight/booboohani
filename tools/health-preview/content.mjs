@@ -72,6 +72,12 @@ export function withMobileContact(html, source) {
   return withMobileNavigation(html);
 }
 
+export function homeColumns(posts) {
+  const latest = publishedPosts(posts).slice(0, 20);
+  if (!latest.length) return '<p class="health-empty-inline">등록된 글이 없습니다.</p>';
+  return `<div class="health-carousel" aria-label="최근 건강 정보 및 칼럼"><div class="health-carousel-viewport" tabindex="0" aria-label="칼럼 목록"><div class="health-carousel-track">${cards(latest)}</div></div><div class="health-carousel-controls" hidden><button type="button" data-carousel="previous" aria-label="이전 칼럼" title="이전 칼럼">${icon("ArrowLeft")}</button><button type="button" data-carousel="pause" aria-label="자동 넘김 일시정지" title="자동 넘김 일시정지" aria-pressed="false"><span data-pause>${icon("Pause")}</span><span data-play hidden>${icon("Play")}</span></button><button type="button" data-carousel="next" aria-label="다음 칼럼" title="다음 칼럼">${icon("ArrowRight")}</button></div><script src="/health-carousel.js" defer></script></div>`;
+}
+
 export function shell(source, { title, description, path, body, schema = null, production = false }) {
   const header = source.match(/<header class="site-header"[\s\S]*?<\/header>/)[0]
     .replace('href="#health"', 'href="/health.html"')
