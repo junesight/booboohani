@@ -73,7 +73,7 @@
       const blocked = paused || hovered || touching || carousel.contains(document.activeElement) || now < resumeAt || document.hidden || !inView || controls.hidden;
       if (blocked) position = viewport.scrollLeft;
       else {
-        position -= elapsed * 18 / 1000;
+        position += elapsed * 36 / 1000;
         if (position <= 0) position += period;
         if (position >= period * 2) position -= period;
         viewport.scrollLeft = position;
