@@ -5,7 +5,7 @@ import {execFileSync} from "node:child_process";
 import {createHash} from "node:crypto";
 import {XMLParser, XMLBuilder} from "fast-xml-parser";
 import settings from "../../health-config.json" with {type: "json"};
-import {categories, categoryName, cards, publishedPosts, plainText, listingPath, listPage, articlePage, withMobileContact} from "./content.mjs";
+import {categories, categoryName, homeColumns, publishedPosts, plainText, listingPath, listPage, articlePage, withMobileContact} from "./content.mjs";
 import {fetchSanityPosts, studioLinks} from "./sanity-source.mjs";
 import {scheduleEngine} from "./clinic-panel.mjs";
 
@@ -16,7 +16,7 @@ const outputFile = async (directory, relative, text) => {
   await writeFile(file, text);
 };
 const jsonScript = (value) => JSON.stringify(value).replaceAll("<", "\\u003c");
-const copyFiles = ["styles.css", "script.js", "health.css", "health-public.js", "mobile-navigation.js", "article-clinic.js", "article-toc.js", "robots.txt", "llms.txt", "CNAME"];
+const copyFiles = ["styles.css", "script.js", "health.css", "health-public.js", "health-carousel.js", "mobile-navigation.js", "article-clinic.js", "article-toc.js", "robots.txt", "llms.txt", "CNAME"];
 
 export async function buildSite({posts, output = path.join(siteRoot, "dist"), sourceCommit, sourceDate, copyAssets = true} = {}) {
   const directory = path.resolve(output);
@@ -47,7 +47,7 @@ export async function buildSite({posts, output = path.join(siteRoot, "dist"), so
     }
   }
   await outputFile(directory, ".nojekyll", "");
-  const homeCards = articles.length ? cards(articles.slice(0, 4)) : '<p class="health-empty-inline">등록된 글이 없습니다.</p>';
+  const homeCards = homeColumns(articles);
   if (!source.includes("<!-- HEALTH_CARDS_START -->")) throw new Error("Missing homepage article markers.");
   const home = source.replace(/<!-- HEALTH_CARDS_START -->[\s\S]*?<!-- HEALTH_CARDS_END -->/, `<!-- HEALTH_CARDS_START -->${homeCards}<!-- HEALTH_CARDS_END -->`);
   await outputPage("index.html", withMobileContact(home, source));

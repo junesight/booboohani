@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { categories, samplePosts, cleanBody, safeImage, cards, listPage, articlePage, publishedPosts } from "./content.mjs";
+import { categories, samplePosts, cleanBody, safeImage, cards, homeColumns, listPage, articlePage, publishedPosts } from "./content.mjs";
 
 const source = await readFile(new URL("../../index.html", import.meta.url), "utf8");
 
@@ -10,6 +10,20 @@ test("all seven categories and four labelled sample cards", () => {
   assert.equal(samplePosts().length, 4);
   assert.equal((cards(samplePosts()).match(/class="health-card"/g) || []).length, 4);
   assert.equal((cards(samplePosts()).match(/class="health-sample"/g) || []).length, 4);
+});
+
+test("home carousel includes the newest twenty published articles and no draft", () => {
+  const posts = Array.from({length: 25}, (_, i) => ({...samplePosts()[0], id: `home-${i}`, publishedAt: new Date(Date.UTC(2026, 10, 1+i)).toISOString()}));
+  posts.push({...posts[24], id: "hidden-draft", status: "draft"});
+  const html = homeColumns(posts);
+  assert.equal((html.match(/class="health-card"/g) || []).length, 20);
+  assert(html.indexOf("/home-24.html") < html.indexOf("/home-23.html"));
+  assert(html.includes("/home-5.html"));
+  assert(!html.includes("/home-4.html"));
+  assert(!html.includes("hidden-draft"));
+  assert(html.includes('src="/health-carousel.js"'));
+  assert.equal((homeColumns(posts.slice(0, 5)).match(/class="health-card"/g) || []).length, 5);
+  assert(homeColumns([]).includes("등록된 글이 없습니다."));
 });
 
 test("rich text retains supported formatting and strips executable markup", () => {

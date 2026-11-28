@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { readFile, writeFile, mkdir, rename, stat } from "node:fs/promises";
 import { randomUUID, randomBytes } from "node:crypto";
 import sharp from "sharp";
-import { categories, samplePosts, publishedPosts, cards, listPage, articlePage, cleanBody, plainText, safeImage, withMobileContact } from "./content.mjs";
+import { categories, samplePosts, publishedPosts, homeColumns, listPage, articlePage, cleanBody, plainText, safeImage, withMobileContact } from "./content.mjs";
 import {scheduleEngine} from "./clinic-panel.mjs";
 import {fetchSanityPosts, studioLinks} from "./sanity-source.mjs";
 import settings from "../../health-config.json" with {type: "json"};
@@ -141,8 +141,8 @@ const server = http.createServer(async (req, res) => {
     if (route === "/article-schedule-engine.js") return send(res, 200, req.method === "HEAD" ? "" : scheduleEngine(await readFile(path.join(root, "script.js"), "utf8")), "application/javascript; charset=utf-8");
     if (route === "/" || route === "/index.html") {
       const source = await readFile(path.join(root, "index.html"), "utf8");
-      const posts = publishedPosts(await readPosts()).slice(0, 4);
-      return send(res, 200, withMobileContact(source.replace(/<!-- HEALTH_CARDS_START -->[\s\S]*?<!-- HEALTH_CARDS_END -->/, `<!-- HEALTH_CARDS_START -->${posts.length ? cards(posts) : '<p class="health-empty-inline">등록된 글이 없습니다.</p>'}<!-- HEALTH_CARDS_END -->`), source), "text/html; charset=utf-8");
+      const posts = await readPosts();
+      return send(res, 200, withMobileContact(source.replace(/<!-- HEALTH_CARDS_START -->[\s\S]*?<!-- HEALTH_CARDS_END -->/, `<!-- HEALTH_CARDS_START -->${homeColumns(posts)}<!-- HEALTH_CARDS_END -->`), source), "text/html; charset=utf-8");
     }
     if (route === "/health.html") {
       const html = listPage(await readFile(path.join(root, "index.html"), "utf8"), await readPosts(), url);

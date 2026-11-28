@@ -5,6 +5,27 @@ body.health-public { background: var(--bg-soft); }
 .health-section-heading h2 { margin: 0; text-align: center; }
 .health-section-heading .health-more { justify-self: end; }
 .health-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+.health-carousel { grid-column: 1 / -1; min-width: 0; }
+.health-carousel-viewport { overflow-x: auto; container-type: inline-size; overscroll-behavior-x: contain; }
+.health-carousel-viewport[data-enhanced] { scrollbar-width: none; }
+.health-carousel-viewport[data-enhanced]::-webkit-scrollbar { display: none; }
+.health-carousel-track { display: flex; gap: 24px; align-items: stretch; }
+.health-carousel-track > .health-card { flex: 0 0 calc((100cqw - 72px) / 4); }
+.health-carousel .health-card-copy { height: 174px; min-height: 174px; }
+.health-carousel h3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.health-carousel .health-category { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.health-carousel-controls { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; }
+.health-carousel-controls[hidden], .health-carousel-controls [hidden] { display: none; }
+.health-carousel-controls button { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; background: transparent; border: 1px solid var(--line); border-radius: 4px; color: var(--green); cursor: pointer; }
+.health-carousel-controls span { display: flex; }
+.health-carousel-controls svg { width: 18px; height: 18px; }
+.health-carousel-controls button:hover { border-color: var(--green); }
+.health-carousel-viewport:focus-visible, .health-carousel-controls button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+@media (max-width: 768px) {
+  .health-carousel-track { gap: 14px; }
+  .health-carousel-track > .health-card { flex-basis: calc((100cqw - 14px) / 2); }
+  .health-carousel .health-card-copy { height: 174px; min-height: 174px; }
+}
 .health-card { min-width: 0; border: 1px solid var(--line); background: var(--paper); border-radius: 4px; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
 .health-card:hover { border-color: var(--gold); box-shadow: 0 8px 24px #163d320c; }
 .health-card > a { display: flex; flex-direction: column; height: 100%; }
